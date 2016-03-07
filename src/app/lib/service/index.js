@@ -15,6 +15,8 @@ import  httpInterceptor from "./httpInterceptor";
 import  modal from "./modal";
 
 
+import  custom_translate from "./custom_translate";
+
 export default  ( modele)=> {
 
 
@@ -23,6 +25,7 @@ export default  ( modele)=> {
 		.factory("$show" , show )
 		.factory("httpInterceptor" , httpInterceptor )
 		.factory("modal" , modal )
+		.factory("custom_translate" , custom_translate )
 
 
 

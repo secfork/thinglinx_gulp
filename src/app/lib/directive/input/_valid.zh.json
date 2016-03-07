@@ -1,0 +1,19 @@
+{
+
+    "inputValid": {
+    	
+    	"desc":" {{value}} 用法 查看 :https://angular-translate.github.io/docs/#/api/pascalprecht.translate.directive:translate",
+
+        "required": "该字段不能为空!",
+        "min": "该数值必须不小于{{value}}",
+        "max": "该数值必须小于{{value}}",
+
+        "minlength": "该字段至少为{{value}}个字符!",
+        "maxlength": "该字段不能不超过{{value}}个字符!",
+ 
+        "email": "Email格式不正确!",
+        "number": "该字段必须为数字格式!",
+        "Number": "该字段必须为数字格式!"  
+    }
+
+}

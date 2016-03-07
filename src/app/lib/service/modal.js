@@ -6,7 +6,7 @@ export default ($modal, $rootScope) => {
 
 
     /**
-      form ;
+      conforme ;
       options   =  {  title  , templateUrl ,  resolve }
       contorller =  ( $scope )=>{ }
 
@@ -23,7 +23,7 @@ export default ($modal, $rootScope) => {
     */
  
 
-    return (options, controller) => {
+    return (options, controller , closehandler ) => {
 
         console.log(typeof controller)
 
@@ -33,9 +33,11 @@ export default ($modal, $rootScope) => {
 
         angular.extend(modalScope, options);
 
-        modalScope.cancel = function() {
-            openedWin.dismiss();
-        };
+        modalScope.cancel =  function(){
+          closehandler && closehandler();
+          openedWin.dismiss() ;
+        } 
+       
  
         if (options.templateUrl) {
             openedWin = $modal.open({
@@ -47,13 +49,13 @@ export default ($modal, $rootScope) => {
 
         } else {
 
-            modalScope.done = controller;
-
+            modalScope.done =  function(){
+              controller &&  controller( openedWin.dismiss )
+            }   
             openedWin = $modal.open({
                 templateUrl: 'app/lib/service/modal.' + options.type + '.html',
                 scope: modalScope,
                 resolve: options.resolve,
-
             });
 
 

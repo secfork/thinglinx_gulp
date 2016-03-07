@@ -17,7 +17,7 @@ export  default ( $compile, $templateCache, $http  )=>{
                 
                 $scope.isOpen = false ;
                 $scope.pop = {
-                    templateUrl: "athena/debris/_edit_field.html"
+                    templateUrl: "app/debris/_edit_field.html"
                 };
 
                 var prop = $attrs.prop;

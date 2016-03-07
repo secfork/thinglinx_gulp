@@ -770,8 +770,7 @@ angular.module('pascalprecht.translate').factory('$translateDefaultInterpolation
   }
 ]);
 angular.module('pascalprecht.translate').constant('$STORAGE_KEY', 'NG_TRANSLATE_LANG_KEY');
-angular.module('pascalprecht.translate').
-    directive('translate', [
+angular.module('pascalprecht.translate').directive('translate', [
         '$translate',
         '$q',
         '$interpolate',
@@ -786,8 +785,10 @@ angular.module('pascalprecht.translate').
               var translateValuesExist = tAttr.translateValues ? tAttr.translateValues : undefined;
               var translateInterpolation = tAttr.translateInterpolation ? tAttr.translateInterpolation : undefined;
               var translateValueExist = tElement[0].outerHTML.match(/translate-value-+/i);
+
               return function linkFn(scope, iElement, iAttr) {
                 scope.interpolateParams = {};
+
                 iAttr.$observe('translate', function (translationId) {
                   if (angular.equals(translationId, '') || !angular.isDefined(translationId)) {
                     scope.translationId = $interpolate(iElement.text().replace(/^\s+|\s+$/g, ''))(scope.$parent);
@@ -798,6 +799,8 @@ angular.module('pascalprecht.translate').
                 iAttr.$observe('translateDefault', function (value) {
                   scope.defaultText = value;
                 });
+
+
                 if (translateValuesExist) {
                   iAttr.$observe('translateValues', function (interpolateParams) {
                     if (interpolateParams) {

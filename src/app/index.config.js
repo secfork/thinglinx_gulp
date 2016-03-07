@@ -17,7 +17,8 @@ export default function config($logProvider, $stateProvider, $urlRouterProvider,
     // toastrConfig.progressBar = true;
 
     // 自定义 ajax 拦截器;
-    $httpProvider.interceptors.push('httpInterceptor');
+    // $httpProvider.interceptors.push('httpInterceptor');
+
 
     $resourceProvider.defaults.actions = {
                 put:    {method:"PUT"},
@@ -46,7 +47,9 @@ export default function config($logProvider, $stateProvider, $urlRouterProvider,
     // thinglinx.value = $provide.value;
 
 
+    // 自定义 转换 拦截器; 
 
+    $translateProvider.useInterpolation('custom_translate');
 
     $translateProvider.useStaticFilesLoader({
         prefix: 'thing/',

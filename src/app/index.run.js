@@ -1,5 +1,5 @@
 export default function runBlock($rootScope, $state, $stateParams, $sys, $compile,
-    $localStorage, $cacheFactory, $log, $sce, $sessionStorage) {
+    $localStorage, $cacheFactory, $log, $sce, $sessionStorage , modal ) {
 
     'ngInject';
     $log.debug('runBlock end');
@@ -38,8 +38,7 @@ export default function runBlock($rootScope, $state, $stateParams, $sys, $compil
             // 处理 form 的 validate ;
             var errName;
             angular.forEach(valids.$error, function(e, k) {
-                //@if  append
-
+                //@if  append 
                 console.log(e);
                 //@endif
                 angular.forEach(e, function(modelCtrl, k1) {
@@ -48,13 +47,14 @@ export default function runBlock($rootScope, $state, $stateParams, $sys, $compil
                     //modelCtrl.$setViewValue(modelCtrl.$viewValue);
 
                 })
-            });
-
-
-            throw (" form invalid !!", valids.$error);
-
+            });  
+            throw (" form invalid !!", valids.$error); 
         }
     }
+
+
+
+    angular.open = modal ;
 
 
 

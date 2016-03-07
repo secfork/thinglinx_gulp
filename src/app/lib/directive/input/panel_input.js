@@ -27,8 +27,8 @@ input 框 ;
 
  var  search = [
  	'<span class="input-group-btn"><button class="btn btn-default" type="button" ng-click=" ',
-    'search(1)',
-    '" >搜索</button></span>'
+    'search(1)',  // search 是 虚拟的;  有 ele 的 search attr 决定;
+    '"  translate="text.search" >搜索</button></span>'
  ];
 
 
@@ -57,11 +57,7 @@ export default ( $compile )=>{
 				 ).before(
 				  "<label>"+attrs.label+"</label>" );
 				
-			}
-
-		
-
-
+			} 
 		}
 
 
