@@ -1,0 +1,24 @@
+
+<li  ui-sref-active="active"   ng-repeat = " nav in navs ">
+	
+	<a   class="auto"  ui-sref="{{:: nav.sref }}" >
+
+	    <span class="pull-right text-muted"  ng-if=" nav.children">
+            <i class="fa fa-fw fa-angle-right text"></i>
+            <i class="fa fa-fw fa-angle-down text-active"></i>
+        </span>
+
+	     
+	    <i class="icon {{:: nav.icon }} text-info-dker"></i>
+	    <span translate="{{:: nav.title}}">模型 , 配置项</span>
+	</a>
+
+	<ul class="nav nav-sub dk"    >
+	    <li ui-sref-active="active" ng-repeat = "  n in nav.children"  >
+	        <a ui-sref="{{:: n.sref }}">
+	            <span translate="{{:: n.title}}"> 系统模型</span>
+	        </a>
+	    </li>
+	</ul>  
+
+</li>

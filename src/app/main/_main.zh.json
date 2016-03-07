@@ -1,0 +1,42 @@
+{
+    "nav": {
+        "show": "展示",
+        "manage": "管理",
+
+        "region": "区域",
+        "system": "系统",
+        "alarm": "报警",
+
+        "account": "账户",
+        "accountInfo": "账户信息",
+        "bindWechat": "微信绑定",
+
+        "user": "用户",
+        "manageUser": "用户管理",
+        "manageRole": "角色管理",
+
+        "model": "模型",
+        "systemModel": "系统模型",
+        "deviceModel": "设备模型"
+    },
+
+    "text": {
+        "search": "搜索",
+        "return": "返回",
+
+        "name": "名称",
+        "createTime": "创建时间",
+        "edit": "编辑",
+        "create": "创建",
+        "del": "删除",
+        "update": "更新",
+
+
+        "desc": "备注"
+
+    }
+
+
+
+
+}
