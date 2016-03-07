@@ -1,9 +1,6 @@
 {
 
-    "inputValid": {
-    	
-    	"desc":" {{value}} 用法 查看 :https://angular-translate.github.io/docs/#/api/pascalprecht.translate.directive:translate",
-
+    "inputValid": { 
         "required": "该字段不能为空!",
         "min": "该数值必须不小于{{value}}",
         "max": "该数值必须小于{{value}}",

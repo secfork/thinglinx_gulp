@@ -9,7 +9,7 @@ export  default ()=>{
 
 } 
 
-transclude. instant ();
+translate. instant ();
 
 */
 

@@ -3,30 +3,37 @@
 
  
 
-export  default ( $compile  )=>{ 
+export  default ( $compile ,$translate )=>{ 
 	"ngInject";
   
 
-	function  pText( type  , value ){
+	function  pText( type  , value ){ 
+	
+		var html ;
+		if( typeof value !=='undefined' ){
+			html =   "<p class='text-danger' ng-if=' m.$dirty &&  m.$error."+type+"'  translate='inputValid."+ type
+					 +"'  translate-values='{value: "+ value +"}' ></p>" ;
+		}else{
+			html =   "<p class='text-danger' ng-if=' m.$dirty &&  m.$error."+type+"'  translate='inputValid."+ type +"'    ></p>" 
+		}
 
-		console.log( "add  valid  " , type  , value );
-		return ;
-		var text =  valid[ type ] ;
-		if( !text ) 
-			return "<p class = 'text-danger'> "+ type+"  验证不存在</p>"
+		console.log( html );
+		
+		return html ;
+	
 
-		if( value ){
-			text = text.replace("X", value);
-		} 
-		return  "<p class='text-danger' ng-if=' m.$dirty &&  m.$error."+type+" '>"+ text +"</p>"
 	} ;
  
 	return  {
 		restrict:"A", 
 		require: 'ngModel',
-		link:( scope , ele , attrs , modelCtrl )=>{
+		scope:true,
+		transclude:true ,
+		link:( scope , ele , attrs , modelCtrl  , transclude )=>{
 
-			var label = ' <label class= " col-sm-3 control-label " > '+ attrs.label +' </label> ' ,
+			console.log( 'valid scope ' ,scope , transclude )
+
+			var label = ' <label class= "col-sm-3 control-label "  translate >'+  $translate.instant(attrs.label) +'</label> ' ,
 				wrap_input = '<div class="form-group"><div class="col-sm-8"></div></div> ' ,
  				messageDom = $('<div></div>');
 				
@@ -40,11 +47,14 @@ export  default ( $compile  )=>{
 	        attrs.ngMinlength  &&	messageDom.append( pText( 'minlength' ,  attrs.ngMinlength  ) );
 	        attrs.ngMaxlength 	&&  messageDom.append( pText( 'maxlength' ,  attrs.ngMaxlength  ) );
 	       		
- 
+ 			console.log( 'messageDom' ,  messageDom.html() )
+
 	        ele.addClass(  ele.is("input , textarea ,select")?"form-control" : " no-border" )
 				.wrap( wrap_input)
 	       	    .after( $compile( messageDom)( scope) ) 
-				.parent().before( label );
+				// .parent().before(     $compile( label)( scope)     );
+				  .parent().before(     label    );
+ 
 
 
 		}
