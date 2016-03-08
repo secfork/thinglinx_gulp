@@ -10,7 +10,7 @@
 	    pagger: true,
 
 	    panelTopButs: [
-	        {text:"ss"}
+	        {text:"ss"  , classFor , handler }
 	    ],
 
 	    panelBotButs: [{

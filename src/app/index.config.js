@@ -48,7 +48,7 @@ export default function config($logProvider, $stateProvider, $urlRouterProvider,
 
 
     // 自定义 转换 拦截器;  
-    // $translateProvider.useInterpolation('custom_translate');
+    $translateProvider.useInterpolation('custom_translate');
 
     $translateProvider.useStaticFilesLoader({
         prefix: 'thing/',

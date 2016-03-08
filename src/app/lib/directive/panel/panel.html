@@ -1,9 +1,9 @@
 <div  style="padding: 0px 8px;  ">
 
     <div class="bg-light lter b-b wrapper ng-scope "  style="margin: 0px -8px;">
-        <h2 class="m-n font-thin h4"  translate="{{ :: panel.subject }}"  >    subject  </h2>
+        <h2 class="m-n font-thin h4"  translate  >  {{ :: panel.subject }} </h2>
         <a href="" class="text-xs "> 
-            <span  translate="text.return">   return </span>  
+            <span  translate>   {{:: text.return }} </span>  
             <span class="text-info">  boefore </span> 
         </a>
     </div>
@@ -11,13 +11,13 @@
     <div class="panel panel-default"  style="  margin: 16px 8px 0px 8px">
     
         <div class="panel-heading"  >  
-            <span translate="{{ :: panel.title}}"  ></span>   
+            <span translate  > {{ :: panel.title}}  </span>   
             
             <ul class="nav nav-pills pull-right">
                 <li>
                     <a  ng-click=" btn.handler() "  
                         ng-repeat = "btn in panel.panelTopButs"  
-                        translate=" {{::btn.text}}" >Random</a>
+                        translate >{{::btn.text}}</a>
                 </li> 
             </ul>
 
@@ -32,7 +32,7 @@
         <div class="panel-footer text-center " style="min-height:50px;">
             <button ng-repeat="btn  in panel.panelBotButs "
                 class="btn btn-sm  pull-left m-l-sm {{:: btn.classFor }} " 
-                ng-click="btn.handler()">
+                ng-click="btn.handler()" translate>
                     {{ :: btn.text }} 
             </button>
 

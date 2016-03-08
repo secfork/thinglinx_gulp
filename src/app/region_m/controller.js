@@ -4,6 +4,8 @@ export default ($scope, $sys, $source ) => {
     var thatScope  = $scope ; 
     $scope.od = {};
 
+    $scope.textb = 'done';
+
     $scope.page = {};
 
     $scope.panel = {
@@ -17,7 +19,7 @@ export default ($scope, $sys, $source ) => {
 
         panelBotButs: [
 
-            {  text: "添加区域",  classFor: " btn-primary", handler:   addProj  }
+            {  text: "region_m.addRegion",  classFor: " btn-primary", handler:   addProj  }
 
         ]
     }; 

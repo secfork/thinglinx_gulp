@@ -1,3 +1,5 @@
+
+// 英文 指示 , 以后 作废 删掉!
 export default ($interpolate) => {
 
     "ngInject";
@@ -15,9 +17,8 @@ export default ($interpolate) => {
             return 'custom';
         },
 
-        interpolate: function(string, interpolateParams) {
-        	console.log('interpolate' , string , interpolateParams )
-            return   $interpolate(string)(interpolateParams) +"xx"
+        interpolate: function(string, interpolateParams) { 
+            return   $interpolate(string)(interpolateParams) + ( $locale =='en'?'_en':"" );
         }
     };
 
