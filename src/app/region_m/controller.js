@@ -1,4 +1,4 @@
-export default ($scope, $sys, $source, modal) => {
+export default ($scope, $sys, $source ) => {
     "ngInject";
 
     var thatScope  = $scope ; 
@@ -96,19 +96,17 @@ export default ($scope, $sys, $source, modal) => {
      * */
     $scope.delProject = function(proj, index) {
 
-        $scope.confirmInvoke({
+        angular.confirm({
                 title: "删除区域: " + proj.name,
-                note: "确认要删除该区域吗?"
+                warn: "确认要删除该区域吗?"
             },
-            function(next) {
+            function(next) { 
                 $source.$region.delete({
                     pk: proj.id
                 }, function(resp) {
-
                     $scope.page.data.splice(index, 1);
-
                     next();
-                }, next)
+                }, next )
             }
         )
     };
@@ -116,7 +114,8 @@ export default ($scope, $sys, $source, modal) => {
 
    
     function addProj() {
-        modal({
+        angular.open({
+                title:"region_m.addRegion",
                 templateUrl: "app/region_m/region.add.html" ,
             } , ( $scope )=>{
                 "ngInject";

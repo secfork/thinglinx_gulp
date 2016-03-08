@@ -21,4 +21,5 @@ export default ( $resource  , $sys )=>{
     $show.liveWrite = $resource(liveWrite); // 下置; 
 
 
+    return $show ;
 }

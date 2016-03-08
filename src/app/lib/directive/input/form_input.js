@@ -7,20 +7,13 @@ export  default ( $compile ,$translate )=>{
 	"ngInject";
   
 
-	function  pText( type  , value ){ 
-	
-		var html ;
-		if( typeof value !=='undefined' ){
-			html =   "<p class='text-danger' ng-if=' m.$dirty &&  m.$error."+type+"'  translate='inputValid."+ type
-					 +"'  translate-values='{value: "+ value +"}' ></p>" ;
-		}else{
-			html =   "<p class='text-danger' ng-if=' m.$dirty &&  m.$error."+type+"'  translate='inputValid."+ type +"'    ></p>" 
-		}
+	function  pText( type  , value ){  
 
-		console.log( html );
-		
-		return html ;
-	
+		var text = $translate.instant("inputValid."+ type , { value: value})  , 
+		 
+			html =   "<p class='text-danger' ng-if=' m.$dirty &&  m.$error."+type+"'  > "+ text +"</p>" 
+		  
+		return html ; 
 
 	} ;
  

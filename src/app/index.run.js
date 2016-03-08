@@ -1,5 +1,5 @@
 export default function runBlock($rootScope, $state, $stateParams, $sys, $compile,
-    $localStorage, $cacheFactory, $log, $sce, $sessionStorage , modal ) {
+    $localStorage, $cacheFactory, $log, $sce, $sessionStorage  , modal ) {
 
     'ngInject';
     $log.debug('runBlock end');
@@ -13,10 +13,14 @@ export default function runBlock($rootScope, $state, $stateParams, $sys, $compil
     $rootScope.$session = $sessionStorage;
     $rootScope.fromJson = angular.fromJson;
 
+     // 模态框 ;
+
+    angular.open = modal.open;
+    angular.alert = modal.alert;
+    angular.confirm= modal.confirm
 
 
     //@if  append
-
     window.test = function() {
         alert("test  function !")
     };
@@ -26,7 +30,7 @@ export default function runBlock($rootScope, $state, $stateParams, $sys, $compil
         }
     //@endif
 
-
+    // 表单验证; 
     $rootScope.validForm = function(formName, scope) {
         formName = formName || "form";
         var that = scope || this;
@@ -54,7 +58,7 @@ export default function runBlock($rootScope, $state, $stateParams, $sys, $compil
 
 
 
-    angular.open = modal ;
+ 
 
 
 
