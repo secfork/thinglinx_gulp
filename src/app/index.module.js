@@ -109,20 +109,20 @@ var thinglinx = angular.module('thinglinx', [
     $scope.manageNavs = [
         {  title:"nav.region" , icon:"icon icon-grid"  ,           sref:"app.m_region"  },
         {  title:"nav.system" , icon:"icon icon-screen-desktop"  , sref:"app.m_system"  },
-        {  title:"nav.model" , icon:"icon icon-puzzle"  ,         
+        {  title:"nav.model" , icon:"icon icon-puzzle"  ,  sref: null ,      
             children: [
                 { title:"nav.systemModel" ,   sref:"app.sysmodel"} ,
                 { title:"nav.deviceModel" ,   sref:"app.devmodel"} 
             ]
         },
-        {  title:"nav.user" , icon:"icon icon-user"  ,  
+        {  title:"nav.user" , icon:"icon icon-user"  , sref: null ,   
             children:[
                 { title:"nav.manageUser" ,   sref:"app.user"} ,
                 { title:"nav.manageRole" ,   sref:"app.role"} 
             ]
 
         },
-        {  title:"nav.account" , icon:"icon icon-notebook"  ,  
+        {  title:"nav.account" , icon:"icon icon-notebook"  ,  sref: null ,  
             children:[
                 { title:"nav.accountInfo" ,   sref:"app.account_info"} ,
                 { title:"nav.bindWechat" ,   sref:"app.account_weichat"} 

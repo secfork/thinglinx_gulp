@@ -1,11 +1,11 @@
-
+<div ng-init="  xx = 123 "></div>
  
 <tl-modal> 
 
-	<form name="form"   class="form-horizontal form-validation ">
+	<form  name="form"    class="form-horizontal form-validation ">
 	      
-	    <input tl-input label="region_m.regionName" required ng-model=" proj.name " > 
-	    <textarea tl-input label="text.desc" ng-maxlength="5" placeholder=" 不应超过100字符"
+	    <input  name='regionName'  tl-input label="region_m.regionName" required ng-model=" proj.name "  yy = {{xx}} > 
+	    <textarea name='desc'  tl-input label="text.desc" ng-maxlength="5" placeholder=" 不应超过100字符"
 	    	style="resize: none"
 	      ng-model=" proj.desc " >
 	    </textarea>
