@@ -23,8 +23,9 @@ export default  ( modele)=> {
 	modele.factory("$sys" ,  sys  )
 		.factory("$source" , source)
 		.factory("$show" , show )
-		.factory("httpInterceptor" , httpInterceptor )
 		.factory("modal" , modal )
+		
+		.factory("httpInterceptor" , httpInterceptor )
 		.factory("custom_translate" , custom_translate )
 
 

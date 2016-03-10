@@ -33,7 +33,7 @@ var thinglinx = angular.module('thinglinx', [
 
 .controller('AppCtrl', function($scope, $localStorage, $window, $modal, $state,
     $timeout, $sessionStorage, $q, $animate, $cookies , $source , $translate,
-    $location, $rootScope) {
+    $location, $rootScope  ) {
     'ngInject';
 
 

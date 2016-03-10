@@ -3,9 +3,10 @@ var gulp = require('gulp');
 var conf = require('./conf'); 
 var merge = require('gulp-merge-json');
 
-jsonMinify = require('gulp-json-minify');
+var jsonMinify = require('gulp-json-minify');
  
-
+var json2js=require('gulp-ng-json2js');
+var concat=require('gulp-concat');
 
 
 
@@ -42,15 +43,32 @@ function build (){
 		console.error(e)
 	}
 }
+ 
 
-// gulp.task("l10n:watch" , function(){
-// 	watch();
-// 	//gulp.watch( "src/app/**/*.json" , watch )
+ 
 
-// })
-
+// watch ; 
 gulp.task("l10n" , watch )
 
+ 
+// build
+// gulp.task("l10n:build" , build)
 
-gulp.task("l10n:build" , build )
+// build ;
+gulp.task('l10n:build' , function(){
+ 
+	gulp.src('src/app/**/*.zh.json')
+				.pipe(merge('zh.json')) 
+                .pipe(json2js({  moduleName:'thinglinx' ,rename: function(){ return "$zh"} })  )
+                .pipe(concat('l10n_zh.js'))
+                .pipe(gulp.dest('.tmp/serve/'));
 
+
+	gulp.src('src/app/**/*.en.json')
+				.pipe(merge('zh.json')) 
+                .pipe(json2js({  moduleName:'thinglinx' ,rename: function(){ return "$en"} })  )
+                .pipe(concat('l10n_en.js'))
+                .pipe(gulp.dest('.tmp/serve/'));
+
+
+})

@@ -1,5 +1,5 @@
 export default function runBlock($rootScope, $state, $stateParams, $sys, $compile,
-    $localStorage, $cacheFactory, $log, $sce, $sessionStorage  , modal ) {
+    $localStorage, $cacheFactory, $log, $sce, $sessionStorage  , modal ,$zh , $translate ) {
 
     'ngInject';
     $log.debug('runBlock end');
@@ -12,6 +12,10 @@ export default function runBlock($rootScope, $state, $stateParams, $sys, $compil
     $rootScope.$sceHtml = $sce.trustAsHtml;
     $rootScope.$session = $sessionStorage;
     $rootScope.fromJson = angular.fromJson;
+
+
+
+    console.log(111111 , $translate)
 
      // 模态框 ;
  

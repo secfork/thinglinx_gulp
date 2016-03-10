@@ -4,7 +4,7 @@ import access from "./main/access";
 import  devmodel from "./model_device"; 
 
 
-export default function routerConfig($stateProvider, $urlRouterProvider) {
+export default function routerConfig($stateProvider, $urlRouterProvider ) {
     'ngInject';
 
     $urlRouterProvider.otherwise('/');
