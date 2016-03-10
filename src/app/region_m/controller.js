@@ -121,6 +121,8 @@ export default ($scope, $sys, $source ) => {
                 templateUrl: "app/region_m/region.add.html" ,
             } , ( $scope )=>{
                 "ngInject";
+                console.log( "controller Scope  id " , $scope )
+
                 //$scope.__proto__ = thatScope; 
                 $scope.proj = {};
 
