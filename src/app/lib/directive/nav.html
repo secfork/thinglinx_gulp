@@ -1,0 +1,28 @@
+
+<li    ng-repeat = " nav in navs ">
+	
+	<a  ng-if=" nav.children" class="auto"  >
+	    <span class="pull-right text-muted"    >
+            <i class="fa fa-fw fa-angle-right text"></i>
+            <i class="fa fa-fw fa-angle-down text-active"></i>
+        </span>  
+	    <i class="icon {{:: nav.icon }} text-info-dker"></i>
+	    <span translate  >{{:: nav.title}}</span>
+	</a>
+
+	<a  ng-if=" !nav.children" class="auto"  ui-sref="{{:: nav.sref }}" >
+ 
+	    <i class="icon {{:: nav.icon }} text-info-dker"></i>
+	    <span translate  >{{:: nav.title}}</span>
+	</a>
+ 
+
+	<ul class="nav nav-sub dk"    >
+	    <li ui-sref-active="active" ng-repeat = "  n in nav.children"  >
+	        <a ui-sref="{{:: n.sref }}">
+	            <span translate> {{:: n.title}}  </span>
+	        </a>
+	    </li>
+	</ul>  
+
+</li>

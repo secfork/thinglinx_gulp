@@ -1,0 +1,45 @@
+<div  style="padding: 0px 8px;  ">
+
+    <div class="bg-light lter b-b wrapper ng-scope "  style="margin: 0px -8px;">
+        <h2 class="m-n font-thin h4"  translate  >  {{ :: panel.subject }} </h2>
+        <a href="" class="text-xs "> 
+            <span  translate>   {{:: text.return }} </span>  
+            <span class="text-info">  boefore </span> 
+        </a>
+    </div>
+
+    <div class="panel panel-default"  style="  margin: 16px 8px 0px 8px">
+    
+        <div class="panel-heading"  >  
+            <span translate  > {{ :: panel.title}}  </span>   
+            
+            <ul class="nav nav-pills pull-right">
+                <li>
+                    <a  ng-click=" btn.handler() "  
+                        ng-repeat = "btn in panel.panelTopButs"  
+                        translate >{{::btn.text}}</a>
+                </li> 
+            </ul>
+
+        </div>
+        <div class="panel-body no-border table-responsive no-padder" load-mask ng-transclude >
+                
+                <!-- 
+                    指令内部 的 dom  结构; 
+                -->
+ 
+        </div>
+        <div class="panel-footer text-center " style="min-height:50px;">
+            <button ng-repeat="btn  in panel.panelBotButs "
+                class="btn btn-sm  pull-left m-l-sm {{:: btn.classFor }} " 
+                ng-click="btn.handler()" translate>
+                    {{ :: btn.text }} 
+            </button>
+
+
+            <pagination ng-if="panel.pagger" class="pagination-sm  " total-items="page.total" ng-model="page.currentPage" items-per-page=" $sys.itemsPerPage " ng-change=" loadPageData( page.currentPage   ) " num-pages=" page.numPages " max-size="10" boundary-links="true" rotate="false" first-text="&laquo;" previous-text="&lsaquo;" next-text="&rsaquo;" last-text="&raquo;">
+            </pagination>
+        </div>
+    </div>
+    
+</div>

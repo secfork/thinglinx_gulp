@@ -1,0 +1,67 @@
+<tl-panel>
+    <tl-panel-inputs>
+        <input tl-panel-input ng-model="od.f_projname" >
+        <!--   
+        <input  tl-panel-input ng-model="od.xxx"  search="xx" ></input>
+        <input  tl-panel-input ng-model="od.xxx" ></input>
+        <input  tl-panel-input ng-model="od.xxx" ></input>
+        <input  tl-panel-input ng-model="od.xxx" ></input>
+        <input  tl-panel-input ng-model="od.xxx" ></input>
+        <input  tl-panel-input ng-model="od.xxx"   ></input>  
+        -->
+    </tl-panel-inputs>
+    <table tl-table theader="tableHeaders">
+        <tbody> 
+            <tr ng-repeat="  proj  in page.data  " ng-init=" collectRegionId( proj , $last )"  >
+                <td>
+                    <a class="text-info-dk  " ng-click="  goto ( _$nextState ,  proj  , proj ); ">
+                           {{ proj.name }} 
+                    </a>
+                    <popwin ng-model="proj" ng-if=" !isShowModul" prop="name" handler=" updateRegion  " />
+                </td>
+                <td> {{ :: proj.create_time | date:"yyyy-MM-dd HH:mm Z" }}</td>
+                <td class="numeric " id="act_{{proj.id}}">
+                    0
+                </td>
+                <td class="numeric " id="unact_{{proj.id}}">
+                    0
+                </td>
+                <td>{{ proj.desc}}
+                    <popwin ng-model="proj" prop="desc" handler=" updateRegion  " />
+                </td>
+                <td class="numeric">
+                    <a class="text-info-dk m-r-xs" ng-disabled="true" ng-click="delProject( proj  , $index   )" translate>text.del</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</tl-panel>
+
+  
+                
+<!-- ======================  -->    
+
+
+<div ng-init=" x = {}"></div>
+
+
+ <input ng-model='x.value' ></input>
+
+<div translate="inputValid.min" translate-values=''  ></div>
+
+
+   <form  name='form'>
+
+
+        <input  name="input2"  ng-model="field1"  type="number" required></input>
+        
+        <div ng-if="form.input2.$dirty" ng-messages="form.input2.$error" style="color:maroon" >
+            <div ng-message="number">  </div>
+            <div ng-message="required"  >
+                <span  translate="text.{{::manage}}"   >1111</span>
+            </div>
+            <div ng-message="minlength">Your field is too short</div>
+            <div ng-message="maxlength">Your field is too long</div>
+        </div>
+
+ </form>  

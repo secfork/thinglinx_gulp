@@ -1,0 +1,24 @@
+
+ 
+<div class="modal-header" translate=""> 
+      {{:: title }} 
+</div>
+
+
+
+<div class="modal-body m-b">
+    <!-- 注释 -->
+    <div ng-if="note" class="   m-l-lg">
+        <i class= "fa fa-warning  fa-2x text-warning"  ></i> 
+        <span  translate > {{ :: note }}</span>
+    </div>
+
+    <div ng-if="warn " class=" m-l-lg  text-danger">
+        <i class="fa  fa-exclamation-triangle fa-2x  "></i> 
+        <span translate>  {{ :: warn}} </span>
+    </div>
+</div>
+
+<ng-include src="  'app/debris/_modal_footer.html' "></ng-include>
+
+ 

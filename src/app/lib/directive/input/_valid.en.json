@@ -1,0 +1,16 @@
+{
+
+    "inputValid": { 
+        "required": "this field can't be null",
+        "min": "该数值必须不小于{{value}}",
+        "max": "该数值必须小于{{value}}",
+
+        "minlength": "该字段至少为{{value}}个字符!",
+        "maxlength": "no more then {{value}} byte!",
+ 
+        "email": "Email格式不正确!",
+        "number": "该字段必须为数字格式!",
+        "Number": "该字段必须为数字格式!"  
+    }
+
+}
