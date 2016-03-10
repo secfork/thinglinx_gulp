@@ -61,3 +61,34 @@
         </button>
     </div>
 </div>
+
+
+
+
+
+
+<hr/>
+<div translate="point.pointPoll.0"></div>
+<div translate="point.array.2"></div>
+
+
+
+<div  ng-init='  x1 =1   ; p ={ 0:"Normal", 1:"Slow", 2:"Call" }'></div>
+
+        <input    ng-model='x1' type="number"  ></input>
+x1 = {{x1}}
+
+p= {{p}}
+
+<br/>
+
+<div ng-init="  x2=0 "></div>
+
+<select  ng-model='x1'  ng-options=' parseInt(v)  as k for (v,k) in p    '  ></select>
+
+
+x2 = {{x2}}    
+
+<br/>  parseInt  {{  parseInt("22.2") }}
+<br/>
+ x2 type =  {{ getType('x2') }}

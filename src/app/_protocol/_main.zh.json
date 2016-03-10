@@ -1,1 +1,21 @@
-{}
+{
+
+	"point":{
+		"pointPoll":{
+			"0":"Normal",
+			"1":"Slow",
+			"2":"Call",
+
+			"3":"Slow1",
+			"11":"Slow2",
+			"12":"Slow3",
+			"13":"Slow4"
+
+		},
+		"array":[
+			"A","B","C"
+		]
+
+	}
+
+}

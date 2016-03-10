@@ -34,8 +34,12 @@ function browserSyncInit(baseDir, browser) {
    * For more details and option, https://github.com/chimurai/http-proxy-middleware/blob/v0.9.0/README.md
    */
 
-   // proxy  ~~~  nginx ; 
-  server.middleware = proxyMiddleware('/node', {target: 'http://localhost:8080', changeOrigin: true});
+  // http://test.thinglinx.net/node
+  // proxy  ~~~  nginx ; 
+  // server.middleware = proxyMiddleware('/node', {target: 'http://localhost:8080', changeOrigin: true});
+  server.middleware = proxyMiddleware('/node', {target: 'http://test.thinglinx.net', changeOrigin: true});
+
+
 
   browserSync.instance = browserSync.init({
     startPath: '/',

@@ -123,14 +123,14 @@ export default ($scope, $sys, $source   ) => {
 
                 $scope.done = function(e) {
                     $scope.validForm();
-                    $scope.showMask = true; 
+                    thatScope.showMask = true; 
 
                     $source.$region.save($scope.proj, function(resp) {
                         //resp.ret && $state.go("app.proj.manage");  
-                        $scope.showMask = false;
+                        thatScope.showMask = false;
                         $scope.proj.id = resp.ret;
 
-                        $scope.page.data.unshift(angular.copy($scope.proj));
+                        thatScope.page.data.unshift(angular.copy($scope.proj));
                         $scope.cancel(); 
                     }, function() {
                         $scope.showMask = false;

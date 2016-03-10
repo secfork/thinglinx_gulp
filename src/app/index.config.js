@@ -47,7 +47,7 @@ export default function config($logProvider, $stateProvider, $urlRouterProvider,
     // thinglinx.value = $provide.value;
  
     // 自定义 转换 拦截器;   
-    // $translateProvider.useInterpolation('custom_translate');
+    $translateProvider.useInterpolation('custom_translate');
      
 
     $translateProvider.useStaticFilesLoader({

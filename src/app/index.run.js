@@ -34,6 +34,17 @@ export default function runBlock($rootScope, $state, $stateParams, $sys, $compil
         }
     //@endif
 
+
+    // text ; 
+    $rootScope.funText = function(){
+        console.log(' rootScope.funText run !! ');
+        return "funcText";
+    };
+
+    // 让 select 支持 {k:v} , k为number 时 的回显 ;  
+    $rootScope.parseInt = parseInt ;
+
+    
     // 表单验证; 
     $rootScope.validForm = function(formName, scope) { 
         console.log(" valid Form  Scope " , this )
