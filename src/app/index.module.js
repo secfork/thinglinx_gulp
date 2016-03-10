@@ -14,9 +14,9 @@ import initDirective from "./lib/directive";
 var thinglinx = angular.module('thinglinx', [
     'ngAnimate', 'ngCookies', 'ngMessages',
     'ngResource', 'ui.router', 'ui.bootstrap', 'ngStorage',
-
-    'ui.bootstrap.datetimepicker',
-    'pascalprecht.translate',
+ 
+    'ui.bootstrap.datetimepicker', 
+     'pascalprecht.translate', 
 
     'ui.load',
     'ui.jq',
@@ -109,20 +109,21 @@ var thinglinx = angular.module('thinglinx', [
     $scope.manageNavs = [
         {  title:"nav.region" , icon:"icon icon-grid"  ,           sref:"app.m_region"  },
         {  title:"nav.system" , icon:"icon icon-screen-desktop"  , sref:"app.m_system"  },
-        {  title:"nav.model" , icon:"icon icon-puzzle"  ,  sref: null ,      
+ 
+        {  title:"nav.model" , icon:"icon icon-puzzle"  ,      
             children: [
                 { title:"nav.systemModel" ,   sref:"app.sysmodel"} ,
                 { title:"nav.deviceModel" ,   sref:"app.devmodel"} 
             ]
-        },
-        {  title:"nav.user" , icon:"icon icon-user"  , sref: null ,   
+        }, 
+        {  title:"nav.user" , icon:"icon icon-user"  ,     
             children:[
                 { title:"nav.manageUser" ,   sref:"app.user"} ,
                 { title:"nav.manageRole" ,   sref:"app.role"} 
             ]
 
-        },
-        {  title:"nav.account" , icon:"icon icon-notebook"  ,  sref: null ,  
+        }, 
+        {  title:"nav.account" , icon:"icon icon-notebook"  ,    
             children:[
                 { title:"nav.accountInfo" ,   sref:"app.account_info"} ,
                 { title:"nav.bindWechat" ,   sref:"app.account_weichat"} 
@@ -134,13 +135,7 @@ var thinglinx = angular.module('thinglinx', [
     $scope.na = "app.m_region"
 
 
-
-    // 表单验证; 
-
-    
-
-
-
+ 
     $scope.logout= function(){
         // console.log( 'cccccccccccc' ,$cookies.get("dd"))
 

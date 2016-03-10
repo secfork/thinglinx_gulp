@@ -29,17 +29,19 @@ export default ($modal, $rootScope) => {
     */ 
 
 
-    function handler(options, controller, closehandler)  {
-
-        var modalScope = $rootScope.$new(),
+    function handler(options, controller, closehandler)  { 
+        var modalScope = $rootScope.$new(), 
             openedWin;
 
         options.doneText = options.doneText || "text.done";
         options.cancelText = options.cancelText || "text.cancel";
 
         angular.extend(modalScope, options);
+ 
+        console.log(" modalScope = " , modalScope )
 
-        modalScope.cancel =  function(){ 
+        modalScope.cancel =  function(){  
+
           if( closehandler ){
               closehandler( openedWin.dismiss )
           }else{
@@ -86,6 +88,10 @@ export default ($modal, $rootScope) => {
 
     return {
         open: function( options={}, controller ) {
+ 
+
+            console.log( 'parnet scope =' ,this );
+ 
             options.type = 'modal';
             handler( options , controller );
         },

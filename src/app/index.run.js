@@ -14,8 +14,12 @@ export default function runBlock($rootScope, $state, $stateParams, $sys, $compil
     $rootScope.fromJson = angular.fromJson;
 
      // 模态框 ;
-
-    angular.open = modal.open;
+ 
+    $rootScope.open = modal.open ;
+    // function(){
+    //    modal.open.apply( this,  arguments );
+    // };
+    angular.open = modal.open ; 
     angular.alert = modal.alert;
     angular.confirm= modal.confirm
 
@@ -31,7 +35,9 @@ export default function runBlock($rootScope, $state, $stateParams, $sys, $compil
     //@endif
 
     // 表单验证; 
-    $rootScope.validForm = function(formName, scope) {
+    $rootScope.validForm = function(formName, scope) { 
+        console.log(" valid Form  Scope " , this )
+ 
         formName = formName || "form";
         var that = scope || this;
         var valids = that[formName] || // 递归去找 ? 不了;

@@ -38,26 +38,17 @@ export default ($resource , $sys ) => {
     $source.$note = $createSource("sms/:op/:sou"); 
 
     $source.$common = $createSource("common/:op", {}, {
-        // 验证 uuid ; 
-        verifyUuid:{
-            params:{op:"vuuid"}
-        } ,
+        // 验证 uuid ;  
+        verifyUuid:{  params:{op:"vuuid"}   } ,
 
        // 验证 图片验证码; 
-        verify: {
-            url: restNode +"common/verify"
-        }
+        verify: {  url: restNode +"common/verify"  } 
 
     });
 
-    $source.$user = $createSource("user/:pk/:op", {}, {
-        login: {
-            url: restNode + "common/login",
-            method: "POST"
-        },
-        logout: {
-            url:restNode + "user/logout"
-        }
+    $source.$user = $createSource("user/:pk/:op", {}, { 
+        login: {  url: restNode + "common/login",  method: "POST"  },
+        logout: {  url:restNode + "user/logout"  } 
     });
     
     /// {pk:"@pk", userid:"@userid"} ,
@@ -68,32 +59,15 @@ export default ($resource , $sys ) => {
 
     $source.$ticket = $createSource( "ticket/:system_id");
 
-    $source.$system = $createSource("system/:pk/:options/:proj_id", {}, {
-        sync: {
-            method: "GET", params:{ options:"sync" }
-        },
-        stop: {
-            method: "GET" , params:{ cmd:"stop"}
-        },
-        start: {
-            method: "GET", params:{ cmd:"start"}
-
-        }, 
-        call :{
-            method:"POST"
-        },
-        active:{ 
-            params:{options:"active"}
-        },
-        deactive:{
-            params:{options:"deactive"}
-        },
-        assign: {
-            params:{options:"assign"}
-        }, 
-        getDtuServer: {
-            method:"GET"
-        },
+    $source.$system = $createSource("system/:pk/:options/:proj_id", {}, { 
+        sync: {  method: "GET", params:{ options:"sync" }  },
+        stop: {  method: "GET" , params:{ cmd:"stop"}  },
+        start: {  method: "GET", params:{ cmd:"start"} }, 
+        call :{  method:"POST"  },
+        active:{   params:{options:"active"} },
+        deactive:{ params:{options:"deactive"}  },
+        assign: { params:{options:"assign"}   }, 
+        getDtuServer: {  method:"GET" }, 
 
         status: { method:"POST" , params:{ options:"status" } },
         needSync: { method:"POST" ,  params:{options:"needsync" }  }

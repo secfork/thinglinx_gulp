@@ -1,6 +1,7 @@
 <tl-panel>
-    <tl-panel-inputs>
+    <tl-panel-inputs> 
         <input tl-panel-input ng-model="od.f_projname" search="loadPageData(1)">
+ 
         <!--   
         <input  tl-panel-input ng-model="od.xxx"  search="xx" ></input>
         <input  tl-panel-input ng-model="od.xxx" ></input>
@@ -36,32 +37,4 @@
         </tbody>
     </table>
 </tl-panel>
-
-  
-                
-<!-- ======================  -->    
-
-
-<div ng-init=" x = {}"></div>
-
-
- <input ng-model='x.value' ></input>
-
-<div translate="inputValid.min" translate-values=''  ></div>
-
-
-   <form  name='form'>
-
-
-        <input  name="input2"  ng-model="field1"  type="number" required></input>
-        
-        <div ng-if="form.input2.$dirty" ng-messages="form.input2.$error" style="color:maroon" >
-            <div ng-message="number">  </div>
-            <div ng-message="required"  >
-                <span  translate="text.{{::manage}}"   >1111</span>
-            </div>
-            <div ng-message="minlength">Your field is too short</div>
-            <div ng-message="maxlength">Your field is too long</div>
-        </div>
-
- </form>  
+ 

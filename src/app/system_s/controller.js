@@ -1,7 +1,5 @@
- 
-export default ($scope, $sys, $source   ) => {
+export default ($scope, $sys, $source ) => {
     "ngInject";
-  
 
     var thatScope  = $scope ; 
     $scope.od = {};
@@ -16,10 +14,13 @@ export default ($scope, $sys, $source   ) => {
         pagger: true,
 
         panelTopButs: [
-           // {text:"ss"} 
-        ], 
-        panelBotButs: [ 
+           // {text:"ss"}
+        ],
+
+        panelBotButs: [
+
             {  text: "region_m.addRegion",  classFor: " btn-primary", handler:   addProj  }
+
         ]
     }; 
 
@@ -50,8 +51,11 @@ export default ($scope, $sys, $source   ) => {
             $scope.showMask = false;
         });
     };
-  
-    $scope.loadPageData(1); 
+ 
+
+    thatScope.page = { data:[ {name:11} ] , currentPage:1 , total:100 }
+    // $scope.loadPageData(1);
+
     var region_ids = [];
     $scope.collectRegionId = function(region, $last) {
         region_ids.push(region.id);
@@ -111,14 +115,13 @@ export default ($scope, $sys, $source   ) => {
 
 
    
-    function addProj() { 
-        angular.open({ 
+    function addProj() {
+        angular.open({
                 title:"region_m.addRegion",
                 templateUrl: "app/region_m/region.add.html" ,
             } , ( $scope )=>{
-                "ngInject"; 
-                console.log( "controller Scope  id " , $scope )
- 
+                "ngInject";
+                //$scope.__proto__ = thatScope; 
                 $scope.proj = {};
 
                 $scope.done = function(e) {
@@ -141,7 +144,9 @@ export default ($scope, $sys, $source   ) => {
 
             }
         ) 
-    } 
+    }
+
+ 
  
 
     $scope.updateRegion = function(fieldObj) {

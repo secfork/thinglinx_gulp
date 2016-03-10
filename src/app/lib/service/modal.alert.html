@@ -19,10 +19,7 @@
     </div>
 </div>
 
-<div class="modal-footer ">
+ 
+<ng-include src="  'app/debris/_modal_footer.html' "></ng-include>
 
-    <button  class="btn btn-sm btn-primary  w-46" ng-click=" done () " token  translate > {{:: doneText }} </button>
-    
-    <button ng-if="type != 'alert' "   class="btn btn-sm btn-primary  w-46" ng-click=" cancel() "  translate > {{:: cancelText }} </button>
-
-</div>
+  

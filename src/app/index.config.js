@@ -45,17 +45,20 @@ export default function config($logProvider, $stateProvider, $urlRouterProvider,
     // thinglinx.service = $provide.service;
     // thinglinx.constant = $provide.constant;
     // thinglinx.value = $provide.value;
-
-
-    // 自定义 转换 拦截器;  
-    $translateProvider.useInterpolation('custom_translate');
+ 
+    // 自定义 转换 拦截器;   
+    // $translateProvider.useInterpolation('custom_translate');
+     
 
     $translateProvider.useStaticFilesLoader({
         prefix: 'thing/',
         suffix: '.json'
-    });
-    $translateProvider.preferredLanguage('zh');
+    }); 
+
+     $translateProvider.preferredLanguage('zh');
     $translateProvider.useLocalStorage();
+
+
  
 
 
