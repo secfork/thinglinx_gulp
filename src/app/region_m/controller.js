@@ -1,7 +1,7 @@
-export default ($scope, $sys, $source  , $translationCache ) => {
+export default ($scope, $sys, $source   ) => {
     "ngInject";
  
-    console.log( 'translationCache =' , $translationCache.get("nav") )
+    // console.log( 'translationCache =' , $translationCache.get("nav") )
 
     var thatScope  = $scope ; 
     $scope.od = {};
@@ -115,13 +115,13 @@ export default ($scope, $sys, $source  , $translationCache ) => {
 
    
     function addProj() {
-        angular.open({
+        $scope.open({
                 title:"region_m.addRegion",
                 templateUrl: "app/region_m/region.add.html" ,
             } , ( $scope )=>{
                 "ngInject";
                 //$scope.__proto__ = thatScope; 
-                console.log( 'modal scope  id = ' , $scope.$id )
+                console.log( 'modal  controller scope  id = ' , $scope )
 
                 $scope.proj = {};
 
