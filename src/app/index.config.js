@@ -1,10 +1,14 @@
 export default function config($logProvider, $stateProvider, $urlRouterProvider,
     $controllerProvider, $compileProvider,
     $filterProvider, $provide, $httpProvider,
-    $resourceProvider , $translateProvider 
+    $resourceProvider , $translateProvider   
+
 ) {
 
     'ngInject';
+ 
+
+
 
     // Enable log
     // $logProvider.debugEnabled(true);
@@ -47,60 +51,12 @@ export default function config($logProvider, $stateProvider, $urlRouterProvider,
     // thinglinx.value = $provide.value;
  
     // 自定义 转换 拦截器;   
+
+    $translateProvider.translations( 'en' , window.$en );
+    $translateProvider.translations( 'zh' , window.$zh ); 
+
     $translateProvider.useInterpolation('custom_translate');
-     
-
-    // $translateProvider.useStaticFilesLoader({
-    //     prefix: 'thing/',
-    //     suffix: '.json'
-    // }); 
-
-  $translateProvider.translations('en', {
-    "nav": {
-        "show": "show-",
-        "manage": "manage-",
-
-        "region": "region",
-        "system": "系统",
-        "alarm": "报警",
-
-        "account": "账户",
-        "accountInfo": "账户信息",
-        "bindWechat": "微信绑定",
-
-        "user": "用户",
-        "manageUser": "用户管理",
-        "manageRole": "角色管理",
-
-        "model": "模型",
-        "systemModel": "系统模型",
-        "deviceModel": "设备模型"
-    }
-  });
- 
-  $translateProvider.translations('zh', {
-    "nav": {
-        "show": "展示",
-        "manage": "管理",
-
-        "region": "区域",
-        "system": "系统",
-        "alarm": "报警",
-
-        "account": "账户",
-        "accountInfo": "账户信息",
-        "bindWechat": "微信绑定",
-
-        "user": "用户",
-        "manageUser": "用户管理",
-        "manageRole": "角色管理",
-
-        "model": "模型",
-        "systemModel": "系统模型",
-        "deviceModel": "设备模型"
-    }
-  });
-
+        
     $translateProvider.preferredLanguage('zh');
     $translateProvider.useLocalStorage();
 

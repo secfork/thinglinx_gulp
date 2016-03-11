@@ -7,8 +7,7 @@ export default ( ) => {
 }
 
 */
-
-import  sys from "./sys";
+ 
 import  source from "./source";
 import  show from "./show";
 import  httpInterceptor from "./httpInterceptor";
@@ -20,13 +19,14 @@ import  custom_translate from "./custom_translate";
 export default  ( modele)=> {
 
 
-	modele.factory("$sys" ,  sys  )
-		.factory("$source" , source)
+	modele.factory("$source" , source)
 		.factory("$show" , show )
 		.factory("modal" , modal )
 		
 		.factory("httpInterceptor" , httpInterceptor )
 		.factory("custom_translate" , custom_translate )
+
+	 
 
 
 

@@ -13,7 +13,7 @@ export default ($scope, $compile, $state, $modal, $log, $http, $timeout, $source
     // };
 
 
-    var tempScope = $scope;
+    var thatScope = $scope;
 
 
     var $window = $(window);
@@ -100,18 +100,14 @@ export default ($scope, $compile, $state, $modal, $log, $http, $timeout, $source
     var drivers;
     // 添加 || 编辑  模版; 弹出框 ;=================================================
     $scope.add_edit_t = function(scope, t) { //  temp-scope , 或者; super-scope ;
-        $modal.open({
-            templateUrl: 'athena/template/temp.html',
-            controller: function($scope, $modalInstance, $source, $filter) {
-                //@if  append
-
+ 
+        angular.open({ templateUrl: 'app/model_device/dev.html' },
+            function($scope, $modalInstance, $source, $filter) {
+                'ngInject'; 
+                //@if  append 
                 console.log("edit or new  temp ", t);
-                //@endif 
-                $scope.__proto__ = scope;
-                $scope.$modalInstance = $modalInstance;
-
+                //@endif   
                 $scope.isAdd = !t;
-
                 if (!t) { // 新建;
                     //$scope.drivers =
 
@@ -124,12 +120,9 @@ export default ($scope, $compile, $state, $modal, $log, $http, $timeout, $source
                         $scope.T.driver_id = $scope.drivers[0].driver_id;
                     });
                 }
-
-
+                $scope.title =  !t?"devModel.addModel":"devModel.editModel";
 
                 $scope.T = t ? angular.copy(t) : {};
-
-
 
                 // 编辑 新建 template ;
                 $scope.done = function(btn) {
@@ -140,7 +133,7 @@ export default ($scope, $compile, $state, $modal, $log, $http, $timeout, $source
                         $source.$deviceModel.save($scope.T, function(resp) {
 
                             $scope.T.uuid = resp.ret;
-                            $scope.deviceModels.push($scope.T);
+                            thatScope.deviceModels.push($scope.T);
                             // $scope.page.total ++ ;
                             $scope.cancel()
                         });
@@ -158,7 +151,8 @@ export default ($scope, $compile, $state, $modal, $log, $http, $timeout, $source
                     }
                 }
             }
-        });
+        );
+
     };
 
 
@@ -223,13 +217,13 @@ export default ($scope, $compile, $state, $modal, $log, $http, $timeout, $source
         if (obj.ref)
             msg.warn = "该模版被" + obj.ref + "个设备使用! 不可删除!";
 
-        $scope.confirmInvoke(msg, function(next) {
+        angular.confirm(msg, function(next) {
             if (obj.ref) return;
             $source.$deviceModel.delete({
                 uuid: obj.uuid
             }, function(resp) {
 
-                $scope.deviceModels.splice(index, 1);
+                thatScope.deviceModels.splice(index, 1);
 
                 next();
             }, next)
@@ -259,18 +253,11 @@ export default ($scope, $compile, $state, $modal, $log, $http, $timeout, $source
     //添加 point;
 
     $scope.addOrEditPoint = function(scope, p, index) {
-        //@if  append
+        
 
-        console.log(" add_f or edit_f  ");
-        //@endif 
+        angular.open({   templateUrl: 'app/model_device/point.html' },
 
-        $modal.open({
-            templateUrl: 'app/model_device/point.html',
-            controller: function($scope, $modalInstance, $sys) {
-
-                $scope.__proto__ = scope;
-                $scope.$modalInstance = $modalInstance;
-
+            function($scope,  $sys) { 
                 $scope.point = {};
                 $scope.isAdd = !!p;
 
@@ -324,7 +311,7 @@ export default ($scope, $compile, $state, $modal, $log, $http, $timeout, $source
                     // $scope.cancel(); 
                 };
             }
-        });
+        );
     };
     $scope.clone_f = function(f_id) {
         //@if  append
@@ -332,7 +319,5 @@ export default ($scope, $compile, $state, $modal, $log, $http, $timeout, $source
         console.log(arguments)
             //@endif 
     };
-
-
-
+ 
 }

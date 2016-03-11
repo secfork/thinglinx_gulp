@@ -1,0 +1,26 @@
+ 
+
+    <form name="form" class=" form-validation form-horizontal   ">
+ 
+
+        <!-- ng-disabled="!isAdd"   +' -- '+ o.version -->
+        <select name='driver_id' tl-input
+                label="text.modelType"
+                required
+                ng-model=" T.driver_id "
+                ng-if="isAdd"
+                ng-options=" o.driver_id  as o.name   for o in drivers  "
+                ></select>
+
+        <input  name='name' tl-input required ng-model="T.name" label="text.modelName">
+
+        <textarea name='desc' tl-input  ng-model="T.desc"  label="text.desc" 
+
+            >  </textarea>
+
+
+
+    </form> 
+ 
+ 
+ 

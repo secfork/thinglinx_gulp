@@ -1,5 +1,5 @@
 export default function runBlock($rootScope, $state, $stateParams, $sys, $compile,
-    $localStorage, $cacheFactory, $log, $sce, $sessionStorage  , modal ,$zh , $translate ) {
+    $localStorage, $cacheFactory, $log, $sce, $sessionStorage  , modal  , $translate ) {
 
     'ngInject';
     $log.debug('runBlock end');
@@ -8,14 +8,14 @@ export default function runBlock($rootScope, $state, $stateParams, $sys, $compil
 
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
-    $rootScope.$sys = $sys; 
     $rootScope.$sceHtml = $sce.trustAsHtml;
     $rootScope.$session = $sessionStorage;
     $rootScope.fromJson = angular.fromJson;
 
-
-
-    console.log(111111 , $translate)
+    $rootScope.$sys = $sys; 
+    $rootScope.$zh = window.$zh ; 
+    $rootScope.$en = window.$en ; 
+   
 
      // 模态框 ;
  
@@ -32,18 +32,13 @@ export default function runBlock($rootScope, $state, $stateParams, $sys, $compil
     window.test = function() {
         alert("test  function !")
     };
-
-    $rootScope.test = function() {
-            alert("test  function !")
-        }
-    //@endif
-
-
-    // text ; 
-    $rootScope.funText = function(){
+    $rootScope.funTest = function(){
         console.log(' rootScope.funText run !! ');
-        return "funcText";
+        return "funcTest";
     };
+     
+    //@endif
+ 
 
     // 让 select 支持 {k:v} , k为number 时 的回显 ;  
     $rootScope.parseInt = parseInt ;

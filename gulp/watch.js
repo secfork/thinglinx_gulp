@@ -22,7 +22,7 @@ gulp.task('watch', ['scripts:watch', 'inject' ,'l10n:build'], function () {
     }
   });
 
-  gulp.watch( "src/app/**/*.json" ,  function( event){
+  gulp.watch( ["src/app/**/*.json" ,"src/**/*.conf.js" ] ,  function( event){
     console.log(" lion xxxxxx ")
     gulp.start('l10n:build')
 

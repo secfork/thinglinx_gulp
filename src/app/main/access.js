@@ -56,8 +56,8 @@ function loginCtrl(
 
     //@if  append
     $scope.user = {
-        username: "123123",
-        password: "123123"
+        username: "administrator",
+        password: "111111"
     };
     //@endif
 

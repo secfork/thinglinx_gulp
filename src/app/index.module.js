@@ -27,15 +27,14 @@ var thinglinx = angular.module('thinglinx', [
 .config(config)
 
 .config(routerConfig)
-
-
+ 
 .run(runBlock)
 
 .controller('AppCtrl', function($scope, $localStorage, $window, $modal, $state,
     $timeout, $sessionStorage, $q, $animate, $cookies , $source , $translate,
-    $location, $rootScope  ) {
+    $location, $rootScope   ) {
     'ngInject';
-
+ 
 
     function isSmartDevice($window) {
         // Adapted from http://www.detectmobilebrowsers.com
@@ -88,8 +87,11 @@ var thinglinx = angular.module('thinglinx', [
 
     // angular translate
     $scope.lang = { isopen: false };
-    $scope.langs = {  en: 'English',   zh: '简体中文'  };
-    $scope.selectLang = $scope.langs[$translate.proposedLanguage()] || "简体中文";
+    $scope.langs = {  en: 'English',   zh: '简体中文'  }; 
+
+   // $scope.selectLang = $scope.langs[ $translate.proposedLanguage() ] || "简体中文";
+    $scope.selectLang = $scope.langs[ window.localStorage.NG_TRANSLATE_LANG_KEY ] || "简体中文";
+
     $scope.setLang = function(langKey, $event) {
         // set the current lang
         $scope.selectLang = $scope.langs[langKey];
@@ -146,11 +148,9 @@ var thinglinx = angular.module('thinglinx', [
         $window.location.href = "#/access/login"
 
     }
-
-
-
-});
-
+  
+})
+ ;
 
 initServices(thinglinx);
 initDirective(thinglinx);

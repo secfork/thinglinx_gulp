@@ -3,7 +3,8 @@
 	<form  name="form"    class="form-horizontal form-validation ">
 	      
 	    <input  name='regionName'  tl-input label="region_m.regionName" required ng-model=" proj.name "  yy = {{xx}} > 
-	    <textarea name='desc'  tl-input label="text.desc" ng-maxlength="5" placeholder=" 不应超过100字符"
+	    <textarea name='desc'  tl-input label="text.desc" ng-maxlength="50" 
+	        placeholder=" {{:: 'inputValid.maxlength' | translate:{value:50 } }} "
 	    	style="resize: none"
 	      ng-model=" proj.desc " >
 	    </textarea>
