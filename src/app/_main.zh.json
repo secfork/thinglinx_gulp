@@ -38,13 +38,22 @@
         "modelName":"模型名称",
         "modelType":"模型类型",
 
-        "desc": "备注"
-
-
+        "desc": "备注" 
     },
 
-    "err": {
+    "desc":" ======== 通用 select options==========" ,
 
+    "field":{ 
+        "access": { "0":"只读" , "1":"只写" , "2":"可读写"} , 
+        "hlbyte": {  "0": "HightByte", "1": "LowByte" } ,
+        "yesno":{ "0":"否" , "1":"是"} , 
+
+     },
+
+
+
+
+    "err": { 
 
         "phone_pattern_err": "电话号码格式不正确",
 

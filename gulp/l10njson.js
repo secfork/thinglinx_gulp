@@ -37,15 +37,15 @@ function build (){
 		    
 		gulp.src('src/app/**/*.zh.json')
 		    .pipe(extend('zh.js') )  
-		    .pipe( jsonMinify() ) 
-		    .pipe( inject.prepend( 'window.$zh=')  )
+		  //  .pipe( jsonMinify() ) 
+		   .pipe( inject.prepend( 'window.$zh=')  )
 		    .pipe(  gulp.dest(  path.join(conf.paths.tmp , '/serve')  )  );
  
  
 		gulp.src('src/app/**/*.en.json')
 		    .pipe(extend('en.js') )  
-		    .pipe( jsonMinify() ) 
-		    .pipe( inject.prepend( 'window.$en=')  )
+		  //  .pipe( jsonMinify() ) 
+		   .pipe( inject.prepend( 'window.$en=')  )
 		    .pipe(  gulp.dest(  path.join(conf.paths.tmp , '/serve')  )  );
 
  		
