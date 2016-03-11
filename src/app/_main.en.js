@@ -1,13 +1,13 @@
-{
+ 
     "nav": {
-        "show": "展示",
-        "manage": "管理",
+        "show": "Show",
+        "manage": "Manage",
 
-        "region": "区域",
-        "system": "系统",
-        "alarm": "报警",
+        "region": "Region",
+        "system": "System",
+        "alarm": "Alarm",
 
-        "account": "账户",
+        "account": "Account",
         "accountInfo": "账户信息",
         "bindWechat": "微信绑定",
 
@@ -31,29 +31,12 @@
         "del": "删除",
         "update": "更新",
 
-        "alter":"提示",
-        "done":"确定",
-        "cancel":"取消",
+        "desc": "descript"
 
-        "modelName":"模型名称",
-        "modelType":"模型类型",
-
-        "desc": "备注" 
     },
 
-    "desc":" ======== 通用 select options==========" ,
+    "err": {
 
-    "field":{ 
-        "access": { "0":"只读" , "1":"只写" , "2":"可读写"} , 
-        "hlbyte": {  "0": "HightByte", "1": "LowByte" } ,
-        "yesno":{ "0":"否" , "1":"是"} , 
-
-     },
-
-
-
-
-    "err": { 
 
         "phone_pattern_err": "电话号码格式不正确",
 
@@ -215,5 +198,4 @@
 
 
 
-
-}
+ 

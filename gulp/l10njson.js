@@ -14,38 +14,25 @@ var concat=require('gulp-concat');		// delete ;
 
 
 
-
-function watch (){
-	try{
-		gulp.src('src/app/**/*.zh.json')
-		    .pipe(extend('zh.js') )  
-		    .pipe(wrap('window.$zh= <%= contents %>;') )
-		    .pipe(  gulp.dest(  path.join(conf.paths.tmp , '/serve')  )  );
-
-		gulp.src('src/app/**/*.en.json')
-		    .pipe(extend('en.js') )  
-		    .pipe(wrap('window.$en= <%= contents %>;'))
-		    .pipe(  gulp.dest(  path.join(conf.paths.tmp , '/serve')  )  );
-	}catch(e){
-		console.error(e)
-	} 
-}
-
+ 
 function build (){
 	try{  
   
 		    
-		gulp.src('src/app/**/*.zh.json')
-		    .pipe(extend('zh.js') )  
-		  //  .pipe( jsonMinify() ) 
-		   .pipe( inject.prepend( 'window.$zh=')  )
+		gulp.src('src/app/**/*.zh.js') 
+		   .pipe( concat('zh.js' , {newLine: ','})  )   
+		   // .pipe( extend('zh.js'))
+		   .pipe( inject.wrap( 'window.$zh={'  , "};")  )
+
+ 			// .pipe( uglify())
 		    .pipe(  gulp.dest(  path.join(conf.paths.tmp , '/serve')  )  );
  
  
-		gulp.src('src/app/**/*.en.json')
-		    .pipe(extend('en.js') )  
-		  //  .pipe( jsonMinify() ) 
-		   .pipe( inject.prepend( 'window.$en=')  )
+		gulp.src('src/app/**/*.en.js') 
+			.pipe( concat('en.js' , {newLine: ','})  )   
+		    .pipe( inject.wrap( 'window.$en={'  , "};")  )
+
+ 			// .pipe( uglify())
 		    .pipe(  gulp.dest(  path.join(conf.paths.tmp , '/serve')  )  );
 
  		
@@ -56,6 +43,7 @@ function build (){
  						// code ....
  					" }) " ) 
  					) 
+ 			// .pipe( uglify())
 		    .pipe(  gulp.dest(  path.join(conf.paths.tmp , '/serve')  )  ); 
 
 		   // angular.module('thinglinx').value( "$sys" , {  ... })    
@@ -67,6 +55,7 @@ function build (){
 		console.error(e)
 	}
 }
+ 
  
  
 
