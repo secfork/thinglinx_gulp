@@ -90,11 +90,17 @@ var thinglinx = angular.module('thinglinx', [
     $scope.langs = {  en: 'English',   zh: '简体中文'  }; 
 
    // $scope.selectLang = $scope.langs[ $translate.proposedLanguage() ] || "简体中文";
-    $scope.selectLang = $scope.langs[ window.localStorage.NG_TRANSLATE_LANG_KEY ] || "简体中文";
+    
+    var langKey =   window.localStorage.NG_TRANSLATE_LANG_KEY;
+    $scope.selectLang = $scope.langs[   langKey ] || "简体中文";
+
+   $rootScope.$$lang =  window[ langKey ];
 
     $scope.setLang = function(langKey, $event) {
         // set the current lang
         $scope.selectLang = $scope.langs[langKey];
+        $rootScope.$$lang = window[ langKey ]
+
         // You can change the language during runtime
         $translate.use(langKey);
         $scope.lang.isopen = !$scope.lang.isopen;

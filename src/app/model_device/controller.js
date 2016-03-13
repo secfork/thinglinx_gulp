@@ -250,14 +250,13 @@ export default ($scope, $compile, $state, $modal, $log, $http, $timeout, $source
     };
 
     //--------------
-    //添加 point;
-
+    //添加 point; 
     $scope.addOrEditPoint = function(scope, p, index) {
-        
 
         angular.open({   templateUrl: 'app/model_device/point.html' },
 
-            function($scope,  $sys) { 
+            function($scope,  $sys) {  
+                $scope.dm = scope.dm ; 
                 $scope.point = {};
                 $scope.isAdd = !!p;
 
@@ -266,11 +265,13 @@ export default ($scope, $compile, $state, $modal, $log, $http, $timeout, $source
                     $scope.point.params = angular.fromJson($scope.point.params);
                 } else {
                     var dm = scope.dm, // repeat 中的 属性;
-                        driver = $sys.point[dm.driver_id];
+ 
+                        driver = $sys[dm.driver_id].point , 
+                        basic = $sys.point.entity;
 
-                    var basic = $sys.point.entity;
-                    // var  par =   driver.entity   ;     
-                    var par = angular.copy(driver.entity);
+
+                     var  par =   driver.entity   ;     
+                    // var par = angular.copy(driver.entity);
 
                     $scope.point = angular.extend({},
                         basic,
@@ -280,7 +281,7 @@ export default ($scope, $compile, $state, $modal, $log, $http, $timeout, $source
                 };
                 //@if  append
 
-                console.log(p, $scope.point);
+                console.log('scope point = ' ,   $scope.point);
                 //@endif 
 
                 // $scope.g = {hex: "0001ffdf", show: "2", type: "2", mask: true};

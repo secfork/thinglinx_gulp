@@ -52,8 +52,10 @@ export default function config($logProvider, $stateProvider, $urlRouterProvider,
  
     // 自定义 转换 拦截器;   
 
-    $translateProvider.translations( 'en' , window.$en );
-    $translateProvider.translations( 'zh' , window.$zh ); 
+    $translateProvider.translations( 'en' , window.en );
+    $translateProvider.translations( 'zh' , window.zh ); 
+
+ 
 
     $translateProvider.useInterpolation('custom_translate');
         

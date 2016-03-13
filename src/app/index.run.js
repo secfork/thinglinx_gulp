@@ -12,9 +12,7 @@ export default function runBlock($rootScope, $state, $stateParams, $sys, $compil
     $rootScope.$session = $sessionStorage;
     $rootScope.fromJson = angular.fromJson;
 
-    $rootScope.$sys = $sys; 
-    $rootScope.$zh = window.$zh ; 
-    $rootScope.$en = window.$en ; 
+    $rootScope.$sys = $sys;  
    
 
      // 模态框 ;
@@ -41,7 +39,8 @@ export default function runBlock($rootScope, $state, $stateParams, $sys, $compil
  
 
     // 让 select 支持 {k:v} , k为number 时 的回显 ;  
-    $rootScope.parseInt = parseInt ;
+    $rootScope.parse = parseInt ;
+    $rootScope.extend = angular.extend ;
 
     
     // 表单验证; 

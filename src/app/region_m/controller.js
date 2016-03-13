@@ -19,7 +19,9 @@ export default ($scope, $sys, $source   ) => {
            // {text:"ss"} 
         ], 
         panelBotButs: [ 
-            {  text: "region_m.addRegion",  classFor: " btn-primary", handler:   addProj  }
+            {  text: "region_m.addRegion", 
+             classFor: " btn-primary",
+              handler:   addProj  }
         ]
     }; 
 

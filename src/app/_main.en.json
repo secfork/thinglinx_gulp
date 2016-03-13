@@ -1,4 +1,4 @@
- 
+{
     "nav": {
         "show": "Show",
         "manage": "Manage",
@@ -6,7 +6,7 @@
         "region": "Region",
         "system": "System",
         "alarm": "Alarm",
-
+        //faef
         "account": "Account",
         "accountInfo": "账户信息",
         "bindWechat": "微信绑定",
@@ -196,6 +196,4 @@
 
     }
 
-
-
- 
+}

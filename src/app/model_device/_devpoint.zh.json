@@ -1,0 +1,26 @@
+{
+    "devModel": {
+        "addDevModel": "添加设备模型",
+        "addPoint": "添加点",
+        "offset": "偏移地址",
+
+
+
+        "xxx": ""
+
+    },
+    "point": {
+        "options": {
+            "access": {
+                "0": "只读",
+                "1": "只写",
+                "2": "可读写"
+            },
+            "hlbyte": {
+                "0": "HightByte",
+                "1": "LowByte"
+            }
+        }
+    }
+
+}

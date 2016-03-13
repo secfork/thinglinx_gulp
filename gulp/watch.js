@@ -22,9 +22,8 @@ gulp.task('watch', ['scripts:watch', 'inject' ,'l10n:build'], function () {
     }
   });
 
-  gulp.watch( ["src/app/**/*.zh.js","src/app/**/*.en.js" ,"src/**/*.conf.js" ] ,  function( event){
-    console.log(" lion xxxxxx ")
-    gulp.start('l10n:build')
+  gulp.watch( ["src/app/**/*.zh.json","src/app/**/*.en.json" ,"src/app/**/*.conf.js" ] ,  function( event){
+     gulp.start('l10n:build')
 
     browserSync.reload(event.path); 
   })

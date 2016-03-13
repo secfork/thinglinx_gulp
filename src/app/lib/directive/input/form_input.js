@@ -44,7 +44,7 @@ export  default ( $compile ,$translate )=>{
 
 			if( !(formName && inputName) ){
 
-				console.error(" 没有 form 或者 input  无name: " , formName , inputName  );
+				console.error(" 没有 form 或者 input  无name: " , formName , inputName , attrs.ngModel  );
 				return ; 
 			} 
 			modalText = formName +'.'+inputName

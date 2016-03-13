@@ -5,19 +5,32 @@
 
 <div class="modal-body ">
 
+
+    <div class="hidden" 
+         ng-init="  
+                  _config = extend({} , $$lang.point.options , $$lang[ dm.driver_id ].point,  $sys[ dm.driver_id ].point )    ;                             
+                  _config.AreaCC( point , this  , true ) "  >
+     
+    </div>
+    
+ 
+
     <form  name="form" class="  form-validation form-horizontal   " >
  
-        <input tl-wrap
+        <input   name ='pointname' tl-input
+            
                label="点名称"
                ng-model="point.name"
                required>
 
-        <select tl-wrap label="轮询方式"
+        <select name="poll" tl-input label="轮询方式"
+           
             ng-model="point.poll"  
             ng-options = " o.v as o.k  for  o in $sys.point.pointPoll  "
         ></select>       
  
-        <select tl-wrap  label="独立分包"
+        <select   name ='ispacket' tl-input  label="独立分包"
+        
             ng-model="point.is_packet"
             ng-options = "  o.v as o.k for o in  $sys.point.packet" 
           > 
@@ -25,11 +38,12 @@
 
         <div class="m-t"></div>
 
-        <ng-include   src=" 'ap/_protocol/'+ dm.driver_id+'/point.html' "></ng-include>
+
+        <ng-include   src=" 'app/_protocol/'+ dm.driver_id+'/point.html' "></ng-include>
 
      
         <!-- 以下的待开发 -->
-       <textarea tl-wrap  ng-model="point.desc" label="text.desc" ></textarea>
+       <textarea tl-input  name="desc" ng-model="point.desc" label="text.desc" ></textarea>
 
 
     </form>
@@ -39,7 +53,7 @@
  
 <!-- @if  append  -->
         
-  dm.dirver_id = {{dm.driver_id}} <hr/>
+  dm.dirver_id = {{dm}} <hr/>
 
 
   point = {{point}}

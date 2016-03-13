@@ -68,6 +68,11 @@
 
 
 <hr/>
+
+ lang = {{$$lang}}
+
+
+
 <div translate="point.pointPoll.0"></div>
 <div translate="point.array.2"></div>
 
@@ -81,8 +86,11 @@ values: {
                 "60分钟": 3600
             }
 <div  ng-init='  x1 =1   ; p ={ 60:"60-", 300:"300-", 600:"600-", 900:"900-", 1800:"1800-", 3600:"3600-" }'></div>
+<br/>
 
-        <input    ng-model='x1' type="number"  ></input>
+   <input    ng-model='x1' type="number"  ></input>
+
+   <div  ng-init=" xo =  'ppp'+x1 "> {{xo}}</div>
 x1 = {{x1}}
 
 p= {{p}}

@@ -1,9 +1,8 @@
- 
-	"PI_CHCYA":{
-		entity:{
-			a:1
-		}
-	}
+{
+    "PI_CHCYA": {
+        "entity": {
+            "a": 1
+        }
+    }
 
-
- 
+}
