@@ -1,1 +1,17 @@
-{}
+{
+	"system":{
+		"state":"活跃状态",
+
+
+		"stateOptions":{ 
+            "0": "un active",
+            "1": "active"
+            // ,"2": "挂起"
+        
+		}
+
+	}
+
+
+
+}

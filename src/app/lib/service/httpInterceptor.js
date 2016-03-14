@@ -6,16 +6,19 @@ export default ($q, $location, $anchorScroll, $timeout, $sys) => {
     return {
         /* 四种拦截 key 是 固定的; */
         // optional method    通过实现 request 方法拦截请求
-        'request': function(config) {
+        // 'request': function(config) {
             
 
-                config.headers['Accept-Language'] = localStorage.NG_TRANSLATE_LANG_KEY || "en";
-                config.console = true;
+        //         config.headers['Accept-Language'] = localStorage.NG_TRANSLATE_LANG_KEY || "en";
+        //         config.console = true;
   
 
-            return config || $q.when(config);
+        //     return config || $q.when(config);
 
-        },
+        // },
+
+
+
         /*
          // optional method  通过实现 requestError 方法拦截请求异常: 有时候一个请求发送失败或者被拦截器拒绝了
          'requestError': function (rejection) {
@@ -29,15 +32,15 @@ export default ($q, $location, $anchorScroll, $timeout, $sys) => {
         // optional method   通过实现 response 方法拦截响应:
         'response': function(response) {
 
-            console.log( "http response" , response )
+            console.log( "http response!!"  )
 
             var resp = response.data
 
             if (resp.err) { 
-                console.error("_ERR_:" + resp.err); 
-                
+                console.error("_ERR_:" + resp.err);  
                 throw resp ;
             } 
+
             //return response || $q.when(response); 
             if (resp.order ) { 
 

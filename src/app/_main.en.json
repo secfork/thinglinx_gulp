@@ -30,6 +30,8 @@
         "create": "创建",
         "del": "删除",
         "update": "更新",
+        "done":"Done",
+        "cancel":"Cancel",
 
         "desc": "descript"
 

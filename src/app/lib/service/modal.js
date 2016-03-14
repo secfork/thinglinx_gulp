@@ -95,10 +95,17 @@ export default ($modal, $rootScope) => {
             options.type = 'modal';
             handler( options , controller );
         },
-        alert: function( options={} ) {
-            options.type = 'alert';
-            options.title =  options.title || "text.alter";
-            handler( options );
+        alert: function(  _options ) {
+          var options ;
+          if( typeof _options != 'object'){
+              options = { note: _options , title: "text.alert" };
+          }else{
+            _options.title =  _options.title || "text.alert";
+            options = _options ;
+          }
+
+          options.type ="alert"; 
+          handler( options );
         },
 
         confirm: function( options={}, controller, closehandler ) {

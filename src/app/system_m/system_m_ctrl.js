@@ -1,9 +1,9 @@
-export default ($scope, $sys, $source, modal , $q  , $interval  , $state ,$stateParams ) => {
+export default ($scope, $sys, $source, modal , $q  , $interval , $state ,$stateParams , $utils) => {
     "ngInject";
 
     var thatScope = $scope;
 
-    $scope.od = {};
+    $scope.od = { state: undefined };
     $scope.page = {};
 
     
@@ -76,21 +76,44 @@ export default ($scope, $sys, $source, modal , $q  , $interval  , $state ,$state
 
 
         // 加载 系统模型; 
-        var loadSysModelPromise = $source.$sysModel.get({
-                currentPage: 1
-            } , function( resp ){
-                $scope.sysModels = resp.ret;
-            }).$promise;
+        var loadSysmodel = $source.$sysModel.get({ currentPage: 1 }, function(resp) {
+               $scope.sysModels = resp.ret;
+           }).$promise;
 
-        console.log( 11111, loadSysModelPromise )
-
-
+        var loadRegion = $source.$region.get({ currentPage: 1 }, function(resp) {
+               $scope.regions = resp.data;
+           }).$promise;
 
 
+        $scope.loadPageData = function( pageNo ){ 
+
+            $scope.showMask = true;
+ 
+            // 分页加载 系统数据;
+            var d = angular.extend({
+                options: "query", 
+                currentPage: pageNo,
+                itemsPerPage: $sys.itemsPerPage
+            }, $scope.od);
+
+
+            $source.$system.query(d).$promise.then(function(resp) {
+
+                
+                $scope.showMask = false;
+               
+
+            }, $utils.handlerErr)
 
 
 
+        }
 
+ 
+        $scope.dd = function(){
+
+            $utils.handlerErr( {err:111})
+        }
 
 
         return ;
@@ -102,7 +125,7 @@ export default ($scope, $sys, $source, modal , $q  , $interval  , $state ,$state
 
 
         $scope.od = {
-            state: $scope.isShowModul ? 1 : undefined,
+            state:  1 ,
             region_id:  null //region_id  
         };
         $scope.page = {};
