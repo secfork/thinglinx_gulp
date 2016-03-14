@@ -235,9 +235,9 @@ export default ($scope, $compile, $state, $modal, $log, $http, $timeout, $source
 
         console.log("delPoint", p);
         //@endif 
-        $scope.confirmInvoke({
-            title: "删除点: " + p.name,
-            warn: "确认要删除该点吗?"
+        angular.confirm({
+            title:  instant('devModel.delPoint').format(p.name) ,
+            warn: "devModel.toDelPoint"
         }, function(next) {
             $source.$dmPoint.delete({
                 id: p.id,
@@ -255,18 +255,23 @@ export default ($scope, $compile, $state, $modal, $log, $http, $timeout, $source
 
         angular.open({   templateUrl: 'app/model_device/point.html' },
 
-            function($scope,  $sys) {  
-                $scope.dm = scope.dm ; 
-                $scope.point = {};
-                $scope.isAdd = !!p;
+            function($scope,  $sys) {
+                 var dm , driver , basic ;
+                    
+   
+                $scope.dm = dm = scope.dm ; 
+                $scope.point = {};  
+                
+
 
                 if (p) { //编辑; 
+                    $scope.title = "devModel.editPoint";
                     $scope.point = angular.copy(p);
                     $scope.point.params = angular.fromJson($scope.point.params);
-                } else {
-                    var dm = scope.dm, // repeat 中的 属性;
- 
-                        driver = $sys[dm.driver_id].point , 
+                } else { //  新建;
+                    $scope.title = "devModel.addPoint";
+                   
+                        driver = $sys[dm.driver_id].point ;
                         basic = $sys.point.entity;
 
 
@@ -295,7 +300,7 @@ export default ($scope, $compile, $state, $modal, $log, $http, $timeout, $source
                         // 编辑;
                         $source.$dmPoint.put($scope.point, function(resp) {
 
-                            $scope.points[index] = angular.copy($scope.point);
+                            scope.points[index] = angular.copy($scope.point);
                             $scope.cancel();
 
                         });
@@ -304,7 +309,7 @@ export default ($scope, $compile, $state, $modal, $log, $http, $timeout, $source
                         $source.$dmPoint.save($scope.point, function(resp) {
 
                             $scope.point.id = resp.ret;
-                            $scope.points.push($scope.point);
+                            scope.points.push($scope.point);
                             $scope.cancel();
 
                         });

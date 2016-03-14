@@ -97,7 +97,7 @@ export default ($modal, $rootScope) => {
         },
         alert: function( options={} ) {
             options.type = 'alert';
-            options.title = "text.alter";
+            options.title =  options.title || "text.alter";
             handler( options );
         },
 

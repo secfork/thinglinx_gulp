@@ -1,26 +1,63 @@
 {
-    "devModel": {
-        "addDevModel": "添加设备模型",
-        "addPoint": "添加点",
-        "offset": "偏移地址",
 
+
+    "devModel": {
+        "addModel": "添加设备模型",
+        "editModel":"编辑设备模型",
+        "addPoint": "添加点",
+        "editPoint":"编辑点",
+
+
+        "pName":"点名称", 
+
+        // point 字段; 
+        "poll":"轮询方式",
+        "packet":"独立分包", 
+        // 需要和 数据库中定义的 字段同名;  
+        "area":"数据区",
+        "offset": "偏移地址",
+        "byteOffset":"位偏移",
+        "charOffset":"字节偏移",
+        "charLong":"字节长度",
+        "BCDlong":"BCD码长度",
+
+        "type":"数据类型",
+        "type_ex":"扩展参数",
+
+        "access":"访问方式",
+        //少数 驱动的特殊字段  ; 
+
+        
+
+
+
+
+
+        "delPoint":"删除点:%s",
+        "toDelPoint":"确认要删除改点?",
 
 
         "xxx": ""
 
     },
+
+
+
     "point": {
-        "options": {
-            "access": {
-                "0": "只读",
-                "1": "只写",
-                "2": "可读写"
-            },
-            "hlbyte": {
-                "0": "HightByte",
-                "1": "LowByte"
-            }
+         
+        // 点轮询 ;  和字段名一致; 
+        "poll": {
+            "0": "Normal", 
+            "1": "Slow",  
+            "2": "Call"
+        }, 
+
+       
+        "hlbyte": {
+            "0": "HightByte",
+            "1": "LowByte"
         }
+        
     }
 
 }

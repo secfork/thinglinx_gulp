@@ -21,26 +21,45 @@ var stripJsonComments = require('gulp-strip-json-comments');
 var patterns = [{
     pattern: /}\s*(\r\n|\n){1,}\s*{/ig, //  wo  fuck your mama !!!
     replacement: ','
-}];
+},
+    {
+        pattern:  /,{2,}/ig,
+        replacement:","
+    }
+    
+];
 
 
 
 function build() {
     try {
+        // json 时;
+        // gulp.src('src/app/**/*.zh.json')
+        //     .pipe(stripJsonComments())
+        //     .pipe(extend('zh.js'))
+        //     .pipe(inject.wrap('window.zh=', ';'))
+        //     .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve')));
 
-        gulp.src('src/app/**/*.zh.json')
+ 
+// js 时; 
+ //         gulp.src('src/app/**/*.en.js')  
+ //            .pipe( concat("en.js") )     
+ //            .pipe(inject.wrap('window.en=', ';' ))       
+ //            .pipe( frep( patterns)) 
+ //            .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve')));
+
+
+        gulp.src('src/app/**/*.zh.json') 
             .pipe(stripJsonComments())
             .pipe(extend('zh.js'))
-            .pipe(inject.wrap('window.zh=' , ';'))
-
-        // .pipe( uglify())
-        .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve')));
+            .pipe(inject.wrap('window.zh=', ';'))
+            .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve')));
 
 
-        gulp.src('src/app/**/*.en.json')
+        gulp.src('src/app/**/*.en.json') 
             .pipe(stripJsonComments())
             .pipe(extend('en.js'))
-            .pipe(inject.wrap('window.en=', ';' ))
+            .pipe(inject.wrap('window.en=', ';'))
             .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve')));
 
 

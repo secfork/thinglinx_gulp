@@ -13,11 +13,18 @@ export default function runBlock($rootScope, $state, $stateParams, $sys, $compil
     $rootScope.fromJson = angular.fromJson;
 
     $rootScope.$sys = $sys;  
-   
+    window.sys = $sys ;
+    window.instant = $translate.instant
 
      // 模态框 ;
  
     $rootScope.open = modal.open ;
+ // 让 select 支持 {k:v} , k为number 时 的回显 ;  
+    $rootScope.parse = parseInt ;
+    $rootScope.extend = angular.extend ;
+    $rootScope.fromJson = angular.fromJson ;
+
+
     // function(){
     //    modal.open.apply( this,  arguments );
     // };
@@ -38,9 +45,7 @@ export default function runBlock($rootScope, $state, $stateParams, $sys, $compil
     //@endif
  
 
-    // 让 select 支持 {k:v} , k为number 时 的回显 ;  
-    $rootScope.parse = parseInt ;
-    $rootScope.extend = angular.extend ;
+   
 
     
     // 表单验证; 

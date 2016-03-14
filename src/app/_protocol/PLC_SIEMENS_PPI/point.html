@@ -1,23 +1,24 @@
  
 
 
-<!-- areaCC 中 创建了 _dataType 数组对象;  -->
-<div   ng-init="
-    _config = $sys.point[ dm.driver_id] ;  
-    _config.areaCC( this ,point , true) ;     ">  
-</div>
+ 
 
 
-<select tl-wrap 
+
+<div   class="hidden"    ng-init="   _config.areaCC( point , this  , true ) "></div>
+
+ 
+
+<select  name="area" tl-input 
 	 label = "数据区 "
 	 ng-model = "point.params.area"
-	 ng-options = " o.v as o.k for  o  in _config.area"
-	 ng-change = " _config.areaCC( this, point  ) "
+	 ng-options = " parse(v) as k  for  (v,k)  in _config.area"
+	 ng-change = " _config.areaCC( point , this  ) "
 
 	>
 </select>
 
-<input  tl-wrap   
+<input  name="offset" tl-input   
         label="偏移地址"
         required  
         type="Number" 
@@ -27,10 +28,12 @@
 
 
 <div ng-if="point.params.area != 6  && point.params.area != 8 ">
-	<select tl-wrap 
+
+ 
+	<select  name="datatype" tl-input 
 		 label = "数据类型 "
 		 ng-model= "point.params.type" 
-		 ng-options = "  o.v as o.k for  o  in _dataType"
+		 ng-options = " parse(v) as k  for  (v,k)  in _dataType"
 		 ng-change = "_config.typeCC( point )"
 		>
 	</select> 
@@ -38,7 +41,7 @@
 
 
 <div ng-if = " point.params.type ==9 ">
-    <input  tl-wrap   
+    <input  name="type_es" tl-input   
         label="字符串长度"
         required  
         type="Number" 
@@ -50,7 +53,7 @@
 
 
 <div ng-if = " point.params.type== 0 ">
-	<input  tl-wrap   
+	<input  name="type_ex" tl-input   
         label="位偏移"
         required  
         type="Number" 

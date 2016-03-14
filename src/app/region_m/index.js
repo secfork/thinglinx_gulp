@@ -1,4 +1,4 @@
-import m_region_ctrl from "./controller";
+import region_m_ctrl from "./region_m_ctrl";
 
  
 
@@ -8,7 +8,7 @@ export default {
     "app.m_region": {
         url: "m_region",
         templateUrl: "app/region_m/region.html",
-        controller: m_region_ctrl
+        controller: region_m_ctrl
     }
 
 

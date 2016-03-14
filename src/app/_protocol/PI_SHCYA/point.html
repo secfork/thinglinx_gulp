@@ -4,13 +4,10 @@
 驱动描述：   CSD-1跌落式熔断器
  
 -->
-
-
-
-<div  ng-init=" _config = $sys.point[ dm.driver_id] ">  </div>
-
-<input  tl-wrap   
-        label="公共地址"
+ 
+ 
+<input  name="address"  tl-input  
+        label="devModel.app_address"
         required  
         type="Number" 
         max="65535"
@@ -18,17 +15,16 @@
         ng-model= "point.params.app_address"    ></input>
 
 
-<select tl-wrap 
-	 label = "类型标识"
+<select  name="type_id"  tl-input 
+	 label = "devModel.type_id"
 	 ng-model = "point.params.type_id"
-	 ng-options = " o.v as o.k for  o  in _config.type_id"
-	 
+	 ng-options = "  parse(v) as k  for  (v,k)  in _config.type_id" 
 	>
 </select>
 
 
-<input  tl-wrap   
-        label="信息体地址"
+<input name="s_address"  tl-input   
+        label="devModel.infor_address"
         required  
         type="Number" 
         max="65535"

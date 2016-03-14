@@ -8,8 +8,8 @@
 
     <div class="hidden" 
          ng-init="  
-                  _config = extend({} , $$lang.point.options , $$lang[ dm.driver_id ].point,  $sys[ dm.driver_id ].point )    ;                             
-                  _config.AreaCC( point , this  , true ) "  >
+                  _config = extend({} , $$lang.point , $$lang[ dm.driver_id ].point,  $sys[ dm.driver_id ].point )    ;                             
+                  "  >
      
     </div>
     
@@ -19,20 +19,20 @@
  
         <input   name ='pointname' tl-input
             
-               label="点名称"
+               label="devModel.pName"
                ng-model="point.name"
                required>
 
-        <select name="poll" tl-input label="轮询方式"
+        <select name="poll" tl-input label="devModel.poll"
            
             ng-model="point.poll"  
-            ng-options = " o.v as o.k  for  o in $sys.point.pointPoll  "
+            ng-options = " parse(v) as k  for  (v,k) in $$lang.point.poll  "
         ></select>       
  
-        <select   name ='ispacket' tl-input  label="独立分包"
+        <select   name ='ispacket' tl-input  label="devModel.packet"
         
             ng-model="point.is_packet"
-            ng-options = "  o.v as o.k for o in  $sys.point.packet" 
+            ng-options = "  parse(v) as k  for  (v,k) in  $$lang.options.yesno " 
           > 
         </select>  
 
@@ -53,10 +53,10 @@
  
 <!-- @if  append  -->
         
-  dm.dirver_id = {{dm}} <hr/>
+ <!--  dm.dirver_id = {{dm}} <hr/>
 
 
-  point = {{point}}
+  point = {{point}} -->
 
 <!--@endif  -->
 

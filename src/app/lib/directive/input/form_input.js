@@ -83,7 +83,7 @@ export  default ( $compile ,$translate )=>{
 	       	     
 	       	    .after(  $compile( createMessageDom( ele , attrs) )(scope)  )
 
-				.parent().before(     $compile(  label  )( scope)     );
+				.parent().before(     $compile(  label  )( scope )     );
 				 
 
 

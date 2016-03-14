@@ -11,15 +11,15 @@ export default ($scope, $sys, $source   ) => {
     $scope.page = {};
 
     $scope.panel = {
-        subject: "region_m.subject",
-        title: "region_m.title",
+        subject: "region.subject",
+        title: "region.title",
         pagger: true,
 
         panelTopButs: [
            // {text:"ss"} 
         ], 
         panelBotButs: [ 
-            {  text: "region_m.addRegion", 
+            {  text: "region.addRegion", 
              classFor: " btn-primary",
               handler:   addProj  }
         ]
@@ -28,8 +28,8 @@ export default ($scope, $sys, $source   ) => {
     $scope.tableHeaders = [
         { text: "text.name", w: "20%"}, 
         { text: "text.createTime",  w: "20%"  }, 
-        {  text: "region_m.th_active",  w: "20%" }, 
-        {  text: "region_m.th_unactive",   w: "20%"  }, 
+        {  text: "region.th_active",  w: "20%" }, 
+        {  text: "region.th_unactive",   w: "20%"  }, 
         { text: "text.desc",   w: "30%"  }, 
         {  text: "text.del",  w: "15%"  }
     ]

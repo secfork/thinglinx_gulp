@@ -1,6 +1,6 @@
 
 
-import  m_system_ctrl from "./controller";
+import  system_m_ctrl from "./system_m_ctrl";
 
 
 export default {
@@ -8,7 +8,7 @@ export default {
 	"app.m_system":{
 		url:"m_system",
 		templateUrl:"app/system_m/system.html",
-		controller: m_system_ctrl
+		controller: system_m_ctrl
 	}
 
 

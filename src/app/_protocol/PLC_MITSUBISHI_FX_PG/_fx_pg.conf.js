@@ -1,11 +1,11 @@
-{
-
+{ 
+    
     // .js 不可extend 古 , 以 驱动di 开头; 
     "PLC_MITSUBISHI_FX_PG": {
         "point": {
-            "th": ['area', 'offset', 'type', 'type_ex'],
+            th: ['area', 'offset', 'type', 'type_ex'],
 
-            "entity": {
+            entity: { 
 
                 "params": {
                     "area": 0,
@@ -17,7 +17,11 @@
 
             },
 
-            "AreaCC": function(point, scope, bool) {
+            
+
+            
+
+            "areaCC": function(point, scope, bool) {
                 // 当寄存器区为：开关量输入(0)和开关量输出(1)时，数据为8进制，偏移地址不能出现‘8’和‘9’  
                 // 当寄存器区为：数据寄存器 (6) 、定时器当前值(8) 、计数器当前值时(9)， 数据类型全部显示，其它方式只显示“0-位读写”
                 // 当寄存器区为：开关量输入(0)、定时器接点(4)、计数器接点(5)、定时器当前值(8)、
@@ -43,7 +47,7 @@
                 }
 
             },
-            "TypeCC": function(point) {
+            "typeCC": function(point) {
                 var area = point.params.area,
                     type = point.params.type;
                 if (type == 0) {

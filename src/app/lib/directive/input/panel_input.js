@@ -54,8 +54,7 @@ export default ( $compile )=>{
 			}else{
 				ele.addClass("form-control").wrap( 
 				 	'<div class="form-group '+ ( attrs.col || 'col-md-3 col-sm-6') +'"></div>'
-				 ).before(
-				  "<label>"+attrs.label+"</label>" );
+				 ).before(  $compile( "<label translate>"+attrs.label+"</label>" )(scope)   );
 				
 			} 
 		}
