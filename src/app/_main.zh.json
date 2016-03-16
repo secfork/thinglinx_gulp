@@ -25,7 +25,7 @@
     "text": {
         "search": "搜索",
         "return": "返回",
-   
+
         "name": "名称",
         "createTime": "创建时间",
         "edit": "编辑",
@@ -39,21 +39,24 @@
 
         "modelName": "模型名称",
         "modelType": "模型类型",
-        "all":"-全部-",
+        "all": "-全部-",
 
         "desc": "备注"
     },
 
+    "sysModelMode": {
+        "1": "托管模式",
+        "2": "非托管模式"
+    },
+
+
     //   通用 下拉选项 ;   select options 
 
-    "options": {
-      
+    "options": { 
         "yesno": {
             "0": "否",
             "1": "是"
-        }
-     
-
+        }  
     },
 
 

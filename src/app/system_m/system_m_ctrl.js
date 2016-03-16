@@ -1,4 +1,4 @@
-export default ($scope, $sys, $source, modal , $q  , $interval , $state ,$stateParams , $utils) => {
+export default ($scope, $sys, $source, modal , $q  , $interval , $state ,$stateParams , $utils ) => {
     "ngInject";
 
     var thatScope = $scope;
@@ -24,15 +24,15 @@ export default ($scope, $sys, $source, modal , $q  , $interval , $state ,$stateP
     };
 
     $scope.tableHeaders = [
-        {   text: "状态",  w: "5%"  }, 
-        {   text: "系统名称",   w: "20%"},
+        {   text: "system.online",  w: "5%"  }, 
+        {   text: "system.name",   w: "20%"},
         {   text: "ID", w: "20%"        }, 
-        {   text: "区域", w: "20%"    }, 
-        {   text: "活跃状态",  w: "10%" },
-        {  text: "备注",  w: "25%"  },
-        {  text: "激活",  w: "15%"  },
-        {  text: "同步",  w: "15%"  },
-        {  text: "删除",  w: "15%"  }, 
+        {   text: "nav.region", w: "20%"    }, 
+        {   text: "system.state",  w: "10%" },
+        {  text: "text.desc",  w: "25%"  },
+        {  text: "system.stateOptions.1",  w: "15%"  },
+        {  text: "system.sync",  w: "15%"  },
+        {  text: "text.del",  w: "15%"  }, 
     ]
  
 
@@ -75,17 +75,28 @@ export default ($scope, $sys, $source, modal , $q  , $interval , $state ,$stateP
 
 
 
-        // 加载 系统模型; 
+        // 加载 系统模型;   
         var loadSysmodel = $source.$sysModel.get({ currentPage: 1 }, function(resp) {
-               $scope.sysModels = resp.ret;
+               $scope.sysModels = resp.ret;  
            }).$promise;
+ 
 
+        // 加载区域  并建立 区域的 id self 索引; 
+        $scope.regionID_Self = {};
         var loadRegion = $source.$region.get({ currentPage: 1 }, function(resp) {
                $scope.regions = resp.data;
+
+               _( $scope.regions ).forEach( (v)=>{
+                    $scope.regionID_Self[ v.id ] = v ;
+               })  
            }).$promise;
 
+ 
 
-        $scope.loadPageData = function( pageNo ){ 
+        // 加载 分页 system 数据, 并建立 当前页没 system 的 uuid self 索引; 
+        var  systemUUID_Self  ;
+        function loadSystem ( pageNo ){ 
+            systemUUID_Self = {};
 
             $scope.showMask = true;
  
@@ -94,26 +105,261 @@ export default ($scope, $sys, $source, modal , $q  , $interval , $state ,$stateP
                 options: "query", 
                 currentPage: pageNo,
                 itemsPerPage: $sys.itemsPerPage
-            }, $scope.od);
+            }, $scope.od ); 
+
+            var permise = $source.$system.query(d, function(resp) {
+                                $scope.showMask = false;
+                                $scope.page.currentPage = pageNo;
+                                $scope.page.data = resp.data;
+                                $scope.page.total = resp.total;
+
+                                _($scope.page.data).forEach(function(v) { 
+                                    systemUUID_Self[v.uuid] = v; 
+                                }) 
+                            }, $utils.handlerErr).$promise
 
 
-            $source.$system.query(d).$promise.then(function(resp) {
-
-                
-                $scope.showMask = false;
-               
-
-            }, $utils.handlerErr)
-
-
+            return permise
 
         }
-
  
-        $scope.dd = function(){
+        var  interval_queryOnline
+        $scope.$on("$destroy" , function(){
+            // 清除 查询 在线状态的 interval , 
+            $interval.cancel( interval_queryOnline );
+        })
 
-            $utils.handlerErr( {err:111})
+        $scope.loadPageData = function( pageNo ){
+           
+            // 清除 查询 在线状态的 interval ,
+            $interval.cancel( interval_queryOnline );
+
+            loadSystem( pageNo ).then( function(){
+                var  systemUUids =  Object.keys( systemUUID_Self ); 
+
+                querySysOnline( systemUUids , $scope.page.data );
+
+                //  实时 查询 在线 状态; 
+                interval_queryOnline = $interval( function(){
+                    querySysOnline( systemUUids , $scope.page.data ); 
+
+                } , $sys.state_inter_time )
+ 
+                // 查询 是否需要 同步;   
+                queryNeedSync( systemUUids , systemUUID_Self  );
+
+            })
+
+        };
+        $scope.reSet = function(){
+            $scope.od = {};
+            $scope.loadPageData(1);
         }
+
+        // 查询 在线状态;  
+        function  querySysOnline ( uuids , pageData ){ 
+            return $source.$system.status(uuids , ( resp )=>{ 
+                    _( resp.ret ).forEach( (v , i )=>{  
+                        pageData[i].online =   v &&   ( v.daserver ?  v.daserver.logon : v.online );
+                    }) 
+                }).$promise ;
+
+        } 
+
+        // 加载同步状态 ; 
+        function queryNeedSync( uuids , system_uuid_self ) { 
+            return $source.$system.needSync(uuids , ( resp )=>{ 
+                _.forEach( resp.ret , (v , i )=>{
+                    system_uuid_self[i].needsync = v ;
+                }) 
+            }).$promise
+        }
+ 
+
+        $scope.loadPageData(1);
+ 
+
+        $scope.updateSystem = function(idObj) {
+            return $source.$system.put({}, idObj).$promise;
+        }
+        
+
+        function createSystem ( region_id ) {
+            angular.open(
+                {  title:"system.createSystem",templateUrl: "app/system_m/system.add.html" },
+
+                function($scope ) {  
+                    "ngInject";
+                    $scope.regions = thatScope.regions;
+                    $scope.sysModels = thatScope.sysModels;
+
+                    $scope.system = {
+                        region_id: region_id
+                    };
+
+                    $scope.od = {
+                        systemModel: undefined,
+                        selectRegion: !!region_id
+                    };
+
+
+                    $scope.$watch("od.systemModel", function(n, o) {
+                        if (!n) return;   
+
+                        // 加载  profile;
+                        if (n.mode == 2) {
+                            delete $scope.system.network;
+                        }
+
+                        
+
+                        $scope.showMask = true;
+                        $source.$sysProfile.get({
+                            system_model: n.uuid
+                        }, function(resp) {
+                            $scope.profiles = resp.ret;
+                            $scope.system.profile = resp.ret[0] && resp.ret[0].uuid;
+                            $scope.showMask = false;
+                        }, function() {
+                            $scope.showMask = false;
+                        })
+
+                    })
+ 
+
+                    $scope.done = function() {
+                        $scope.validForm(); 
+                        $scope.showMask = true;
+
+                        // $scope.system.network = angular.toJson($scope.system.network);
+                        var sys = angular.extend({
+                            model: $scope.od.systemModel.uuid
+                        }, $scope.system);
+
+
+                        $source.$system.save(sys, function(resp) {
+                            // alert("创建成功!");  
+                            sys.uuid = resp.ret;
+                            sys.state = 0;
+
+                            thatScope.page.data.unshift(sys);
+
+                            $scope.cancel();
+
+                            angular.confirm({
+                                    title: "配置系统",
+                                    note: "创建成功,是否去配置该系统?",
+                                    doneText: "是",
+                                    cancelText: "不用了"
+                                },
+                                function(next) {
+                                    $scope.goto("app.m_system_prop._config", sys, sys);
+                                    next();
+                                }
+                            )
+
+                            $scope.showMask = false;
+
+                        }, function() {
+                            $scope.showMask = false;
+                        })
+                    }
+
+
+                }
+            )
+        }
+
+        
+        // 失效系统; 
+        $scope.effStation = function( dastations, station, index, todel) { 
+
+            angular.confirm({
+                title: "失效系统 " + station.name,
+                note: "确认要失效该系统吗?"
+            }, function(next) {
+                var d = {  uuid: station.uuid,  state: 0  }; 
+                $source.$system.deactive({  pk: station.uuid  }, function() { 
+                    station.state = 0; 
+                    todel && (dastations.splice(index, 1)); 
+                    next();
+                }, $utils.handlerErr )
+
+            })
+        };
+
+        // 激活系统; 
+        //激活采集站;
+        //  jump 是否 跳转;
+        $scope.activateStation = function(dastations, station, index, jump) {
+ 
+            angular.confirm({
+                // jjw 采集站->系统
+                title: "激活系统 " + station.name,
+                note: "确认要激活该系统吗?"
+            }, function(next) {
+                // 激活采集站;
+                $source.$system.active({
+                    pk: station.uuid
+                }, function(resp) {
+                    station.state = 1;
+                    dastations && (dastations.splice(index, 1));
+                    next();
+                    jump && $scope.goto('app.station.prop._basic', station, station);
+
+                }, $utils.handlerErr );
+            })
+        };
+
+         // 移除;
+        $scope.delStation = function(dastations, station, index) {
+            angular.confirm({
+                title: "您是否要删除系统:" + station.name,
+                warn: "删除系统将会丢失此系统的全部历史数据"
+
+            }, function(next) {
+                $source.$system.delete({
+                    system_id: station.uuid
+                }, function(resp) {
+
+                    dastations.splice(index, 1);
+
+                    next();
+                }, function() {
+
+                    next()
+                });
+            })
+        };
+
+
+
+       // 同步 das 配置;
+        $scope.syncSystem = function(das, e, scope) {
+
+
+            // if( scope._$preventDefault){
+            //     angular.alert("请不要频繁操作!");
+            //     return ;
+            // }
+            // scope._$preventDefault = true ; 
+
+            //@if  append 
+            console.log(das, this, e.currentTarget);
+            //@endif 
+
+            var that = this;
+            this._show_sync_ok = false;
+            this._show_sync_error = false;
+
+            $source.$system.sync({  pk: das.uuid  },  function(resp) {
+
+                    das.needsync = false;
+                    that._show_sync_ok = true;
+                }, $utils.handlerErr);
+        };
+
+
 
 
         return ;
@@ -123,156 +369,21 @@ export default ($scope, $sys, $source, modal , $q  , $interval , $state ,$stateP
         //=============================
 
 
-
-        $scope.od = {
-            state:  1 ,
-            region_id:  null //region_id  
-        };
-        $scope.page = {};
+ 
 
 
 
+     
 
-        // 加载 system , 然后 , 加载 region信息, 同步信息, 在线信息; 
-        var loadRegionPromise = $source.$region.get({
-                currentPage: 1
-            }).$promise,
-            loadSysModelPromise = $source.$sysModel.get({
-                currentPage: 1
-            }).$promise;
+        // $scope.reset = function() {
+        //     $scope.od = {
+        //         state: undefined,
+        //         region_id: region_id
+        //     };
+        //     $scope.loadPageData(1);
+        // }
 
-        $scope.rg_k_v = {};
-
-        var analyzeRegionPromise = loadRegionPromise.then(function(resp) {
-            $scope.regions = resp.data;
-            $scope.regions.forEach(function(r) {
-                $scope.rg_k_v[r.id] = r; // rg_k_v  在  region.prop - systom中 也要是 该名: rg_k_v;
-            })
-        });
-        loadSysModelPromise.then(function(resp) {
-            $scope.sysModels = resp.ret;
-        })
-
-
-        $scope.reset = function() {
-            $scope.od = {
-                state: undefined,
-                region_id: region_id
-            };
-            $scope.loadPageData(1);
-        }
-
-        var state_interval;
-        $scope.$on("$destroy", function() {
-            $interval.cancel(state_interval);
-        })
-
-        $scope.loadPageData = function(pageNo) {
-
-            $scope.showMask = true;
-
-            $scope.page.currentPage = pageNo;
-            // 分页加载 系统数据;
-            var d = angular.extend({
-                options: "query",
-
-                currentPage: pageNo,
-                itemsPerPage: $sys.itemsPerPage
-            }, $scope.od);
-
-            $source.$system.query(d).$promise.then(function(resp) {
-
-                var sys_ref,
-                    promise_A, promise_B, sysState, sta2sync;
-
-                sys_ref = {};
-
-                resp.data.forEach(function(n, i, a) {
-                    sys_ref[n.uuid] = n;
-                })
-                promise_A = {} //  状态 是否在线, 挂起 ; 
-                    // $source.$region.getProjNameByIdS(Object.keys(projids)).$promise;
-
-                // 激活的系统;
-                var ids = Object.keys(sys_ref);
-
-
-                if ((d.state == '1' || d.state == undefined) && ids.length) {
-
-                    // 在线状态 ; 
-                    promise_A = $source.$system.status(ids).$promise;
-
-                    // proj name ;
-                    // 是否要 同步;
-                    promise_B = !$scope.isShowModul && $source.$system.needSync(ids).$promise;
-
-
-                    // 没分钟 刷新 状态; 
-                    $interval.cancel(state_interval);
-
-                    state_interval = $interval(function() {
-                        $source.$system.status(ids, function(resp_x) {
-                            var sysStatus = resp_x.ret;
-                            $.each(resp.data, function(i, n) {
-                                n.online = sysStatus && sysStatus[i] &&
-                                    (sysStatus[i].daserver ?
-                                        sysStatus[i].daserver.logon : sysStatus[i].online
-                                    )
-                            })
-
-                        });
-
-                    }, $sys.state_inter_time)
-
-                }
-
-                // 非激活的system; 或者 展示模块;
-                // 加载 state , needsysnc ,  拆分 region数据;  ,
-                $q.all([promise_A, promise_B, analyzeRegionPromise]).then(function(resp_B) {
-
-                    sysStatus = resp_B[0] && resp_B[0].ret;
-                    sta2sync = resp_B[1] && resp_B[1].ret; //在 未激活,  展示 模块 为 undefind ;
-
-                    // 组装是否需要 同步 ; 
-                    $.each(resp.data, function(i, n) {
-                        //  不是这个 系统状态(0:未激活,1:活跃,2:挂起)
-                        // 而是系统在线在线状态; 
-
-                        n.online = sysStatus && sysStatus[i] &&
-                            (sysStatus[i].daserver ?
-                                sysStatus[i].daserver.logon : sysStatus[i].online
-                            )
-                        n.needsync = sta2sync && sta2sync[n.uuid];
-
-                        n.region_name = $scope.rg_k_v[n.region_id].name;
-
-                    });
-
-                    angular.extend($scope.page, resp);
-
-                    //$scope.page = resp_A ;
-
-                    // 翻页 刷新  地图上的点;
-                    if ($scope.lm == "map") {
-                        // flush points ;
-                        // 在 地图中翻页;  
-                        $map.createDAPoint2Map(map, $scope.page.data, showMsgHandler)
-                    }
-
-                    $scope.showMask = false;
-
-                }, function() {
-                    $scope.showMask = false;
-                })
-
-            }, function() {
-                $scope.showMask = false;
-            })
-        }
-
-
-      //  $scope.loadPageData(1);
-
+  
         //  切换到 地图; 
         var map, points;
         $scope.initMap = function(dom) {
@@ -313,103 +424,8 @@ export default ($scope, $sys, $source, modal , $q  , $interval , $state ,$stateP
 
         }
 
+ 
 
-
-
-        function createSystem () {
-            $modal.open({
-                templateUrl: "athena/dastation/dastation_add_temp.html",
-                controller: function($scope, $modalInstance) {
-                    $scope.__proto__ = thatScope;
-                    $scope.$modalInstance = $modalInstance;
-
-                    var region_id = thatScope.project && thatScope.project.id;
-
-
-                    $scope.system = {
-                        region_id: region_id
-                    };
-
-                    $scope.od = {
-                        systemModel: undefined,
-                        selectRegion: !!region_id
-                    };
-
-
-                    $scope.$watch("od.systemModel", function(n, o) {
-                        if (!n) return;
-                        //@if append
-
-                        console.log(" systemModel  change ", n);
-                        //@endif 
-
-
-                        // 加载  profile;
-                        if (n.mode == 2) {
-                            delete $scope.system.network;
-                        }
-
-                        $scope.showMask = true;
-                        $source.$sysProfile.get({
-                            system_model: n.uuid
-                        }, function(resp) {
-                            $scope.profiles = resp.ret;
-                            $scope.system.profile = resp.ret[0] && resp.ret[0].uuid;
-                            $scope.showMask = false;
-                        }, function() {
-                            $scope.showMask = false;
-                        })
-
-                    })
-
-
-
-
-                    $scope.done = function() {
-                        $scope.validForm();
-
-                        $scope.showMask = true;
-
-                        // $scope.system.network = angular.toJson($scope.system.network);
-                        var sys = angular.extend({
-                            model: $scope.od.systemModel.uuid
-                        }, $scope.system);
-
-
-                        $source.$system.save(sys, function(resp) {
-                            // alert("创建成功!");  
-                            sys.uuid = resp.ret;
-                            sys.state = 0;
-
-                            $scope.page.data.unshift(sys);
-                            $scope.cancel();
-
-                            $scope.confirmInvoke({
-                                    title: "配置系统",
-                                    note: "创建成功,是否去配置该系统?",
-                                    todo: "是",
-                                    undo: "不用了"
-                                },
-                                function(next) {
-                                    $scope.goto("app.m_system_prop._config", sys, sys);
-                                    next();
-                                }
-                            )
-
-                            $scope.showMask = false;
-
-                        }, function() {
-                            $scope.showMask = false;
-                        })
-                    }
-
-
-                }
-            })
-        }
-
-        $scope.updateSystem = function(idObj) {
-            return $source.$system.put({}, idObj).$promise;
-        }
+      
 
 }

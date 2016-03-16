@@ -41,7 +41,8 @@ export default ( $compile , $translate  )=>{
 	            '</tr>',
 	        '</thead>' 
 	        ].join('')
-		    ele.addClass("table table-hover table-striped  b-t").prepend(  $compile( header)(scope) );
+          
+		    ele.wrap('<div class="table-responsive "></div>').addClass("table table-hover table-striped  b-t").prepend(  $compile( header)(scope) );
  
 
 		}

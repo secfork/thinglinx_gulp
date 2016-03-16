@@ -6,9 +6,8 @@ export default ( $translate  , $modalStack , $rootScope )=>{
 				console.log( "$modalStack = ", $modalStack );
 				
 				$modalStack.dismissAll();
-				$rootScope.$broadcast( "$cloasMask" );
-
-				angular.alert(   $translate.instant('err.'+resp.err  )  ) ;
+				$rootScope.$broadcast( "$cloasMask" ); 
+				angular.alert( { warn: $translate.instant('err.'+resp.err  )  } ) ;
 
 			}
 

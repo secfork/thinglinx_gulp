@@ -1,60 +1,38 @@
-  <form name="form"   class="form-horizontal form-validation ">
-          
-        <input tl-input label="系统名称" required ng-model="system.name">
-        
-        <select tl-input label="所属区域" ng-model="system.region_id" 
-            ng-disabled = "od.selectRegion"
-           required ng-options="  proj.id  as  proj.name  for  proj   in regions ">
-            <option value="">-请选择区域-</option>
-        </select>
+
  
+
+<form name="form" class="form-horizontal form-validation  ">
+
+    <input name="name" tl-input label="系统名称" required ng-model="system.name">
+
+    <select name="region" tl-input label="所属区域" ng-model="system.region_id" 
+            ng-disabled="od.selectRegion" required 
+            ng-options="  proj.id  as  proj.name  for  proj   in regions " >
+        <option value="">-请选择区域-</option>
+    </select>
+    <select name="sysmodel" tl-input ng-model="od.systemModel" 
+            ng-options=" s  as s.name for s in sysModels" 
+            label="系统模型" required >
+        <option value="">-请选择系统模型-</option>
+    </select>
+    <select name="profile" tl-input ng-model="system.profile" 
+    ng-options="  p.uuid as p.name for  p  in  profiles " 
+    label="系统配置项" required>
+        <option value="">--请选择配置项--</option>
+    </select>
  
-        <select tl-input ng-model="od.systemModel" ng-options=" s  as s.name for s in sysModels" 
-                label="系统模型" required>
-            <option value="">-请选择系统模型-</option>
+
+    <div   ng-if=" od.systemModel.mode==1 && od.systemModel.comm_type == 1 " 
+            ng-init=" system.network.daserver.type='DTU' "
+        >
+        <select name="servertype" tl-input 
+            ng-model="system.network.daserver.type" 
+            label=" 网络类型"
+
+         ng-options=" v as k for (v,k) in $sys.systemComType " >
         </select>
+    </div> 
 
-        <select tl-input ng-model="system.profile"
-              ng-options="  p.uuid as p.name for  p  in  profiles " 
-              label="系统配置项" required>
-            <option value="">--请选择配置项--</option>
-        </select>
-
-
-
-         ng-if=" od.systemModel.mode==1 && od.systemModel.comm_type == 1 "
-
-
-        <tl-radio  label="网络类型"  radio = '$sys.daServer'   model=''  >
-
-
-        <tl-check-box label="AB"  boxs = ''  model='' ></tl-check-box>
-
-
-
-
-
-        <div class="form-group "
-             ng-init=" system.network= { daserver: { type:'DTU'}  }; ">
-            <label class="col-sm-3  col-sm-offset-1 control-label  ">
-                <span>网络类型</span>
-            </label>
-
-            <div class=" col-sm-7 ">
-
-                <div class="radio   ">
-                    <label class="i-checks">
-                        <input type="radio" value="DTU" 
-                               ng-model="system.network.daserver.type">
-                        <i></i>
-                        DTU 
-                    </label>
-                </div> 
-
-
-            </div>
-
-        </div>
-        <textarea tl-input label="备注" ng-maxlength="100" placeholder=" 不应超过100字符" ng-model=" system.desc ">
-        </textarea>
-    </form>  
+    <textarea name="desc" tl-input label="备注" ng-maxlength="100" placeholder=" 不应超过100字符" ng-model=" system.desc ">
+    </textarea>
+</form>

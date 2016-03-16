@@ -2247,16 +2247,39 @@ table th[class*="col-"] {
 .table-hover > tbody > tr.danger:hover > th {
   background-color: #ebcccc;
 }
-@media screen and (max-width: 222767px) {
+
+
+/*@media screen and (max-width: 22000000px) {*/
   .table-responsive {
-    width: 100%;
    /* margin-bottom: 15px;*/
-    overflow-x: auto;
-    overflow-y: hidden;
+   /* 
+    overflow-x: scroll;
+    overflow-y: scroll;*/
+
+    overflow: auto;
+
     -webkit-overflow-scrolling: touch;
-    -ms-overflow-style: -ms-autohiding-scrollbar;
-   /* border: 1px solid #ddd;*/
+    
+   /* -ms-overflow-style: -ms-autohiding-scrollbar;*/
+   /* border: 1px solid #ddd; */
+
+     
   }
+
+  /*  .table-responsive {
+      width: 100%;
+      margin-bottom: 15px;
+      overflow-x: scroll;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      -ms-overflow-style: -ms-autohiding-scrollbar;
+      
+      border: 1px solid #ddd; 
+    }
+  */
+
+
+
   .table-responsive > .table {
     margin-bottom: 0;
   }
@@ -2293,7 +2316,10 @@ table th[class*="col-"] {
   .table-responsive > .table-bordered > tfoot > tr:last-child > td {
     border-bottom: 0;
   }
-}
+/*}*/
+
+
+
 fieldset {
   min-width: 0;
   padding: 0;
@@ -5377,7 +5403,7 @@ button.close {
   border: 0;
 }
 .modal-open {
-  overflow: hidden;
+   /*overflow: hidden;*/
 }
 .modal {
   position: fixed;

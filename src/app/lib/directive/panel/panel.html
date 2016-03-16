@@ -22,7 +22,7 @@
             </ul>
 
         </div>
-        <div class="panel-body no-border table-responsive no-padder" load-mask ng-transclude >
+        <div class="panel-body no-border no-padder" load-mask ng-transclude >
                 
                 <!-- 
                     指令内部 的 dom  结构; 
@@ -37,7 +37,14 @@
             </button>
 
 
-            <pagination ng-if="panel.pagger" class="pagination-sm  " total-items="page.total" ng-model="page.currentPage" items-per-page=" $sys.itemsPerPage " ng-change=" loadPageData( page.currentPage   ) " num-pages=" page.numPages " max-size="10" boundary-links="true" rotate="false" first-text="&laquo;" previous-text="&lsaquo;" next-text="&rsaquo;" last-text="&raquo;">
+            <pagination ng-if="panel.pagger" class="pagination-sm  " 
+            total-items="page.total" ng-model="page.currentPage" 
+            items-per-page=" $sys.itemsPerPage " 
+            ng-change=" loadPageData( page.currentPage   ) "
+             num-pages=" page.numPages " max-size="10" 
+             boundary-links="true" rotate="false" 
+             first-text="&laquo;" previous-text="&lsaquo;" 
+             next-text="&rsaquo;" last-text="&raquo;">
             </pagination>
         </div>
     </div>

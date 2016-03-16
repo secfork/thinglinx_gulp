@@ -1,4 +1,4 @@
-export default ($modal, $rootScope) => {
+export default ($modal, $uibModal ,$rootScope) => {
 
     "ngInject";
 
@@ -54,7 +54,7 @@ export default ($modal, $rootScope) => {
                 alert("无 templateUrl");
                 return;
             } 
-            openedWin = $modal.open({
+            openedWin = $modal.open({ 
                 templateUrl: 'app/lib/service/modal.html',
                 scope: modalScope,
                 resolve: options.resolve,
@@ -64,9 +64,11 @@ export default ($modal, $rootScope) => {
 
         if (options.type == 'alert') {
             modalScope.done = modalScope.cancel ;
-            openedWin = $modal.open( {
+            // openedWin = $modal.open( {
+            openedWin = $uibModal.open( {
                 templateUrl:"app/lib/service/modal.alert.html",
-                scope: modalScope
+                scope: modalScope,
+                 backdropClass:'m-b'
             })  
         } 
 
@@ -80,7 +82,9 @@ export default ($modal, $rootScope) => {
             } 
             openedWin = $modal.open({
                 templateUrl:"app/lib/service/modal.alert.html",
-                scope : modalScope
+                scope : modalScope,
+                 backdropClass:'m-b', 
+
             })
 
         }  
@@ -103,7 +107,7 @@ export default ($modal, $rootScope) => {
             _options.title =  _options.title || "text.alert";
             options = _options ;
           }
-
+          
           options.type ="alert"; 
           handler( options );
         },

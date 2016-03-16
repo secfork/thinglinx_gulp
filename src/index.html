@@ -52,16 +52,19 @@
     <!-- css files will be automatically insert here -->
     <!-- endinject -->
     <!-- endbuild -->
- 
+<!-- 
+overflow: hidden; position: fixed; --> 
+  
   </head>
-  <body ng-app="thinglinx"  ng-controller="AppCtrl"  scroll='no' >
+  <body ng-app="thinglinx"  ng-controller="AppCtrl"  scroll='no'       >
     <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
   
       <div class="app" id="app" ng-class="   {'app-header-fixed':app.settings.headerFixed,
                         'app-aside-fixed':app.settings.asideFixed,
-                        'app-aside-folded':app.settings.asideFolded  } " ui-view >
+                        'app-aside-folded':app.settings.asideFolded  } " 
+                         ui-view >
  
 
     </div>

@@ -1,6 +1,11 @@
 {
 	"system":{
 		"state":"活跃状态",
+		"fail":"失效",
+		"name":"系统名称",
+		"online":"状态",
+		"sync":"同步",
+		
 
 
 		"stateOptions":{ 

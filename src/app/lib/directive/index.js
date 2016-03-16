@@ -24,8 +24,6 @@ import panelInput from "./input/panel_input";
 
 
 import formInput from "./input/form_input";
-import formRadio from "./input/form_radio";
-import formInputValid from "./input/validInput";
 
 
 import loadMask from "./loadMask";
@@ -35,8 +33,8 @@ import token from "./token";
 
 import popwin from "./popwin";
 import mark from "./mark";
- 
- 
+
+
 
 export default (module) => {
 
@@ -47,15 +45,13 @@ export default (module) => {
         .directive("tlPanelInputs", panelInputGroup)
         .directive("tlPanelInput", panelInput)
         .directive("tlInput", formInput)
-        .directive("tlRadio", formRadio)
         .directive("loadMask", loadMask)
         .directive('tlNav', nav)
         .directive('token', token)
         .directive('popwin', popwin)
-        .directive('mark', mark) 
+        .directive('mark', mark)
 
 
-    .directive("valid", formInputValid);
 
 
 

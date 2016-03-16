@@ -13,7 +13,7 @@
         <button class="btn btn-sm btn-primary  w-46 " ng-click=" done( $event ) "  token=2000  translate>
         	 {{:: doneText }}
         </button> 
-        <button class="btn btn-sm  btn-default w-46 "  ng-click=" cancel(  ) "  translate="" > text.cancel </button>
+        <button class="btn btn-sm  btn-default w-46 "  ng-click=" cancel(  ) "  translate >  {{:: cancelText}} </button>
 </div> 
  
   <!-- 使用 这个指令  valiform  不好使了,  childtaill  scope 不是  form 所在的scope 了; 

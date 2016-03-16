@@ -6,7 +6,7 @@ export default function config($logProvider, $stateProvider, $urlRouterProvider,
 ) {
 
     'ngInject';
-
+ 
 
     $provide.decorator('$rootScope', function($delegate) {
 

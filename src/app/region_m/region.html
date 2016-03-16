@@ -11,6 +11,8 @@
         <input  tl-panel-input ng-model="od.xxx"   ></input>  
         -->
     </tl-panel-inputs>
+         
+   
     <table tl-table theader="tableHeaders">
         <tbody> 
             <tr ng-repeat="  proj  in page.data  " ng-init=" collectRegionId( proj , $last )"  >
@@ -36,5 +38,6 @@
             </tr>
         </tbody>
     </table>
+     
 </tl-panel>
  
