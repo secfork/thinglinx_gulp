@@ -3,24 +3,34 @@
 
 <form name="form" class="form-horizontal form-validation  ">
 
-    <input name="name" tl-input label="系统名称" required ng-model="system.name">
+    <input name="name" tl-input label="system.name" required ng-model="system.name">
 
-    <select name="region" tl-input label="所属区域" ng-model="system.region_id" 
+<!-- 区域 -->
+    <select name="region" tl-input label="nav.region" ng-model="system.region_id" 
             ng-disabled="od.selectRegion" required 
             ng-options="  proj.id  as  proj.name  for  proj   in regions " >
-        <option value="">-请选择区域-</option>
+       <!--  <option value="">-请选择区域-</option> -->
     </select>
+
+
+    <!-- 系统模型 -->
     <select name="sysmodel" tl-input ng-model="od.systemModel" 
             ng-options=" s  as s.name for s in sysModels" 
-            label="系统模型" required >
-        <option value="">-请选择系统模型-</option>
+            label="nav.systemModel" required >
+        <!-- <option value="">-请选择系统模型-</option> -->
     </select>
-    <select name="profile" tl-input ng-model="system.profile" 
-    ng-options="  p.uuid as p.name for  p  in  profiles " 
-    label="系统配置项" required>
-        <option value="">--请选择配置项--</option>
+
+    <!-- 系统配置项 -->
+    <select name="profile" tl-input 
+            ng-model="system.profile" 
+            ng-options="  p.uuid as p.name for  p  in  profiles " 
+            label="sysModel.profile" required >
+
+
+        <!-- <option value="">--请选择配置项--</option> -->
     </select>
  
+ <!-- 网络类型 -->
 
     <div   ng-if=" od.systemModel.mode==1 && od.systemModel.comm_type == 1 " 
             ng-init=" system.network.daserver.type='DTU' "
@@ -29,10 +39,13 @@
             ng-model="system.network.daserver.type" 
             label=" 网络类型"
 
-         ng-options=" v as k for (v,k) in $sys.systemComType " >
+            ng-options=" v as k for (v,k) in $sys.systemComType " >
         </select>
     </div> 
 
-    <textarea name="desc" tl-input label="备注" ng-maxlength="100" placeholder=" 不应超过100字符" ng-model=" system.desc ">
+    <!-- 备注 -->
+
+    <textarea name="desc" tl-input label="text.desc" ng-maxlength="50" 
+              placeholder=" {{ :: 'inputValid.maxlength' | translate: {value:50} }}" ng-model=" system.desc ">
     </textarea>
 </form>

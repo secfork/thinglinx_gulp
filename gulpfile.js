@@ -2,6 +2,9 @@
  *  Welcome to your gulpfile!
  *  The gulp tasks are splitted in several files in the gulp directory
  *  because putting all here was really too long
+
+nzp9uf7kusus3nuxe3 = localhost ;
+
  */
 
 'use strict';

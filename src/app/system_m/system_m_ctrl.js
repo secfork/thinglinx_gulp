@@ -1,9 +1,23 @@
+
+import  b  from "../lib/utils/bmap";
+ 
+
 export default ($scope, $sys, $source, modal , $q  , $interval , $state ,$stateParams , $utils ) => {
     "ngInject";
 
     var thatScope = $scope;
+    
+    $scope.al = function(){
+        // b.test();
+        var  x = new b();
+        console.log(x);
+
+        x.test();
+    }
 
     $scope.od = { state: undefined };
+    $scope.op = { lm:"list"};
+
     $scope.page = {};
 
     
@@ -275,8 +289,8 @@ export default ($scope, $sys, $source, modal , $q  , $interval , $state ,$stateP
         $scope.effStation = function( dastations, station, index, todel) { 
 
             angular.confirm({
-                title: "失效系统 " + station.name,
-                note: "确认要失效该系统吗?"
+               // title: "失效系统 " + station.name,
+                note: [ 'system.noteUnActive' , station.name ]//"确认要失效该系统吗?"
             }, function(next) {
                 var d = {  uuid: station.uuid,  state: 0  }; 
                 $source.$system.deactive({  pk: station.uuid  }, function() { 
@@ -295,8 +309,8 @@ export default ($scope, $sys, $source, modal , $q  , $interval , $state ,$stateP
  
             angular.confirm({
                 // jjw 采集站->系统
-                title: "激活系统 " + station.name,
-                note: "确认要激活该系统吗?"
+                // title: "激活系统 " + station.name,
+                note: [ "system.noteActive" ,station.name ]//确认要激活该系统吗?"
             }, function(next) {
                 // 激活采集站;
                 $source.$system.active({
@@ -314,8 +328,9 @@ export default ($scope, $sys, $source, modal , $q  , $interval , $state ,$stateP
          // 移除;
         $scope.delStation = function(dastations, station, index) {
             angular.confirm({
-                title: "您是否要删除系统:" + station.name,
-                warn: "删除系统将会丢失此系统的全部历史数据"
+                //title: "您是否要删除系统:" + station.name,
+                note: [ "system.noteDel" , station.name ],
+                warn:   "system.warnDel"  //"删除系统将会丢失此系统的全部历史数据"
 
             }, function(next) {
                 $source.$system.delete({

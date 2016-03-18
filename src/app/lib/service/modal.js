@@ -1,4 +1,4 @@
-export default ($modal, $uibModal ,$rootScope) => {
+export default ($modal, $uibModal ,$rootScope , $translate ) => {
 
     "ngInject";
 
@@ -33,8 +33,31 @@ export default ($modal, $uibModal ,$rootScope) => {
         var modalScope = $rootScope.$new(), 
             openedWin;
 
-        options.doneText = options.doneText || "text.done";
-        options.cancelText = options.cancelText || "text.cancel";
+
+        options.title =  $translate.instant(   options.title || "text.alert" ); 
+        options.doneText =  $translate.instant(  options.doneText || "text.done" );
+        options.cancelText = $translate.instant(  options.cancelText || "text.cancel" );
+
+        if(  options.note instanceof Array ){
+          //String.prototype.format.apply("$s === %s",["xxx","yy"])
+            options.note =   String.prototype.format.apply(
+                $translate.instant(  options.note[0] ) ,
+                options.note.slice(1)
+            )
+        }else{
+            options.note = $translate.instant( options.note );
+        };
+
+        if (  options.warn instanceof Array ){
+            options.warn =   String.prototype.format.apply(
+                $translate.instant(  options.warn[0] ) ,
+                options.warn.slice(1)
+            ) 
+        }else{
+            options.warn = $translate.instant( options.warn );
+        }
+
+
 
         angular.extend(modalScope, options);
  
@@ -91,29 +114,17 @@ export default ($modal, $uibModal ,$rootScope) => {
     }
 
     return {
-        open: function( options={}, controller ) {
- 
-
-            console.log( 'parnet scope =' ,this );
- 
+        open: function( options={}, controller ) {   
             options.type = 'modal';
             handler( options , controller );
         },
-        alert: function(  _options ) {
-          var options ;
-          if( typeof _options != 'object'){
-              options = { note: _options , title: "text.alert" };
-          }else{
-            _options.title =  _options.title || "text.alert";
-            options = _options ;
-          }
-          
-          options.type ="alert"; 
-          handler( options );
+        alert: function(  options ) { 
+            options.type = "alert";  
+            handler( options );
         },
 
         confirm: function( options={}, controller, closehandler ) {
-            options.type = "confirm";
+            options.type = "confirm"; 
             handler( options , controller , closehandler )
         }
 

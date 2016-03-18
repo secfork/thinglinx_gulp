@@ -37,7 +37,7 @@ function browserSyncInit(baseDir, browser) {
   // http://test.thinglinx.net/node
   // proxy  ~~~  nginx ; 
   // server.middleware = proxyMiddleware('/node', {target: 'http://localhost:8080', changeOrigin: true});
-  server.middleware = proxyMiddleware('/node', {target: 'http://test.thinglinx.net', changeOrigin: true});
+  server.middleware = proxyMiddleware('/node', {target: 'https://test.thinglinx.net', changeOrigin: true});
 
 
 

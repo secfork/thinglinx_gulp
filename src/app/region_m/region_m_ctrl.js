@@ -97,8 +97,8 @@ export default ($scope, $sys, $source   ) => {
     $scope.delProject = function(proj, index) {
 
         angular.confirm({
-                title: "删除区域: " + proj.name,
-                warn: "确认要删除该区域吗?"
+               // title: "region.delRegion" ,// + proj.name,
+                warn: [ "region.delWarn",  proj.name ]// "确认要删除该区域吗?"
             },
             function(next) { 
                 $source.$region.delete({

@@ -1,7 +1,10 @@
-{
+{    
+
     "region": {
         "subject": "区域管理",
         "title": "区域管理",
+        "delRegion":"删除区域",
+        "delWarn":"您确认要删除区域%s吗?",
 
         "th_active": "已激活系统",
         "th_unactive": "未激活系统",

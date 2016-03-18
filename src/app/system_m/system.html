@@ -1,5 +1,7 @@
  
 
+<button ng-click="al()">xxx</button>
+
 <tl-panel>
     <tl-panel-inputs>
         <input tl-panel-input label="text.name" ng-model="od.name" col=" col-lg-2-4 col-sm-6 "></input>
@@ -14,61 +16,84 @@
             <option value="" translate>text.all</option>
         </select>
     </tl-panel-inputs>
+
     <button class="btn btn-info btn-sm m-l-md m-b" ng-click=" loadPageData(1)">搜索</button>
     <button class="btn btn-info btn-sm m-l-md m-b" ng-click=" reSet() "> 复位</button>
+
+
+    <div class="radio  pull-right m-r">
+        <label class="i-checks">
+            <input type="radio" value="map"  ng-model=" op.lm "> <i></i> 地图
+        </label>
+    </div>
+    <div class="radio   pull-right m-r m-t ">
+        <label class="i-checks">
+            <input type="radio" value="list" ng-model="op.lm"> <i></i> 列表
+        </label>
+    </div>
+
+
+ 
+
+    <div ng-switch on="op.lm" >
+       
+
    
-    <table tl-table theader="tableHeaders">
-        <tbody>
-            <tr ng-repeat="  das  in page.data " class=" ">
-                <td> 
-                    <i class="fa fa-circle  {{ das.online==1  ?'text-success' : 'text-danger'  }} "></i>
-                </td>
- 
-                <td>
-                    <a class="text-info-dk" ng-click="goto( _$stationState , das , das )">{{ das.name }}</a>
-                    <popwin   ng-model="das" pk="uuid" prop="name" handler="updateSystem " />
-                </td>
-                <td>{{ :: das.uuid }}</td>
-                <td> 
-                    <a class="text-info-dk" 
-                    ng-click=" goto( _$projState ,   rg_k_v[ das.region_id] ,  rg_k_v[ das.region_id] ) " >
-                             {{ :: regionID_Self[ das.region_id].name }} </a>
-                </td>
-                <td  translate >  system.stateOptions.{{ :: das.state }}</td>
+        <table  ng-switch-when="list" tl-table theader="tableHeaders">
+            <tbody>
+                <tr ng-repeat="  das  in page.data " class=" ">
+                    <td> 
+                        <i class="fa fa-circle  {{ das.online==1  ?'text-success' : 'text-danger'  }} "></i>
+                    </td>
+     
+                    <td>
+                        <a class="text-info-dk" ng-click="goto( _$stationState , das , das )">{{ das.name }}</a>
+                        <popwin   ng-model="das" pk="uuid" prop="name" handler="updateSystem " />
+                    </td>
+                    <td>{{ :: das.uuid }}</td>
+                    <td> 
+                        <a class="text-info-dk" 
+                        ng-click=" goto( _$projState ,   rg_k_v[ das.region_id] ,  rg_k_v[ das.region_id] ) " >
+                                 {{ :: regionID_Self[ das.region_id].name }} </a>
+                    </td>
+                    <td  translate >  system.stateOptions.{{ :: das.state }}</td>
 
 
-                <td>{{das.desc}}
-                    <popwin ng-model="das"   pk="uuid" prop="desc" handler=" updateSystem  " />
-                </td>
- 
-                
-                <td>
-                    <a class="text-info-dk m-r-xs" ng-if="das.state ==1 " 
-                    ng-click=" effStation( page.data , das  ,$index  ) " translate > system.fail</a>
-                    <a class="text-info-dk m-r-xs" ng-if=" das.state ==0 " 
-                    ng-click=" activateStation( null,das,$index ,false ) " translate >  system.stateOptions.1 </a>
-                </td>
-                <td  >
-                    <!--  ng-if=" das.needsync   text-muted' " -->
-                    <a class="  text-info" ng-if=" das.state==1 && das.needsync " 
-                      ng-click=" syncSystem( das , $event , this )" token="5000"  
-                      translate='system.sync' > 同步 </a>
+                    <td>{{das.desc}}
+                        <popwin ng-model="das"   pk="uuid" prop="desc" handler=" updateSystem  " />
+                    </td>
+     
                     
-                    <span class="text-muted" ng-if=" das.state !=1  " translate='system.sync'>同步</span>
+                    <td>
+                        <a class="text-info-dk m-r-xs" ng-if="das.state ==1 " 
+                        ng-click=" effStation( page.data , das  ,$index  ) " translate > system.fail</a>
+                        <a class="text-info-dk m-r-xs" ng-if=" das.state ==0 " 
+                        ng-click=" activateStation( null,das,$index ,false ) " translate >  system.stateOptions.1 </a>
+                    </td>
+                    <td  >
+                        <!--  ng-if=" das.needsync   text-muted' " -->
+                        <a class="  text-info" ng-if=" das.state==1 && das.needsync " 
+                          ng-click=" syncSystem( das , $event , this )" token="5000"  
+                          translate='system.sync' > 同步 </a>
+                        
+                        <span class="text-muted" ng-if=" das.state !=1  " translate='system.sync'>同步</span>
 
-                    <i ng-if=" das.state ==1 && !das.needsync " class="fa fa-check text-success"></i>
-                    <i class="fa fa-spin fa-spinner text-info" style="display:none" ></i>
-                </td>
+                        <i ng-if=" das.state ==1 && !das.needsync " class="fa fa-check text-success"></i>
+                        <i class="fa fa-spin fa-spinner text-info" style="display:none" ></i>
+                    </td>
 
-                <td >
-    
-                    <a class="text-info " ng-if="das.state != 1 " 
-                     ng-click=" delStation( page.data  ,das , $index  ) " translate="text.del">删除</a>
-                    <span ng-if="das.state == 1" class="text-muted " translate="text.del">删除</span>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+                    <td >
+        
+                        <a class="text-info " ng-if="das.state != 1 " 
+                         ng-click=" delStation( page.data  ,das , $index  ) " translate="text.del">删除</a>
+                        <span ng-if="das.state == 1" class="text-muted " translate="text.del">删除</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
-    
+        <div    ng-switch-when="map"   class="b-t"  id='bdmap'  ng-init=" initMap( ); " > </div>  
+
+
+    </div>
 </tl-panel>
