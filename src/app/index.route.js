@@ -5,6 +5,7 @@ import  devmodel from "./model_device";
 
 import  sysmodel from "./model_system";
 import  user  from "./user";
+import  account  from "./account";
 
 
 
@@ -76,6 +77,7 @@ export default function routerConfig($stateProvider, $urlRouterProvider ) {
             sysmodel,
             
             user ,
+            account ,
            // createNavGo('user'),
 
            // createNavGo('account'),

@@ -13,7 +13,7 @@
     "ngstorage": "0.3.10",
     "highcharts": "hightcharts#4.1.5",
     "clipboard": "1.5.5",
-    "string-format": "1.0.2",
+    "string-format": "1.0.2", 
     "angular-translate-storage-local": "2.2.0",
     "angular-translate": "2.2.0",
     "angular-ui-validate": "1.1.1"
@@ -24,6 +24,7 @@
   },
   "xx": {
      "lodash": "1.3.1",
+     
     "angular-translate-loader-static-files": "2.2.0",
     "angular-translate-storage-local": "2.2.0",
     "angular-translate": "2.2.0",

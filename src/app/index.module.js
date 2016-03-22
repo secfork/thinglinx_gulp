@@ -134,7 +134,7 @@ var thinglinx = angular.module('thinglinx', [
         {  title:"nav.account" , icon:"icon icon-notebook"  ,    
             children:[
                 { title:"nav.accountInfo" ,   sref:"app.account_info"} ,
-                { title:"nav.bindWechat" ,   sref:"app.account_weichat"} 
+                { title:"nav.bindWechat" ,   sref:"app.wechat"} 
             ]
 
         },
