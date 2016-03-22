@@ -76,7 +76,22 @@ export default ($resource , $sys ) => {
     // 权限;
     $source.$permission = $createSource( "permission/:source/:source_id/:group_id"  )
     
+    $source.$weChat = $createSource ( 'wechat' , {} ,  {
+            //生成服务器地址接口
+            createUrl:       { params: { method:"get_wechat_server_address" }  } ,
+            //查询微信服务器状态接口
+            getServerStatus: { params: { method:"get_wechat_status"         }  } ,
+            //激活服务器接口
+            //    menu=1,2,3
+            activeServer:    { params: { method:"set_wechat_server" }  } ,
+            //解除绑定
+            unBindServer:    { params: { method:"unbind_wechat_server" }  } ,
+            // getServerInfo ;
+            getServerInfo :  { params: { method: "get_wechat_server_info"}}
+            
 
+            
+        })
     return $source ; 
 
 }

@@ -156,6 +156,25 @@ var thinglinx = angular.module('thinglinx', [
     }
   
 })
+.constant('JQ_CONFIG', {
+
+    // wysiwyg: ['lib/wysiwyg/bootstrap-wysiwyg.js',
+    //           'lib/wysiwyg/jquery.hotkeys.js'
+    //         ]
+    //         
+    easyPieChart:   ['lib/flot/jquery.easy-pie-chart.js'],
+
+    chosen: [
+        'lib/chosen/chosen.jquery.min.js',
+        'lib/chosen/chosen.css'
+    ],
+    filestyle: [
+        'lib/file/bootstrap-filestyle.min.js'
+    ]
+
+})
+
+
  ;
 
 initServices(thinglinx);

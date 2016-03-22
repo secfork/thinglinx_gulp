@@ -7,10 +7,10 @@ export default  ($scope  , $state  , $utils , $source )=>{
  	var thatScope = $scope ;
 
 	$scope.tableHeaders = [
-		{ text:"text.name" , w:"15%"},
+		{ text:"text.name" 	 , w:"15%"},
 		{ text:"user.author" , w:"75%"},
-		{ text:"text.edit" , w:"15%"},
-		{ text:"text.del" , w:"5%"}
+		{ text:"text.edit" 	 , w:"15%"},
+		{ text:"text.del" 	 , w:"5%"}
 
 	] ;
 
