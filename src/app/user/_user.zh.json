@@ -1,0 +1,32 @@
+{
+	"user":{
+		
+		"name":"用户名",
+		"phoneNo":"手机号码",
+		"email":"电子邮箱",
+		"address":"地址",
+
+		"author":"权限",
+
+		"changePass":"更改密码",
+
+		// "是否将用户 " +  username+ '加入您所管理的区域?' 
+		"noteAddUser":" 是否将用户 %s 加入您所管理的区域",
+		"warnDelUser":" 确认要删除该用户 %s 吗?",
+		"wrnDelRole":"确认要删除角色 %s 吗?",
+
+		"allUser":"全部用户",
+		"nickName":"昵称",
+
+		"addUser":"添加用户",
+		"addRole":"添加角色",
+
+		"lastLoginTime" :"上次登录时间",
+		"lastLoginIp" :"上次登录IP" ,
+  
+		"xx":11
+
+	}
+
+
+}

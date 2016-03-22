@@ -1,6 +1,5 @@
  
-
-<button ng-click="al()">xxx</button>
+ 
 
 <tl-panel>
     <tl-panel-inputs>
@@ -12,23 +11,26 @@
         <select tl-panel-input label="nav.model" ng-model="od.model" col=" col-lg-2-4 col-sm-6 " ng-options=" o.uuid as o.name for  o in  sysModels ">
             <option value="" translate>text.all</option>
         </select>
-        <select tl-panel-input label="system.state" ng-model="od.state" col=" col-lg-2-4 col-sm-6 " ng-options=" parse(v) as k for (v,k) in  $$lang.system.stateOptions  ">
+        <select tl-panel-input label="system.state" ng-model="od.state" col=" col-lg-2-4 col-sm-6 " 
+        ng-options=" parse(v) as k for (v,k) in  $$lang.system.stateOptions  ">
             <option value="" translate>text.all</option>
         </select>
     </tl-panel-inputs>
 
-    <button class="btn btn-info btn-sm m-l-md m-b" ng-click=" loadPageData(1)">搜索</button>
-    <button class="btn btn-info btn-sm m-l-md m-b" ng-click=" reSet() "> 复位</button>
+    <button class="btn btn-info btn-sm m-l-md m-b" ng-click=" loadPageData(1)"  translate="text.search">搜索</button>
+    <button class="btn btn-info btn-sm m-l-md m-b" ng-click=" reSet() " translate="text.reset" > 复位</button>
 
 
     <div class="radio  pull-right m-r">
         <label class="i-checks">
-            <input type="radio" value="map"  ng-model=" op.lm "> <i></i> 地图
+            <input type="radio" value="map"  ng-model=" op.lm "> <i></i> 
+            <span  style="margin-left: 0" translate="text.map">地图</span>
         </label>
     </div>
     <div class="radio   pull-right m-r m-t ">
         <label class="i-checks">
-            <input type="radio" value="list" ng-model="op.lm"> <i></i> 列表
+            <input type="radio" value="list" ng-model="op.lm"> <i></i> 
+              <span  style="margin-left: 0" translate="text.list"> 列表</span>
         </label>
     </div>
 
@@ -39,7 +41,7 @@
        
 
    
-        <table  ng-switch-when="list" tl-table theader="tableHeaders">
+        <table  ng-switch-when="list" tl-table    theader="tableHeaders">
             <tbody>
                 <tr ng-repeat="  das  in page.data " class=" ">
                     <td> 

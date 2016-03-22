@@ -1,0 +1,29 @@
+ 
+    <form name="form" class=" form-validation form-horizontal   ">
+        <!-- <input type="submit" class="hidden">  -->
+        <input tl-input  name = "name" ng-model="sm.name" label="sysModel.name" required>
+
+
+        <!-- 模式 托管 非托管;  -->
+        <select tl-input  name = "mode"  ng-model="sm.mode"  
+          	ng-options=" parse(v) as k  for (v,k) in  $$lang.sysModelMode " 
+          	ng-change=" sm.comm_type=sm.mode== 1?1:undefined " 
+       		label="sysModel.mode " required>
+        </select>
+
+
+        <!-- 通信类型 -->
+        <div  ng-if=" sm.mode == 1">
+
+            <select tl-input  name="commtype"  ng-model = "sm.comm_type " 
+                    ng-options= " parse(v) as k  for (v,k) in $sys.sysModelComType "
+                    label= "sysModel.commType"
+                >
+                
+            </select>
+ 
+        </div>
+        <textarea tl-input  name = "desc"  ng-model="sm.desc" label="text.desc"> </textarea>
+    </form>
+   
+ 

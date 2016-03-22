@@ -1,4 +1,4 @@
-export default ($scope, $compile, $state, $modal, $log, $http, $timeout, $source) => {
+export default ($scope, $compile, $state, $modal, $log, $http, $timeout, $source , $utils) => {
     "ngInject";
 
 
@@ -210,12 +210,13 @@ export default ($scope, $compile, $state, $modal, $log, $http, $timeout, $source
     $scope.delTemp = function(index, obj) {
 
         var msg = {
-            title: "删除模版: " + obj.name,
-            warn: "确认要删除该设备模型吗?"
+            //title: "删除模版: " + obj.name,
+            warn: [ 'devModel.warnDel' , obj.name ] // "确认要删除该设备模型吗?"
         };
 
+        // 目前无 ref 字段; 
         if (obj.ref)
-            msg.warn = "该模版被" + obj.ref + "个设备使用! 不可删除!";
+            msg.warn =   "该模版被" + obj.ref + "个设备使用! 不可删除!";
 
         angular.confirm(msg, function(next) {
             if (obj.ref) return;
@@ -226,7 +227,7 @@ export default ($scope, $compile, $state, $modal, $log, $http, $timeout, $source
                 thatScope.deviceModels.splice(index, 1);
 
                 next();
-            }, next)
+            }, $utils.handlerErr )
         });
     };
 

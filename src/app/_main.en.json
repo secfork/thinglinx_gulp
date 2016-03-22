@@ -1,13 +1,14 @@
 {
+    // 导航栏 ;
     "nav": {
-        "show": "Show",
-        "manage": "Manage",
+        "show": "展示",
+        "manage": "管理",
 
-        "region": "Region",
-        "system": "System",
-        "alarm": "Alarm",
-        //faef
-        "account": "Account",
+        "region": "区域",
+        "system": "系统",
+        "alarm": "报警",
+
+        "account": "账户",
         "accountInfo": "账户信息",
         "bindWechat": "微信绑定",
 
@@ -20,25 +21,129 @@
         "deviceModel": "设备模型"
     },
 
+    // 通用按钮, 文字; 
     "text": {
         "search": "搜索",
         "return": "返回",
 
         "name": "名称",
         "createTime": "创建时间",
+        "lastUpdateTime":"最后更新时间",
+
         "edit": "编辑",
         "create": "创建",
         "del": "删除",
         "update": "更新",
-        "done":"Done",
-        "cancel":"Cancel",
 
-        "desc": "descript"
+        "alert": "提示",
+        "done": "确定",
+        "cancel": "取消",
+
+        "modelName": "模型名称",
+        "modelType": "模型类型",
+        "all": "-全部-",
+ 
+
+        "desc": "备注"
+    },
+
+    // systemmodel 模式  mode ; 
+    "sysModelMode": {
+        "1": "Manage",
+        "2": "UnManage"
+    },
+
+    // sysmodel  支持的 通信类型  comm_type , 和 system 的 system的通信类型  不用翻译 ,
+    //   在 thinglinx.config.js 中配置; 
+    // "sysModelCommType":{
+    //     "1":"DAServer"
+
+    // },
+
+
+    //   通用 下拉选项 ;   select options 
+
+    "options": { 
+        "yesno": {
+            "0": "否",
+            "1": "是"
+        }  
+    },
+
+
+   
+    "regionPermission": {
+        "READ_DATA": {
+            "desc": "gafaefaefaef ",
+            "text": "read Data "
+        },
+        "WRITE_DATA": {
+            "desc": "gafagaefaef",
+            "text": "write data "
+        },
+        "ALARM_VIEW": {
+            "desc": "查看系统产生的报警",
+            "text": "查看报警"
+        },
+        "ACK_ALARM": {
+            "desc": "确认系统产生的报警",
+            "text": "确认报警"
+        },
+        "SYSTEM_MANAGE": {
+            "desc": "创建、删除系统，修改系统基本信息",
+            "text": "系统管理"
+        },
+        "TICKET_MANAGE": {
+            "desc": "创建及删除系统的ticket",
+            "text": "ticket管理"
+        },
+        "REGION_USER_MANAGE": {
+            "desc": "为区域创建用户，以及管理用户权限",
+            "text": "区域用户管理"
+        },
+        "SYN_CONFIG": {
+            "desc": "将系统工程同步到DAServer或网关",
+            "text": "系统配置"
+        },
+        "SYSTEM_CONTROL": {
+            "desc": "系统数据下置及召唤，系统的激活及失效，切换系统配置项，保存网络参数等",
+            "text": "系统控制"
+        }
 
     },
 
-    "err": {
+    // 账户权限说明; 
+    "accountPermission": {
+        "REGION_MANAGE": { "desc": "区域管理", "text": "区域管理" },
+        "MODEL_MANAGE": { "desc": "模型管理", "text": "模型管理" },
+        "USER_MANAGE": { "desc": "用户管理", "text": "用户管理" },
+        "ROLE_MANAGE": { "desc": "角色管理", "text": "角色管理" }
 
+    },
+
+    //  角色分类; 
+    "roleType": {
+        "0": "账户角色",
+        "1": "区域角色"
+    },
+
+
+    "inputValid": { 
+        "required": "this field can't be null",
+        "min": "该数值必须不小于{{value}}",
+        "max": "该数值必须小于{{value}}",
+
+        "minlength": "该字段至少为{{value}}个字符!",
+        "maxlength": "no more then {{value}} byte!",
+ 
+        "email": "Email格式不正确!",
+        "number": "该字段必须为数字格式!",
+        "Number": "该字段必须为数字格式!"  
+    } ,
+
+    // 错误 提示; 
+
+    "err": {
 
         "phone_pattern_err": "电话号码格式不正确",
 
@@ -138,8 +243,6 @@
         "ER_INVALID_USER_OR_PASSWORD": "无效的用户名或密码",
         "ER_INVALID_USER_OR_ACCOUNT": "无效的账户名或用户名",
 
-
-
         "ER_PROFILE_REF": "配置项使用中",
         "Er_ACCOUNT_EXIST": "该Account名已被占用",
         "ER_INVALID_ACCOUNT_NAME": "该Account名已被占用",
@@ -169,7 +272,7 @@
         "ER_PARA_ERR": "参数错误",
         "ER_WRITE_QUEUE_FULL": "下置队列满",
         "ER_DEV_INACTIVE": "设备未激活",
-        "ER_DEV_COMM_TYPE_ERR": "设备通讯类型错误",
+        "ER_DEV_comm_TYPE_ERR": "设备通讯类型错误",
         "ER_DEV_COUNT_ZERO": "设备数为空",
         "ER_TAG_COUNT_ZERO": "设备点数为空",
         "ER_LINK_COUNT_ZERO": "设备连接项为空",
@@ -197,5 +300,4 @@
         "ER_MODIFY_PERMISSION": "无权限"
 
     }
-
 }

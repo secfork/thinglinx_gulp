@@ -1,0 +1,37 @@
+
+    <form name="form" class=" form-validation form-horizontal   ">
+
+      r = {{ r }}
+
+		<input  tl-input name ="name" ng-model="r.name" required  label="角色名称"  >
+ 
+		<div class="row m-b"   >
+				<div class="col-sm-3 text-right" translate="user.author">
+					权限
+				</div> 
+
+
+			    <div class="col-sm-8 ">
+
+			    	<label class=" i-checks inline w-sm  "  ng-repeat =  " (a,v) in promise">
+
+			              <input type="checkbox"  ng-model="r.privilege[ a ]" >
+			              <i></i>
+			              <span   style="margin-left:0"  
+			                 popover-trigger="mouseenter"
+	                         popover=" {{ :: v.desc }} " 
+	                         popover-placement="right"   > 
+	                         {{:: v.text}} 
+		              </span> 
+
+		            </label>
+
+		        </div>
+ 
+                
+
+		</div>
+		 
+
+
+    </form>

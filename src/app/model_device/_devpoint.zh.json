@@ -1,7 +1,7 @@
 {
 
 
-    "devModel": {
+    "devModel": { 
         "addModel": "添加设备模型",
         "editModel":"编辑设备模型",
         "addPoint": "添加点",
@@ -27,7 +27,7 @@
         "access":"访问方式",
         //少数 驱动的特殊字段  ; 
 
-        
+        "warnDel":"确认要删除该设备模型 %s 吗",
 
 
 

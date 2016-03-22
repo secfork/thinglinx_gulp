@@ -115,7 +115,7 @@ export default ($scope, $sys, $source   ) => {
    
     function addProj() { 
         angular.open({ 
-                title:"region_m.addRegion",
+                title:"region.addRegion",
                 templateUrl: "app/region_m/region.add.html" ,
             } , ( $scope )=>{
                 "ngInject"; 

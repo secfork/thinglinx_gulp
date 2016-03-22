@@ -3,6 +3,11 @@ import m_system_route from "./system_m";
 import access from "./main/access"; 
 import  devmodel from "./model_device"; 
 
+import  sysmodel from "./model_system";
+import  user  from "./user";
+
+
+
 
 export default function routerConfig($stateProvider, $urlRouterProvider ) {
     'ngInject';
@@ -12,8 +17,40 @@ export default function routerConfig($stateProvider, $urlRouterProvider ) {
     $stateProvider.state('app', {
         url: '/',
         templateUrl: 'app/main/main.html',
-        controller: function($scope) {
+        resolve: {
+            userResp: function($source) {                        
+                        return $source.$common.get({
+                            op: "islogined"
+                        }).$promise
+                     }
+        },
+        controller: function($scope , $state, $sys, userResp ) {
+                   //后台判断是否已经登录;
+                    var user = userResp.ret;
+                   
 
+                    if (user) {
+                        user.sms_notice = !!user.sms_notice;
+                        user.mail_notice = !!user.mail_notice;
+
+                        $scope.user = user;
+                        $scope.$$user = user;
+
+                        //@if  append
+                        console.log("sessionStorage 含有user");
+                        //@endif
+
+                        // 是 app 路由转到 rootState ;
+                        // rootstate = app.prpj.namage ;
+                        $state.is("app") ? $state.go($sys.rootState) : undefined;
+
+                        $scope.user = user;
+
+                    } else { 
+                        //  if( !$sys.$debug ){
+                        $state.go('access.signin');
+                        //  }
+                    };
         } 
     }); 
 
@@ -33,13 +70,15 @@ export default function routerConfig($stateProvider, $urlRouterProvider ) {
         angular.extend(
             m_region_route,
             m_system_route, 
-            createNavGo('model'),
+          //  createNavGo('model'),
 
             devmodel,
+            sysmodel,
             
-            createNavGo('user'),
+            user ,
+           // createNavGo('user'),
 
-            createNavGo('account'),
+           // createNavGo('account'),
  
             access 
         ), (config, route) => {

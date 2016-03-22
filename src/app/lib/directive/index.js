@@ -15,7 +15,8 @@ translate. instant ();
 
 import initFrameWorkDirective from "./forameworkDirective";
 
-import panel from "./panel";
+import panel from "./panel/panel";
+import tabpanel from "./panel/tabpanel";
 
 import table from "./table/table";
 
@@ -34,6 +35,8 @@ import token from "./token";
 import popwin from "./popwin";
 import mark from "./mark";
 
+import privilege2text from "./privilege2text";
+
 
 
 export default (module) => {
@@ -41,15 +44,21 @@ export default (module) => {
     initFrameWorkDirective(module);
 
     module.directive("tlPanel", panel)
+
+        .directive("tlTabPanel", tabpanel)
+
         .directive("tlTable", table)
         .directive("tlPanelInputs", panelInputGroup)
         .directive("tlPanelInput", panelInput)
         .directive("tlInput", formInput)
+
         .directive("loadMask", loadMask)
         .directive('tlNav', nav)
         .directive('token', token)
         .directive('popwin', popwin)
         .directive('mark', mark)
+
+        .directive("privilege2text", privilege2text)
 
 
 

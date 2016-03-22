@@ -1,0 +1,48 @@
+<tl-panel>
+    <tl-panel-inputs> 
+        <input tl-panel-input ng-model="op.f_n" search= true  >
+ 
+        <!--   
+        <input  tl-panel-input ng-model="od.xxx"  search="xx" ></input>
+        <input  tl-panel-input ng-model="od.xxx" ></input>
+        <input  tl-panel-input ng-model="od.xxx" ></input>
+        <input  tl-panel-input ng-model="od.xxx" ></input>
+        <input  tl-panel-input ng-model="od.xxx" ></input>
+        <input  tl-panel-input ng-model="od.xxx"   ></input>  
+        -->
+    </tl-panel-inputs>
+         
+   
+    <table tl-table theader="tableHeaders">
+        <tbody> 
+            <tr ng-repeat="  sm  in page.data | filter:{ name: op.f_n }  "    >
+                <td>
+                    <a class="text-info-dk  " ng-click="  goto ( _$nextState ,  sm  , sm ); ">
+                           {{ sm.name }} 
+                    </a>
+                    <popwin ng-model="sm"   prop="name" handler=" updateSysModel  " />
+                </td>
+
+                <td translate> sysModelMode.{{:: sm.mode }} </td>
+
+                <td >    {{ :: $sys.sysModelComType[ sm.comm_type ]}}   </td>
+
+                <td> {{ :: sm.create_time | date:"yyyy-MM-dd HH:mm Z" }}</td>
+
+                <td> {{ :: sm.last_modify_time | date:"yyyy-MM-dd HH:mm Z" }}</td>
+
+                <td> {{ :: sm.device_count }}
+                </td>
+                <td> {{ :: sm.tag_count }}</td>
+                <td>{{ sm.desc}}
+                    <popwin ng-model="sm" prop="desc" handler=" updateSysModel  " />
+                </td>
+                <td class="numeric">
+                    <a class="text-info-dk m-r-xs" ng-disabled="true" ng-click="delSysModel( sm  , $index   )" translate>text.del</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+     
+</tl-panel>
+ 

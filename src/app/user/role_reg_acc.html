@@ -1,0 +1,18 @@
+<table tl-table theader="tableHeaders" class="b-t-none">
+    <tbody>
+        <tr ng-repeat="  role in  roles | filter: { role_category: role_category }  ">
+            <td> {{role.name}}</td>
+            
+            <!-- {{ toText (role.privilege) }} 
+ -->
+            <td class="text-left"  privilege2text="role.privilege" > </td>
+            <td> <a class="text-info" ng-click="addRole( role , $index)" 
+            translate="text.edit"> 修改</a></td>
+            <td> <a class="text-info" ng-click="delRole( role, $index )" 
+            translate="text.del">   删除</a></td>
+        </tr>
+    </tbody>
+</table>
+<div class=" b-t wrapper-sm  "   >
+    <button class="btn btn-sm btn-primary  "   translate="user.addRole "  ng-click="addRole()"	> 添加 角色</button>
+</div>

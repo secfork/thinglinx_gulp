@@ -126,8 +126,8 @@ var thinglinx = angular.module('thinglinx', [
         }, 
         {  title:"nav.user" , icon:"icon icon-user"  ,     
             children:[
-                { title:"nav.manageUser" ,   sref:"app.user"} ,
-                { title:"nav.manageRole" ,   sref:"app.role"} 
+                { title:"nav.manageUser" ,   sref:"app.user" } ,
+                { title:"nav.manageRole" ,   sref:"app.role.region" } 
             ]
 
         }, 

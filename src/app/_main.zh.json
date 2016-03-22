@@ -28,64 +28,101 @@
 
         "name": "名称",
         "createTime": "创建时间",
+        "lastUpdateTime": "最后更新时间",
+
         "edit": "编辑",
         "create": "创建",
         "del": "删除",
         "update": "更新",
+        "reset": "复位",
 
         "alert": "提示",
         "done": "确定",
         "cancel": "取消",
+        "map": "地图",
+        "list": "列表",
 
         "modelName": "模型名称",
         "modelType": "模型类型",
         "all": "-全部-",
+        "verify": "验证",
+
 
         "desc": "备注"
     },
 
+    // systemmodel 模式  mode ; 
     "sysModelMode": {
         "1": "托管模式",
         "2": "非托管模式"
     },
 
+    // sysmodel  支持的 通信类型  comm_type , 和 system 的 system的 网络类型  不用翻译 ,
+    //   在 thinglinx.config.js 中配置; 
+    // "sysModelCommType":{
+    //     "1":"DAServer"
+
+    // },
+
 
     //   通用 下拉选项 ;   select options 
 
-    "options": { 
+    "options": {
         "yesno": {
             "0": "否",
             "1": "是"
-        }  
+        }
     },
 
 
     // 区域  权限说明 ; 
 
     "regionPermission": {
-        "READ_DATA": "读取系统变量的数据",
-        "WRITE_DATA": "将数据写入系统变量中",
-        "ALARM_VIEW": "查看系统产生的报警",
-        "ACK_ALARM": "确认系统产生的报警",
-        "SYSTEM_MANAGE": "创建、删除系统，修改系统基本信息",
-        "TICKET_MANAGE": "创建及删除系统的ticket",
-        "REGION_USER_MANAGE": "为区域创建用户，以及管理用户权限",
-        "SYN_CONFIG": "将系统工程同步到DAServer或网关",
-        "SYSTEM_CONTROL": "系统数据下置及召唤，系统的激活及失效，切换系统配置项，保存网络参数等",
-
-
-        "REGION_MANAGE": "创建、删除区域，修改区域基本信息",
-        "MODEL_MANAGE": "创建、修改以及删除系统模型和设备模型",
-        "USER_MANAGE": "创建、删除用户，修改用户基本信息以及管理用户权限",
-        "ROLE_MANAGE": "创建、修改以及删除角色"
+        "READ_DATA": {
+            "desc": "读取系统变量的数据",
+            "text": "读数据"
+        },
+        "WRITE_DATA": {
+            "desc": "将数据写入系统变量中",
+            "text": "写数据"
+        },
+        "ALARM_VIEW": {
+            "desc": "查看系统产生的报警",
+            "text": "查看报警"
+        },
+        "ACK_ALARM": {
+            "desc": "确认系统产生的报警",
+            "text": "确认报警"
+        },
+        "SYSTEM_MANAGE": {
+            "desc": "创建、删除系统，修改系统基本信息",
+            "text": "系统管理"
+        },
+        "TICKET_MANAGE": {
+            "desc": "创建及删除系统的ticket",
+            "text": "ticket管理"
+        },
+        "REGION_USER_MANAGE": {
+            "desc": "为区域创建用户，以及管理用户权限",
+            "text": "区域用户管理"
+        },
+        "SYN_CONFIG": {
+            "desc": "将系统工程同步到DAServer或网关",
+            "text": "系统配置"
+        },
+        "SYSTEM_CONTROL": {
+            "desc": "系统数据下置及召唤，系统的激活及失效，切换系统配置项，保存网络参数等",
+            "text": "系统控制"
+        }
 
     },
+
     // 账户权限说明; 
     "accountPermission": {
-        "REGION_MANAGE": "区域管理",
-        "MODEL_MANAGE": "模型管理",
-        "USER_MANAGE": "用户管理",
-        "ROLE_MANAGE": "角色管理"
+        "REGION_MANAGE": { "desc": "区域管理", "text": "区域管理" },
+        "MODEL_MANAGE": { "desc": "模型管理", "text": "模型管理" },
+        "USER_MANAGE": { "desc": "用户管理", "text": "用户管理" },
+        "ROLE_MANAGE": { "desc": "角色管理", "text": "角色管理" }
 
     },
 
@@ -95,6 +132,20 @@
         "1": "区域角色"
     },
 
+
+    "inputValid": {
+        "required": "该字段不能为空!",
+        "min": "该数值必须不小于{{value}}",
+        "max": "该数值必须小于{{value}}",
+
+        "minlength": "不能少于{{value}}个字符!",
+        "maxlength": "不能不超过{{value}}个字符!",
+
+        "email": "Email格式不正确!",
+        "number": "该字段必须为数字格式!",
+        "Number": "该字段必须为数字格式!",
+        "pattern": "格式不正确"
+    },
 
     // 错误 提示; 
 
@@ -227,7 +278,7 @@
         "ER_PARA_ERR": "参数错误",
         "ER_WRITE_QUEUE_FULL": "下置队列满",
         "ER_DEV_INACTIVE": "设备未激活",
-        "ER_DEV_COMM_TYPE_ERR": "设备通讯类型错误",
+        "ER_DEV_comm_TYPE_ERR": "设备通讯类型错误",
         "ER_DEV_COUNT_ZERO": "设备数为空",
         "ER_TAG_COUNT_ZERO": "设备点数为空",
         "ER_LINK_COUNT_ZERO": "设备连接项为空",

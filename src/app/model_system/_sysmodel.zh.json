@@ -1,14 +1,21 @@
 {
 
 	"sysModel":{
+		"name":"系统模型名称",
 		"profile":"系统配置项",
 
 
+		"mode":"模式",
+		"commType":"通信类型",
+		"devNum":"设备个数",
+		"profileNum":"配置项个数",
+
+		"noteDel":"确认要删除该系统模型 %s 吗",
+ 
+		"createSysModel":"创建系统模型" ,
 
 		"desc":"xx"
-
-
-
+ 
 	}
 
 }

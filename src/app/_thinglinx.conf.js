@@ -1,15 +1,17 @@
 {
     
 	// 分页 ; 
-    itemsPerPage: 20,   
+    itemsPerPage: 20 ,   
 
     // restful 
     restNode: "node/",
 
+    // application  首页;
+    rootState: "app.m_region",
+
     // system  状态更新周期; 
     state_inter_time: 60000,    // system 在线状态更新 周期;
-
-
+ 
 
     //  "1": "托管模式",
     // "2": "非托管模式"
@@ -19,8 +21,8 @@
 
     //  新建 systemModel 时 , sysmodel 的通信类型:  目前只支持 DaServer ,  以后再加; 
     sysModelComType: {
-        1: "DaServer"
-
+        1: "DaServer",
+        2: "Gateway"
     } ,
 
 

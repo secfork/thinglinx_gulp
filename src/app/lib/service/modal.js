@@ -119,6 +119,9 @@ export default ($modal, $uibModal ,$rootScope , $translate ) => {
             handler( options , controller );
         },
         alert: function(  options ) { 
+           if(   typeof  options === "string" ){
+              options = { note: options }
+           } 
             options.type = "alert";  
             handler( options );
         },

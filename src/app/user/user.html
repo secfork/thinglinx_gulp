@@ -1,0 +1,34 @@
+
+
+<tl-panel>
+    <tl-panel-inputs>
+        <input tl-panel-input ng-model=" od.f_name " search="loadPageData(1)">
+    </tl-panel-inputs>
+    <table tl-table theader="tableHeaders">
+        <tbody>
+            <tr ng-repeat=" u in page.data" ng-if="!u.is_super_user">
+                <td>
+                    <a ui-sref="app.userdetail({id: u.id })" class="text-info"> {{ u.username }} </a>
+                    <popwin ng-model="u" prop="username" handler=" updateUser " />
+                </td>
+                <td>{{ u.nickname }}
+                    <popwin ng-model="u" prop="nickname" handler=" updateUser " />
+                </td>
+                <td>
+                    <i class="glyphicon  glyphicon-phone {{:: u.mobile_phone_verified?'text-success':'text-muted'}}"></i>
+                    <i class="fa fa-envelope {{:: u.email_verified?'text-success':'text-muted'}}"></i>
+                </td>
+                <td> {{u.last_login_time| date:'yyyy-MM-dd HH:mm:ss'}} </td>
+                <td> {{ u.last_login_ip }}</td>
+                <td>
+                    {{ u.desc }}
+                    <popwin ng-model="u" prop="desc" handler=" updateUser " />
+                </td>
+                <td>
+                    <a href="" class="text-info" ng-click="delUser( page.data, u , $index)" 
+                       translate="text.del">  删除用户</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</tl-panel>

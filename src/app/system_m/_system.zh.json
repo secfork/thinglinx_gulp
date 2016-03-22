@@ -6,6 +6,7 @@
 		"state":"活跃状态",
 		"fail":"失效",
 		"name":"系统名称", 
+		"commType":"网络类型",
 		"online":"状态",
 		"sync":"同步",
 		"noteDel":		"您确认要删除系统 %s 吗?",
@@ -14,6 +15,7 @@
 		"noteUnActive": "您确认要失效系统 %s 吗?",
 
 
+		"addSystem":"添加系统",
 
 		"stateOptions":{ 
             "0": "未激活",
