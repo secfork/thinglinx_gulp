@@ -29,9 +29,7 @@
     </div>    
 
 </div>
-
-
-
+ 
 
 <div class="wrapper-md"   ng-if="op.step >= 0"> 
     <div class="panel panel-default">
@@ -151,9 +149,9 @@
                             </div>
                             <br/>
                             <p class=" text-muted m-t-lg "> 以下企业联系方式蒋展示于您的公众号菜单,以便用户与您联系</p>
-                            <input tl-wrap label="官网地址"     left ></input>
-                            <input tl-wrap label="电子邮箱"  ng-model="wei.email" required left ></input>
-                            <input tl-wrap label="联系电话"  ng-model="wei.phoneno" required left></input>
+                            <input tl-input label="官网地址"     left   ng-model="wei.url" ></input>
+                            <input tl-input label="电子邮箱"  ng-model="wei.email" required left ></input>
+                            <input tl-input label="联系电话"  ng-model="wei.phoneno" required left></input>
                         </div>
                         <div class="col-md-4 col-xs-12 m-t-n">
                             <img src="img/weichat_logo.png">
@@ -217,12 +215,4 @@
 </div>
 
 
-
-
-<!--@if append -->
-op = {{op}} wei = {{wei}}
-
-
-<br/>
-menu = {{menu}}
-<!--@endif -->
+ 

@@ -9,7 +9,7 @@ export default ( $scope, $sessionStorage, $source, $timeout , $localStorage )=>{
 
     $scope.wei = {}; // weiChatNo , serverUrl  // 第一步; 
 
-    $scope.op = { step: undefined };
+    $scope.op = { step:  undefined };
 
     $scope.menu = [];
     $scope.data = {}; // 第二部; 
@@ -39,8 +39,9 @@ export default ( $scope, $sessionStorage, $source, $timeout , $localStorage )=>{
         $scope.menu = $scope.wei.menu && $scope.wei.menu.split(",") || [];
 
 
-        // $scope.op.step = 0 ;
-        // return ;
+        $scope.op.step = 2 ;
+
+        return ;
 
         if (!!resp.ret && $scope.wei.status == 4) {
 
@@ -50,6 +51,7 @@ export default ( $scope, $sessionStorage, $source, $timeout , $localStorage )=>{
             $scope.op.step = 0;
 
         }
+
     } , function(){
         $scope.showMask  = false ;
     })
