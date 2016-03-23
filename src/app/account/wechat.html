@@ -1,35 +1,40 @@
 <div class="bg-light lter b-b wrapper-md ng-scope">
-    <h2 class="m-n font-thin h4"> 微信绑定</h2>
+    <h2 class="m-n font-thin h4" translate="account.bindWeChat"> 微信绑定</h2>
 </div>
 
  
 <div load-mask></div>   
 <div class="panel panel-body "  ng-if='op.step == -1 '>
     <div class="col-md-8 col-md-offset-3 col-xs-12">
-        <h4  class="m-t-xxl">以下是您的微信服务号信息</h4>
+        <h4  class="m-t-xxl"  translate="account.weText1" >  以下是您的微信服务号信息</h4>
         
         <div class="hbox">
-            <div class="col w-sm">微信号</div> <div class=" col text-muted">
+            <div class="col w-sm" translate="account.weChatNo">微信号1</div> 
+            <div class=" col text-muted">
               {{:: wei.wechat_id || '......'}}
             </div>
         </div>
         
 
         <div class="hbox">
-            <div class="col w-sm">URL (服务器地址)</div> <div class=" col text-muted   ">
+            <div class="col w-sm" translate="account.weChatServerUrl">URL (服务器地址)</div> 
+            <div class=" col text-muted   ">
                 {{:: wei.server_url || '......'}} 
             </div>
         </div>
 
 
-        <div class=" text-muted"> 如果您想取消绑定, 或者更改微信服务号账号信息, 您可以 &nbsp;   
-            <a  class="text-info"  ng-click="unBindServer()" > 注销服务号 </a> 
+        <div class=" text-muted" >  
+            <span translate="account.weText2"  > 如果您想取消绑定, 或者更改微信服务号账号信息, 您可以</span>
+            <a  class="text-info"  ng-click="unBindServer()"  translate="account.cancelServerNo"> 注销服务号 </a> 
         </div>
 
     </div>    
 
 </div>
- 
+
+
+
 
 <div class="wrapper-md"   ng-if="op.step >= 0"> 
     <div class="panel panel-default">
@@ -40,19 +45,22 @@
                         <a >
                             <span class=" ">1</span>
                             <i ng-if="op.step> 1" class="fa fa-check-circle text-success"></i>
-                             验证微信帐号
+                            <span translate="account.validWeChatNo"> 验证微信帐号 </span>
+                             
                         </a>
                     </li>
                     <li  class=" {{ op.step ==2?  '' :'resolve' }} "  >
                         <a  >
                             <span class=" ">2 </span> 
                             <i ng-if="op.step> 2" class="fa fa-check-circle text-success"></i>
-                            基本信息设置
+                            <span translate="account.setBasicInfo"> 基本信息设置 </span>
+                            
                         </a>
                     </li>
                     <li class=" {{ op.step ==3 ?  '' :'resolve' }} " >
                         <a  >
-                            <span class=" "> 3 </span> 完成
+                            <span class=" "> 3 </span> 
+                            <span translate="text.ok"> 完成 </span>  
                         </a>
                     </li>
                 </ul>
@@ -61,57 +69,59 @@
         <div class="panel-body   " load-mask>
             <div class="row">
                 <div ng-if="op.step === 0 " class="col-md-6 col-md-offset-3  col-xs-12">
-                    <h4>欢迎使用ThingLinx企业微信号服务号功能 </h4>
-                    <p>
+                    <h4 translate="account.weText3" >欢迎使用ThingLinx企业微信号服务号功能 </h4>
+                    <p translate="account.weText4" >
                         开通此项服务您可以快速获得一个微信后端服务器,并与您微信号绑定,让您的用户能够访问此微信服务号.
                     </p>
-                    <h5>现以下功能:</h5>
+                    <h5 translate="account.weText5" >现以下功能:</h5>
                     <ul>
-                        <li> 基于区域的系统查看更能</li>
-                        <li>系统产生报警的推送及查看功能</li>
-                        <li>系统搜索功能</li>
+                        <li translate="account.weText6" > 基于区域的系统查看更能</li>
+                        <li translate="account.weText7" >系统产生报警的推送及查看功能</li>
+                        <li translate="account.weText8" >系统搜索功能</li>
                     </ul>
                     <div class="text-center">
-                        <button class="btn btn-success btn-sm w-xs" ng-click="op.step=1">开始</button>
+                        <button class="btn btn-success btn-sm w-xs" ng-click="op.step=1" translate="text.start">开始</button>
                     </div>
                 </div>
                 <div ng-if="op.step === 1 " class="col-md-6 col-md-offset-3  col-xs-12">
                     <form role="form" name="form1"  class="form-validation" >
                         <div class="form-group input-group">
-                            <label>请输入您的企业微信号</label>
+                            <label translate="account.weText11">请输入您的企业微信号</label>
+
                             <input id='wei_no' class="form-control " style="width:80%" 
                                    ng-model="wei.wechat_id " required="true" >
                             <span class="input-group-btn  ">  
                                 <button   class="btn btn-default" type="button" 
-                                    ng-click="createUrl()"   >生成URL</button>                         
+                                    ng-click="createUrl()"  translate="account.weBot1"  >生成URL</button>                         
                                   </span>
                         </div>
                         <div class="form-group input-group">
-                            <label>URL(服务器地址)</label>
+                            <label translate="account.weChatServerUrl">URL(服务器地址)</label>
                             <input id='weichat_server_url'   class="form-control "
                              style="width:80%" ng-model='wei.server_url'>
                             <span class="input-group-btn  ">   
                                 <button class="btn btn-default" type="button"
                                         id='copy_url'
-                                        ng-init="enbaleCopy()"
-
-                                        data-clipboard-target='#weichat_server_url' >复制连接</button>
+                                        ng-init="enbaleCopy()" 
+                                        data-clipboard-target='#weichat_server_url' 
+                                        translate="account.weBot2" 
+                                        >复制连接</button>
                             </span>
                         </div>
-                        <p class="m-t-n text-
-                                muted">请先复制以上地址到微信公众平台完成验证,再返回此页面继续操作.</p>
+                        <p class="m-t-n text-muted"  translate="account.weText12">请先复制以上地址到微信公众平台完成验证,再返回此页面继续操作.</p>
                        
-                        <div class=" alert alert-danger" ng-if= 'op.verifyError' >
-                            该账号微信服务器地址未通过微信验证! </div>
+                        <div class=" alert alert-danger" ng-if= 'op.verifyError'  translate="account.weText13">
+                            该账号微信服务器地址未通过微信验证!
+                        </div>
 
-                        <div class=" alert alert-success" ng-if= 'op.verifySuccess' >
-                            验证成功! </div>
+                        <div class=" alert alert-success" ng-if= 'op.verifySuccess'  translate="account.weText14">
+                            验证成功!
+                        </div> 
 
-
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-default  btn-sm " 
+                        <div class="text-center" >
+                            <button    class="btn btn-info  btn-sm" 
                                 ng-disabled=" !wei.server_url "
-                               ng-click="verifyUrl()"> 查询验证状态</button>
+                                ng-click="verifyUrl()"> 查询验证状态</button>
                         </div>
                     </form>
                     <br/>
@@ -149,9 +159,19 @@
                             </div>
                             <br/>
                             <p class=" text-muted m-t-lg "> 以下企业联系方式蒋展示于您的公众号菜单,以便用户与您联系</p>
-                            <input tl-input label="官网地址"     left   ng-model="wei.url" ></input>
-                            <input tl-input label="电子邮箱"  ng-model="wei.email" required left ></input>
-                            <input tl-input label="联系电话"  ng-model="wei.phoneno" required left></input>
+
+                            <input tl-input  name=" homepage " label="官网地址"  
+                                ng-model="wei.homepage" required  left 
+                                type="url" 
+                                ></input>
+                           
+                            <input tl-input  name="appid " label="微信AppId"  ng-model="wei.appid" required left ></input>
+                            <input tl-input name=" secret " label="微信AppSecret"  ng-model="wei.appsecret" required left></input>
+                            <input tl-input name=" tempid" label="消息模板ID"  ng-model="wei.templateid" required left></input>
+                   
+
+ 
+
                         </div>
                         <div class="col-md-4 col-xs-12 m-t-n">
                             <img src="img/weichat_logo.png">
@@ -175,17 +195,7 @@
                                     </span>
                                 </div>
 
-                                <div class="form-group  ">
-                                    <label> <mark></mark> 微信AppId</label>
-                                    <input class="form-control " ng-model="wei.appid" required >
-                                    </span>
-                                </div>
-
-                                <div class="form-group  ">
-                                    <label> <mark></mark> 微信AppSecret</label>
-                                    <input class="form-control " ng-model="wei.appsecret" required >
-                                    </span>
-                                </div>
+                       
 
 
                             </div>
@@ -215,4 +225,12 @@
 </div>
 
 
- 
+
+
+<!--@if append -->
+op = {{op}} wei = {{wei}}
+
+
+<br/>
+menu = {{menu}}
+<!--@endif -->

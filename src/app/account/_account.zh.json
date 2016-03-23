@@ -4,46 +4,67 @@
 		"info":"账户信息" ,
 		"regionNum":"区域数量",
 		"userNum":"用户数量",
+
 		"sysNum":"系统数量",
+		"actived":"已激活",
+
 
 		"alarmNum":"报警数量",
-		"alarmNumWeek":"本周报警",
-
+		"alarmNumWeek":"本周报警", 
 		"unDeal":"未处理",
 
-		"manage":"管理员",
+		"admin":"管理员",
+
+		// nav ;
+		"validWeChatNo":"验证微信号",
+		"setBasicInfo":"基本信息设置",
+
+
+
+
+		//  basic info ;
+		"bindWeChat":"微信绑定",
+		"weChatNo":"微信号",
+		"weChatServerUrl":"URL(服务器地址)" ,
+		"cancelServerNo":"注销服务号",
 
 		"weText1":"以下是您的微信服务号信息",
 		"weText2":"如果您想取消绑定, 或者更改微信服务号账号信息, 您可以",
-		"weText3":"欢迎使用ThingLinx企业微信号服务号功能",
+
+
+		//  welcom ;  
+
+		"weText3":"欢迎使用ThingLinx企业微信服务号功能",
 		"weText4":"开通此项服务您可以快速获得一个微信后端服务器,并与您微信号绑定,让您的用户能够访问此微信服务号.",
-		"weText5":"现以下功能:",
+		"weText5":"实现以下功能:",
 		"weText6":"基于区域的系统查看更能",
 		"weText7":"系统产生报警的推送及查看功能",
-
+		"weText8":"系统搜索功能",
 
 		"weText8":"请输入您的企业微信号",
 		"weText9":"请先复制以上地址到微信公众平台完成验证,再返回此页面继续操作.",
 
+		// step 1 ;   
+		"weText11":"请输入您的企业微信号",
+		"weText12":"请先复制以上地址到微信公众平台完成验证,再返回此页面继续操作",
+		"weText13":"该账号微信服务器地址未通过微信验证",
+		"weText14":"验证成功!",
+
+		"weBot1":"生成URL", 
+		"weBot2":"复制链接",
+		"weBot3":"查询验证状态",
+
+
+		// step 2 ; 
 		
-		"weText10":"系统搜索功能",
-		"weText11":"系统搜索功能",
-		"weText12":"系统搜索功能",
-		"weText13":"系统搜索功能",
-		"weText14":"系统搜索功能",
-		"weText15":"系统搜索功能",
 
-		"weBot1":"生成URL",
-		"weBot1":"复制链接",
-		"weBot1":"查询验证状态",
-		"weBot1":"",
+ 
+		 
 
 
+ 
 
-
-		"wechatNo":"微信号",
-		"wechatServerUrl":"URL(服务器地址)" ,
-		"cancelServerNo":"注销服务号",
+		"xx":""
 
 
 	}

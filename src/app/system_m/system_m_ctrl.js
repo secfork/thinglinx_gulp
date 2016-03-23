@@ -108,10 +108,28 @@ export default ($scope, $sys, $source, $interpolate, $q, $compile , $translate, 
         // 清除 查询 在线状态的 interval ,
         $interval.cancel(interval_queryOnline);
 
+
+        if( $scope.op.lm == "map"){
+            loadSystemForMap =  $source.$system.get(  angular.extend({ options: "queryformap" }, $scope.od ) ).$promise ;
+            loadSystemForMap.then( ( resp )=>{
+                map.clearOverlays();  
+                map.addOverlay(  createSystemOverlay( resp.ret )  );
+                $scope.showMask = false ;
+
+            });     
+
+            return ; 
+        }
+
+
+
+
+
+
         loadSystem(pageNo).then(function() {
             var systemUUids = Object.keys(systemUUID_Self);
 
-            if( $scope.od.state == 1  ){
+            if( $scope.od.state == 1  || $scope.od.state == undefined ){
                 querySysOnline(systemUUids, $scope.page.data);
 
                 //  实时 查询 在线 状态; 
@@ -136,7 +154,7 @@ export default ($scope, $sys, $source, $interpolate, $q, $compile , $translate, 
     function querySysOnline(uuids, pageData) {
         return $source.$system.status(uuids, (resp) => {
             angular.forEach( resp.ret  , (v, i) => {
-                pageData[i].online = v && (v.daserver ? v.daserver.logon : v.online);
+                pageData[i].online = !!( v && (v.daserver ? v.daserver.logon : v.online) );
             })
         }).$promise;
 
@@ -341,23 +359,31 @@ export default ($scope, $sys, $source, $interpolate, $q, $compile , $translate, 
         //$scope.showMask = true;
 
         map = bmap.createMap($scope, "bdmap", 168);
+        $interval.cancel( interval_queryOnline);
         
         loadSystemForMap = loadSystemForMap || $source.$system.get(
-            angular.extend({ options: "queryformap" }, $scope.od)
+            angular.extend({ options: "queryformap" }, $scope.od )
         ).$promise;
 
-        loadSystemForMap.then(function(resp) {
-            var  collection =  bmap.createPointCollection( resp.ret );
-            
-            collection.addEventListener( "mouseover" ,  pointMouseOver  );
-            collection.addEventListener( "mouseout"  ,  pointMouseOut );
+        loadSystemForMap.then(function(resp) { 
 
-            map.addOverlay(  collection  );
+            map.addOverlay(  createSystemOverlay( resp.ret )  );
 
             $scope.showMask = false;
         })
 
     }
+
+    function createSystemOverlay( systemArray ){
+        var  collection =  bmap.createPointCollection( systemArray );
+            
+            collection.addEventListener( "mouseover" ,  pointMouseOver  );
+            collection.addEventListener( "mouseout"  ,  pointMouseOut );
+
+        return  collection ;
+
+    }
+
 
     function  pointMouseOut (e){ 
                 var point = e.point  ; 

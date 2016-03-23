@@ -32,17 +32,16 @@ export default ( $scope, $sessionStorage, $source, $timeout , $localStorage )=>{
         console.log(resp.ret);
         $scope.showMask = false ;
 
+
+          $scope.op.step = 2 ;
+
+        return ;
+
         // resp.ret =  angular.fromJson( resp.ret );
 
         $scope.wei = JSON.parse(resp.ret || '{}');
 
-        $scope.menu = $scope.wei.menu && $scope.wei.menu.split(",") || [];
-
-
-        $scope.op.step = 2 ;
-
-        return ;
-
+        $scope.menu = $scope.wei.menu && $scope.wei.menu.split(",") || []; 
         if (!!resp.ret && $scope.wei.status == 4) {
 
             $scope.op.step = -1;
@@ -80,7 +79,7 @@ export default ( $scope, $sessionStorage, $source, $timeout , $localStorage )=>{
     function setPicture(data) {
 
 
-        img = new Image(),
+        var img = new Image(),
 
             url = img.src = data;
 

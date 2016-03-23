@@ -10,7 +10,7 @@
     rootState: "app.m_region",
 
     // system  状态更新周期; 
-    state_inter_time: 60000,    // system 在线状态更新 周期;
+    state_inter_time: 5000,    // system 在线状态更新 周期;
  
 
     //  "1": "托管模式",
