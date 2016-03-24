@@ -1,0 +1,48 @@
+<tl-panel>
+    <tl-panel-inputs>
+        <input tl-panel-input label="text.name" ng-model="od.name" col=" col-lg-2-4 col-sm-6 "></input>
+        <input tl-panel-input label="ID" ng-model="od.uuid" col=" col-lg-2-4 col-sm-6 "></input>
+        <select tl-panel-input label="nav.region" ng-model="od.region_id" col=" col-lg-2-4 col-sm-6 " ng-options=" o.id as o.name for o in regions">
+            <option value="" translate>text.all</option>
+        </select>
+        <select tl-panel-input label="nav.model" ng-model="od.model" col=" col-lg-2-4 col-sm-6 " ng-options=" o.uuid as o.name for  o in  sysModels ">
+            <option value="" translate>text.all</option>
+        </select>
+    </tl-panel-inputs>
+    <button class="btn btn-info btn-sm m-l-md m-b" ng-click=" loadPageData(1)" translate="text.search">搜索</button>
+    <button class="btn btn-info btn-sm m-l-md m-b" ng-click=" reSet() " translate="text.reset"> 复位</button>
+    <div class="radio  pull-right m-r">
+        <label class="i-checks">
+            <input type="radio" value="map" ng-model=" op.lm "> <i></i>
+            <span style="margin-left: 0" translate="text.map">地图</span>
+        </label>
+    </div>
+    <div class="radio   pull-right m-r m-t ">
+        <label class="i-checks">
+            <input type="radio" value="list" ng-model="op.lm"> <i></i>
+            <span style="margin-left: 0" translate="text.list"> 列表</span>
+        </label>
+    </div>
+    <div ng-switch on="op.lm">
+        <table ng-switch-when="list" tl-table theader="tableHeaders">
+            <tbody>
+                <tr ng-repeat="  das  in page.data " class=" ">
+                    <td>
+                        <i class="fa fa-circle  {{ das.online==1  ?'text-success' : 'text-danger'  }} "></i>
+                    </td>
+                    <td>
+                        <a class="text-info-dk" ng-click="goto( _$stationState , das , das )">{{ das.name }}</a>
+                    </td>
+                    <td>{{ :: das.uuid }}</td>
+                    <td>
+                        <a class="text-info-dk" ng-click=" goto( _$projState ,   rg_k_v[ das.region_id] ,  rg_k_v[ das.region_id] ) ">
+                                 {{ :: regionID_Self[ das.region_id].name }} </a>
+                    </td>
+                    <td>{{das.desc}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div ng-switch-when="map" class="b-t" id='bdmap' ng-init=" initMap( ); "> </div>
+    </div>
+</tl-panel>

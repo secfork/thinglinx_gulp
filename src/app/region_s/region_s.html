@@ -1,0 +1,23 @@
+<tl-panel>
+    <tl-panel-inputs>
+        <input tl-panel-input ng-model="od.f_projname" search="loadPageData(1)">
+    </tl-panel-inputs>
+    <table tl-table theader="tableHeaders">
+        <tbody>
+            <tr ng-repeat="  proj  in page.data  " ng-init=" collectRegionId( proj , $last )">
+                <td>
+                    <a class="text-info-dk  " ng-click="  goto ( _$nextState ,  proj  , proj ); ">
+                           {{ :: proj.name }} 
+                    </a>
+                </td>
+                <td> {{ :: proj.create_time | date:"yyyy-MM-dd HH:mm Z" }}</td>
+                <td>
+                   {{ proj.activeNum || 0 }}
+                </td>
+                </td>
+                <td>{{ :: proj.desc}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</tl-panel>

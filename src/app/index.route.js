@@ -1,12 +1,18 @@
-import m_region_route from "./region_m";
-import m_system_route from "./system_m";
+
+
+import region_m from "./region_m";
+import system_m from "./system_m";
+
 import access from "./main/access"; 
 import  devmodel from "./model_device"; 
 
 import  sysmodel from "./model_system";
 import  user  from "./user";
 import  account  from "./account";
-
+ 
+import  region_s from  "./region_s";
+import system_s  from  "./system_s";
+import  alarm_s  from  "./alarm_s";
 
 
 
@@ -69,8 +75,13 @@ export default function routerConfig($stateProvider, $urlRouterProvider ) {
 
     angular.forEach(
         angular.extend(
-            m_region_route,
-            m_system_route, 
+
+            region_s ,
+            system_s,
+            alarm_s,
+
+            region_m,
+            system_m, 
           //  createNavGo('model'),
 
             devmodel,

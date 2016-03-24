@@ -108,9 +108,9 @@ var thinglinx = angular.module('thinglinx', [
 
 
     $scope.showNavs = [
-        {  title:"nav.region" , icon:"icon icon-grid"  ,           sref:"app.s_region"  },
-        {  title:"nav.system" , icon:"icon icon-screen-desktop"  , sref:"app.s_system"  },
-        {  title:"nav.alarm" , icon:"icon icon-fire "  ,           sref:"app.s_alarm"  }
+        {  title:"nav.region" , icon:"icon icon-grid"  ,           sref:"app.region_s"  },
+        {  title:"nav.system" , icon:"icon icon-screen-desktop"  , sref:"app.system_s"  },
+        {  title:"nav.alarm" , icon:"icon icon-fire "  ,           sref:"app.alarm"  }
     ],
  
 

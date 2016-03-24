@@ -3,6 +3,9 @@
 	 
 
 	"system":{
+		"sysNamage":"系统管理",
+		"sysList":"系统列表",
+
 		"state":"活跃状态",
 		"fail":"失效",
 		"name":"系统名称", 

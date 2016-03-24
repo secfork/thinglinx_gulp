@@ -1,11 +1,12 @@
 import bmap from "../lib/utils/bmap";
 
 
-export default ($scope, $sys, $source, $interpolate, $q, $compile , $translate, $interval, $state, $stateParams, $utils , $filter, $timeout , $templateRequest ) => {
+export default ($scope, $sys, $source, $interpolate, $q, $compile, $translate, $interval, $state, $stateParams, $utils, $filter, $timeout, $templateRequest) => {
     "ngInject";
 
     var thatScope = $scope;
 
+    var isManage = $state.current.data.manage;
 
     $scope.od = { state: undefined };
     $scope.op = { lm: "list" };
@@ -13,40 +14,60 @@ export default ($scope, $sys, $source, $interpolate, $q, $compile , $translate, 
     $scope.page = {};
 
 
-    $scope.panel = {
-        subject: "系统管理",
-        title: "系统列表",
-        pagger: true,
+    $scope.panel = isManage ? {
+            subject: "system.sysManage",
+            title: "system.sysList",
+            pagger: true,
+            panelBotButs: []
+        } :
 
-        panelTBS: [
+        {
+            subject: "nav.system",
+            title: "system.sysList",
+            pagger: true
 
-        ],
+        };
 
-        panelBotButs:  []
-    }; 
-    var  botButs =   [{
-            text: "system.addSystem",
-            classFor: " btn-primary",
-            handler: createSystem
-        }]
 
-    $scope.tableHeaders = [
-        { text: "system.online", w: "5%" },
-        { text: "system.name", w: "20%" },
-        { text: "ID", w: "20%" },
-        { text: "nav.region", w: "20%" },
-        { text: "system.state", w: "10%" },
-        { text: "text.desc", w: "25%" },
-        { text: "system.stateOptions.1", w: "15%" },
-        { text: "system.sync", w: "15%" },
-        { text: "text.del", w: "15%" },
-    ]
-    $scope.$watch("op.lm" , function(n){ 
-        $scope.panel.pagger = n =='list';
-        $scope.panel.panelBotButs = ( n =="list"?botButs:[] );
+
+    var botButs = [{
+        text: "system.addSystem",
+        classFor: " btn-primary",
+        handler: createSystem
+    }]
+
+
+
+    $scope.tableHeaders =
+        isManage ? [
+            { text: "system.online", w: "5%" },
+            { text: "system.name", w: "20%" },
+            { text: "ID", w: "20%" },
+            { text: "nav.region", w: "20%" },
+            { text: "system.state", w: "10%" },
+            { text: "text.desc", w: "25%" },
+            { text: "system.stateOptions.1", w: "15%" },
+            { text: "system.sync", w: "15%" },
+            { text: "text.del", w: "15%" },
+        ] : [
+            { text: "system.online", w: "5%" },
+            { text: "system.name", w: "20%" },
+            { text: "ID", w: "20%" },
+            { text: "nav.region", w: "20%" },
+            { text: "text.desc", w: "25%" }
+        ]
+
+    ;
+ 
+
+    $scope.$watch("op.lm", function(n) {
+        $scope.panel.pagger = n == 'list';
+        if( isManage ){
+              $scope.panel.panelBotButs = (n == "list" ? botButs : []);
+        }
+      
 
     })
- 
 
     // 加载 系统模型;   
     var loadSysmodel = $source.$sysModel.get({ currentPage: 1 }, function(resp) {
@@ -59,43 +80,30 @@ export default ($scope, $sys, $source, $interpolate, $q, $compile , $translate, 
     var loadRegion = $source.$region.get({ currentPage: 1 }, function(resp) {
         $scope.regions = resp.data;
 
-        angular.forEach($scope.regions ,(v) => {
+        angular.forEach($scope.regions, (v) => {
             $scope.regionID_Self[v.id] = v;
         })
     }).$promise;
 
 
 
-    // 加载 分页 system 数据, 并建立 当前页没 system 的 uuid self 索引; 
+    // 加载 分页 system 数据, 并建立 当前页没 system 的 uuid self 索引;  用于 同步 ;
     var systemUUID_Self;
 
     function loadSystem(pageNo) {
         systemUUID_Self = {};
-
-        $scope.showMask = true;
-
-        // 分页加载 系统数据;
-        var d = angular.extend({
-            options: "query",
-            currentPage: pageNo,
-            itemsPerPage: $sys.itemsPerPage
-        }, $scope.od);
-
-        var permise = $source.$system.query(d, function(resp) {
-            $scope.showMask = false;
-            $scope.page.currentPage = pageNo;
-            $scope.page.data = resp.data;
-            $scope.page.total = resp.total;
-
-            angular.forEach($scope.page.data ,function(v) {
-                systemUUID_Self[v.uuid] = v;
-            })
-        }, $utils.handlerErr).$promise
-
-
-        return permise
+        return $utils.loadSystem($scope, pageNo).then(
+            function() {
+                angular.forEach($scope.page.data, function(v) {
+                    systemUUID_Self[v.uuid] = v;
+                });
+                $scope.showMask = false;
+            }, $utils.handlerErr
+        )
 
     }
+
+
 
     var interval_queryOnline
     $scope.$on("$destroy", function() {
@@ -105,66 +113,52 @@ export default ($scope, $sys, $source, $interpolate, $q, $compile , $translate, 
 
     $scope.loadPageData = function(pageNo) {
 
+
         // 清除 查询 在线状态的 interval ,
         $interval.cancel(interval_queryOnline);
+        $scope.showMask = true;
 
+        if ($scope.op.lm == "map") {
 
-        if( $scope.op.lm == "map"){
-            loadSystemForMap =  $source.$system.get(  angular.extend({ options: "queryformap" }, $scope.od ) ).$promise ;
-            loadSystemForMap.then( ( resp )=>{
-                map.clearOverlays();  
-                map.addOverlay(  createSystemOverlay( resp.ret )  );
-                $scope.showMask = false ;
+            loadSystemForMap = $source.$system.get(angular.extend({ options: "queryformap" }, $scope.od)).$promise;
+            loadSystemForMap.then((resp) => {
+                map.clearOverlays();
+                map.addOverlay(createSystemOverlay(resp.ret));
+                $scope.showMask = false;
 
-            });     
-
-            return ; 
+            });
+            return;
         }
-
-
-
-
-
 
         loadSystem(pageNo).then(function() {
             var systemUUids = Object.keys(systemUUID_Self);
 
-            if( $scope.od.state == 1  || $scope.od.state == undefined ){
-                querySysOnline(systemUUids, $scope.page.data);
-
+            if ($scope.od.state == 1 || $scope.od.state == undefined) {
+                $utils.querySystemOnline(systemUUids, $scope.page.data);
                 //  实时 查询 在线 状态; 
                 interval_queryOnline = $interval(function() {
-                    querySysOnline(systemUUids, $scope.page.data);
-
+                    $utils.querySystemOnline(systemUUids, $scope.page.data);
                 }, $sys.state_inter_time)
-            } 
-
+            }
             // 查询 是否需要 同步;   
             queryNeedSync(systemUUids, systemUUID_Self);
 
         })
 
     };
+
+
     $scope.reSet = function() {
         $scope.od = {};
         $scope.loadPageData(1);
     }
 
-    // 查询 在线状态;  
-    function querySysOnline(uuids, pageData) {
-        return $source.$system.status(uuids, (resp) => {
-            angular.forEach( resp.ret  , (v, i) => {
-                pageData[i].online = !!( v && (v.daserver ? v.daserver.logon : v.online) );
-            })
-        }).$promise;
-
-    }
 
     // 加载同步状态 ; 
-    function queryNeedSync(uuids, system_uuid_self) {
+    function queryNeedSync(uuids, systemUUID_Self) {
         return $source.$system.needSync(uuids, (resp) => {
             angular.forEach(resp.ret, (v, i) => {
-                system_uuid_self[i].needsync = v;
+                systemUUID_Self[i].needsync = v;
             })
         }).$promise
     }
@@ -355,94 +349,95 @@ export default ($scope, $sys, $source, $interpolate, $q, $compile , $translate, 
 
 
     var map, loadSystemForMap;
+
     $scope.initMap = function() {
         //$scope.showMask = true;
 
         map = bmap.createMap($scope, "bdmap", 168);
-        $interval.cancel( interval_queryOnline);
-        
+        $interval.cancel(interval_queryOnline);
+
         loadSystemForMap = loadSystemForMap || $source.$system.get(
-            angular.extend({ options: "queryformap" }, $scope.od )
+            angular.extend({ options: "queryformap" }, $scope.od)
         ).$promise;
 
-        loadSystemForMap.then(function(resp) { 
+        loadSystemForMap.then(function(resp) {
 
-            map.addOverlay(  createSystemOverlay( resp.ret )  );
+            map.addOverlay(createSystemOverlay(resp.ret));
 
             $scope.showMask = false;
         })
 
     }
 
-    function createSystemOverlay( systemArray ){
-        var  collection =  bmap.createPointCollection( systemArray );
-            
-            collection.addEventListener( "mouseover" ,  pointMouseOver  );
-            collection.addEventListener( "mouseout"  ,  pointMouseOut );
+    function createSystemOverlay(systemArray) {
+        var collection = bmap.createPointCollection(systemArray);
 
-        return  collection ;
+        collection.addEventListener("mouseover", pointMouseOver);
+        collection.addEventListener("mouseout", pointMouseOut);
+
+        return collection;
 
     }
 
 
-    function  pointMouseOut (e){ 
-                var point = e.point  ; 
-                    point.marker.closeInfoWindow(); 
-                     
-                    map.removeOverlay( point.marker); 
-                    
- 
+    function pointMouseOut(e) {
+        var point = e.point;
+        point.marker.closeInfoWindow();
+
+        map.removeOverlay(point.marker);
+
+
     }
     // point moudse over ;
-    var  timeOutGetSystemStatus ;
+    var timeOutGetSystemStatus;
 
-    function pointMouseOver( e ) {
-        var point  = e.point ,
-            system = point.system ; 
+    function pointMouseOver(e) {
+        var point = e.point,
+            system = point.system;
 
-        system.region_name = $scope.regionID_Self[ system.region_id ].name ; 
+        system.region_name = $scope.regionID_Self[system.region_id].name;
 
 
 
-        $timeout.cancel( timeOutGetSystemStatus );
+        $timeout.cancel(timeOutGetSystemStatus);
 
-        timeOutGetSystemStatus = $timeout( function(){
-             $source.$system.status([ system.uuid ] , function( resp ){
+        timeOutGetSystemStatus = $timeout(function() {
+            $source.$system.status([system.uuid], function(resp) {
                 // 获取 单个 系统的在线 状态; 
-                $("#one_system_status").addClass (  resp.ret[0]  ?'fa-circle  text-success' : 'fa-circle text-danger' );
+                $("#one_system_status").addClass(resp.ret[0] ? 'fa-circle  text-success' : 'fa-circle text-danger');
 
-             })
-        },500 )
+            })
+        }, 500)
 
 
-        if( !point.marker ){
-            var marker = new  BMap.Marker( point , bmap.pointOptions );
-            
-            marker.addEventListener('click' , function(){
-                $scope.goto( $scope._$stationState , system );
-            }) 
-            point.marker = marker ;  
+        if (!point.marker) {
+            var marker = new BMap.Marker(point, bmap.pointOptions);
+
+            marker.addEventListener('click', function() {
+                $scope.goto($scope._$stationState, system);
+            })
+            point.marker = marker;
         }
 
-        $templateRequest("app/system_m/map.info_window.html").then( function(html){
-                     
+        $templateRequest("app/system_m/map.info_window.html").then(function(html) {
+
             // s.proj_name = s.proj_name || projName; // ;
             system.create_time = $filter("date")(system.create_time, "yyyy-MM-dd hh:mm:ss");
             // system 类型;
             // system.type =  $sys.stationtype.values[s.type].k ; 
             // var str =  $compile ( $interpolate(html)(system) ) ( $scope ).html();
-   
-            var str =  $compile(  $interpolate( html)(system)  ) ( $scope)[0] ,
 
-                infoWindow = new BMap.InfoWindow(str , bmap.infoWindowOptions ); 
-           
-            point.marker.openInfoWindow(infoWindow); 
-        }) 
-  
-        map.addOverlay( point.marker ); 
+            var str = $compile($interpolate(html)(system))($scope)[0],
+
+                infoWindow = new BMap.InfoWindow(str, bmap.infoWindowOptions);
+
+            point.marker.openInfoWindow(infoWindow);
+        })
+
+        map.addOverlay(point.marker);
     }
 
- 
+
 
 
     return;

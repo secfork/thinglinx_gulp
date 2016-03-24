@@ -1,5 +1,5 @@
  
-export default ($scope, $sys, $source   ) => {
+export default ($scope, $sys, $source , $utils   ) => {
     "ngInject";
   
 
@@ -36,7 +36,7 @@ export default ($scope, $sys, $source   ) => {
 
     $scope.loadPageData = function(pageNo) {
         $scope.showMask = true;
-
+        
         var d = {
             itemsPerPage: $sys.itemsPerPage,
             currentPage: pageNo,
@@ -48,47 +48,18 @@ export default ($scope, $sys, $source   ) => {
             $scope.page = resp;
             $scope.page.currentPage = pageNo;
 
+            $utils.queryAcUnAcSysNum( $scope.page.data , true  );
+
         }, function() {
             $scope.showMask = false;
         });
     };
   
     $scope.loadPageData(1); 
-    var region_ids = [];
-    $scope.collectRegionId = function(region, $last) {
-        region_ids.push(region.id);
-
-        if ($last) {
-
-            getActiveSum(region_ids);
-            getUnActiveSum(region_ids);
-        }
-    }
 
 
-    function getActiveSum(region_ids) {
-        $source.$region.save({
-            pk: "sum",
-            state: 1
-        }, region_ids, function(resp) {
-            resp.ret.forEach(function(v, i) {
-                $("#act_" + v.region_id).text(v.count);
-            })
-        })
-    }
-
-
-    function getUnActiveSum(region_ids) {
-        $source.$region.save({
-            pk: "sum",
-            state: 0
-        }, region_ids, function(resp) {
-            resp.ret.forEach(function(v, i) {
-                $("#unact_" + v.region_id).text(v.count);
-            })
-        })
-    }
-
+  
+  
 
 
     /*

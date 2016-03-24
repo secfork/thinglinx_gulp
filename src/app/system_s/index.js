@@ -1,14 +1,17 @@
-import m_region_ctrl from "./controller";
 
+
+// import system_s_ctrl from "./system_s_ctrl";
+import  system_m_ctrl from "../system_m/system_m_ctrl";
  
 
 
 export default {
 
-    "app.m_region": {
-        url: "m_region",
-        templateUrl: "app/region_m/region.html",
-        controller: m_region_ctrl
+    "app.system_s": {
+        url: "system_s",
+        data: { manage: false },
+        templateUrl: "app/system_s/system_s.html",
+        controller: system_m_ctrl
     }
 
 

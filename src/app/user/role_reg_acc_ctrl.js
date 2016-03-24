@@ -1,4 +1,5 @@
 
+import   objUtils from "../lib/utils/objUtils";
 
 
 export default  ($scope  , $state  , $utils , $source )=>{
@@ -28,7 +29,7 @@ export default  ($scope  , $state  , $utils , $source )=>{
 					if( role ){
 						// 原先的  [ a , b ,c ] 转换为  { a:true, b:true, c:true }
 						var _role = angular.copy( role );
-							_role.privilege = $utils.array2Obj( _role.privilege );
+							_role.privilege = objUtils.array2Obj( _role.privilege );
 		 				$scope.r = _role ; 
 					}else{ 
 						$scope.r =  { privilege:{} , role_category: thatScope.role_category  } ;
@@ -44,7 +45,7 @@ export default  ($scope  , $state  , $utils , $source )=>{
 
 						var  $role = angular.copy( $scope.r ) ;
 
-						$role.privilege = $utils.obj2Array( $role.privilege );
+						$role.privilege = objUtils.obj2Array( $role.privilege );
 
 						// console.log( $role )
 						if( role ) { // 编辑 
@@ -93,8 +94,5 @@ export default  ($scope  , $state  , $utils , $source )=>{
 	}
 
 
-
-
-
-	
+ 	
 }
