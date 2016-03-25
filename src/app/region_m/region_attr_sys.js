@@ -1,0 +1,7 @@
+
+
+
+
+export default ( $scope )=>{
+	"ngInject";
+}

@@ -18,8 +18,8 @@ export default ($modal, $uibModal ,$rootScope , $translate ) => {
      args = (  options,  controller );
 
 
-      alert ;   type="alert"
-      options =  {  options ,  callback  } ;
+      alert ;   type="alert" // alert 时, 有 tempalteUrl 时, note , warn 失效;  
+      options =  {  options ,  callback   } ;
 
 
     
@@ -72,6 +72,7 @@ export default ($modal, $uibModal ,$rootScope , $translate ) => {
           } 
         } 
 
+
         if (options.type == 'modal') {
             if (!options.templateUrl) {
                 alert("无 templateUrl");
@@ -91,7 +92,7 @@ export default ($modal, $uibModal ,$rootScope , $translate ) => {
             openedWin = $uibModal.open( {
                 templateUrl:"app/lib/service/modal.alert.html",
                 scope: modalScope,
-                 backdropClass:'m-b'
+                backdropClass:'m-b'
             })  
         } 
 
@@ -106,7 +107,7 @@ export default ($modal, $uibModal ,$rootScope , $translate ) => {
             openedWin = $modal.open({
                 templateUrl:"app/lib/service/modal.alert.html",
                 scope : modalScope,
-                 backdropClass:'m-b', 
+                backdropClass:'m-b', 
 
             })
 

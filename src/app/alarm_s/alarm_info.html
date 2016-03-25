@@ -1,31 +1,28 @@
- 
+
+
 
 <div class="lt row" style="margin-bottom:0px;">
-       
-        
-        <div class="col-xs-6 p-15 m-b " style="padding-left: 50px;"> 
- 
-            报警Id: {{ :: alarm.id}}<br>
-            触发器Id: {{ ::  alarm.trigger_id}}<br>
-            报警时间:{{ :: alarm.timestamp | date:"yyyy-MM-dd  HH:mm:ss"  }}<br>
-            重要性:{{ ::  $sys.trigger.severity[  alarm.severity ] }}<br>
-            报警描述:{{:: alarm.desc+'afewfagaefafewfagaefafewfagaefafewfagaefafewfagaefafewfagaefafewfagaefafewfagaefafewfagaefafewfagaef'}} <br>
-            类别: {{ :: alarm.class_id}}<br>
-          
-        </div>
-        
-        <div class="col-xs-6">
-            
-            <!-- 触发器:{{ alarm.trigger_id }}<br> -->
-            活跃状态:{{ alarm.active==1?"活跃":"关闭"  }}<br/>
-
-            关闭时间: {{ alarm.close_time | date:"yyyy-MM-dd  HH:mm:ss"     }}<br>
-
-            确认信息: {{ conformMsg.message }}<br>
-           
-            
-            确认人: {{ conformMsg.username }}<br> 
-          
-        </div>
     
+    <div class="col-xs-6 p-15 m-b " style="padding-left: 50px;">
+        报警Id: {{ :: alarm.id}}
+        <br/> 触发器Id: {{ :: alarm.trigger_id}}
+        <br/> 报警时间:{{ :: alarm.timestamp | date:"yyyy-MM-dd HH:mm:ss" }}
+        <br/> 确认人: {{ conformMsg.username }}
+        <br/>   报警描述:{{:: alarm.desc }} 
+
+        <br/> 确认信息: {{ conformMsg.message }}
+        
+        <br/> 
+            
     </div>
+    <div class="col-xs-6">
+        <!-- 触发器:{{ alarm.trigger_id }}<br> -->
+        活跃状态:{{ alarm.active==1?"活跃":"关闭" }}
+         <br/> 重要性:{{ ::  'alarm.severityType.'+ alarm.severity | translate    }}
+        <br/> 关闭时间: {{ alarm.close_time | date:"yyyy-MM-dd HH:mm:ss" }}
+         <br/>   类别: {{ :: alarm.class_id}}
+
+       
+        <br/>
+    </div>
+</div>

@@ -1,25 +1,21 @@
-
- 
-<div class="modal-header" translate > 
-      {{:: title }} 
+<div class="modal-header" translate>
+    {{:: title }}
 </div>
-
-
-
-<div class="modal-body m-b">
+<div class="modal-body m-b" ng-if="!templateUrl">
     <!-- 注释 -->
     <div ng-if="note" class="   m-l-lg">
-        <i class= "fa fa-warning  fa-2x text-warning"  ></i> 
-        <span  translate > {{ :: note }}</span>
+        <i class="fa fa-warning  fa-2x text-warning"></i>
+        <span translate> {{ :: note }}</span>
     </div>
-
     <div ng-if="warn " class=" m-l-lg  text-danger">
-        <i class="fa  fa-exclamation-triangle fa-2x  "></i> 
+        <i class="fa  fa-exclamation-triangle fa-2x  "></i>
         <span translate>  {{ :: warn}} </span>
     </div>
 </div>
-
- 
-<ng-include src="  'app/debris/_modal_footer.html' "></ng-include>
-
-  
+<div class="modal-body  " ng-if="templateUrl" load-mask ng-include=" templateUrl ">
+</div>
+<div class="modal-footer   ">
+    <button class="btn btn-sm btn-primary  w-46 " ng-click=" done( $event ) " translate>
+        {{:: doneText }}
+    </button>
+</div>

@@ -162,37 +162,29 @@ export default ( $scope, $state, $source, $show, $sys, $q, $filter , $utils ) =>
     };
 
     $scope.showAlarmMsg = function(alarm, system_id) {
-        angular.open(
-            {
-            title:"alarm.info",
-            templateUrl: "app/alarm_s/alarm_info.html" ,
 
-            resolve: {
-                    // triger: function(){
-                    //    return  $source.$sysProfTrigger.get({pk:1}).$promise
-                    // }
-                    conformMsg: function($show) {
-                        return $show.alarm.getConformMsg({
-                            ack_id: alarm.ack_id,
-                            system_id: alarm.system_id
-                        }).$promise;
-                    }
-                }
-            },
-            function($scope, $modalInstance, conformMsg) {
-               
-                // $scope.done = $scope.cancel;
-                $scope.alarm = alarm;
-                $scope.conformMsg = conformMsg.ret;
-
-                conformMsg.ret.user_id && $source.$user.get({
-                    pk: conformMsg.ret.user_id
+        // 确认信息; 
+        $show.alarm.getConformMsg({  ack_id: alarm.ack_id, system_id: alarm.system_id } , 
+            function( resp ){
+                var   conformMsg = resp.ret ; 
+                // 确认人 信息; 
+                conformMsg.user_id && $source.$user.get({
+                    pk: conformMsg.user_id
                 }, function(resp) {
-                    $scope.conformMsg.username = resp.ret.username;
-                })
+                    conformMsg.username = resp.ret.username;
 
-            }
-        );
+                    angular.alert( {
+                        title:"alarm.info",
+                        templateUrl: "app/alarm_s/alarm_info.html" ,
+                        alarm: alarm ,
+                        conformMsg: conformMsg 
+                    })
+
+
+                } , $utils.handlerRespErr);  
+            },
+            $utils.handlerRespErr 
+        ); 
     }
 
 

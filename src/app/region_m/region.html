@@ -9,7 +9,7 @@
         <tbody> 
             <tr ng-repeat="  proj  in page.data "  ng-init=" collectRegionId( proj , $last )"  >
                 <td>
-                    <a class="text-info-dk  " ng-click="  goto ( _$nextState ,  proj  , proj ); ">
+                    <a class="text-info-dk  "  ui-sref=" app.m_region_attr.sys(  proj )  "  >
                         {{ proj.name }} 
                     </a>
                     <popwin ng-model="proj" ng-if=" !isShowModul" prop="name" handler=" updateRegion  " />
