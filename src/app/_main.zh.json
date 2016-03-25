@@ -24,12 +24,18 @@
     // 通用按钮, 文字; 
     "text": {
         "search": "搜索",
+        "query":"查询",
+        
         "return": "返回",
 
         "name": "名称",
         "createTime": "创建时间",
         "lastUpdateTime": "最后更新时间",
 
+        "startTime":"起始时间",
+        "endTime":"结束时间",
+
+        "opt":"操作",
         "edit": "编辑",
         "create": "创建",
         "del": "删除",
@@ -50,7 +56,7 @@
         "all": "-全部-",
         "verify": "验证",
 
-
+        // "depict"
         "desc": "备注"
     },
 

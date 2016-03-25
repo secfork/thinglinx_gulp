@@ -3,7 +3,7 @@
 
 
 
-export default ( $scope, $state, $source, $show, $sys, $q, $filter, $modal  ) =>{
+export default ( $scope, $state, $source, $show, $sys, $q, $filter , $utils ) =>{
 
 	"ngInject";
  
@@ -27,8 +27,7 @@ export default ( $scope, $state, $source, $show, $sys, $q, $filter, $modal  ) =>
 
     // 按需加载  system ;
     $scope.loadSys = function() {
-
-        
+ 
         if (!$scope.od.region_id) {
             $scope.systems = [];
             $scope.od.system_id = undefined;
@@ -160,7 +159,100 @@ export default ( $scope, $state, $source, $show, $sys, $q, $filter, $modal  ) =>
                 $scope.alarm = a;
             }
         })
+    };
+
+    $scope.showAlarmMsg = function(alarm, system_id) {
+        angular.open(
+            {
+            title:"alarm.info",
+            templateUrl: "app/alarm_s/alarm_info.html" ,
+
+            resolve: {
+                    // triger: function(){
+                    //    return  $source.$sysProfTrigger.get({pk:1}).$promise
+                    // }
+                    conformMsg: function($show) {
+                        return $show.alarm.getConformMsg({
+                            ack_id: alarm.ack_id,
+                            system_id: alarm.system_id
+                        }).$promise;
+                    }
+                }
+            },
+            function($scope, $modalInstance, conformMsg) {
+               
+                // $scope.done = $scope.cancel;
+                $scope.alarm = alarm;
+                $scope.conformMsg = conformMsg.ret;
+
+                conformMsg.ret.user_id && $source.$user.get({
+                    pk: conformMsg.ret.user_id
+                }, function(resp) {
+                    $scope.conformMsg.username = resp.ret.username;
+                })
+
+            }
+        );
     }
+
+
+   $scope.conformAlarm = function(page, alarm, index, system_id, active) {
+        angular.open(
+            {   title:  "alarm.confirm" , //"alarm.comfirm" ,
+                templateUrl: "app/alarm_s/alarm_confirm.html",
+            },
+            function($scope,   $show) {
+                "ngInject";
+                // $scope.done = $scope.cancel;
+                $scope.alarm = alarm;
+
+                $scope.od = {
+                    message: ""
+                }
+
+                $scope.done = function() {
+
+                    $scope.validForm();
+                    $show.alarm.conform(
+                        angular.extend({
+                            alarm_id: alarm.id,
+                            system_id: alarm.system_id
+                        }, $scope.od),
+                        null,
+                        function(resp) {
+                            $scope.cancel();
+
+                            alarm.active = -1;
+                            alarm.ack_id = resp.ret;
+                            alarm.close_time = new Date();
+
+                            //angular.alert("确认报警成功");
+                            page.total--;
+
+                            if ("a" == active) {
+                                page.data.splice(index, 1);
+                            }
+
+
+                        },
+                        function( resp ) {
+                            $scope.cancel();
+                            $utils.handlerRespErr( resp );
+                        })
+                }
+
+            }
+        );
+
+    }
+
+
+
+
+
+
+
+
 
 
 }

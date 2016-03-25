@@ -2072,7 +2072,7 @@ fieldset[disabled] .i-checks input + i:before {
   transition: all 0.2s;
 }
 .i-checks > span {
-  margin-left: -20px;
+/*  margin-left: -20px;*/
 }
 .i-checks > span .active {
   display: none;
