@@ -1,12 +1,6 @@
-<div style="padding: 0px 8px; "     >
-    <div class="bg-light lter b-b {{ :: before ? 'wrapper-sm' : 'wrapper-md'  }}">
-        <h2 class="m-n font-thin h4">  {{ :: panel.subject }} </h2>
-        <a href="" class="text-xs " ng-if=":: before">
-            <span translate>    text.return   </span>
-            <span class="text-info">  {{ :: before }} </span>
-        </a>
-    </div>
-    <div class="panel panel-default" style="  margin: 16px 8px 0px 8px">
+
+
+    <div class="panel panel-default" style="  margin: 0px 8px; " >
         <div class="panel-heading">
             <span translate> {{ :: panel.title}}  </span>
             <ul class="nav nav-pills pull-right">
@@ -21,11 +15,12 @@
                 -->
         </div>
         <div class="panel-footer text-center " style="min-height:50px;">
+        
             <button ng-repeat="btn  in panel.panelBotButs " class="btn btn-sm  pull-left m-l-sm {{:: btn.classFor }} " ng-click="btn.handler()" translate>
                 {{ :: btn.text }}
             </button>
-            <pagination ng-if="panel.pagger" class="pagination-sm  " total-items="page.total" ng-model="page.currentPage" items-per-page=" $sys.itemsPerPage " ng-change=" loadPageData( page.currentPage   ) " num-pages=" page.numPages " max-size="10" boundary-links="true" rotate="false" first-text="&laquo;" previous-text="&lsaquo;" next-text="&rsaquo;" last-text="&raquo;">
-            </pagination>
+ 
+             <tl-pagger ng-if="panel.pagger" ></tl-pagger>
         </div>
     </div>
-</div>
+ 

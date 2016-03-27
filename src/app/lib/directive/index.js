@@ -16,6 +16,9 @@ translate. instant ();
 import initFrameWorkDirective from "./forameworkDirective";
 
 import panel from "./panel/panel";
+import  subject  from "./panel/subject";
+
+
 import tabpanel from "./panel/tabpanel";
 
 import table from "./table/table";
@@ -44,6 +47,7 @@ export default (module) => {
     initFrameWorkDirective(module);
 
     module.directive("tlPanel", panel)
+        .directive("tlSubject" , subject )
 
         .directive("tlTabPanel", tabpanel)
 
@@ -59,6 +63,11 @@ export default (module) => {
         .directive('mark', mark)
 
         .directive("privilege2text", privilege2text)
+
+
+        .directive("tlPagger" , ()=>{
+            return {  restrict:"E", templateUrl:"app/debris/_pager.html"  }
+        })
 
 
 

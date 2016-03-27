@@ -3246,6 +3246,11 @@ a.text-black:hover {
 .wrapper-xs {
   padding: 5px;
 }
+
+.wrapper-xm {
+  padding: 8px;
+}
+
 .wrapper-sm {
   padding: 10px;
 }

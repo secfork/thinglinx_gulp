@@ -8,6 +8,10 @@ export default ($scope, $sys, $source , $utils   ) => {
 
     $scope.textb = 'done';
 
+    $scope.before = undefined;
+
+    
+
     $scope.page = {};
 
     $scope.panel = {
