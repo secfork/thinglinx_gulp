@@ -32,17 +32,15 @@ export default ( $compile , $translate  )=>{
 
 		link: ( scope , ele , attrs , ctrl  )=>{
 			
-		var  header = [ '<thead class="flip-content">',
-	            '<tr class="background "> ',
-	                '<th ng-repeat=" th in  ',
-	                attrs.theader,
-	                ' " width="{{:: th.w }} "  translate="{{ :: th.text}}">',    
-	                '</th>',
-	            '</tr>',
-	        '</thead>' 
-	        ].join('')
+		var  header = '<thead class="flip-content"><tr class="background "> <th ng-repeat=" th in  '
+	                + attrs.theader
+	                + ' "  width= "{{:: th.w }} "  translate="{{ :: th.text}}"></th> </tr></thead>' ;
+	      
           
-		    ele.wrap('<div class="table-responsive "></div>').addClass("table table-hover table-striped  b-t").prepend(  $compile( header)(scope) );
+		    // ele.wrap('<div class="table-responsive "></div>')
+		    ele.addClass("table table-hover table-striped  b-t")
+		    .prepend(  $compile( header)(scope)  )
+		    .parent().addClass( "table-responsive ");
  
 
 		}

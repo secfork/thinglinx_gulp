@@ -7,7 +7,7 @@
     </tl-panel-inputs>
     <table tl-table theader="tableHeaders">
         <tbody>
-            <tr ng-repeat=" u in page.data" ng-if="!u.is_super_user">
+            <tr ng-repeat=" u in page.data | filter: {is_super_user: 0 }"  >
                 <td>
                     <a ui-sref="app.userdetail({id: u.id })" class="text-info"> {{ u.username }} </a>
                     <popwin ng-model="u" prop="username" handler=" updateUser " />

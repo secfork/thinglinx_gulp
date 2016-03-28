@@ -8,6 +8,9 @@
 
 
 
+
+// scope 中要指明 role_category 的种类; 
+
 export default ($compile,  $sys , $translate ) => {
     "ngInject";
 
@@ -35,9 +38,7 @@ export default ($compile,  $sys , $translate ) => {
     				}).join(" , ");
     				ele.text(x) 
     			}
-
-    			
-
+ 
 
     		})
  			

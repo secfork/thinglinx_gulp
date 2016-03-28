@@ -1,4 +1,7 @@
- 
+.rowgap{
+  padding-left: 15px;
+  padding-right: 15px;
+} 
 
 /*.app-content-body > .wrapper-md {
   padding-bottom: 0px;

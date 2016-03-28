@@ -73,31 +73,50 @@ export default function routerConfig($stateProvider, $urlRouterProvider ) {
         return  x ; 
     } 
 
-    angular.forEach(
-        angular.extend(
-
+    angular.forEach( [
             region_s ,
             system_s,
             alarm_s,
 
             region_m,
-            system_m, 
-          //  createNavGo('model'),
+            system_m,  
 
             devmodel,
             sysmodel,
             
             user ,
-            account ,
-           // createNavGo('user'),
-
-           // createNavGo('account'),
+            account , 
  
             access 
-        ), (config, route) => {
-            $stateProvider.state(route, config);
-        }
-    )
+    
+        ] , ( routes )=>{
+            angular.forEach( routes , ( config , route)=>{
+                $stateProvider.state( route , config );
+            }) 
+        })
+
+
+    // angular.forEach(
+    //     angular.extend(
+    //      region_s ,
+    //         system_s,
+    //         alarm_s,
+
+    //         region_m,
+    //         system_m,  
+
+    //         devmodel,
+    //         sysmodel,
+            
+    //         user ,
+    //         account , 
+ 
+    //         access 
+        
+    //     ), (config, route) => {
+    //         $stateProvider.state(route, config);
+    //     }
+    // )
 
 
 

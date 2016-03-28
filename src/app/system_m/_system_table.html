@@ -48,8 +48,19 @@
                     </td>
      
                     <td>
-                        <a class="text-info-dk" ng-click="goto( _$stationState , das , das )">{{ das.name }}</a>
+
+                        <!-- 
+                            ng-click="goto( _$stationState , das , das )" 
+                            getNextSystemState( das )
+                        --> 
+
+                        <a  class="text-info-dk"  
+                            ui-sref = "{{ ::  getNextSystemState( das ) }}"   >
+                            {{ das.name }}
+                        </a>
+                        
                         <popwin   ng-model="das" pk="uuid" prop="name" handler="updateSystem " />
+
                     </td>
                     <td>{{ :: das.uuid }}</td>
                     <td ng-if="!isRegionAttr"> 

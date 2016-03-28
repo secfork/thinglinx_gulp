@@ -2,7 +2,7 @@
 
 
 
-export default ( $scope )=>{
+export default ( $scope , $stateParams )=>{
 	"ngInject";
 
 

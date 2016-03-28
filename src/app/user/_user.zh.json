@@ -2,11 +2,15 @@
 	"user":{
 		
 		"name":"用户名",
+		"role":"角色",
+		"roleName":"角色名称",
+		"author":"权限",
+
 		"phoneNo":"手机号码",
 		"email":"电子邮箱",
 		"address":"地址",
 
-		"author":"权限",
+		
 
 		"changePass":"更改密码",
 

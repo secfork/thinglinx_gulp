@@ -1,1 +1,28 @@
-region_attr_author.html
+ 
+ 
+    <div class="panel-body no-border   no-padder">
+        <table class=" table table-striped  b-t-none"  tl-table  theader="tableHeader" >
+           
+            <tbody> 
+            
+          <!--    | filter:{ is_super_user: 0 } -->
+
+                <tr ng-repeat="u in page.data  " >
+                    <td>
+                    <!-- #/app/userdetail/232 -->
+                        <a  id="user_{{::u.user_id}}" 
+                            ui-sref="app.userdetail({id: u.user_id })" class="text-info "> 
+                           
+                        </a>
+                    </td>
+                    <td> {{ :: u.role_name}}</td>
+                    <td  privilege2text="u.privilege "  >   </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="panel-footer text-center">
+    	<tl-pagger></tl-pagger>     
+    </div>
+ 

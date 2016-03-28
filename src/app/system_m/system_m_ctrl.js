@@ -1,6 +1,4 @@
-// v0.02;
-
-
+ 
 
 import bmap from "../lib/utils/bmap";
 
@@ -13,14 +11,18 @@ export default ($scope, $sys, $source, $interpolate, $q, $compile, $translate, $
     var isManage = $state.current.data && $state.current.data.manage ,
         isRegionAttr = $state.current.data && $state.current.data.regionAttr ,
         region_id =   $stateParams.id && parseInt(  $stateParams.id  ) ;
-
-
-        console.log( "region attr" , $stateParams )
-
-    
+ 
+ 
     $scope.isManage = isManage ;
     $scope.isRegionAttr = isRegionAttr ;
 
+
+    // 点击 系统名称时 跳转 路径; 
+    $scope.getNextSystemState = ( das )=>{ 
+        return   "app.m_system_attr.basic({uuid:'"+ das.uuid +"'})" ;
+    };
+
+ 
  
 
     $scope.od = { state: undefined  , region_id : region_id  };
