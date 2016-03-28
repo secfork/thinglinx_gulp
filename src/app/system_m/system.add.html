@@ -6,7 +6,7 @@
     <input name="name" tl-input label="system.name" required ng-model="system.name">
 
 <!-- 区域 -->
-    <select name="region" tl-input label="nav.region" ng-model="system.region_id" 
+    <select name="region" ng-if="!isRegionAttr"  tl-input label="nav.region" ng-model="system.region_id" 
             ng-disabled="od.selectRegion" required 
             ng-options="  proj.id  as  proj.name  for  proj   in regions " >
        <!--  <option value="">-请选择区域-</option> -->
@@ -14,7 +14,7 @@
 
 
     <!-- 系统模型 -->
-    <select name="sysmodel" tl-input ng-model="od.systemModel" 
+    <select name="sysmodel"  tl-input   ng-model="od.systemModel" 
             ng-options=" s  as s.name for s in sysModels" 
             label="nav.systemModel" required >
         <!-- <option value="">-请选择系统模型-</option> -->

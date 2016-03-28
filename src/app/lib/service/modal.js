@@ -120,7 +120,7 @@ export default ($modal, $uibModal ,$rootScope , $translate ) => {
             handler( options , controller );
         },
         alert: function(  options ) { 
-           if(   typeof  options === "string" ){
+           if(  ! angular.isObject( options ) ){
               options = { note: options }
            } 
             options.type = "alert";  

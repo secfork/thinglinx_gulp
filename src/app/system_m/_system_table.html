@@ -5,14 +5,14 @@
   <tl-panel-inputs>
         <input tl-panel-input label="text.name" ng-model="od.name" col=" col-lg-2-4 col-sm-6 "></input>
         <input tl-panel-input label="ID" ng-model="od.uuid" col=" col-lg-2-4 col-sm-6 "></input>
-        <select tl-panel-input label="nav.region" ng-model="od.region_id" col=" col-lg-2-4 col-sm-6 " ng-options=" o.id as o.name for o in regions">
+        <select tl-panel-input label="nav.region" ng-if="!isRegionAttr" ng-model="od.region_id" col=" col-lg-2-4 col-sm-6 " ng-options=" o.id as o.name for o in regions">
             <option value="" translate>text.all</option>
         </select>
         <select tl-panel-input label="nav.model" ng-model="od.model" col=" col-lg-2-4 col-sm-6 " ng-options=" o.uuid as o.name for  o in  sysModels ">
             <option value="" translate>text.all</option>
         </select>
         <select tl-panel-input label="system.state" ng-model="od.state" col=" col-lg-2-4 col-sm-6 " 
-        ng-options=" parse(v) as k for (v,k) in  $$lang.system.stateOptions  ">
+                ng-options=" parse(v) as k for (v,k) in  $$lang.system.stateOptions  ">
             <option value="" translate>text.all</option>
         </select>
     </tl-panel-inputs>
@@ -52,7 +52,7 @@
                         <popwin   ng-model="das" pk="uuid" prop="name" handler="updateSystem " />
                     </td>
                     <td>{{ :: das.uuid }}</td>
-                    <td> 
+                    <td ng-if="!isRegionAttr"> 
                         <a class="text-info-dk" 
                         ng-click=" goto( _$projState ,   rg_k_v[ das.region_id] ,  rg_k_v[ das.region_id] ) " >
                                  {{ :: regionID_Self[ das.region_id].name }} </a>

@@ -1,0 +1,6 @@
+<div class="panel-footer text-center " style="min-height:50px;">
+    <button ng-repeat="btn  in panel.panelBotButs " class="btn btn-sm  pull-left m-l-sm {{:: btn.classFor }} " ng-click="btn.handler()" translate>
+        {{ :: btn.text }}
+    </button>
+    <tl-pagger ng-if="panel.pagger"></tl-pagger>
+</div>

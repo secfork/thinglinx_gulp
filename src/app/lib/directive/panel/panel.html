@@ -1,7 +1,7 @@
 
 
-    <div class="panel panel-default" style="  margin: 0px 8px; " >
-        <div class="panel-heading">
+    <div class="panel panel-default" style="  margin: 8px; " >
+        <div class="panel-heading"  ng-if="panel.title" >
             <span translate> {{ :: panel.title}}  </span>
             <ul class="nav nav-pills pull-right">
                 <li>
@@ -14,13 +14,8 @@
                     指令内部 的 dom  结构; 
                 -->
         </div>
-        <div class="panel-footer text-center " style="min-height:50px;">
-        
-            <button ng-repeat="btn  in panel.panelBotButs " class="btn btn-sm  pull-left m-l-sm {{:: btn.classFor }} " ng-click="btn.handler()" translate>
-                {{ :: btn.text }}
-            </button>
- 
-             <tl-pagger ng-if="panel.pagger" ></tl-pagger>
-        </div>
+       
+        <tl-panel-footer></tl-panel-footer>
+
     </div>
  

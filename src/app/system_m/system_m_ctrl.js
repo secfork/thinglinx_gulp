@@ -6,9 +6,20 @@ export default ($scope, $sys, $source, $interpolate, $q, $compile, $translate, $
 
     var thatScope = $scope;
 
-    var isManage = $state.current.data.manage;
+    var isManage = $state.current.data && $state.current.data.manage ,
+        isRegionAttr = $state.current.data && $state.current.data.regionAttr ,
+        region_id =   $stateParams.id && parseInt(  $stateParams.id  ) ;
 
-    $scope.od = { state: undefined };
+
+        console.log( "region attr" , $stateParams )
+
+    
+    $scope.isManage = isManage ;
+    $scope.isRegionAttr = isRegionAttr ;
+
+ 
+
+    $scope.od = { state: undefined  , region_id : region_id  };
     $scope.op = { lm: "list" };
 
     $scope.page = {};
@@ -64,9 +75,7 @@ export default ($scope, $sys, $source, $interpolate, $q, $compile, $translate, $
         $scope.panel.pagger = n == 'list';
         if( isManage ){
               $scope.panel.panelBotButs = (n == "list" ? botButs : []);
-        }
-      
-
+        } 
     })
 
     // 加载 系统模型;   
@@ -77,12 +86,15 @@ export default ($scope, $sys, $source, $interpolate, $q, $compile, $translate, $
 
     // 加载区域  并建立 区域的 id self 索引; 
     $scope.regionID_Self = {};
-    var loadRegion = $source.$region.get({ currentPage: 1 }, function(resp) {
+
+    var loadRegion = !isRegionAttr && $source.$region.get({ currentPage: 1 }, function(resp) {
         $scope.regions = resp.data;
 
         angular.forEach($scope.regions, (v) => {
             $scope.regionID_Self[v.id] = v;
-        })
+        });
+
+
     }).$promise;
 
 
@@ -141,7 +153,7 @@ export default ($scope, $sys, $source, $interpolate, $q, $compile, $translate, $
                 }, $sys.state_inter_time)
             }
             // 查询 是否需要 同步;   
-            queryNeedSync(systemUUids, systemUUID_Self);
+            isManage && queryNeedSync(systemUUids, systemUUID_Self);
 
         })
 
@@ -179,6 +191,8 @@ export default ($scope, $sys, $source, $interpolate, $q, $compile, $translate, $
                 "ngInject";
                 $scope.regions = thatScope.regions;
                 $scope.sysModels = thatScope.sysModels;
+
+                $scope.isRegionAttr = isRegionAttr ;
 
                 $scope.system = {
                     region_id: region_id

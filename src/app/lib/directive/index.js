@@ -17,6 +17,7 @@ import initFrameWorkDirective from "./forameworkDirective";
 
 import panel from "./panel/panel";
 import  subject  from "./panel/subject";
+import  panelfooter from "./panel/panelfooter";
 
 
 import tabpanel from "./panel/tabpanel";
@@ -48,6 +49,7 @@ export default (module) => {
 
     module.directive("tlPanel", panel)
         .directive("tlSubject" , subject )
+        .directive("tlPanelFooter" , panelfooter )
 
         .directive("tlTabPanel", tabpanel)
 

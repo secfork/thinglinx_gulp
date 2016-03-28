@@ -25,7 +25,7 @@ export default {
 
     "app.role": {
         url: "role",
-        template: "<tl-tab-panel load-mask ></tl-tab-panel>",
+        template: "<tl-subject></tl-subject><tl-tab-panel load-mask ></tl-tab-panel>",
         controller: role_ctrl
     } ,
  

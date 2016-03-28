@@ -1,24 +1,16 @@
-<div>
+ 
 
-	<div class="bg-light lter b-b wrapper   "   >
-	        <h2 class="m-n font-thin h4"  translate  >  {{ :: panel.subject }} </h2>
-	        <a href="" class="text-xs "  ng-if="before"> 
-	            <span  translate>   {{:: text.return }} </span>  
-	            <span class="text-info">  boefore </span> 
+<div class=" " style="margin: 8px;"> 
+	<ul class="nav  nav-tabs   m-t-xxs bg-normal"> 
+	    <li ui-sref-active="active"  ng-repeat= "t in  panel.tabs "   >
+	        <a  ui-sref="{{::t.state}}">
+	            <i class=" {{:: t.icon }}"></i>
+	            <span translate="{{ :: t.title}}"> 系统配置 </span>
 	        </a>
-	</div>
+	    </li>
+	</ul>
 
-	<div class="wrapper-md "> 
-		<ul class="nav  nav-tabs   m-t-xxs bg-normal"> 
-		    <li ui-sref-active="active"  ng-repeat= "t in  panel.tabs "   >
-		        <a  ui-sref="{{::t.state}}">
-		            <i class=" {{:: t.icon }}"></i>
-		            <span translate="{{ :: t.title}}"> 系统配置 </span>
-		        </a>
-		    </li>
-		</ul>
-
-		<div ui-view class=" panel panel-default b-t-none    "> </div>
-	</div>
-	
+	<div ui-view class=" panel panel-default b-t-none    "> </div>
 </div>
+	
+ 
