@@ -4,6 +4,13 @@ var path = require('path');
 var gulp = require('gulp');
 var conf = require('./conf');
 
+
+var processConfig = { 
+    append: false 
+
+};
+ 
+
 var $ = require('gulp-load-plugins')({
   pattern: ['gulp-*', 'main-bower-files', 'uglify-save-license', 'del']
 });
@@ -18,6 +25,9 @@ gulp.task('partials', function () {
       spare: true,
       quotes: true
     }))
+
+    .pipe($.preprocess( processConfig ) )  // 移除 调试 调试部分 html ; 
+
     .pipe($.angularTemplatecache('templateCacheHtml.js', {
       module: 'gulpAngular',
       root: 'app'
