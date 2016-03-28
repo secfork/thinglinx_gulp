@@ -1,3 +1,7 @@
+// v0.02;
+
+
+
 import bmap from "../lib/utils/bmap";
 
 
@@ -57,18 +61,19 @@ export default ($scope, $sys, $source, $interpolate, $q, $compile, $translate, $
             { text: "nav.region", w: "20%" },
             { text: "system.state", w: "10%" },
             { text: "text.desc", w: "25%" },
-            { text: "system.stateOptions.1", w: "15%" },
-            { text: "system.sync", w: "15%" },
-            { text: "text.del", w: "15%" },
+            { text: "system.stateOptions.1", w: "5%" },
+            { text: "system.sync", w: "5%" },
+            { text: "text.del", w: "5%" },
         ] : [
             { text: "system.online", w: "5%" },
             { text: "system.name", w: "20%" },
             { text: "ID", w: "20%" },
             { text: "nav.region", w: "20%" },
             { text: "text.desc", w: "25%" }
-        ]
-
-    ;
+        ] ;
+    if( isRegionAttr ){
+        $scope.tableHeaders.splice( 3 , 1)
+    }
  
 
     $scope.$watch("op.lm", function(n) {
@@ -184,7 +189,7 @@ export default ($scope, $sys, $source, $interpolate, $q, $compile, $translate, $
     }
 
 
-    function createSystem(region_id) {
+    function createSystem( ) {
         angular.open({ title: "system.addSystem", templateUrl: "app/system_m/system.add.html" },
 
             function($scope) {
@@ -200,7 +205,6 @@ export default ($scope, $sys, $source, $interpolate, $q, $compile, $translate, $
 
                 $scope.od = {
                     systemModel: undefined,
-                    selectRegion: !!region_id
                 };
 
 

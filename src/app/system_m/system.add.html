@@ -7,7 +7,7 @@
 
 <!-- 区域 -->
     <select name="region" ng-if="!isRegionAttr"  tl-input label="nav.region" ng-model="system.region_id" 
-            ng-disabled="od.selectRegion" required 
+            required 
             ng-options="  proj.id  as  proj.name  for  proj   in regions " >
        <!--  <option value="">-请选择区域-</option> -->
     </select>
