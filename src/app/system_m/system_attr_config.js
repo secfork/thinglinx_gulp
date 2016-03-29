@@ -20,7 +20,51 @@ export default ($scope, $source) => {
 
 
     var   system_uuid = $scope.system.uuid ; 
+    // system 的 network , 或者 gateway 数据; 
+    try {
+        $scope.daserver =  ( angular.fromJson($scope.system.network || {})  ).daserver;
+
+    } catch (e) {
+        console.error(" system . network 字段 不是 json 格式", $scope.system.network);
+    }
+
+    try {
+        $scope.gateway = angular.fromJson($scope.system.gateway || {});
+    } catch (e) {
+        console.error(" system . gateway  字段 不是 json 格式", $scope.system.gateway);
+    }
+
+    //   就 托管 类型 的 DaServer 不用   ticket  =======================  DTU   Ticket  ======================================================
+    //  不需要 ticket 时 , 需要  配置Dtu ; 
+    // ticket  DTU 互斥; 
+
+    $scope.loadSystemModel.then( (resp)=>{
+        var model =  $scope.systemModel  ;  
+        $scope.needDaServer = model.mode == 1  && model.comm_type ==1 ;  // 托管 daserver 类型; 
+        $scope.needTicket = !$scope.needDaServer ;                      // 除了 托管 Daserver 都需要 ticket ;  
+        $scope.needGateWay =  model.mode ==1 && model.comm_type == 2 ;   // 托管 gateway 类型; 
+    });
+
+    // 加载支持的 dtu 驱动;
+    $scope.loadSupportDtus = function() {
+        if ($scope.dutList) return;
+        $source.$driver.get({
+            type: "dtu"
+        }, function(resp) { 
+            $scope.dtuList =  resp.ret ;  
+        });
+    }
   
+    $scope.loadAssignedServer = function(){
+        // 激活的 , assign了 server 的 system ; 
+        if( $scope.system.state  && $scope.daserver.params  ) {
+            $source.$system.getDtuServer({ options: "getassign"  , proj_id : $scope.system.uuid  }, function(resp) {
+                $scope.assignedServer = resp.ret;
+            })
+        }
+    }
+
+
     // 获得 sysmodel 配置项; 
     $scope.$parent.loadProfile = $scope.$parent.loadProfile ||  $source.$sysProfile.get({
         system_model: $scope.system.model
@@ -47,17 +91,7 @@ export default ($scope, $source) => {
         )
 
     };
- 
-
-    //   就 托管 类型 的 DaServer 不用   ticket  =======================  DTU   Ticket  ======================================================
-    //  不需要 ticket 时 , 需要  配置Dtu ; 
-    // ticket  DTU 互斥; 
-
-    $scope.loadSystemModel.then( (resp)=>{
-        var model =  $scope.systemModel  ; 
-        $scope.needTicket = !(model.mode == 1 && model.comm_type == 1);  
-        $scope.needDaServer = !$scope.needTicket ;
-    });
+  
     
     // 解绑, 绑定  ticket ; 
     // 生成 ticket ; //createTicket

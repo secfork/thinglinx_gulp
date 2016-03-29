@@ -5,7 +5,7 @@
         "point": {
             th: ['area', 'offset', 'type', 'type_ex'],
 
-            entity: { 
+            entity: {  // 加上 entity层级 恶心; 
 
                 "params": {
                     "area": 0,
@@ -68,13 +68,13 @@
             }
 
         },
-        "device": {
-            "entity": {
+        "device": { 
+            entity:{
                 "params": {
                     "type": 0
-                }
+                }   
             }
-
+            
         }
 
     }

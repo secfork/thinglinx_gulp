@@ -4,12 +4,12 @@
  
  <!--   $sys.D_modbus[version].protocol -->
 
-<div class="hide" 
- ng-init="   _config =  $sys.device[devModel.driver_id] ;  "></div>
+<div  class="hide" 
+      ng-init="   _config =  extend( {} ,  $sys[devModel.driver_id].device ,  $$lang[devModel.driver_id ].device  )    "></div>
 
- 
- <input tl-wrap
-        label="设备地址"
+ <!-- 设备地址 -->
+ <input tl-input name="address"
+        label="sysModel.address"
         ng-model="D.params.address" 
         type="number" 
         max="254"  
@@ -17,29 +17,27 @@
         placeholder=" 1 - 254 "
         required   ></input>
 
-<select  tl-wrap
+
+<!-- 协议类型 -->
+<select  tl-input name="protocol_type"
            ng-model = "D.params.protocol_type"
-           label="协议类型" 
-           ng-options=" o.v as o.k for  o in _config.protocol "
+           label="sysModel.protocol_type" 
+           ng-options=" parse(v) as k for (v,k) in _config.protocol "
           ></select>
 
-<select tl-wrap 
+<!-- 偏移格式 -->
+<select tl-input name="offset_format" 
       ng-model=" D.params.offset_format"
-      label="偏移格式"
-       ng-options = " o.v as o.k for o in _config.offsetformat"
+      label="sysModel.offset_format"
+       ng-options = " parse(v) as k for (v,k) in _config.offsetformat"
     > 
 </select>
+ 
 
-<!-- <select tl-wrap 
-      ng-model=" D.params.register_length"
-      label="寄存器长度"
-      ng-options = " o.v as o.k for o in _config.reglength"
-    > 
-</select>
- -->
-<input  tl-wrap 
+<!-- 最大包长度 -->
+<input  tl-input name="max_packet_length" 
     ng-model = " D.params.max_packet_length"
-    label="最大包长度"
+    label="sysModel.max_packet_length"
     min="1"
     max="100" 
     type="number"
@@ -47,56 +45,59 @@
 
 ></input>
 
-<input  tl-wrap 
+<!-- 包偏移间隔 -->
+<input  tl-input name="packet_offset" 
     ng-model = " D.params.packet_offset"
-    label="包偏移间隔"
+    label="sysModel.packet_offset"
     min="1"
     max="20"
     type="number"
     required
 
 ></input>
- 
- <select tl-wrap
-         label="整数字节排序"
+
+ <!-- 整数字节排序 -->
+ <select tl-input name="int_order"
+         label="sysModel.int_order"
          ng-model = "D.params.int_order" 
-         ng-options=" o.v as o.k for  o in _config.order_a "
+         ng-options=" parse(v) as k for (v,k) in _config.order_a "
          ></select>
 
- <select tl-wrap
-         label="浮点数字节排序"
+
+
+
+
+<!-- 浮点数字节排序 -->
+ <select tl-input name="float_order"
+         label="sysModel.float_order"
          ng-model = "D.params.float_order" 
-         ng-options=" o.v as o.k for  o in _config.order_a "
+         ng-options=" parse(v) as k for (v,k) in _config.order_a "
          ></select>
 
- <select tl-wrap
-         label="双精度字节排序"
+<!-- 双精度字节排序 -->
+ <select tl-input name="double_order"
+         label="sysModel.double_order"
          ng-model="D.params.double_order" 
-         ng-options=" o.v as o.k for  o in _config.order_b "
+         ng-options=" parse(v) as k for (v,k) in _config.order_b "
 
          ></select>
 
-<select tl-wrap
-         label="64位整数字节排序"
+<!-- 64位整数字节排序 -->
+<select tl-input name="int64_order"
+         label="sysModel.int64_order"
          ng-model="D.params.int64_order"
-         ng-options=" o.v as o.k for  o in _config.order_b "
+         ng-options=" parse(v) as k for (v,k) in _config.order_b "
          ></select>
-
-<select tl-wrap
-         label="校验字节排序"
+         
+<!-- 校验字节排序 -->
+<select tl-input name="crc_order"
+         label="sysModel.crc_order"
          ng-model="D.params.crc_order"
-         ng-options=" o.v as o.k for  o in _config.order_c "
+         ng-options=" parse(v) as k for (v,k) in _config.order_c "
   ></select>
 
 
 
-<!-- 
-  <select tl-wrap
-         label="寄存器字节排序"
-         ng-model="D.params.register_order"
-         ng-options=" o.v as o.k for  o in _config.order_c"
-  ></select>
-
- -->
+ 
 
 

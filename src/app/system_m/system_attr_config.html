@@ -5,15 +5,19 @@ system = {{system }}
 
 <div class="   panel-body  no-padder  ">
     
+ 
 
+<!-- profile  ticket -->
+<div class="col-md-8 col-xs-12  col-md-offset-1     m-b-sm m-t padder-md">
 
-    <!-- profile  ticket -->
-    <div class="col-md-8 col-xs-12  col-md-offset-1     m-b-sm m-t padder-md">
+     <h4 class="">网络参数</h4>
+
+    <form name=" profile" class="form-horizontal form-validation ">
         <!--  profile  配置  -->
         <select tl-input label="sysModel.profile" name="profile" 
-            ng-model="profile" class=" form-control"
+            ng-model="profile" class=" form-control" 
             ng-options="   p as p.name for p in profiles  " 
-            ng-change="toUpdate('profile')" required >
+            ng-change="toUpdate('profile')" required>
         </select>
         <div class="col-md-8 col-md-offset-3">
             <i class="fa  fa-warning  text-success pos-rlt"></i> {{profile.desc}}
@@ -31,18 +35,17 @@ system = {{system }}
                     <i class="fa  fa-thumbs-o-up "></i> <span>保存成功!</span>
             </span>
         </div>
-        <!--  profile  配置 end  -->
-        <!--   就 托管 类型 的 DaServer 不用 box ticker   -->
+        <!--  profile  配置 end  --> 
+        <div ng-if="needTicket" ng-include=" 'app/system_m/system_attr_config_ticket.html' " />
+        
+    </form>
+</div>
 
-        <div ng-if="true"  ng-include=" 'app/system_m/system_attr_config_ticket.html' " />
-       <!--  <div ng-if="needTicket"> -->
-       
-    </div>
 
   
 
     <!--  DaServer -->
-    <div  ng-if="true" ng-include="  'app/system_m/system_attr_config_daserver.html' "  > </div>
+    <div  ng-if="needDaServer"  class="col-md-8 col-md-offset-1  col-xs-12" ng-include="  'app/system_m/system_attr_config_network.html' "  > </div>
 
  
 
@@ -60,9 +63,21 @@ system = {{system }}
     <!--  <div class="panel-body table-responsive no-padder">
           托管模式: ==>  daserver 类型;
          -->
-    <ng-include ng-if=" sysmodel.mode ==1 && sysmodel.comm_type ==2   " src=" 'athena/dastation/_prop_gateway_gateway.html'  "></ng-include>
-    <ng-include ng-if=" sysmodel.devices.length && sysmodel.mode ==1 && sysmodel.comm_type ==2 " src="  'athena/dastation/_prop_gateway_device.html'  "></ng-include>
+
+         
+    <ng-include ng-if=" sysmodel.mode ==1 && sysmodel.comm_type ==2   " 
+                src=" 'athena/dastation/_prop_gateway_gateway.html'  "></ng-include>
+   
+
+    <ng-include ng-if=" sysmodel.devices.length && sysmodel.mode ==1 && sysmodel.comm_type ==2 "
+             src="  'athena/dastation/_prop_gateway_device.html'  "></ng-include>
+
     <div class="line b-b" ng-if="!nT"></div>
+    
+
+
+
+
     <div ng-if=" sysmodel.mode ==1 ">
         <div class="col-md-8 col-xs-12 text-left padder-md">
             <div class="col-md-3  col-xs-6   text-left m-t-sm m-b-sm color-4">

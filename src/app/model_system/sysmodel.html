@@ -20,7 +20,7 @@
         <tbody> 
             <tr ng-repeat="  sm  in page.data | filter:{ name: op.f_n }  "    >
                 <td>
-                    <a class="text-info-dk  " ng-click="  goto ( _$nextState ,  sm  , sm ); ">
+                    <a class="text-info-dk  "  ui-sref ="app.sysmodelattr.info( sm )" >
                            {{ sm.name }} 
                     </a>
                     <popwin ng-model="sm"   prop="name" handler=" updateSysModel  " />

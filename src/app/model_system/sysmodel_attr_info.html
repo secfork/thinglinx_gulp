@@ -1,0 +1,49 @@
+<div class=" panel-body bg-light bg-white text-base">
+    <div class="col-md-6   col-xs-12 no-padder">
+        <div class="list-group">
+            <span class="list-group-item no-border ">
+                ID <span class="pull-right ">{{ :: sysModel.uuid   }}</span>
+            </span>
+            <span class="list-group-item no-border ">
+                <span translate="sysModel.mode">模式</span> 
+                <span class="pull-right" translate > sysModelMode.{{:: sysModel.mode }}  </span>
+            </span>
+            <span class="list-group-item no-border " ng-if=" sysModel.mode == 1 ">
+                 
+                <span translate="sysModel.commType">通信类型</span>
+                <span class="pull-right"  >   {{   $sys.sysModelComType [ sysModel.comm_type ] }}</span>
+            </span>
+            <span class="list-group-item no-border ">
+                
+                <span translate="sysModel.tagNum">变量数量</span>
+                <span class="pull-right">{{ :: sysModel.tag_count }}</span>
+            </span>
+            <span class="list-group-item no-border ">
+                
+                <span translate="sysModel.profileNum">配置项数量 </span>
+                <span class="pull-right">{{ profiles.length  }}</span>
+            </span>
+            <span class="list-group-item no-border ">
+                
+                <span translate="text.createTime">创建时间 </span>
+                <span class="pull-right">{{  ::   sysModel.create_time | date:"yyyy-MM-dd HH:mm Z"   }}</span>
+            </span>
+            <span class="list-group-item no-border ">
+                
+                <span translate="text.lastUpdateTime">最后更新时间  </span>
+                <span class="pull-right">{{  ::  sysModel.create_time | date:"yyyy-MM-dd HH:mm Z"  }}</span>
+            </span>
+            <span class="list-group-item no-border">
+                
+                <span translate="text.desc">备注 </span>
+                <div class="b-a alert m-t-sm" style="color: #a0a0a0;height:100px">  {{  :: sysModel.desc }}
+
+            </div> 
+        </div>
+    </div> 
+</div>
+
+
+<!-- @if append -->
+sysModel = {{sysModel }}
+<!-- @endif-->

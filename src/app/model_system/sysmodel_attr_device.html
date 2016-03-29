@@ -1,0 +1,55 @@
+<div class="panel-body table-responsive no-padder  " load-mask>
+    <table class="  table  table-hover table-striped ">
+        <thead class="flip-content">
+            <tr class="background ">
+                <th width="15%" translate="text.name"> 名称 </th>
+                <th width="15%" translate="nav.systemModel">
+                    系统模型
+                </th>
+                <th width="15%" translate="nav.deviceModel">
+                    设备模型
+                </th>
+                <th width="20%" translate="sysModel.paramsOfConf">配置参数</th>
+                <th width="20%" translate="sysModel.paramsOfNet" > 网络参数</th>
+                <th width="20%" translate="text.desc"> 备注</th>
+                <th width="1%" translate="text.edit"> 编辑 </th>
+                <th width="1%" translate="text.del"> 删除 </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="  sysd  in sysDevices  ">
+                <td> {{sysd.name}} </td>
+                <td> {{sysmodel.name}} </td>
+                <td> {{ devModelKV[ sysd.device_model ] . name }} </td>
+                <td>
+                    <i class="fa fa-android  text-info-dker " 
+                    popover-trigger="mouseenter" 
+                    popover=" {{ jsonString2Text ( sysd.params ) }}"
+                     popover-placement="top"></i>
+                </td>
+                <td>
+                    <i class="fa fa-android  text-info-dker " 
+                    popover-trigger="mouseenter" 
+                    popover=" {{ jsonString2Text ( sysd.networ ) }}" 
+                    popover-placement="top"></i>
+                </td>
+                <td>
+               	 {{sysd.desc}}
+                </td>
+                <td>
+                    <a class="text-info" ng-click="addOrEditDevice( sysdevices , $index , sysd )" 
+                    translate="text.edit"> 编辑</a>
+                </td>
+                <td>
+                    <a class="text-info" ng-click="deleteSysD( sysDevices , sysd , $index )" 
+                    translate="text.del"> 删除</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="panel-footer   ">
+    <button class="btn btn-primary btn-sm w-70    m-l-xs" ng-click=" addOrEditDevice() " token translate="sysModel.addDevice">
+        添加设备
+    </button>
+</div>

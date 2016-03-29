@@ -87,7 +87,14 @@
 
         },
         device:{
+            entity:{
+                params: {
+                    address: 1,
+                    max_packet_length: 150,
+                    packet_offset: 10
+                }
 
+            }
         }
 
     }

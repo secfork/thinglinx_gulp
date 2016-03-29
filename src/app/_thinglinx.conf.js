@@ -1,5 +1,11 @@
 {
     
+
+    // v:k 的时不需要翻译 ,
+    // k :v 的时配置信息; 
+
+
+            
 	// 分页 ; 
     itemsPerPage: 20 ,   
 
@@ -33,8 +39,27 @@
     },
 
 
-    //   
+    // 周期单位 ,  秒 , 分 , 时 ; 
+    timeUnit: {
+        0:"Second", // 秒
+        1:"Minute",
+        2:"Hour"
+    } ,
 
+    // sysModel  device  默认值 ;
+   
+    sysModelDevice: {
+             dev_cycle: 1,
+             cycle_unit: 1,
+             slow_cycle: 1,
+             slow_cycle_unit: 2,
+             dev_timeout: 15,
+             dev_retry: 1,
+             delay: 1,
+         },
+
+
+    
 
 
   	

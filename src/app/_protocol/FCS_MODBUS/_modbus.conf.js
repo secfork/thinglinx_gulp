@@ -84,6 +84,36 @@
 
         device:{
 
+            protocol :{
+                0 : "ModbusRtu",
+                1 : "ModbusTcp"
+            }, 
+            order_a : {
+                0 : "FFH4_FFH3_FFH2_FFH1",
+                1 : "FFH3_FFH4_FFH1_FFH2",
+                2 : "FFH1_FFH2_FFH3_FFH4",
+                4 : "FFH2_FFH1_FFH4_FFH3",
+            },
+
+
+            // endity.parmas ; 
+            entity:{
+               params: { // 驱动部分默认值; 
+                     address: 1,
+                     protocol_type: 0,
+                     offset_format: 0,
+                     // register_length :1 ,
+                     max_packet_length: 64,
+                     packet_offset: 4,
+                     int_order: 0,
+                     int64_order: 0,
+                     float_order: 0,
+                     double_order: 0,
+                     // register_order : 0 ,
+                     crc_order: 0
+                } 
+            }
+            
         }
 
 

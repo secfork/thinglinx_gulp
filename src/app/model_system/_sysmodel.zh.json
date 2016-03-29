@@ -1,22 +1,66 @@
 {
 
-	"sysModel":{
-		"name":"系统模型名称",
-		"profile":"系统配置项",
-		"trigger":"触发器",
+    "sysModel": {
+        "name": "系统模型名称",
+        "profile": "系统配置项",
+        "profileName": "配置项名称",
+
+        "trigger": "触发器",
+        "triggerNum": "触发器数目",
+
+        "addProfile": "添加配置项",
+        "tagNum": "变量数量",
 
 
-		"mode":"模式",
-		"commType":"通信类型",
-		"devNum":"设备个数",
-		"profileNum":"配置项个数",
+        "paramsOfConf": "配置参数",
+        "paramsOfNet": "网络参数",
 
-		"noteDel":"确认要删除该系统模型 %s 吗",
- 
-		"createSysModel":"创建系统模型" ,
+        "mode": "模式",
+        "commType": "通信类型",
+        "devNum": "设备个数",
+        "profileNum": "配置项个数",
 
-		"desc":"xx"
- 
-	}
+
+        "addDevice": "添加设备",
+
+        // sysmodel device 通用; 
+        "dev_name": "设备名称",
+        "dev_cycle": "采样周期",
+        "cycle_unit": "采样周期单位",
+        "slow_cycle": "慢速周期",
+        "slow_cycle_unit": "慢速周期单位",
+        "dev_timeout": "连接超时时间(秒)",
+        "dev_retry": "连接重试次数",
+        "delay": "命令延时(毫秒)",
+
+        // modbus device ;
+        "address": "设备地址",
+        "protocol_type": "协议类型",
+        "offset_format": "偏移格式",
+        "max_packet_length": "最大包长度",
+        "packet_offset": "包偏移间隔",
+        "int_order": "整数字节排序",
+        "float_order": "浮点数字节排序",
+        "double_order": "双精度字节排序",
+        "int64_order": "64位整数字节排序",
+        "crc_order": "校验字节排序",
+
+
+
+
+
+
+
+
+
+        "devModelFirst": "请先创建设备模型",
+
+        "noteDel": "确认要删除该系统模型 %s 吗",
+
+        "createSysModel": "创建系统模型",
+
+        "desc": "xx"
+
+    }
 
 }

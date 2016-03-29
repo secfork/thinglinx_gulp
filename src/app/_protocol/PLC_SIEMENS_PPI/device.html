@@ -1,5 +1,5 @@
   
- <input tl-wrap
+ <input tl-input name="address"
         label="目标地址"
         ng-model="D.params.address" 
         type="number" 
@@ -8,7 +8,7 @@
         placeholder=" 1 - 254 "
         required   ></input>
 
-  <input tl-wrap
+  <input tl-input name="max_packet_length"
         label="最大包长度"
         ng-model="D.params.max_packet_length" 
         type="number" 
@@ -17,7 +17,7 @@
         placeholder=" 1 - 249 "
         required   ></input>
 
- <input tl-wrap
+ <input tl-input name="packet_offset"
         label="包偏移间隔"
         ng-model="D.params.packet_offset" 
         type="number" 

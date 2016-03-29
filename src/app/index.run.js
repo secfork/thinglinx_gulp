@@ -24,6 +24,21 @@ export default function runBlock($rootScope, $state, $stateParams, $sys, $compil
     $rootScope.extend = angular.extend ;
     $rootScope.fromJson = angular.fromJson ;
 
+    var  text_arr ;
+    $rootScope.jsonString2Text = function(jsonString) {
+        text_arr = [];
+
+        $.each(angular.fromJson(jsonString) || {
+            "参数": "无"
+        }, function(i, v) {
+            text_arr.push(i)
+            text_arr.push("=")
+            text_arr.push(v + "; ")
+        })
+        return text_arr.join("");
+
+    }
+
 
     // function(){
     //    modal.open.apply( this,  arguments );
