@@ -15,16 +15,16 @@ export default ( $scope , sysModelResp , $source )=>{
 
 	// 托管 非托管,  daserver getgeway tabs 都不一样; 
 	var basicTabs = [
-			{ title:"info"  ,  state: "app.sysmodelattr.info" ,  icon:" icon icon-screen-desktop "} , 
-			{ title:"profile"  ,  state: "app.sysmodelattr.profile" ,  icon:" icon icon-screen-desktop "} , 
+			{ title:"sysModel.info"  ,  state: "app.sysmodelattr.info" ,  icon:" icon icon-screen-desktop "} , 
+			{ title:"sysModel.sysconf"  ,  state: "app.sysmodelattr.profile" ,  icon:" icon icon-screen-desktop "} , 
 		   
-		    { title:"tag"  ,  state: "app.sysmodelattr.tag" ,  icon:" icon icon-screen-desktop "} , 
-			{ title:"trigger"  ,  state: "app.sysmodelattr.trigger" ,  icon:" icon icon-screen-desktop "}  
+		    { title:"devModel.tag"  ,  state: "app.sysmodelattr.tag" ,  icon:" icon icon-screen-desktop "} , 
+			{ title:"sysModel.trigger"  ,  state: "app.sysmodelattr.trigger" ,  icon:" icon icon-screen-desktop "}  
 	] ,
 	 // device ; 
-	deiveTab =  { title:"device"  ,  state: "app.sysmodelattr.device" ,  icon:" icon icon-screen-desktop "} , 
+	deiveTab =  { title:"nav.device"  ,  state: "app.sysmodelattr.device" ,  icon:" icon icon-screen-desktop "} , 
 	// 托管 gateway 时; 
-	gatewayTab = 	{ title:"gateway"  ,  state: "app.sysmodelattr.gateway" ,  icon:" icon icon-screen-desktop "} ,
+	gatewayTab = 	{ title:"sysModel.gateway"  ,  state: "app.sysmodelattr.gateway" ,  icon:" icon icon-screen-desktop "} ,
 	tabs ;
 
 	// 1 托管, 2 非托管; 

@@ -1,0 +1,51 @@
+
+
+
+
+
+
+
+<form name="form" class=" form-validation form-horizontal "  ng-init=" filterType()    ">
+
+
+
+    <!-- 串口-->
+    <select tl-input name=" t " ng-if="isAdd" ng-model="G.t" 
+            ng-options=" t as t group by T for (t,T) in _$types   " 
+            label=" gateway.serial" required>
+
+        <!--  <option value=""> --请选择网关--</option> -->
+    </select>
+
+    <!-- 波特率  --> 
+    <select tl-input name="baud_rate " ng-model=" D.baud_rate " 
+            ng-options="  k for k in  $sys.gatewayBaudRate " 
+        label=" gateway.baudRate" required>
+        <!--  <option value=""> --请选择波特率--</option> -->
+    </select>
+
+    <!-- 数据位 -->
+    <select tl-input name=" data_bits" ng-model=" D.data_bits " 
+        ng-options="  k for k  in $sys.gatewayDataBits" 
+        label=" gateway.dataBits" required>
+        <!--  <option value=""> --请选择数据位--</option> -->
+    </select>
+
+    <!-- 停止位 -->
+    <select tl-input name="stop_bits " ng-model=" D.stop_bits " 
+        ng-options="  k for k  in $sys.gatewayStopBits" 
+        label=" gateway.stopBits" required>
+        <!--  <option value=""> --请选择停止位--</option> -->
+    </select>
+
+
+    <!-- 校验 -->
+    <select tl-input name=" parity" ng-model=" D.parity " 
+        ng-options="  k  as v  for (k,v)  in  $$lang.gateway.parityType" 
+        label=" gateway.parity" required>
+        <!--   <option value=""> --请选择校验--</option> -->
+    </select>
+    
+    <!-- 延迟(毫秒) -->
+    <input type="number" tl-input name="delay " ng-model="D.delay" label=" gateway.delay">
+</form>

@@ -25,6 +25,9 @@ export default ($scope, $source, $utils, $modal , $sys ) => {
                     }
                 },
                 controller:  function($scope, devModelResp , $modalInstance ) {
+                    
+
+
                     // 是否为 gateway 模式;
                     $scope.isG = sysModel.comm_type == 2;
 
@@ -42,7 +45,8 @@ export default ($scope, $source, $utils, $modal , $sys ) => {
                     // gateway 网络参数 过滤;  bool 是否初始化 params 值;
                     $scope.filterChannel = function(type, bool) {
 
-                        $scope._$channel = t.sysmodel.gateway_default[type];
+                        $scope._$channel = sysModel.gateway_default[type];
+
                         if (bool) {
                             var d;
                             if (type == "ETHERNET") {
@@ -60,7 +64,8 @@ export default ($scope, $source, $utils, $modal , $sys ) => {
                         }
                     }
 
-                    function findDevModel ( devModelId){
+                    // 选择的是 哪个  devModel ; 
+                    function findDevModel ( devModelId ){
                         
                         if(! devModelId){
                             return $scope.devModels[0];

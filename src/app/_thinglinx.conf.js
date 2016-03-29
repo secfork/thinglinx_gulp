@@ -58,9 +58,52 @@
              delay: 1,
          },
 
-
+    // gateway  串口  类型; 
+    serialInterface : [ 'ETHERNET','RS232','RS485','RS422'  ] ,
+    // gateway 通信协议 TCP , UDP ;
+    gatewayProto : ['tcp' , 'udp'] , 
     
+    gatewayTypes: {
+          
+           'RS232_1': "RS232",
+           'RS232_2': "RS232",
+           'RS232_3': "RS232",
+           'RS232_4': "RS232",
 
+           'RS485_1': 'RS485',
+           'RS485_2': 'RS485',
+           'RS485_3': 'RS485',
+           'RS485_4': 'RS485',
+
+           'RS422_1': 'RS422',
+           'RS422_2': 'RS422'
+
+    },
+    // gateway 波特率
+    gatewayBaudRate: [1200, 2400, 4800, 9600, 19200, 38400],
+    // gateway 数据位;
+    gatewayDataBits: [7, 8],
+    // gateway 停止位;
+    gatewayStopBits: [1, 2], 
+    // gateway GPS  distance
+    gatewayGpsDistance: [50, 100, 250, 500],
+    // gateway  GPs 波特率;
+    gatewayGpsBaudRate: [300, 600, 1200, 2400, 4800, 9600, 19200],
+    // gateway  校验 , () // 放到 main.xx.json  中; 
+    // gatewayParity: {
+    //              'none': "无校验",
+    //              'even': "偶校验",
+    //              'odd': "奇校验"
+    //          },
+
+    gatewayEntity: {
+         enable: true,
+         baud_rate: 9600,
+         data_bits: 8,
+         stop_bits: 1,
+         parity: 'none',
+         delay: 10
+    },
 
   	
   	"desc":"xxx"

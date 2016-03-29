@@ -5,6 +5,11 @@
         "profile": "系统配置项",
         "profileName": "配置项名称",
 
+        "info":"模型信息",
+        "sysconf":"系统配置", 
+        "gateway":"网关",
+
+
         "trigger": "触发器",
         "triggerNum": "触发器数目",
 
@@ -60,6 +65,27 @@
         "createSysModel": "创建系统模型",
 
         "desc": "xx"
+
+    },
+
+    "gateway":{
+        
+        "addSerial":"添加串口",
+
+        "serial":"串口",
+        "baudRate":"波特率",
+        "dataBits":"数据位",
+        "stopBits":"停止位",
+        "parity":"校验",
+        "delay":"延迟(毫秒)", 
+        
+
+        "parityType": {
+             "none": "无校验",
+             "even": "偶校验",
+             "odd": "奇校验"
+        }
+
 
     }
 
