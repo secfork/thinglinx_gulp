@@ -18,7 +18,7 @@
                 <td> {{$data.baud_rate}}</td>
                 <td> {{$data.data_bits}}</td>
                 <td> {{$data.stop_bits}}</td>
-                <td> {{$data.parity}}</td>
+                <td translate > {{ 'gateway.parityType.'+ $data.parity }}</td>
                 <td> {{$data.delay}}</td>
                 <td>
                     <a class="text-info m-r-xs" ng-click="c_u_Gateway(  $T , $t , $data  )" 
@@ -26,20 +26,19 @@
                     <a class="text-info m-r-xs"  ng-click="deleteGateway( $T, $t, $data   )" 
                         translate="text.del">移除</a>
                 </td>
-            </tr>
-            <tr>
+            </tr> 
+        </tbody>
+
+        <tbody>
+          <tr>
                 <td colspan=7 class="text-left" ng-if="!canAddPort">
                     <!--jjw btn-sm m-t-sm m-b-sm-->
-                    <button class="btn btn-primary btn-sm w-70 m-l m-t-sm m-b-sm " 
+                    <button class="btn btn-primary btn-sm    " 
                     ng-click=" c_u_Gateway( ) " translate="gateway.addSerial">
                         添加串口
                     </button>
                 </td>
             </tr>
-
-        </tbody>
-
-        <tbody>
           
             <tr>
                 <!--jjw colspan = 3-->

@@ -2,39 +2,24 @@ export default ($scope, $source, $utils, $modal , $sys ) => {
     "ngInject";
 
     var thatScope = $scope;
-    // 加载  sysmodel device ; 
-    $scope.$parent.loadSysDevice = $scope.$parent.loadSysDevice ||
-        $source.$sysDevice.get({ system_model: $scope.sysModel.uuid }, (resp) => {
-            $scope.$parent.sysDevices = resp.ret;
-        }).$promise;
-
-
-
+  
+    
+    $scope.loadSysDevice();
+               
     // create or update  sysDevice ;
     var  sysModel = $scope.sysModel;
-    $scope.addOrEditDevice = function(devices, index, dev) {
-        $modal.open({
-                resolve: {
-                    devModelResp: function() {
-                        $scope.$parent.loadDevModels = $scope.$parent.loadDevModels ||
-                            $source.$deviceModel.get((resp) => {
-                                    
-
-                            }).$promise;
-                        return $scope.loadDevModels;
-                    }
-                },
-                controller:  function($scope, devModelResp , $modalInstance ) {
-                    
-
-
+    $scope.addOrEditDevice = function(devices, dev , index) {
+        $modal.open({ 
+                controller:  function($scope,  $modalInstance ) {
+                     
                     // 是否为 gateway 模式;
                     $scope.isG = sysModel.comm_type == 2;
 
                     $scope.cancel = $modalInstance.dismiss;
-                    $scope.isAdd = true ;
+                    $scope.isAdd =  !dev ; //!true ;
 
-                    $scope.devModels =  devModelResp.ret;
+                    $scope.__proto__ = thatScope ;
+                    // $scope.devModels =  devModelResp.ret;
 
                     if (!$scope.devModels.length ) {
                         angular.alert(  "sysModel.devModelFirst!" );
@@ -67,17 +52,8 @@ export default ($scope, $source, $utils, $modal , $sys ) => {
                     // 选择的是 哪个  devModel ; 
                     function findDevModel ( devModelId ){
                         
-                        if(! devModelId){
-                            return $scope.devModels[0];
-                        }
-                        var  d ; 
-                        $.each( $scope.devModels , (i , v )=>{
-                            if( v.uuid == devModelId){
-                                d = v ;
-                                return false ;
-                            }
-                        })
-                        return d ; 
+                        return  devModelId ? $scope.devModels_KV[ devModelId ] : $scope.devModels[0] ;
+
                     } 
 
                     if ($scope.isAdd) { // 新建;
@@ -117,14 +93,14 @@ export default ($scope, $source, $utils, $modal , $sys ) => {
                         dev.params = angular.fromJson(dev.params || {});
 
                         $scope.D = angular.copy(dev);
-                        $scope.devModel = $scope.devModelKV[$scope.D.device_model];
+                        $scope.devModel =   findDevModel( $scope.D.device_model ) ; // $scope.devModelKV[$scope.D.device_model ];
 
                     }
  
                         // 添加 sysmodel device ;
                     $scope.done = function(btn) {
-                        // 验证表格;
-                        $scope.validForm();
+                        // 验证表格; 写在了 button ngclick 上 因为 step0.1.2 不定 ;
+                        // $scope.validForm();
 
                         // 不是 gateway 删除 gatetway 字段;
                         if (!$scope.isG) {
@@ -133,35 +109,48 @@ export default ($scope, $source, $utils, $modal , $sys ) => {
 
                         var d = angular.copy($scope.D);
 
-                        d.system_model = $scope.sysmodel.uuid,
+                        d.system_model =  sysModel.uuid,
                             d.params = angular.toJson(d.params),
                             d.network = angular.toJson(d.network);
 
-                        if ($scope.isAdd) {
+                        if ($scope.isAdd) { // 新建; 
                             $source.$sysDevice.save(d, function(resp) {
 
                                 d.id = resp.ret;
-                                $scope.sysdevices.push(d);
+                                devices.push(d); 
+                                thatScope.sysDevice_KV[ d.id ] = d ; 
+
                                 $scope.cancel();
 
-                            })
+                            } , $utils.handlerRespErr )
 
                         } else {
                             $source.$sysDevice.put(d, function(resp) {
 
-                                devices[index] = d;
+                                devices[index] = d; 
+                                thatScope.sysDevice_KV[ d.id ] = d ; 
+                                
                                 $scope.cancel();
 
-                            })
+                            } , $utils.handlerRespErr )
                         };
                     };
                 },
                 templateUrl: "app/model_system/sysmodel_attr_device_add.html",
+                resolve:{
+                    devModel: $scope.loadDevModels ,
+                    devices : $scope.loadSysDevice 
+                }
              
             }
         )
     }
 
+
+    // 值 更新 desc 用;  免去更新  sysdevice_KV ;
+    $scope.updateDevice = ( idObj )=>{ 
+        return  $source.$sysDevice.put( idObj ).$promise ;
+    }
 
 
     // 删除  sysdevice ; 
@@ -175,8 +164,11 @@ export default ($scope, $source, $utils, $modal , $sys ) => {
                 id: sysd.id
             }, function() {
                 sysDevices.splice(index, 1);
+
+                delete $scope.sysDevice_KV[ sysd.id ] ;
+
                 next();
-            }, $utils.handlerErr)
+            } , $utils.handlerRespErr)
         })
     }
 

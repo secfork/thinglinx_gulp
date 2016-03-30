@@ -19,13 +19,13 @@
         <tbody>
             <tr ng-repeat="  sysd  in sysDevices  ">
                 <td> {{sysd.name}} </td>
-                <td> {{sysmodel.name}} </td>
-                <td> {{ devModelKV[ sysd.device_model ] . name }} </td>
+                <td> {{ :: sysModel.name}} </td>
+                <td> {{ devModels_KV[ sysd.device_model ].name }} </td>
                 <td>
                     <i class="fa fa-android  text-info-dker " 
-                    popover-trigger="mouseenter" 
-                    popover=" {{ jsonString2Text ( sysd.params ) }}"
-                     popover-placement="top"></i>
+                        popover-trigger="mouseenter" 
+                        popover=" {{ jsonString2Text ( sysd.params ) }}"
+                        popover-placement="top"></i>
                 </td>
                 <td>
                     <i class="fa fa-android  text-info-dker " 
@@ -34,10 +34,12 @@
                     popover-placement="top"></i>
                 </td>
                 <td>
-               	 {{sysd.desc}}
+               	    {{sysd.desc}}
+                  <!--   <popwin ng-model="sysd"  prop="desc"   handler=" updateDevice "   /> -->
+           
                 </td>
                 <td>
-                    <a class="text-info" ng-click="addOrEditDevice( sysdevices , $index , sysd )" 
+                    <a class="text-info" ng-click="addOrEditDevice( sysDevices , sysd , $index )" 
                     translate="text.edit"> 编辑</a>
                 </td>
                 <td>
@@ -49,7 +51,7 @@
     </table>
 </div>
 <div class="panel-footer   ">
-    <button class="btn btn-primary btn-sm w-70    m-l-xs" ng-click=" addOrEditDevice() " token translate="sysModel.addDevice">
+    <button class="btn btn-primary btn-sm w-70    m-l-xs" ng-click=" addOrEditDevice( sysDevices ) " token translate="sysModel.addDevice">
         添加设备
     </button>
 </div>

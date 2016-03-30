@@ -1,71 +1,57 @@
 <div class="modal-header ">
-    <span ng-if="isAdd">添加系统设备</span>
-    <span ng-if="!isAdd">编辑系统设备</span>
+    <span ng-if="isAdd" translate="sysModel.addDevice">添加系统设备</span>
+    <span ng-if="!isAdd" translate="sysModel.editDevice">编辑系统设备</span>
 </div>
 <div class="modal-body  " ng-init="stepx={  step: 0 } ;  ">
     <!--jjw m-b m-t-n-xs-->
     <progressbar value="(stepx.step +1 )* ( isG?34:50) " class="progress-xs m-t-n-xs m-b" type="success"></progressbar>
-    <div ng-show="stepx.step == 0">
-        <form name="step0" class=" form-validation form-horizontal   ">
-            <!--  设备名称 -->
-            <input tl-input name="name" required ng-model="D.name" label="sysModel.dev_name">
-            <!-- 采样周期 -->
-            <input tl-input name="dev_cycle" ng-model="D.dev_cycle" type="number" label="sysModel.dev_cycle" min='1' max="59" required>
-            <!-- 采样周期单位 -->
-            <select tl-input name=" cycle_unit" ng-model="D.cycle_unit" label="sysModel.cycle_unit" ng-options=" parse(k) as v for (k,v) in $sys.timeUnit ">
-            </select>
-            <!-- 慢速周期 -->
-            <input tl-input name=" slow_cycle" ng-model="D.slow_cycle" type="number" label="sysModel.slow_cycle" min='1' max="59" required>
-            <!-- 慢速周期单位 -->
-            <select tl-input name="slow_cycle_unit " ng-model="D.slow_cycle_unit" label="sysModel.slow_cycle_unit" ng-options="parse(k) as v for (k,v) in $sys.timeUnit ">
-            </select>
-            <!-- 连接超时时间(秒) -->
-            <input tl-input name="dev_timeout " ng-model="D.dev_timeout" type="number" label="sysModel.dev_timeout" max='60' min='8' required>
-            <!-- 连接重试次数 -->
-            <input tl-input name=" dev_retry" ng-model="D.dev_retry" type="number" label="sysModel.dev_retry" min="0" max="3" required>
-            <!-- 命令延时(毫秒) -->
-            <input tl-input name="delay " ng-model="D.delay" type="number" label="sysModel.delay" min="0" max="1000" required>
-            <textarea tl-input name=" desc" ng-model="D.desc" label="text.desc"> </textarea>
-        </form>
-    </div>
+    <form name="step0" ng-show="stepx.step == 0" class=" form-validation form-horizontal   ">
+        <!--  设备名称 -->
+        <input tl-input name="name" required ng-model="D.name" label="sysModel.dev_name">
+        <!-- 采样周期 -->
+        <input tl-input name="dev_cycle" ng-model="D.dev_cycle" type="number" label="sysModel.dev_cycle" min='1' max="59" required>
+        <!-- 采样周期单位 -->
+        <select tl-input name=" cycle_unit" ng-model="D.cycle_unit" label="sysModel.cycle_unit" ng-options=" parse(k) as v for (k,v) in $sys.timeUnit ">
+        </select>
+        <!-- 慢速周期 -->
+        <input tl-input name=" slow_cycle" ng-model="D.slow_cycle" type="number" label="sysModel.slow_cycle" min='1' max="59" required>
+        <!-- 慢速周期单位 -->
+        <select tl-input name="slow_cycle_unit " ng-model="D.slow_cycle_unit" label="sysModel.slow_cycle_unit" ng-options="parse(k) as v for (k,v) in $sys.timeUnit ">
+        </select>
+        <!-- 连接超时时间(秒) -->
+        <input tl-input name="dev_timeout " ng-model="D.dev_timeout" type="number" label="sysModel.dev_timeout" max='60' min='8' required>
+        <!-- 连接重试次数 -->
+        <input tl-input name=" dev_retry" ng-model="D.dev_retry" type="number" label="sysModel.dev_retry" min="0" max="3" required>
+        <!-- 命令延时(毫秒) -->
+        <input tl-input name="delay " ng-model="D.delay" type="number" label="sysModel.delay" min="0" max="1000" required>
+        <textarea tl-input name=" desc" ng-model="D.desc" label="text.desc"> </textarea>
+    </form>
     <form name="step1" ng-show="stepx.step == 1" class=" form-validation form-horizontal   ">
-        <select tl-input name=" device_model" ng-model="D.device_model" ng-options="  devm.uuid  as devm.name for  devm in devModels" ng-change="changeModel()" ng-disabled=" !isAdd" label="设备模型">
+        <select tl-input name=" device_model" ng-model="D.device_model" ng-options="  devm.uuid  as devm.name for  devm in devModels" ng-change="changeModel()" ng-disabled=" !isAdd" label="nav.deviceModel">
         </select>
         <!-- 根据 选择的 设备模型  类型 加载 相应的配置  /_dev_[params , networdk]_{driver_type}.html   -->
         <ng-include src=" 'app/_protocol/'+ devModel.driver_id +'/device.html' "></ng-include>
     </form>
     <form name="step2" ng-show=" isG && stepx.step == 2 " class=" form-validation form-horizontal   ">
         <!-- ( comm_type = 2 ) gateway 时 才用 配置 newwork;  -->
-        
-       <!--  <div ng-init="  _$types = [ 'ETHERNET','RS232','RS485','RS422'  ] ; 
+        <!--  <div ng-init="  _$types = [ 'ETHERNET','RS232','RS485','RS422'  ] ; 
                    _proto  = ['tcp' , 'udp'] ;  ">
         </div> -->
-
-        <select tl-input name=" type" 
-                ng-options=" t for t in  $sys.gatewayType " 
-                ng-model=" D.network.type" 
-                label=" 通信类型" 
-                ng-init   = " filterChannel ( D.network.type , false ) "  
-                ng-change = " filterChannel ( D.network.type , true  ) "  >
+        <!-- 通信类型  -->
+        <select tl-input name=" type" ng-options=" t for t in  $sys.serialInterface " ng-model=" D.network.type" label="sysModel.commType" ng-init=" filterChannel ( D.network.type , false ) " ng-change=" filterChannel ( D.network.type , true  ) ">
         </select>
-
-        <div ng-if="  D.network.type == 'ETHERNET' ">
-            <input tl-input name="channel " 
-                    ng-model="D.network.params.channel" label="network" 
-                    tl-default="LAN_1" readonly >
-            <select tl-input name=" " ng-model="D.network.params.proto"
-                label="proto"
-                ng-options="  p for p in $sys.gatewayProto " tl-default="tcp" >
-
+        <div ng-if="  D.network.type == 'ETHERNET' " ng-init=" D.network.params.proto = D.network.params.proto || 'tcp' ">
+            <input tl-input name="channel " ng-model="D.network.params.channel" label="network" tl-default="LAN_1" readonly>
+            <!--  tcp UDP 协议 -->
+            <select tl-input name=" " ng-model="D.network.params.proto" label="gateway.proto" ng-options="  p for p in $sys.gatewayProto ">
             </select>
-            <input tl-input name="ip " ng-model="D.network.params.ip" label="ip" required>
-            <input tl-input name=" port" ng-model="D.network.params.port" label="port" required>
+            <input tl-input name="ip " ng-model="D.network.params.ip" label="IP" required>
+            <!-- 端口 -->
+            <input tl-input name=" port" ng-model="D.network.params.port" label="gateway.port" required>
         </div>
-        
+        <!-- 串口  -->
         <div ng-if="  D.network.type != 'ETHERNET' ">
-            <select tl-input name=" channel" 
-                ng-model="D.network.params.channel" 
-                ng-options=" k as k  for (k,v) in  _$channel " label="串口" required>
+            <select tl-input name=" channel" ng-model="D.network.params.channel" ng-options=" k as k  for (k,v) in  _$channel " label="gateway.serial" required>
                 <option value="">请选择串口</option>
             </select>
         </div>
@@ -74,27 +60,27 @@
 <div class="modal-footer  text-center">
     <!--  step 0 -->
     <div ng-show="stepx.step == 0">
-        <button class="btn btn-default btn-sm btn-primary w-60" ng-click="validForm('step0') ;stepx.step = 1 ; ">下一步</button>
-        <button class="btn btn-default btn-sm btn-primary w-60" ng-click="cancel()">取消</button>
+        <button class="btn btn-default btn-sm btn-primary w-60" ng-click="validForm('step0') ;stepx.step = 1 ; " translate="text.nextStep">下一步</button>
+        <button class="btn btn-default btn-sm btn-primary w-60" ng-click="cancel()" translate="text.cancel">取消</button>
     </div>
     <!--  gateway 第二步 -->
     <div ng-show="stepx.step == 1 && isG ">
-        <button class="btn btn-primary btn-sm   w-60" ng-click="stepx.step = 0 ;   ">上一步</button>
-        <button class="btn btn-primary btn-sm   w-60" ng-click=" validForm('step1') ; stepx.step = 2   ; ">下一步</button>
-        <button class="btn btn-default btn-sm btn-primary w-60" ng-click="cancel()">取消</button>
+        <button class="btn btn-primary btn-sm   w-60" ng-click="stepx.step = 0 ; " translate="text.upward"> 上一步</button>
+        <button class="btn btn-primary btn-sm   w-60" ng-click=" validForm('step1') ; stepx.step = 2   ; " translate="text.nextStep">下一步</button>
+        <button class="btn btn-default btn-sm btn-primary w-60" ng-click="cancel()" translate="text.cancel">取消</button>
     </div>
     <!--  gateway 第三步 -->
     <div ng-show="stepx.step == 2 && isG ">
-        <button class="btn btn-primary btn-sm   w-60" ng-click="stepx.step = 1 ;   ">上一步</button>
-        <button class="btn btn-primary btn-sm   w-60" ng-click=" validForm('step2');done();" ng-show="isAdd">创建</button>
-        <button ng-show="!isAdd" class="btn btn-primary btn-sm   w-60" ng-click=" validForm('step2');done();">更新</button>
-        <button class="btn btn-default btn-sm btn-primary w-60" ng-click="cancel()">取消</button>
+        <button class="btn btn-primary btn-sm   w-60" ng-click="stepx.step = 1 ;   " translate="text.upward">上一步</button>
+        <button class="btn btn-primary btn-sm   w-60" ng-click=" validForm('step2');done();" ng-show="isAdd" translate="text.create" token >创建</button>
+        <button ng-show="!isAdd" class="btn btn-primary btn-sm   w-60" ng-click=" validForm('step2');done();" translate="text.update" token >更新</button>
+        <button class="btn btn-default btn-sm btn-primary w-60" ng-click="cancel()" translate="text.cancel">取消</button>
     </div>
     <!--  非 gate way  第二步  -->
     <div ng-show="stepx.step == 1 && !isG ">
-        <button class="btn btn-primary btn-sm   w-60" ng-click="stepx.step = 0 ;   ">上一步</button>
-        <button class="btn btn-primary btn-sm   w-60" ng-click=" validForm('step1');done();" ng-show="isAdd">创建</button>
-        <button ng-show="!isAdd" class="btn btn-primary btn-sm   w-60" ng-click=" validForm('step1');done();">更新</button>
-        <button class="btn btn-default btn-sm btn-primary w-60" ng-click="cancel()">取消</button>
+        <button class="btn btn-primary btn-sm   w-60" ng-click="stepx.step = 0 ;   " translate="text.upward">上一步</button>
+        <button class="btn btn-primary btn-sm   w-60" ng-click=" validForm('step1');done();" ng-show="isAdd" translate="text.create" token >创建</button>
+        <button ng-show="!isAdd" class="btn btn-primary btn-sm   w-60" ng-click=" validForm('step1');done();" translate="text.update" token >更新</button>
+        <button class="btn btn-default btn-sm btn-primary w-60" ng-click="cancel()" translate="text.cancel">取消</button>
     </div>
 </div>

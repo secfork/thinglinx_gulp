@@ -22,6 +22,15 @@ export  default {
 			return  x ; 
 		}
 
+		, copyProp : ( obj , ...props)=>{
+			var c = {};
+			props.forEach(function(v, i, t) {
+                c[v] = angular.copy(obj[v]);
+            });
+            return c;
+
+		}
+
 
 
 }

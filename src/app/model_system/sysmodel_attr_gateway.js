@@ -21,12 +21,12 @@ export default ( $scope  , $sys , $modal , $source )=>{
         S.canAddPort = 0;
 
         // 监视 还能否添加串口;
-        S.$watch('GateWay', function(n, o) {
+        S.$watchCollection('GateWay', function(n, o) {
             var n = 0;
             angular.forEach(S.GateWay, function(v, i, t) {
-                i != 'GPS' && (S.canAddPort = n++ == 7)
+                i != 'GPS' && (S.canAddPort = n++ == 9 )
             })
-        }, true)
+        })
 
 
 
@@ -113,6 +113,9 @@ export default ( $scope  , $sys , $modal , $source )=>{
         }
 
         S.saveGateWay = function() {
+
+            console.log( 111111111 ,  S.GateWay )
+
             $source.$sysModel.put({
                 uuid: S.sysModel.uuid,
                 gateway_default: angular.toJson(S.GateWay)

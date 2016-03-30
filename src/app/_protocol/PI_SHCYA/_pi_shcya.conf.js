@@ -3,6 +3,10 @@
 
  
     "PI_SHCYA": { 
+
+        
+
+
         "point": {
             "th": ["app_address", "type_id", "infor_address"],
             "entity": {

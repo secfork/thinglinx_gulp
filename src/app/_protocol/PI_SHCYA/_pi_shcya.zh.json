@@ -1,8 +1,18 @@
 {
-	"devModel":{
+
+
+	"PI_SHCYA":{
+		
+		// point
 		"app_address":"公共地址",
 		"type_id":"类型标识",
-		"infor_address":"信息体地址"
+		"infor_address":"信息体地址",
+		// device 
+		"linkAddress" : "链路地址",
+
+
+		"point":{},
+		"device":{}
 
 	}
 
