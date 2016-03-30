@@ -59,39 +59,69 @@
          },
 
 
-    // trigger  触发源 ;
-    "triggerOrigin": {
-        "0" : "ThingLinx Cloud" 
-         //   jjw 去掉Remote Gateway
-         //  , 1: "Remote Gateway"
-    },
 
-    // trigger 行为; 
-    "triggerAction" : {
-        alarm: "Alarm"
+    trigger:{
 
-        // , "event": "Event",
-        // , "task" : "Task"
-    },
+        entity:{ 
+            type:1 ,
+            origin:0 , //  非托管的只有  0 ;
 
-    triggerOP : [">", "<", "==", ">=", "<=", "!=", "&", "|", "xor"],
-    triggerVerb: ['and', 'or'],
+            conditions:undefined ,
+            action: "alarm" ,
+            severity: 1 ,
+            class_id: 1
 
-    trigger_conditon_entigy : { //verb : null,
-        exp: {
-            left: {
-                fn: 'PV',
-                args: null
-            }, //   fn: pv  || null ; 
-            op: ">=",
-            right: {
-                fn: 'PV',
-                args: null
+        },
+
+        conditon_entigy : { //verb : null,
+            exp: {
+                left: {
+                    fn: 'PV',
+                    args: null
+                }, //   fn: pv  || null ; 
+                op: ">=",
+                right: {
+                    fn: 'PV',
+                    args: null
+                }
             }
-        }
+        },
+
+         // trigger  触发源 ;
+        "origin": {
+            "0" : "ThingLinx Cloud" 
+             //   jjw 去掉Remote Gateway
+             //  , 1: "Remote Gateway"
+        },
+        // trigger 行为; 
+        "action" : {
+            alarm: "Alarm"
+
+            // , "event": "Event",
+            // , "task" : "Task"
+        },
+        // action 时 默认参数;  即使是 int 会在 ygf node后台转成 str ;
+        actionParams :{
+            class_id : "1",
+            severity : "0" 
+        },
+
+        eventParams:{
+
+        },
+        TaskParams:{
+
+        }, 
+
+        op : [">", "<", "==", ">=", "<=", "!=", "&", "|", "xor"],
+        class_id:[ "0","1","2","3","4","5","6","7","8","9" ],
+
+        verb: ['and', 'or']
+
     },
 
-
+   
+ 
 
 
     // gateway  串口  类型; 

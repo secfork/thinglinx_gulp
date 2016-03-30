@@ -89,8 +89,8 @@ export default ( $scope, $source, $modal, $state, $q, $sys, $utils  )=>{
 
 
 
-    $scope.deleteTrigger = function(i, t) {
-        $scope.confirmInvoke({
+    $scope.deleteTrigger = function( t , i ) {
+        angular.confirm({
             title: "删除触发器: " + t.name,
             warn: "确认要删除该触发器吗?"
         }, function(n) {
@@ -100,12 +100,12 @@ export default ( $scope, $source, $modal, $state, $q, $sys, $utils  )=>{
             }, function(resp) {
                 $scope.page.data.splice(i, 1);
                 n();
-            }, n)
+            }, $utils.handlerRespErr )
         })
     }
 
     // 创建 , 编辑 触发器;
-    $scope.c_u_Trigger = function(add_OR_i, trigger) {
+    $scope.c_u_Trigger = function( trigger , index) {
         if (!$scope.profiles.length) {
             angular.alert("请先创建 系统配置!");
             $state.go('app.model.sysprofile');
@@ -113,24 +113,33 @@ export default ( $scope, $source, $modal, $state, $q, $sys, $utils  )=>{
         }
 
         $modal.open({
-            templateUrl: "app/model_system/sysmodel_attr_trigger_add.html",
-            //                jjw
+            templateUrl: "app/model_system/sysmodel_attr_trigger_add.html", 
             size: "lg",
             controller: function($scope, $modalInstance, $source, $sys ) {
                 var a, b, c, i;
-                $scope.isAdd = i = add_OR_i == 'create',
+                $scope.isAdd = i = !trigger ,
+
                     $scope.__proto__ = S,
-                    $scope.$modalInstance = $modalInstance;
+                    $scope.cancel = $modalInstance.dismiss ;
 
                 if (i) { // 创建;
-                    $scope.T = a = {
-                        profile: S.op.profile_id , // puuid,
-                        conditions: [angular.copy($sys.trigger_c)],
-                        params: {}
-                    };
+                    $scope.T = a =  angular.extend( 
+                            { profile: S.op.profile_id } , 
+                            $sys.trigger.entity,
+                            { conditions: [ $sys.trigger.conditon_entigy ] } 
+                        )
+
+ 
                 } else {
                     $scope.T = a = angular.copy(trigger);
                 }
+
+
+                // 初始化 trigger的 params 参数; 
+                $scope.initActionParams  = ( params )=>{ 
+                    $scope.T.params = $scope.T.params || angular.copy( params); 
+
+                };
 
                 $scope.done = function() {
                     var x = angular.copy($scope.T),
@@ -170,17 +179,16 @@ export default ( $scope, $source, $modal, $state, $q, $sys, $utils  )=>{
                         $source.$sysProfTrigger.put(x, function(resp) {
                             condition_parmas_tojson(x);
 
-                            $scope.page.data[add_OR_i] = x;
+                            $scope.page.data[index] = x;
                             $scope.cancel();
                         })
                     }
                 }
 
                 $scope.appendVerb = function() {
-                    var verb = a.conditions.length ? $sys.trigger.verb_default : null;
-                    a.conditions.push(angular.extend({
-                        verb: verb
-                    }, angular.copy($sys.trigger_c)));
+                    var verb = a.conditions.length ? 'or' : null;
+
+                    a.conditions.push(angular.extend({  verb: verb } , $sys.trigger.conditon_entigy)  );
                 }
 
                 $scope.delVerb = function(index) {

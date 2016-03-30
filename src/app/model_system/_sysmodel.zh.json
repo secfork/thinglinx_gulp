@@ -6,17 +6,17 @@
         "profile": "系统配置项",
         "profileName": "配置项名称",
 
-        "info":"模型信息",
-        "sysconf":"系统配置", 
-        "gateway":"网关",
+        "info": "模型信息",
+        "sysconf": "系统配置",
+        "gateway": "网关",
 
-        "tagName":"变量名称",
+        "tagName": "变量名称",
 
-        "log_cycle":"日志间隔(秒)",
-        "logType":"日志类型",
-        "save_log":"保存日志",
-        "scale":"缩放", 
- 
+        "log_cycle": "日志间隔(秒)",
+        "logType": "日志类型",
+        "save_log": "保存日志",
+        "scale": "缩放",
+
 
         "addProfile": "添加配置项",
         "tagNum": "变量数量",
@@ -32,7 +32,7 @@
 
 
         "addDevice": "添加设备",
-        "editDevice":"编辑设备",
+        "editDevice": "编辑设备",
 
         // sysmodel device 通用; 和 modbus device 通用 翻译; 
         "dev_name": "设备名称",
@@ -56,32 +56,32 @@
         "int64_order": "64位整数字节排序",
         "crc_order": "校验字节排序",
 
- 
-        
+
+
 
         "devModelFirst": "请先创建设备模型",
 
         "noteDel": "确认要删除该系统模型 %s 吗",
 
-        "warnDelTag":"删除模型变量: %s ? 删除变量将会丢失此变量的全部历史数据!",
+        "warnDelTag": "删除模型变量: %s ? 删除变量将会丢失此变量的全部历史数据!",
 
         "createSysModel": "创建系统模型",
 
 
         "log_type": {
-                 //                "RAW": "保存原始记录",
-                 //                "CHANGED": "只在变化时存储" 
-                 "RAW": "周期保存",
-                 "CHANGED": "变化时保存" 
+            //                "RAW": "保存原始记录",
+            //                "CHANGED": "只在变化时存储" 
+            "RAW": "周期保存",
+            "CHANGED": "变化时保存"
         },
-        "log_period":{
-            
-            "60":"1分钟",
-            "300":"5分钟",
-            "600":"10分钟",
-            "900":"15分钟",
-            "1800":"30分钟",
-            "3600":"60分钟"
+        "log_period": {
+
+            "60": "1分钟",
+            "300": "5分钟",
+            "600": "10分钟",
+            "900": "15分钟",
+            "1800": "30分钟",
+            "3600": "60分钟"
         },
 
 
@@ -89,51 +89,60 @@
 
     },
 
- 
-
-    "gateway":{
-        
-        "addSerial":"添加串口",
-        "port":"端口",
-        "proto":"协议",
 
 
-        "serial":"串口",
-        "baudRate":"波特率",
-        "dataBits":"数据位",
-        "stopBits":"停止位",
-        "parity":"校验",
-        "delay":"延迟(毫秒)", 
-        
+    "gateway": {
+
+        "addSerial": "添加串口",
+        "port": "端口",
+        "proto": "协议",
+
+
+        "serial": "串口",
+        "baudRate": "波特率",
+        "dataBits": "数据位",
+        "stopBits": "停止位",
+        "parity": "校验",
+        "delay": "延迟(毫秒)",
+
 
         "parityType": {
-             "none": "无校验",
-             "even": "偶校验",
-             "odd": "奇校验"
+            "none": "无校验",
+            "even": "偶校验",
+            "odd": "奇校验"
         }
- 
-    } ,
+
+    },
+
 
     "trigger":{
 
         "name": "触发器",
+        "number":"数值",
         "num": "触发器数目",
+        "xx":"x"
+    },
+
+    "triggerConf": {
+
 
         "type": {
-                "0": "状态持续触发",
-                "1": "状态变化触发"
+            "0": "状态持续触发",
+            "1": "状态变化触发"
         },
-        
-          "severity": {
-                 "0": "不确定的", //"Indeterminate",
-                 "1": "紧急的", //"Critical ",
-                 "2": "重要的", //"Major ",
-                 "3": "一般的", //"Minor ",
-                 "4": "警告"  //"Warning",
-                 // , "5":"Cleared"
-             },
 
-        "xx":"x"
+
+        "severity": {
+            "0": "不确定的", //"Indeterminate",
+            "1": "紧急的", //"Critical ",
+            "2": "重要的", //"Major ",
+            "3": "一般的", //"Minor ",
+            "4": "警告" //"Warning",
+                // , "5":"Cleared"
+        },
+
+
+        "xx": "x"
     }
 
 }

@@ -1,7 +1,24 @@
 export default (module) => {
 
 
-    module.directive(
+    module
+    .directive("tlDefault" , ()=>{
+        "ngInject";
+        return {
+            restrict:"A",
+            require:"?ngModel",
+            link:function( scop , ele , attrs , modelCtrl ){
+
+            }
+
+        }
+
+
+
+    })
+
+
+    .directive(
         'uiModule', ['MODULE_CONFIG', 'uiLoad', '$compile',
             function(MODULE_CONFIG, uiLoad, $compile) {
                 return {

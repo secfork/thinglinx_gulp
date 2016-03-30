@@ -87,6 +87,27 @@ export default ($translate, $modalStack, $rootScope, $sys, $source) => {
 
         loasSystemPageData:function(){
             
+        } ,
+
+        triggerConditions: (c)=>{
+            var conditions = angular.copy(c);
+
+                if (angular.isString(conditions)) {
+
+                    conditions = angular.fromJson(conditions);
+                    console.log(conditions)
+                }
+
+                var arr = [],
+                    exp;
+                $.each(conditions, function(i, v) {
+                    exp = v.exp;
+                    arr.push(v.verb || "");
+                    arr.push(exp.left.args);
+                    arr.push(exp.op);
+                    arr.push(exp.right.args);
+                })
+                return arr.join(" ");
         }
 
 
