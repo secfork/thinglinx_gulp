@@ -11,6 +11,7 @@ export default function runBlock($rootScope, $state, $stateParams, $sys, $compil
     $rootScope.$sceHtml = $sce.trustAsHtml;
     $rootScope.$session = $sessionStorage;
     $rootScope.fromJson = angular.fromJson;
+    $rootScope.instant  = $translate.instant ;
 
     $rootScope.$sys = $sys;  
     window.sys = $sys ;

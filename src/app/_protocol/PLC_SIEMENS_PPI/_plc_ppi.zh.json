@@ -1,6 +1,14 @@
 {
     "PLC_SIEMENS_PPI": {
 
+        // point 部分 和 modbu 通用;
+
+        // device 部分; 其他部分 和 modubls 通用; 
+        "address":"目标地址", 
+
+
+
+
         "point": {
 
             "area": {

@@ -1,6 +1,8 @@
+
+
 {
 
-
+    // devmodel  ,和 point 公共部分| 常用部分( modbus )  翻译; 
     "devModel": { 
         "addModel": "添加设备模型",
         "editModel":"编辑设备模型",
@@ -14,6 +16,7 @@
         // point 字段; 
         "poll":"轮询方式",
         "packet":"独立分包", 
+
         // 需要和 数据库中定义的 字段同名;  
         "area":"数据区",
         "offset": "偏移地址",
@@ -59,6 +62,66 @@
             "1": "LowByte"
         }
         
+    } ,
+
+    "FCS_MODBUS": {
+ 
+        "point": {
+            // 数据区 
+            "area": {
+                "0": "CO区",
+                "1": "DI区",
+                "2": "HR区",
+                "3": "AI区"
+            },
+
+            "access": {
+                "0": "只读",
+                "1": "只写",
+                "2": "可读写"
+            },
+
+           // access:  //zh.point.access , 
+
+            "type": {
+                "0": "Bool",
+                "1": "Char",
+                "2": "Byte",
+                "3": "Short",
+                "4": "Word",
+                "5": "Int",
+                "6": "DWord",
+                "7": "Float",
+                "8": "BCD码",
+                "9": "Int64",
+                "10": "UInt64",
+                "11": "Double",
+                "12": "String",
+                "13": "Buffer"
+
+            }
+
+        },
+        "device":{
+            "offsetformat": {
+                "0" : "10进制",
+                "1" : "Modbus格式"
+            },
+            "order_b": {
+                "0" : "正序",
+                "1" : "逆序"
+            },
+            "order_c":{
+                "0" : "高前低后",
+                "1" : "低前高后"
+            }
+
+
+        }
+
     }
+ 
+ 
+
 
 }

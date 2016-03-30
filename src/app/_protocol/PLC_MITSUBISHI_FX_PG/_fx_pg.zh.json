@@ -1,10 +1,14 @@
 {
-    
-    
-
 
 
     "PLC_MITSUBISHI_FX_PG": {
+        // point 翻译 和 modbus 常用部分 公用;
+
+
+        // device 
+        "deviceNo":"设备型号",
+
+
         "point": {
             "area": {
                 "0": "X-开关量输入",

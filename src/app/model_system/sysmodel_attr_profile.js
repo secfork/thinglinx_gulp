@@ -3,7 +3,7 @@ export default ($scope , $source , $utils ) => {
 
     var thatScope = $scope ; 
 
-    $scope.loadProfile.then(() => {
+    $scope.loadProfile().then(() => {
 
     	var  profiles = $scope.$parent.profiles ;
 
@@ -59,8 +59,7 @@ export default ($scope , $source , $utils ) => {
             })
         }
 
-
-
+ 
     })
  
 }

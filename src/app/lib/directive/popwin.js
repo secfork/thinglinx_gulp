@@ -1,5 +1,9 @@
 
+/*
 
+id 默认 时  ;
+其他id 指定到  pk ; 
+*/
 
 export  default ( $compile, $templateCache, $http  , $utils )=>{
     "ngInject";

@@ -1,7 +1,7 @@
 
 <div class="modal-footer">  
         <button class="btn btn-sm btn-primary  w-46 " ng-click=" done( $event ) "  token=2000  translate>
-        	 {{:: doneText }}
+        	 {{:: doneText || 'text.done' }}
         </button> 
-        <button class="btn btn-sm  btn-default w-46 "  ng-click=" cancel(  ) "  translate > {{:: cancelText }} </button>
+        <button class="btn btn-sm  btn-default w-46 "  ng-click=" cancel(  ) "  translate > {{:: cancelText || 'text.cancel' }} </button>
 </div> 

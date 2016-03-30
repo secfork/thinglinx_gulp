@@ -1,0 +1,14 @@
+<div class="modal-header ">
+    <span ng-if="isAdd">添加变量</span>
+    <span ng-if="!isAdd">编辑变量</span>
+</div>
+
+<div class="modal-body  "  load-mask >
+	<form name="form" class=" form-validation form-horizontal   ">
+
+		<div ng-include  src = " 'app/model_system/sysmodel_attr_tag_log.html' " ></div>
+
+	</form>
+</div>
+
+<ng-include src=" 'app/debris/_modal_footer.html' "></ng-include>

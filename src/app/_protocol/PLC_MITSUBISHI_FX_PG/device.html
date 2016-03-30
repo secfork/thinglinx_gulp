@@ -4,8 +4,10 @@
 驱动描述：    
 
  -->  
+
+ <!--  设备型号 -->
  <select tl-input  name="type"
-        label="设备型号"
+        label="PLC_MITSUBISHI_FX_PG.deviceNo"
         ng-model="D.params.type"  
 
         ng-options = " o.v as o.k for  o in [ {k:'FX1S' , v:0} , {k:'FX2N' , v:1} ]"

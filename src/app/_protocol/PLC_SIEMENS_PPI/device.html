@@ -1,6 +1,9 @@
   
+
+
+  <!-- 链路地址-->
  <input tl-input name="address"
-        label="目标地址"
+        label="PLC_SIEMENS_PPI.address"
         ng-model="D.params.address" 
         type="number" 
         max="254"  
@@ -8,8 +11,10 @@
         placeholder=" 1 - 254 "
         required   ></input>
 
+
+  <!-- 最大包长度-->
   <input tl-input name="max_packet_length"
-        label="最大包长度"
+        label="sysModel.max_packet_length"
         ng-model="D.params.max_packet_length" 
         type="number" 
         max="249"  
@@ -17,8 +22,11 @@
         placeholder=" 1 - 249 "
         required   ></input>
 
+
+
+  <!-- 包偏移间隔-->
  <input tl-input name="packet_offset"
-        label="包偏移间隔"
+        label="sysModel.packet_offset"
         ng-model="D.params.packet_offset" 
         type="number" 
         max="20"  

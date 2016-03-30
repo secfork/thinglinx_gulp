@@ -58,6 +58,42 @@
              delay: 1,
          },
 
+
+    // trigger  触发源 ;
+    "triggerOrigin": {
+        "0" : "ThingLinx Cloud" 
+         //   jjw 去掉Remote Gateway
+         //  , 1: "Remote Gateway"
+    },
+
+    // trigger 行为; 
+    "triggerAction" : {
+        alarm: "Alarm"
+
+        // , "event": "Event",
+        // , "task" : "Task"
+    },
+
+    triggerOP : [">", "<", "==", ">=", "<=", "!=", "&", "|", "xor"],
+    triggerVerb: ['and', 'or'],
+
+    trigger_conditon_entigy : { //verb : null,
+        exp: {
+            left: {
+                fn: 'PV',
+                args: null
+            }, //   fn: pv  || null ; 
+            op: ">=",
+            right: {
+                fn: 'PV',
+                args: null
+            }
+        }
+    },
+
+
+
+
     // gateway  串口  类型; 
     serialInterface : [ 'ETHERNET','RS232','RS485','RS422'  ] ,
     // gateway 通信协议 TCP , UDP ;
@@ -104,6 +140,10 @@
          parity: 'none',
          delay: 10
     },
+
+    // 支持 的 点 类型;  
+    tagType: ['Analog', 'Digital'] ,
+
 
   	
   	"desc":"xxx"
