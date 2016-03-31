@@ -1,40 +1,58 @@
 <div class="modal-header ">
-    <span ng-if="isAdd" translate="sysModel.addDevice">添加系统设备</span>
-    <span ng-if="!isAdd" translate="sysModel.editDevice">编辑系统设备</span>
+
+    <span   translate="device.{{ isAdd?'add':'edit' }}">添加系统设备</span>
+
+
 </div>
 <div class="modal-body  " ng-init="stepx={  step: 0 } ;  ">
     <!--jjw m-b m-t-n-xs-->
     <progressbar value="(stepx.step +1 )* ( isG?34:50) " class="progress-xs m-t-n-xs m-b" type="success"></progressbar>
     <form name="step0" ng-show="stepx.step == 0" class=" form-validation form-horizontal   ">
         <!--  设备名称 -->
-        <input tl-input name="name" required ng-model="D.name" label="sysModel.dev_name">
+        <input tl-input name="name" required ng-model="D.name" label="device.dev_name">
+
         <!-- 采样周期 -->
-        <input tl-input name="dev_cycle" ng-model="D.dev_cycle" type="number" label="sysModel.dev_cycle" min='1' max="59" required>
+        <input tl-input name="dev_cycle" ng-model="D.dev_cycle" type="number" label="device.dev_cycle" min='1' max="59" required>
+
         <!-- 采样周期单位 -->
-        <select tl-input name=" cycle_unit" ng-model="D.cycle_unit" label="sysModel.cycle_unit" ng-options=" parse(k) as v for (k,v) in $sys.timeUnit ">
+        <select tl-input name=" cycle_unit" ng-model="D.cycle_unit" label="device.cycle_unit" ng-options=" parse(k) as v for (k,v) in $sys.timeUnit ">
         </select>
+
         <!-- 慢速周期 -->
-        <input tl-input name=" slow_cycle" ng-model="D.slow_cycle" type="number" label="sysModel.slow_cycle" min='1' max="59" required>
+        <input tl-input name=" slow_cycle" ng-model="D.slow_cycle" type="number" label="device.slow_cycle" min='1' max="59" required>
+
         <!-- 慢速周期单位 -->
-        <select tl-input name="slow_cycle_unit " ng-model="D.slow_cycle_unit" label="sysModel.slow_cycle_unit" ng-options="parse(k) as v for (k,v) in $sys.timeUnit ">
+        <select tl-input name="slow_cycle_unit " ng-model="D.slow_cycle_unit" label="device.slow_cycle_unit" ng-options="parse(k) as v for (k,v) in $sys.timeUnit ">
         </select>
+
         <!-- 连接超时时间(秒) -->
-        <input tl-input name="dev_timeout " ng-model="D.dev_timeout" type="number" label="sysModel.dev_timeout" max='60' min='8' required>
+        <input tl-input name="dev_timeout " ng-model="D.dev_timeout" type="number" label="device.dev_timeout" max='60' min='8' required>
+
         <!-- 连接重试次数 -->
-        <input tl-input name=" dev_retry" ng-model="D.dev_retry" type="number" label="sysModel.dev_retry" min="0" max="3" required>
+        <input tl-input name=" dev_retry" ng-model="D.dev_retry" type="number" label="device.dev_retry" min="0" max="3" required>
+
         <!-- 命令延时(毫秒) -->
-        <input tl-input name="delay " ng-model="D.delay" type="number" label="sysModel.delay" min="0" max="1000" required>
+        <input tl-input name="delay " ng-model="D.delay" type="number" label="device.delay" min="0" max="1000" required>
+
         <textarea tl-input name=" desc" ng-model="D.desc" label="text.desc"> </textarea>
     </form>
+
     <form name="step1" ng-show="stepx.step == 1" class=" form-validation form-horizontal   ">
-        <select tl-input name=" device_model" ng-model="D.device_model" ng-options="  devm.uuid  as devm.name for  devm in devModels" ng-change="changeModel()" ng-disabled=" !isAdd" label="nav.deviceModel">
+
+        <select tl-input name=" device_model" ng-model="D.device_model"
+                ng-options="  devm.uuid  as devm.name for  devm in devModels"
+                ng-change="changeModel()" ng-disabled=" !isAdd"
+                label="nav.deviceModel">
         </select>
+
+
         <!-- 根据 选择的 设备模型  类型 加载 相应的配置  /_dev_[params , networdk]_{driver_type}.html   -->
         <ng-include src=" 'app/_protocol/'+ devModel.driver_id +'/device.html' "></ng-include>
     </form>
+
     <form name="step2" ng-show=" isG && stepx.step == 2 " class=" form-validation form-horizontal   ">
         <!-- ( comm_type = 2 ) gateway 时 才用 配置 newwork;  -->
-        <!--  <div ng-init="  _$types = [ 'ETHERNET','RS232','RS485','RS422'  ] ; 
+        <!--  <div ng-init="  _$types = [ 'ETHERNET','RS232','RS485','RS422'  ] ;
                    _proto  = ['tcp' , 'udp'] ;  ">
         </div> -->
         <!-- 通信类型  -->
@@ -56,7 +74,9 @@
             </select>
         </div>
     </form>
+
 </div>
+
 <div class="modal-footer  text-center">
     <!--  step 0 -->
     <div ng-show="stepx.step == 0">

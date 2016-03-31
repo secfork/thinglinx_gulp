@@ -5,6 +5,7 @@ export default ($scope, $source, $utils, $modal , $sys ) => {
   
     
     $scope.loadSysDevice();
+    $scope.loadDevModels();
                
     // create or update  sysDevice ;
     var  sysModel = $scope.sysModel;

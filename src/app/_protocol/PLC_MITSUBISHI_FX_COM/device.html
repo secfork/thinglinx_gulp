@@ -1,0 +1,48 @@
+<!--
+设备厂商：
+驱动ID：
+驱动描述：
+
+ -->
+
+<!--  PLC型号   -->
+
+
+<div  class="hide"  ng-init=" _config = extend( {} ,  $sys.PLC_MITSUBISHI_FX_COM.device ,
+                                                      $$lang.PLC_MITSUBISHI_FX_COM.device  )  "  > </div>
+
+<select tl-input  name="type"
+        label="PLC_MITSUBISHI_FX_COM.type"
+        ng-model="D.params.type"
+
+        ng-options = " o.v as o.k for  o in [   {k:'FXon' , v:0} ,
+        										{k:'FX,FX2c' , v:1} ,
+        										{k:'FX2n' , v:2} ,
+        										{k:'FX3u' , v:3}
+        ]"
+
+        required   ></select>
+
+<!--  传输控制步骤   -->
+<select tl-input name="format"
+        label="PLC_MITSUBISHI_FX_COM.format"
+        ng-model="D.params.format"
+
+        ng-options = " o.v as o.k for  o in [ {k:'格式1（无CR,LF）' , v:0} , {k:'格式4（有CR,LF）' , v:1} ]"
+
+        required   ></select>
+
+
+<!--  和校验   -->
+<select tl-input name="sum"
+        label="PLC_MITSUBISHI_FX_COM.sum"
+        ng-model="D.params.sum"
+
+        ng-options = " o.v as o.k for  o in [ {k:'无校验' , v:0} , {k:'有校验' , v:1} ]"
+
+        required   ></select>
+
+
+
+
+

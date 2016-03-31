@@ -2,41 +2,41 @@
 
 
 
-export default ( $scope  ,$source  , $utils ) =>{
+export default ( $scope  ,$source  , $utils ) => {
 	"ngInject";
     var thatScope = $scope ;
 	$scope.op = {}
 
 	$scope.panel = {
 
-		subject: "nav.systemModel", 
-		title:"nav.systemModel",  
-        
-        panelBotButs: [ 
-            {  text: "sysModel.createSysModel", 
+		subject: "nav.systemModel",
+		title:"nav.systemModel",
+
+        panelBotButs: [
+            {  text: "sysModel.create",
                classFor: " btn-primary",
-               handler: createSysModel     
+               handler: createSysModel
           }
-        ] 
-	}
- 
+        ]
+	};
+
     $scope.tableHeaders = [
-        { text: "text.name", w: "20%"}, 
-        { text: "sysModel.mode",  w: "20%"  },  
-        {  text: "sysModel.commType",  w: "20%" }, 
-        {  text: "text.createTime",  w: "20%" }, 
-        {  text: "text.lastUpdateTime",  w: "20%" }, 
-        {  text: "sysModel.devNum",  w: "20%" }, 
-        {  text: "sysModel.profileNum",  w: "20%" }, 
-        {  text: "text.desc",   w: "20%"  },  
+        { text: "text.name", w: "20%"},
+        { text: "sysModel.mode",  w: "20%"  },
+        {  text: "sysModel.commType",  w: "20%" },
+        {  text: "text.createTime",  w: "20%" },
+        {  text: "text.lastUpdateTime",  w: "20%" },
+        {  text: "sysModel.devNum",  w: "20%" },
+        {  text: "sysModel.profileNum",  w: "20%" },
+        {  text: "text.desc",   w: "20%"  },
         {  text: "text.del",  w: "15%"  }
     ]
 
 
-    // 创建系统模型; 
+    // 创建系统模型;
 	function createSysModel() {
-        angular.open( 
-            { title: "sysModel.createSysModel" , templateUrl:"app/model_system/sysmodel.add.html" } ,
+        angular.open(
+            { title: "sysModel.create" , templateUrl:"app/model_system/sysmodel.add.html" } ,
              function(  $scope ){
                 "ngInject";
                 $scope.sm = { mode:1 , comm_type : 1 };
@@ -66,7 +66,7 @@ export default ( $scope  ,$source  , $utils ) =>{
 	}
 
     $scope.updateSysModel = function( idobj ){
-        return $source.$sysModel.put(null, idobj).$promise; 
+        return $source.$sysModel.put(null, idobj).$promise;
     }
 
     $scope.delSysModel = function(sm , index ){
@@ -77,24 +77,24 @@ export default ( $scope  ,$source  , $utils ) =>{
                 $source.$sysModel.delete({
                     uuid: sm.uuid
                 }, function(resp) {
-                    $scope.page.data.splice(index, 1); 
+                    $scope.page.data.splice(index, 1);
                     next();
                 }, $utils.handlerErr )
             })
-        
+
 
     }
 
 
 	// 加载系统模型;
 
-	$scope.showMask = true ; 
+	$scope.showMask = true ;
 
 	$source.$sysModel.get(  function(resp) {
    		$scope.showMask = false ;
         $scope.page =  {
                 data: resp.ret
-            }   
+            }
         $scope.showMask = false;
     }, $utils.handlerErr );
 

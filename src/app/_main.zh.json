@@ -23,11 +23,11 @@
         "device":"设备"
     },
 
-    // 通用按钮, 文字; 
+    // 通用按钮, 文字;
     "text": {
         "search": "搜索",
         "query":"查询",
-            
+
         "unit":"单位",
         "type":"类型",
         "offset":"偏差",
@@ -45,6 +45,7 @@
         "opt":"操作",
         "edit": "编辑",
         "create": "创建",
+        "add":"添加",
         "del": "删除",
         "update": "更新",
         "reset": "复位",
@@ -65,27 +66,30 @@
 
         "nextStep":"下一步",
         "upward":"上一步",
-        
+
+
+        "confParams":"配置参数",
+        "netParams": "网络参数",
 
         // "depict"
         "desc": "备注"
     },
 
-    // systemmodel 模式  mode ; 
+    // systemmodel 模式  mode ;
     "sysModelMode": {
         "1": "托管模式",
         "2": "非托管模式"
     },
 
     // sysmodel  支持的 通信类型  comm_type , 和 system 的 system的 网络类型  不用翻译 ,
-    //   在 thinglinx.config.js 中配置; 
+    //   在 thinglinx.config.js 中配置;
     // "sysModelCommType":{
     //     "1":"DAServer"
 
     // },
 
 
-    //   通用 下拉选项 ;   select options 
+    //   通用 下拉选项 ;   select options
 
     "options": {
         "yesno": {
@@ -95,7 +99,7 @@
     },
 
 
-    // 区域  权限说明 ; 
+    // 区域  权限说明 ;
 
     "regionPermission": {
         "READ_DATA": {
@@ -137,7 +141,7 @@
 
     },
 
-    // 账户权限说明; 
+    // 账户权限说明;
     "accountPermission": {
         "REGION_MANAGE": { "desc": "区域管理", "text": "区域管理" },
         "MODEL_MANAGE": { "desc": "模型管理", "text": "模型管理" },
@@ -146,7 +150,7 @@
 
     },
 
-    //  角色分类; 
+    //  角色分类;
     "roleType": {
         "0": "账户角色",
         "1": "区域角色"
@@ -173,7 +177,7 @@
 
 
 
-    // 错误 提示; 
+    // 错误 提示;
 
     "err": {
 

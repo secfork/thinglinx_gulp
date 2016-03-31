@@ -1,0 +1,25 @@
+{
+
+  "PLC_MITSUBISHI_FX_COM":{
+
+      "type":"PLC型号",
+
+      "format":"传输控制步骤",
+
+      "sum":"和校验",
+
+
+      "point":{
+
+
+      },
+
+      "device":{
+
+      }
+
+
+  }
+
+
+}

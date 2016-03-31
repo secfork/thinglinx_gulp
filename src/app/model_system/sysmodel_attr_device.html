@@ -9,8 +9,8 @@
                 <th width="15%" translate="nav.deviceModel">
                     设备模型
                 </th>
-                <th width="20%" translate="sysModel.paramsOfConf">配置参数</th>
-                <th width="20%" translate="sysModel.paramsOfNet" > 网络参数</th>
+                <th width="20%" translate="text.confParams">配置参数</th>
+                <th width="20%" translate="text.netParams" > 网络参数</th>
                 <th width="20%" translate="text.desc"> 备注</th>
                 <th width="1%" translate="text.edit"> 编辑 </th>
                 <th width="1%" translate="text.del"> 删除 </th>
@@ -22,28 +22,28 @@
                 <td> {{ :: sysModel.name}} </td>
                 <td> {{ devModels_KV[ sysd.device_model ].name }} </td>
                 <td>
-                    <i class="fa fa-android  text-info-dker " 
-                        popover-trigger="mouseenter" 
+                    <i class="fa fa-android  text-info-dker "
+                        popover-trigger="mouseenter"
                         popover=" {{ jsonString2Text ( sysd.params ) }}"
                         popover-placement="top"></i>
                 </td>
                 <td>
-                    <i class="fa fa-android  text-info-dker " 
-                    popover-trigger="mouseenter" 
-                    popover=" {{ jsonString2Text ( sysd.networ ) }}" 
+                    <i class="fa fa-android  text-info-dker "
+                    popover-trigger="mouseenter"
+                    popover=" {{ jsonString2Text ( sysd.networ ) }}"
                     popover-placement="top"></i>
                 </td>
                 <td>
                	    {{sysd.desc}}
                   <!--   <popwin ng-model="sysd"  prop="desc"   handler=" updateDevice "   /> -->
-           
+
                 </td>
                 <td>
-                    <a class="text-info" ng-click="addOrEditDevice( sysDevices , sysd , $index )" 
+                    <a class="text-info" ng-click="addOrEditDevice( sysDevices , sysd , $index )"
                     translate="text.edit"> 编辑</a>
                 </td>
                 <td>
-                    <a class="text-info" ng-click="deleteSysD( sysDevices , sysd , $index )" 
+                    <a class="text-info" ng-click="deleteSysD( sysDevices , sysd , $index )"
                     translate="text.del"> 删除</a>
                 </td>
             </tr>
@@ -51,7 +51,8 @@
     </table>
 </div>
 <div class="panel-footer   ">
-    <button class="btn btn-primary btn-sm w-70    m-l-xs" ng-click=" addOrEditDevice( sysDevices ) " token translate="sysModel.addDevice">
+    <button class="btn btn-primary btn-sm w-70    m-l-xs" ng-click=" addOrEditDevice( sysDevices ) " token
+              translate="device.add">
         添加设备
     </button>
 </div>

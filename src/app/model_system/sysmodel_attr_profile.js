@@ -1,21 +1,21 @@
 export default ($scope , $source , $utils ) => {
     "ngInject";
 
-    var thatScope = $scope ; 
+    var thatScope = $scope ;
 
     $scope.loadProfile().then(() => {
 
     	var  profiles = $scope.$parent.profiles ;
 
 
-        $scope.addSysProfile = function() {  
+        $scope.addSysProfile = function() {
             angular.open({
-            		title:"sysModel.addProfile",
+            		title:"profile.add",
 	                templateUrl: "app/model_system/sysmodel_attr_profile_add.html"
 	            },
- 				function($scope, $modalInstance) { 
+ 				function($scope, $modalInstance) {
                     "ngInject";
-                    $scope.P = {}; 
+                    $scope.P = {};
                     $scope.done = function() {
                         // 验证表格;
                         $scope.validForm();
@@ -26,7 +26,7 @@ export default ($scope , $source , $utils ) => {
                             $scope.P.create_time = new Date();
                             //$scope.p.create_time = $filter("date")( new Date() , '2015-07-07T00:33:54.000Z' )  ;
                             // $scope.p.create_time =  $filter("date")( new Date() , 'yyyy-MM-07T00:33:54.000Z' )  ;
-                            profiles.push(  $scope.P ); 
+                            profiles.push(  $scope.P );
                             $scope.cancel();
                         })
                     }
@@ -52,14 +52,14 @@ export default ($scope , $source , $utils ) => {
                     // if ($scope.odp.puuid == p.uuid) {
                     //     $scope.odp.puuid = $scope.profiles[0] && $scope.profiles[0].uuid;
                     // }
- 
+
                     n();
 
                 },  $utils.handlerErr )
             })
         }
 
- 
+
     })
- 
+
 }

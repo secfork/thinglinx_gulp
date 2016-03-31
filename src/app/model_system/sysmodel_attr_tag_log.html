@@ -2,11 +2,15 @@
 
 
 
+
 <input tl-input name="name " ng-if=" !isAdd " disabled ng-model="L.name" label="text.name">
 
+
+
+<!-- 保存日志 -->
 <select tl-input name="log_type " ng-init="L.log_type = L.save_log? L.log_type : undefined " 
 		ng-options='  k as v for (k,v) in $$lang.sysModel.log_type' 
-		ng-model="L.log_type" label="保存日志" 
+		ng-model="L.log_type" label="sysModel.save_log" 
 		ng-change=" L.save_log =  L.log_type ? 1: 0 " >
     <option value=""> --不保存日志-- </option>
 </select>

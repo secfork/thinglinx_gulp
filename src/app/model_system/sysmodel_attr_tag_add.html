@@ -1,34 +1,36 @@
 
 <div class="modal-header ">
-    <span ng-if="isAdd">添加变量</span>
-    <span ng-if="!isAdd">编辑变量</span>
+    <span  translate="tag.{{:: isAdd?'addTag':'editTag'  }}" >添加变量</span>
+     
 </div>
 
 
 <div class="modal-body  "  load-mask >
     <form name="form_tag" class=" form-validation form-horizontal   ">
 
+
+        <!-- 设备 -->
         <div ng-if="isManageMode ">
             <select ng-options=" o as o.name  for  o in sysDevices   " 
                 tl-input name="dev " ng-model=" op.dev " 
-                label="设备" ng-change=" loadPoint( op.dev ) " required >
+                label="nav.device" ng-change=" loadPoint( op.dev ) " required >
 
-                <option value="">--请选择设备--</option>
-            </select>
-            <!--jjw 注释-->
-            <!--&lt;!&ndash;@if append &ndash;&gt;-->
-            <!--op.point" ={{op.point}}-->
-            <!--&lt;!&ndash;@endif &ndash;&gt;-->
-            <select ui-jq="chosen" tl-input name=" point" label="connect 点" ng-model="op.point" 
+                <!-- <option value="">--请选择设备--</option> -->
+            </select> 
+
+           <!--  connect 点 -->
+            <select ui-jq="chosen" tl-input name=" point" label="tag.connect" ng-model="op.point" 
                     ui-refresh="points" ng-change=" copyName() " 
                     id="7fa574fa44awe" 
                     k="name" v="id&name" required >
 
-                <option value="">--请选择点--</option>
+                <option value="" translate="tag.select">--请选择点--</option>  
             </select>
         </div>
-        <!-- tag -->
+
+        <!-- 名称 -->
         <input tl-input name="name " ng-model="T.name" ng-disabled=" !isAdd" label="text.name" required>
+       
        
         <select tl-input name=" type" ng-model="T.type" 
             ng-init=" T.type = T.type || 'Analog' "

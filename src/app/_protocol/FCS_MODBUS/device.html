@@ -1,65 +1,65 @@
  <!--
  0 =  D  modbus 类型;
  -->
- 
+
  <!--   $sys.D_modbus[version].protocol -->
 
-<div  class="hide" 
-      ng-init="   _config =  extend( {} ,  $sys[devModel.driver_id].device ,  $$lang[devModel.driver_id ].device  )    "></div>
+<div  class="hide"
+      ng-init="   _config =  extend( {} ,  $sys.FCS_MODBUS.device ,  $$lang.FCS_MODBUS.device  )    "></div>
 
  <!-- 设备地址 -->
  <input tl-input name="address"
-        label="sysModel.address"
-        ng-model="D.params.address" 
-        type="number" 
-        max="254"  
-        min="1" 
+        label="device.address"
+        ng-model="D.params.address"
+        type="number"
+        max="254"
+        min="1"
         placeholder=" 1 - 254 "
-        required   ></input>
+        required   />
 
 
 <!-- 协议类型 -->
 <select  tl-input name="protocol_type"
            ng-model = "D.params.protocol_type"
-           label="sysModel.protocol_type" 
+           label="device.protocol_type"
            ng-options=" parse(v) as k for (v,k) in _config.protocol "
           ></select>
 
 <!-- 偏移格式 -->
-<select tl-input name="offset_format" 
+<select tl-input name="offset_format"
       ng-model=" D.params.offset_format"
-      label="sysModel.offset_format"
+      label="device.offset_format"
        ng-options = " parse(v) as k for (v,k) in _config.offsetformat"
-    > 
+    >
 </select>
- 
+
 
 <!-- 最大包长度 -->
-<input  tl-input name="max_packet_length" 
+<input  tl-input name="max_packet_length"
     ng-model = " D.params.max_packet_length"
-    label="sysModel.max_packet_length"
+    label="device.max_packet_length"
     min="1"
-    max="100" 
+    max="100"
     type="number"
     required
 
-></input>
+/>
 
 <!-- 包偏移间隔 -->
-<input  tl-input name="packet_offset" 
+<input  tl-input name="packet_offset"
     ng-model = " D.params.packet_offset"
-    label="sysModel.packet_offset"
+    label="device.packet_offset"
     min="1"
     max="20"
     type="number"
     required
 
-></input>
+/>
 
  <!-- 整数字节排序 -->
  <select tl-input name="int_order"
-         label="sysModel.int_order"
-         ng-model = "D.params.int_order" 
+         label="device.int_order"
+         ng-model = "D.params.int_order"
          ng-options=" parse(v) as k for (v,k) in _config.order_a "
          ></select>
 
@@ -69,15 +69,15 @@
 
 <!-- 浮点数字节排序 -->
  <select tl-input name="float_order"
-         label="sysModel.float_order"
-         ng-model = "D.params.float_order" 
+         label="device.float_order"
+         ng-model = "D.params.float_order"
          ng-options=" parse(v) as k for (v,k) in _config.order_a "
          ></select>
 
 <!-- 双精度字节排序 -->
  <select tl-input name="double_order"
          label="sysModel.double_order"
-         ng-model="D.params.double_order" 
+         ng-model="D.params.double_order"
          ng-options=" parse(v) as k for (v,k) in _config.order_b "
 
          ></select>
@@ -88,7 +88,7 @@
          ng-model="D.params.int64_order"
          ng-options=" parse(v) as k for (v,k) in _config.order_b "
          ></select>
-         
+
 <!-- 校验字节排序 -->
 <select tl-input name="crc_order"
          label="sysModel.crc_order"
@@ -98,6 +98,6 @@
 
 
 
- 
+
 
 

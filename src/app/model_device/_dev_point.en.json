@@ -8,10 +8,10 @@
         "editPoint":"编辑点",
 
 
-        // point 字段; 
+        // point 字段;
         "poll":"轮询方式",
-        "packet":"独立分包", 
-        // 需要和 数据库中定义的 字段同名; 
+        "packet":"独立分包",
+        // 需要和 数据库中定义的 字段同名;
         "area":"数据区",
         "offset": "偏移地址",
         "type":"数据类型",
@@ -29,13 +29,13 @@
     },
 
     "point": {
-         
-        // 点轮询 ; 
+
+        // 点轮询 ;
         "pointPoll": {
-            "0": "Normal", 
-            "1": "Slow",  
+            "0": "Normal",
+            "1": "Slow",
             "2": "Call"
-        }, 
+        },
 
         "access": {
             "0": "只读",
@@ -46,12 +46,13 @@
             "0": "HightByte",
             "1": "LowByte"
         }
-        
+
     },
 
     "FCS_MODBUS": {
         "point": {
-            // 数据区 
+
+            // 数据区
             "area": {
                 "0": "CO区",
                 "1": "DI区",
@@ -65,7 +66,7 @@
                 "2": "可读写"
             },
 
-           // access:  //zh.point.access , 
+            // access:  //zh.point.access ,
 
             "type": {
                 "0": "Bool",
@@ -84,6 +85,8 @@
                 "13": "Buffer"
             }
         },
+
+
         "device":{
             "offsetformat": {
                 "0" : "10进制",
@@ -102,8 +105,8 @@
         }
 
     }
- 
 
-    
+
+
 
 }

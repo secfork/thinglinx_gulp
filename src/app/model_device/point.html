@@ -1,63 +1,60 @@
+<tl-modal>
+
+  <div class="modal-body ">
 
 
- 
-<tl-modal> 
+    <div class="hidden"
+         ng-init="
+                  _config = extend({} , $$lang.point ,
+                                        $$lang[ dm.driver_id ].point,
+                                        $sys[ dm.driver_id ].point )    ;
+                  ">
 
-<div class="modal-body ">
-
-
-    <div class="hidden" 
-         ng-init="  
-                  _config = extend({} , $$lang.point , $$lang[ dm.driver_id ].point,  $sys[ dm.driver_id ].point )    ;                             
-                  "  >
-     
     </div>
-    
- 
-
-    <form  name="form" class="  form-validation form-horizontal   " >
- 
-        <input   name ='pointname' tl-input
-            
-               label="devModel.pName"
-               ng-model="point.name"
-               required>
-
-        <select name="poll" tl-input label="devModel.poll"
-           
-            ng-model="point.poll"  
-            ng-options = " parse(v) as k  for  (v,k) in $$lang.point.poll  "
-        ></select>       
- 
-        <select   name ='ispacket' tl-input  label="devModel.packet"
-        
-            ng-model="point.is_packet"
-            ng-options = "  parse(v) as k  for  (v,k) in  $$lang.options.yesno " 
-          > 
-        </select>  
-
-        <div class="m-t"></div>
 
 
-        <ng-include   src=" 'app/_protocol/'+ dm.driver_id+'/point.html' "></ng-include>
+    <form name="form" class="  form-validation form-horizontal   ">
 
-     
-        <!-- 以下的待开发 -->
-       <textarea tl-input  name="desc" ng-model="point.desc" label="text.desc" ></textarea>
+      <input name='pointname' tl-input
+
+             label="devModel.pName"
+             ng-model="point.name"
+             required>
+
+      <select name="poll" tl-input label="devModel.poll"
+
+              ng-model="point.poll"
+              ng-options=" parse(v) as k  for  (v,k) in $$lang.point.poll  "
+      ></select>
+
+      <select name='ispacket' tl-input label="devModel.packet"
+
+              ng-model="point.is_packet"
+              ng-options="  parse(v) as k  for  (v,k) in  $$lang.options.yesno "
+      >
+      </select>
+
+      <div class="m-t"></div>
+
+
+      <ng-include src=" 'app/_protocol/'+ dm.driver_id+'/point.html' "></ng-include>
+
+
+      <!-- 以下的待开发 -->
+      <textarea tl-input name="desc" ng-model="point.desc" label="text.desc"></textarea>
 
 
     </form>
- 
+
 </tl-modal>
- 
- 
+
+
 <!-- @if  append  -->
-        
- <!--  dm.dirver_id = {{dm}} <hr/>
+
+<!--  dm.dirver_id = {{dm}} <hr/>
 
 
-  point = {{point}} -->
+ point = {{point}} -->
 
 <!--@endif  -->
 
- 

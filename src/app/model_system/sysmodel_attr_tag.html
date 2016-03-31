@@ -2,7 +2,7 @@
       
         
          <div class="form-group   m-l-xs m-b-none   "  >
-            <span style="margin-right: 30px"> 配置项 </span>
+            <span style="margin-right: 30px" translate="profile.name"> 配置项 </span>
             
             <select ng-model="op.profile_id" 
                 class=" input input-sm w form-control inline" 
@@ -78,7 +78,8 @@
     </div>
     <div class="panel-footer   b-b b-l b-r">
          
-        <button class="btn btn-primary btn-sm w-70  " ng-if="isModelState" ng-click=" addTag('add') ">
+        <button class="btn btn-primary btn-sm w-70  " ng-if="isModelState" ng-click=" addTag('add') " 
+            translate="tag.addTag">
             添加变量
         </button>
     </div>
