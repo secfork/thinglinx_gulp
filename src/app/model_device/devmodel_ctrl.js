@@ -250,6 +250,11 @@ export default ($scope, $compile, $state, $modal, $log, $http, $timeout, $source
         })
     };
 
+
+
+
+    var  $$configCache = {};
+
     //--------------
     //添加 point; 
     $scope.addOrEditPoint = function(scope, p, index) {
@@ -257,31 +262,32 @@ export default ($scope, $compile, $state, $modal, $log, $http, $timeout, $source
         angular.open({   templateUrl: 'app/model_device/point.html' },
 
             function($scope,  $sys) {
-                 var dm , driver , basic ;
-                    
+                var dm , driver , basic ; 
    
                 $scope.dm = dm = scope.dm ; 
-                $scope.point = {};  
-                
+                $scope.point = {};    
 
+
+                // 四个 配置 extend ;  设计也是神了!    
+                $$configCache[dm.driver_id]  =  $$configCache[dm.driver_id]  || 
+                                                angular.extend({},  $scope.$$lang.pointTrans,
+                                                                    $scope.$$lang[dm.driver_id].point,
+                                                                    $sys.point,
+                                                                    $sys[dm.driver_id].point )   ;
+
+                $scope._config = $$configCache[ dm.driver_id ];
 
                 if (p) { //编辑; 
-                    $scope.title = "devModel.editPoint";
+                    $scope.title = "point.edit";
                     $scope.point = angular.copy(p);
                     $scope.point.params = angular.fromJson($scope.point.params);
                 } else { //  新建;
-                    $scope.title = "devModel.addPoint";
-                   
-                        driver = $sys[dm.driver_id].point ;
-                        basic = $sys.point.entity;
-
-
-                     var  par =   driver.entity   ;     
-                    // var par = angular.copy(driver.entity);
+                    $scope.title = "point.add";
+                     
 
                     $scope.point = angular.extend({},
-                        basic,
-                        par
+                        $sys.pointEntity ,
+                        $sys[dm.driver_id].pointEntity
                     );
 
                 };

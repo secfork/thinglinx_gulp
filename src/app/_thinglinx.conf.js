@@ -48,7 +48,7 @@
 
     // sysModel  device  默认值 ;
 
-    sysModelDevice: {
+    deviceEntity: {
              dev_cycle: 1,
              cycle_unit: 1,
              slow_cycle: 1,
@@ -58,35 +58,64 @@
              delay: 1,
          },
 
+    
+    point:{
+        // 点轮询 ;  和字段名一致;
+        "poll": {
+            "0": "Normal",
+            "1": "Slow",
+            "2": "Call"
+        },
+         "hlbyte": {
+            "0": "HightByte",
+            "1": "LowByte"
+        }
+
+    }, 
+
+    "pointEntity": { 
+        //  dev point  公共部分默认值;    
+            poll: 0,
+            is_packet: 0,
+ 
+    },
 
 
-    trigger:{
+    // 支持 的 点 类型;
+    tagType: ['Analog', 'Digital'] ,
 
-        entity:{
-            type:1 ,
+    
+
+    triggerEntity: {
+         type:1 ,
             origin:0 , //  非托管的只有  0 ;
 
             conditions:undefined ,
             action: "alarm" ,
             severity: 1 ,
             class_id: 1
+    },
 
-        },
 
-        conditon_entigy : { //verb : null,
-            exp: {
-                left: {
-                    fn: 'PV',
-                    args: null
-                }, //   fn: pv  || null ;
-                op: ">=",
-                right: {
-                    fn: 'PV',
-                    args: null
-                }
+    triggerConditonEntigy : { //verb : null,
+        exp: {
+            left: {
+                fn: 'PV',
+                args: null
+            }, //   fn: pv  || null ;
+            op: ">=",
+            right: {
+                fn: 'PV',
+                args: null
             }
-        },
+        }
+    },
 
+
+
+
+
+    trigger:{  
          // trigger  触发源 ;
         "origin": {
             "0" : "ThingLinx Cloud"
@@ -171,8 +200,6 @@
          delay: 10
     },
 
-    // 支持 的 点 类型;
-    tagType: ['Analog', 'Digital'] ,
 
 
 

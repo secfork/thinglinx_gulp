@@ -67,6 +67,8 @@
         "nextStep":"下一步",
         "upward":"上一步",
 
+        
+        "number": "数值",
 
         "confParams":"配置参数",
         "netParams": "网络参数",
@@ -91,12 +93,12 @@
 
     //   通用 下拉选项 ;   select options
 
-    "options": {
-        "yesno": {
-            "0": "否",
-            "1": "是"
-        }
+    
+    "yesno": {
+        "0": "否",
+        "1": "是"
     },
+   
 
 
     // 区域  权限说明 ;

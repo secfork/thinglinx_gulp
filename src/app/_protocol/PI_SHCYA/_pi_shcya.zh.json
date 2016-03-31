@@ -11,7 +11,14 @@
 		"linkAddress" : "链路地址",
 
 
-		"point":{},
+		"point":{
+			"type_id":{
+				"0":"遥信"
+			}
+
+		},
+
+
 		"device":{}
 
 	}

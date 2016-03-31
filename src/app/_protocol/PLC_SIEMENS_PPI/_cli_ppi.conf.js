@@ -2,38 +2,44 @@
 
     PLC_SIEMENS_PPI: {
 
-        point: {
 
-            th: [
-                'area', 'offset', 'type', 'type_ex'
-            ],
-            entity: {
-                params: {
+        pointTh: ['area', 'offset', 'type', 'type_ex'],
+
+        noTransTh: {
+                offset:true ,
+                type_ex:true 
+        },
+
+
+        pointEntity:{
+            params: {
                     area: 0,
                     offset: 0,
                     type: 0,
                     type_ex: 0
                 }
-            },
+        },
 
-
+        point: {
+  
             // bool 是否在初始化;     
-            areaCC: function(point,scope,  bool) {
-                var t, tt , area ;
-                    tt = this.type ;
+            areaCC: function(point, scope, bool) {
+                var t,
+                    tt,
+                    area;
+                
+                tt = this.type;
 
-                    area = point.params.area;
+                area = point.params.area;
 
-                function cc(data) {  
+                function cc(data) {
 
-                    (scope._dataType = data ) || (scope.$parent._dataType = data);
-
-
-                    // console.log( bool ,   scope.$parent._dataType )
+                    (scope._dataType = data) || (scope.$parent._dataType = data); 
+                    
                 };
 
                 if (0 <= area <= 3) {
-                    t = angular.copy( tt );
+                    t = angular.copy(tt);
                     // t.splice(9, 1); // 删除掉 第十个; 
                     delete t[9];
                     cc(t);
@@ -47,7 +53,7 @@
                 }
 
                 if (area == 5 || area == 9) {
-                    cc( { 6:tt[6], 7:tt[7], 8:tt[8] } ) ;
+                    cc({ 6: tt[6], 7: tt[7], 8: tt[8] });
                     !bool && (point.params.type = 6);
 
                 }
@@ -63,7 +69,7 @@
                 }
 
                 if (area == 7 || area == 10 || area == 11) {
-                    cc({ 3:tt[3], 4:tt[4], 5:tt[5] });
+                    cc({ 3: tt[3], 4: tt[4], 5: tt[5] });
                     !bool && (point.params.type = 3);
 
                 };
@@ -86,15 +92,18 @@
             }
 
         },
-        device:{
-            entity:{
+
+
+
+
+        deviceEntity: { 
                 params: {
                     address: 1,
                     max_packet_length: 150,
                     packet_offset: 10
                 }
 
-            }
+            
         }
 
     }

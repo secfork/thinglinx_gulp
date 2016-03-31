@@ -15,11 +15,7 @@
         label="PLC_MITSUBISHI_FX_COM.type"
         ng-model="D.params.type"
 
-        ng-options = " o.v as o.k for  o in [   {k:'FXon' , v:0} ,
-        										{k:'FX,FX2c' , v:1} ,
-        										{k:'FX2n' , v:2} ,
-        										{k:'FX3u' , v:3}
-        ]"
+        ng-options = " o.v as o.k for  o in   _config.type "
 
         required   ></select>
 
@@ -38,7 +34,7 @@
         label="PLC_MITSUBISHI_FX_COM.sum"
         ng-model="D.params.sum"
 
-        ng-options = " o.v as o.k for  o in [ {k:'无校验' , v:0} , {k:'有校验' , v:1} ]"
+        ng-options = " o.v as o.k for  o in _config.sum "
 
         required   ></select>
 

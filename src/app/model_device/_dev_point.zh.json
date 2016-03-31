@@ -45,28 +45,24 @@
 
     },
 
-    "pointText":{
+    "point":{
 
     },
 
+    "pointTrans": { // point 公共部分; 
 
+   
 
-    "point": {
-
-        // 点轮询 ;  和字段名一致;
-        "poll": {
-            "0": "Normal",
-            "1": "Slow",
-            "2": "Call"
-        },
-
-
-        "hlbyte": {
-            "0": "HightByte",
-            "1": "LowByte"
+        "access": {
+            "0": "只读",
+            "1": "只写",
+            "2": "可读写"
         }
 
+       
+
     }
+
 
 
 

@@ -1,37 +1,39 @@
 {
     //  pi_shcya 无翻译字段; 
 
- 
-    "PI_SHCYA": { 
 
-        
+    "PI_SHCYA": {
 
+        pointTh: ["app_address", "type_id", "infor_address"],
 
-        "point": {
-            "th": ["app_address", "type_id", "infor_address"],
-            "entity": {
-                "params": {
-                    'app_address': 1,
-                    'type_id': 0,
-                    'infor_address': 1
-                }
-            },
+        noTransTh: {
+                app_address: true ,
+                infor_address:true 
+        },
 
-            // type_id 若需要翻译 请 移动到 zh.json 中; 
-            "type_id": {
-                "0": "遥信"
+        pointEntity: {
+            "params": {
+                'app_address': 1,
+                'type_id': 0,
+                'infor_address': 1
             }
+        },
 
+
+        "point": { 
+ 
         },
         device: {
-            entity: {
 
-                params: {
-                    link_address: 2
-                }
+        },
+
+        deviceEntigy: {
+            params: {
+                link_address: 2
             }
 
         }
+ 
 
     }
 

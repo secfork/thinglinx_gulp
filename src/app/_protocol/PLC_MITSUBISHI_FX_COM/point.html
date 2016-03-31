@@ -9,8 +9,7 @@
 <!--  areaCC 中 定义了  _dataType 对象; _accessType 对象;   -->
 
 <div class="hidden"
-     ng-init=" _config = $sys.point[ dm.driver_id] ;
-              _config.areaCC( point , this  , true ) "  >
+     ng-init="  _config.areaCC( point , this  , true ) "  >
 
 </div>
 
@@ -20,7 +19,7 @@
         ng-model="point.params.area"
 
         ng-change ="   _config.areaCC( point , this ) "
-        ng-options="  o.v as o.k for  o in  _config.area  "
+        ng-options="  parse(v) as k for  (v,k) in  _config.area  "
 
 ></select>
 
@@ -58,7 +57,7 @@
 
         ng-change ="  _config.typeCC( point  , this ) "
 
-        ng-options=" o.v as o.k for o  in   _dataType "
+        ng-options="  parse(v) as k for  (v,k) in  _dataType "
 >
 </select>
 
@@ -94,7 +93,7 @@
 
              label="高低字节"
              ng-model="point.params.type_ex"
-             ng-options=" o.v as o.k for o  in  _config.hlbyte "
+             ng-options=" parse(v) as k for  (v,k)  in  _config.hlbyte "
     >
     </select>
   </div>
@@ -106,7 +105,7 @@
         label="访问方式"
 
         ng-model = "point.params.access"
-        ng-options=" o.v as o.k for o in  _accessType "
+        ng-options=" parse(v) as k for  (v,k)  in  _accessType "
 
 >
 </select>

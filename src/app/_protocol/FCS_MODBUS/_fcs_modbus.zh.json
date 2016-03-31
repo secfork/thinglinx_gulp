@@ -1,61 +1,53 @@
 {
 
 
-  "FCS_MODBUS": {
+    "FCS_MODBUS": {
 
 
 
 
+        "point": {
+            // 数据区
+            "area": {
+                "0": "CO区",
+                "1": "DI区",
+                "2": "HR区",
+                "3": "AI区"
+            },
+            // access:  //zh.point.access ,
 
-
-
-
-
-    "point": {
-      // 数据区
-      "area": {
-        "0": "CO区",
-        "1": "DI区",
-        "2": "HR区",
-        "3": "AI区"
-      },
-      "access": {
-        "0": "只读",
-        "1": "只写",
-        "2": "可读写"
-      },
-      // access:  //zh.point.access ,
-
-      "type": {
-        "0": "Bool",
-        "1": "Char",
-        "2": "Byte",
-        "3": "Short",
-        "4": "Word",
-        "5": "Int",
-        "6": "DWord",
-        "7": "Float",
-        "8": "BCD码",
-        "9": "Int64",
-        "10": "UInt64",
-        "11": "Double",
-        "12": "String",
-        "13": "Buffer"
-      }
-    },
-    "device": {
-      "offsetformat": {
-        "0": "10进制",
-        "1": "Modbus格式"
-      },
-      "order_b": {
-        "0": "正序",
-        "1": "逆序"
-      },
-      "order_c": {
-        "0": "高前低后",
-        "1": "低前高后"
-      }
+            "type": {
+                "0": "Bool",
+                "1": "Char",
+                "2": "Byte",
+                "3": "Short",
+                "4": "Word",
+                "5": "Int",
+                "6": "DWord",
+                "7": "Float",
+                "8": "BCD码",
+                "9": "Int64",
+                "10": "UInt64",
+                "11": "Double",
+                "12": "String",
+                "13": "Buffer"
+            }
+        },
+        "device": {
+            "offsetformat": {
+                "0": "10进制",
+                "1": "Modbus格式"
+            },
+            "order_b": {
+                "0": "正序",
+                "1": "逆序"
+            },
+            "order_c": {
+                "0": "高前低后",
+                "1": "低前高后"
+            }
+        }
+        
+        
     }
-  }
 }

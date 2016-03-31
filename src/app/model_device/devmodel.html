@@ -23,37 +23,49 @@
             </div>
             <div ng-show="showp " class="panel-body no-border table-responsive no-padder" load-mask>
                 <table class="table table-hover table-striped b-b " 
-                        ng-init="_$config = extend( {} , $sys.point  , $sys[dm.driver_id].point  ) ">
+
+                        ng-init="_$config =   $sys[dm.driver_id]    ">
+
+                        <!-- _$config  和 翻译关系 不大 --> 
+
                     <thead> 
                         <tr>
                             <td translate="text.name">名称</td>
-                            <td translate="devModel.poll"></td>
-                            <td translate="devModel.packet"></td>
+                            <td translate="devModel.poll">轮训</td>
+                            <td translate="devModel.packet"> 分包</td> 
 
-                            <td ng-repeat=" th in  _$config.th " translate="devModel.{{::th}}"> </td>
-
+                            <td ng-repeat=" th in  _$config.pointTh " translate="devModel.{{::th}}"> </td>
 
                             <td translate="text.edit"> 编辑 </td>
                             <td translate="text.del"> 删除 </td>
+
                         </tr>
                     </thead>
                     <tbody>
                         <tr ng-repeat=' p in points ' ng-init="  pa =  fromJson(p.params); ">
-                            <td> {{ p.name }}</td>
-                            <td  translate > {{ 'point.poll.' + p.poll      }}</td>
-                            <td  translate > {{ 'options.yesno.' + p.is_packet }} </td>
+                            <td> {{ p.name }}  </td>
+                            <td > {{   $sys.point.poll[ p.poll ]  }}</td>
 
-                            <td ng-repeat=" th in  _$config.th " 
-                                translate   >
-                              <!--   {{   dm.driver_id + "  "+  [th][pa[th]].k || pa[th]   }} -->
+                            <td  translate > {{ 'yesno.' + p.is_packet }} </td>
+
+                            <!-- <td  translate> {{ 'pointTrans.access.'+ pa.access }}  </td> -->
+
+                            <td ng-repeat=" th in  _$config.pointTh "   translate   >
+
+                                <!--   {{   dm.driver_id + "  "+  [th][pa[th]].k || pa[th]   }} --> 
+                                  <!--   type_ex , offset 不用翻译;    ?  之后可以在 _protocol 中 写 各个  point  table 的 html 文件;
+                                  -->
+
+                                {{  _$config.noTransTh[th] ? pa[th]  :  
+                                            (  th =='access'? 'pointTrans.access.'+pa[th] 
+                                                    :  dm.driver_id + ".point." + th +"."+ pa[ th ]  )
+                                          
 
 
-                              <!--   type_ex , offset 不用翻译;    ?
-                                    之后可以在 _protocol 中 写 各个  point  table 的 html 文件;
-                              -->
-                                {{  _$config.noTranslate[th] ? pa[th]  : dm.driver_id + ".point." + th +"."+ pa[ th ]  }}
+                                }}
 
                             </td>
+
                             <td>
                                 <a ng-click='addOrEditPoint( this ,p , $index  ,t  )' class='text-info'  translate="text.edit" >编辑</a>&nbsp;
                                 <a ng-click='add_f(p)' class='text-info' ng-if="false">   克隆</a>&nbsp;
@@ -65,7 +77,8 @@
                     </tbody>
                 </table>
                 <div class='col-xs-12 m-t-sm m-b-sm  '>
-                    <button class='btn btn-sm w-70 m-l-sm w-xxm j_addp' ng-click='addOrEditPoint( this )' translate="devModel.addPoint">添加点 </button>
+                    <button class='btn btn-sm w-70 m-l-sm w-xxm j_addp' ng-click='addOrEditPoint( this )' 
+                            translate="devModel.addPoint">添加点 </button>
                 </div>
             </div>
         </div>

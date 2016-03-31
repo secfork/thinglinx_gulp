@@ -3,25 +3,29 @@
     // .js 不可extend 古 , 以 驱动di 开头;
     "PLC_MITSUBISHI_FX_PG": {
 
+        pointTh: ['area', 'offset', 'type', 'type_ex'],
+
+        noTransTh: {
+                offset:true ,
+                type_ex:true 
+        },
+
+
+
+        pointEntity: { // 加上 entity层级 恶心;
+
+            "params": {
+                "area": 0,
+                "offset": 0,
+                "type": 0,
+                "type_ex": 0,
+                "access": 0
+            }
+
+        },
+
 
         "point": {
-            th: ['area', 'offset', 'type', 'type_ex'],
-
-            entity: {  // 加上 entity层级 恶心;
-
-                "params": {
-                    "area": 0,
-                    "offset": 0,
-                    "type": 0,
-                    "type_ex": 0,
-                    "access": 0
-                }
-
-            },
-
-
-
-
 
             "areaCC": function(point, scope, bool) {
                 // 当寄存器区为：开关量输入(0)和开关量输出(1)时，数据为8进制，偏移地址不能出现‘8’和‘9’
@@ -37,12 +41,12 @@
                     scope._dataType = this.type;
 
                 } else {
-                    scope._dataType = { 0:  this.type[0]   };
+                    scope._dataType = { 0: this.type[0] };
                     !bool && (point.params.type = 0);
                 };
 
                 if (ac[area]) {
-                    scope._accessType = { 0:  this.access[0] };
+                    scope._accessType = { 0: this.access[0] };
                     !bool && (point.params.access = 0);
                 } else {
                     scope._accessType = this.access;
@@ -70,11 +74,10 @@
             }
 
         },
-        "device": {
-            entity:{
-                "params": {
-                    "type": 0
-                }
+
+        deviceEntity: {
+            "params": {
+                "type": 0
             }
 
         }
