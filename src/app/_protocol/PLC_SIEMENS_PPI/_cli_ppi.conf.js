@@ -8,8 +8,7 @@
         noTransTh: {
                 offset:true ,
                 type_ex:true 
-        },
-
+        }, 
 
         pointEntity:{
             params: {

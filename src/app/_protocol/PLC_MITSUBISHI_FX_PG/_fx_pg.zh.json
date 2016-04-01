@@ -2,11 +2,22 @@
 
 
     "PLC_MITSUBISHI_FX_PG": {
-        // point 翻译 和 modbus 常用部分 公用;
+         
+         // 
+
+        // 和 点字段 对应; 
+        "area":"区域",
+        "offset":"地址偏移",
+        "type":"类型",
+        "type_ex":"扩展参数",
+        "access":"访问方式",
 
 
         // device
         "deviceNo":"设备型号",
+
+
+
 
 
         "point": {

@@ -120,7 +120,7 @@ export default ($scope, $compile, $state, $modal, $log, $http, $timeout, $source
                         $scope.T.driver_id = $scope.drivers[0].driver_id;
                     });
                 }
-                $scope.title =  !t?"devModel.addModel":"devModel.editModel";
+                $scope.title =  !t?"devModel.add":"devModel.edit";
 
                 $scope.T = t ? angular.copy(t) : {};
 

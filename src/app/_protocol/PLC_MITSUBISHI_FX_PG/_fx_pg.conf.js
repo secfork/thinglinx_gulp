@@ -3,7 +3,7 @@
     // .js 不可extend 古 , 以 驱动di 开头;
     "PLC_MITSUBISHI_FX_PG": {
 
-        pointTh: ['area', 'offset', 'type', 'type_ex'],
+        pointTh: ['area', 'offset', 'type', 'type_ex' ,"access" ],
 
         noTransTh: {
                 offset:true ,

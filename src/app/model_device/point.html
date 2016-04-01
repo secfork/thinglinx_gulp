@@ -11,16 +11,16 @@
 
       <input name='pointname' tl-input
 
-             label="devModel.pName"
+             label="point.pName"
              ng-model="point.name"
              required>
 
-      <select name="poll" tl-input label="devModel.poll" 
+      <select name="poll" tl-input label="point.poll" 
               ng-model="point.poll"
               ng-options=" parse(v) as k  for  (v,k) in _config.poll  "
       ></select>
 
-      <select name='ispacket' tl-input label="devModel.packet"
+      <select name='ispacket' tl-input label="point.packet"
               ng-model="point.is_packet"
               ng-options="  parse(v) as k  for  (v,k) in  $$lang.yesno "
           >

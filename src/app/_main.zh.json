@@ -30,9 +30,10 @@
 
         "unit":"单位",
         "type":"类型",
+        "dateType":"数据类型",
+
         "offset":"偏差",
-
-
+ 
         "return": "返回",
 
         "name": "名称",

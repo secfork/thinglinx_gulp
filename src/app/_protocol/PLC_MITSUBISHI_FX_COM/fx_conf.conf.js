@@ -53,7 +53,7 @@
             }
         },
 
-        pointTh: [  'area', 'offset', 'type', 'type_ex'  ],
+        pointTh: [  'area', 'offset', 'type', 'type_ex' ,"access"  ],
 
          noTransTh: { 
                 offset:true ,
@@ -90,6 +90,7 @@
         deviceEntity: {
 
             params: {
+                address:1,
                 type: 2,
                 format: 1,
                 sum: 1

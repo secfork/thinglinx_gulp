@@ -11,8 +11,14 @@
 <div  class="hide"  ng-init=" _config = extend( {} ,  $sys.PLC_MITSUBISHI_FX_COM.device ,
                                                       $$lang.PLC_MITSUBISHI_FX_COM.device  )  "  > </div>
 
+
+
+<input tl-input  name="address"  label="PLC_MITSUBISHI_FX_COM.address"  ng-model="D.params.address"
+        type="number"  max="255" min="0" 
+        />
+
 <select tl-input  name="type"
-        label="PLC_MITSUBISHI_FX_COM.type"
+        label="PLC_MITSUBISHI_FX_COM.dev_type"
         ng-model="D.params.type"
 
         ng-options = " o.v as o.k for  o in   _config.type "

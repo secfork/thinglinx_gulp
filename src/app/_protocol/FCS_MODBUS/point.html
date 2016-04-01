@@ -1,51 +1,10 @@
 
 <!--  modbus 类型 template 点 的  驱动参数 
-modbus_ex_cfg = " 类型 data_type,  扩展参数 data_type_ex 对应关系 "
-
- -->
  
-
-<!--  areaCC 中 定义了  _dataType 对象; _accessType 对象;   -->
-
-<!-- <div class="hidden" 
-     ng-init=" _config = $sys.point[ dm.driver_id] ; 
-              _config.AreaCC( point , this  , true ) "  >
- 
-</div>
-  -->
-
-
-<!-- 
- 
-tl-default 全权重 为80 , 必须要大于  ng-change 权重 , 必须低于 ngmodel ; 确保 trans 有值; ;  
-
-mgModel 的权重为100 ; 该指令 
-  ng-change =" point.params.data_type = '0' ;
-                     point.params.access_right = '0' ;
-                     point.params.data_type_ex = '0'
-                     "
-
--->
- 
-
-<div   class="hidden"    ng-init="   _config.areaCC( point , this  , true ) "></div>
-
-
-<select name="area"  tl-input
-        label="devModel.area"
-        ng-model="point.params.area" 
-
-         ng-change ="   _config.areaCC( point , this ) "
-        ng-options="  parse(v) as k  for  (v,k) in  _config.area  "
-          
-
-        ></select>
-
-  
 <!-- 驱动参数 -->
 
 <input  name="offset" tl-input
-        label="devModel.offset"
+        label="FCS_MODBUS.offset"
         required  
         type="Number" 
         max="65535"
@@ -62,7 +21,7 @@ mgModel 的权重为100 ; 该指令
  
 
   <select  name="datatype" tl-input
-        label="devModel.type"
+        label="FCS_MODBUS.type"
          
         ng-model="point.params.type"
 
