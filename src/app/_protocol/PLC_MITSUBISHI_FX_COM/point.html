@@ -13,9 +13,9 @@
 
 </div>
 
-
+<!-- 数据区 -->
 <select tl-input name="area"
-        label="数据区"
+        label="point.area"
         ng-model="point.params.area"
 
         ng-change ="   _config.areaCC( point , this ) "
@@ -24,10 +24,10 @@
 ></select>
 
 
-
+<!-- 偏移地址 -->
 <div  ng-if=" point.params.area  <= 1 " >
   <input  tl-input name="offset"
-          label="偏移地址"
+          label="point.offset"
           required
           type="Number"
           max="377"
@@ -38,9 +38,10 @@
 
 
 
+<!-- 偏移地址 -->
 <div ng-if=" point.params.area >= 2 ">
   <input  tl-input name="offset"
-          label="偏移地址"
+          label="point.offset"
           required
           type="Number"
           max="9999"
@@ -50,8 +51,9 @@
 
 
 
+<!-- 偏移地址 -->
 <select tl-input name="type"
-        label="数据类型"
+        label="point.type"
 
         ng-model="point.params.type"
 
@@ -65,10 +67,11 @@
 
 <div ng-if="  point.params.area >= 7  ">
 
+  <!-- 位偏移 -->
   <div  ng-if=" point.params.type == 0    ">
     <input  tl-input name="type_ex"
             required
-            label="位偏移"
+            label="point.byteOffset"
             type="number"
             max="15" min="0"
             placeholder=" 0 - 15 "
@@ -78,9 +81,12 @@
 
 
   <div  ng-if=" point.params.type == 11   ">
+
+
+    <!-- 字符串长度 -->
     <input  tl-input name="type_ex"
             required
-            label="字符串长度"
+            label="point.strLong"
             type="number"
             max="64" min="1"
             placeholder=" 1 - 64 "
@@ -89,9 +95,11 @@
   </div>
 
   <div ng-if=" point.params.type  == 1 ||  point.params.type  == 2   " >
+
+    <!-- 高低字节 -->
     <select  tl-input name="type_ex"
 
-             label="高低字节"
+             label="point.hlByte"
              ng-model="point.params.type_ex"
              ng-options=" parse(v) as k for  (v,k)  in  _config.hlbyte "
     >
@@ -100,9 +108,9 @@
 
 </div>
 
-
+<!-- 访问方式 -->
 <select tl-input name="access"
-        label="访问方式"
+        label="point.access"
 
         ng-model = "point.params.access"
         ng-options=" parse(v) as k for  (v,k)  in  _accessType "

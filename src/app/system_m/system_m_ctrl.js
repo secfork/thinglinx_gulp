@@ -48,7 +48,7 @@ export default ($scope, $sys, $source, $interpolate, $q, $compile, $translate, $
 
 
     var botButs = [{
-        text: "system.addSystem",
+        text: "system.add",
         classFor: " btn-primary",
         handler: createSystem
     }]
@@ -94,16 +94,22 @@ export default ($scope, $sys, $source, $interpolate, $q, $compile, $translate, $
     // 加载区域  并建立 区域的 id self 索引; 
     $scope.regionID_Self = {};
 
-    var loadRegion = !isRegionAttr && $source.$region.get({ currentPage: 1 }, function(resp) {
-        $scope.regions = resp.data;
+    // 如果是 RegionAttr 属性 , 则是按id 查 region; 
+    var loadRegion ;
+    if(isRegionAttr) {
+        // region attr router 中 加载了  region 数据;  
+        $scope.regionID_Self = { [region_id]:  $scope.region }
+    }else{
+        loadRegion = $source.$region.get({ currentPage: 1 }, function(resp) {
+                    $scope.regions = resp.data;
 
-        angular.forEach($scope.regions, (v) => {
-            $scope.regionID_Self[v.id] = v;
-        });
+                    angular.forEach($scope.regions, (v) => {
+                        $scope.regionID_Self[v.id] = v;
+                    });  
+                }).$promise;
 
-
-    }).$promise;
-
+    }
+ 
 
 
     // 加载 分页 system 数据, 并建立 当前页没 system 的 uuid self 索引;  用于 同步 ;
@@ -192,7 +198,7 @@ export default ($scope, $sys, $source, $interpolate, $q, $compile, $translate, $
 
 
     function createSystem( ) {
-        angular.open({ title: "system.addSystem", templateUrl: "app/system_m/system.add.html" },
+        angular.open({ title: "system.add", templateUrl: "app/system_m/system.add.html" },
 
             function($scope) {
                 "ngInject";
@@ -415,6 +421,7 @@ export default ($scope, $sys, $source, $interpolate, $q, $compile, $translate, $
         var point = e.point,
             system = point.system;
 
+
         system.region_name = $scope.regionID_Self[system.region_id].name;
 
 
@@ -449,7 +456,7 @@ export default ($scope, $sys, $source, $interpolate, $q, $compile, $translate, $
 
             var str = $compile($interpolate(html)(system))($scope)[0],
 
-                infoWindow = new BMap.InfoWindow(str, bmap.infoWindowOptions);
+                infoWindow = new BMap.InfoWindow(str, angular.extend( { enableAutoPan: false }, bmap.infoWindowOptions) );
 
             point.marker.openInfoWindow(infoWindow);
         })

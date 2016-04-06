@@ -1,60 +1,61 @@
-
-
-system = {{system }}
-
-
 <div class="   panel-body  no-padder  ">
-    
- 
 
-<!-- profile  ticket -->
-<div class="col-md-8 col-xs-12  col-md-offset-1     m-b-sm m-t padder-md">
 
-     <h4 class="">网络参数</h4>
-
-    <form name=" profile" class="form-horizontal form-validation ">
-        <!--  profile  配置  -->
-        <select tl-input label="sysModel.profile" name="profile" 
-            ng-model="profile" class=" form-control" 
-            ng-options="   p as p.name for p in profiles  " 
-            ng-change="toUpdate('profile')" required>
-        </select>
-        <div class="col-md-8 col-md-offset-3">
-            <i class="fa  fa-warning  text-success pos-rlt"></i> {{profile.desc}}
-        </div>
-        <div class="col-md-8 col-md-offset-3 m-t-xs m-b">
-            <button class=" btn btn-sm  w-94 btn-success " ng-click="  updateSystem( 'profile' );  ">
-                保存系统配置
-            </button>
-            <span class="text-danger"> 
+    <!-- profile  ticket -->
+    <div class="col-md-8 col-xs-12  col-md-offset-1     m-b-sm m-t padder-md">
+        <h4 class="">网络参数</h4>
+        <form name=" profile" class="form-horizontal form-validation ">
+            <!--  profile  配置  -->
+            <select tl-input label="profile.sysProfile" name="profile" ng-model="profile" class=" form-control" ng-options="   p as p.name for p in profiles  " ng-change="toUpdate('profile')" required>
+            </select>
+            <div class="col-md-8 col-md-offset-3">
+                <i class="fa  fa-warning  text-success pos-rlt"></i> {{profile.desc}}
+            </div>
+            <div class="col-md-8 col-md-offset-3 m-t-xs m-b">
+                <button class=" btn btn-sm  w-94 btn-success " ng-click="  updateSystem( 'profile' );  ">
+                    保存系统配置
+                </button>
+                <span class="text-danger"> 
                    <i class="fa  fa-exclamation-triangle  "></i>
                     编辑完成后请保存系统配置 
-                  <span>
-
-                  <span class="text-info">
-                    <i class="fa  fa-thumbs-o-up "></i> <span>保存成功!</span>
-            </span>
-        </div>
-        <!--  profile  配置 end  --> 
-        <div ng-if="needTicket" ng-include=" 'app/system_m/system_attr_config_ticket.html' " />
-        
-    </form>
-</div>
+                </span>
+                <span class="text-info">
+                    <i class="fa  fa-thumbs-o-up "></i> 
+                    <span translate="text.saved">保存成功!</span>
+                </span>
+            </div>
+            <!--  profile  配置 end  -->
+            <div ng-if="needTicket" ng-include=" 'app/system_m/system_attr_config_ticket.html' " />
 
 
-  
+
+            <!--  PLC 编程模式 -->
+            <label class="col-md-3   control-label  text-right ">PLC编程模式</label>
+            <div class="col-md-8">
+                <label class="i-switch i-switch-md bg-info m-t-xs m-r">
+                    <input type="checkbox" checked="" ng-disabled=" !op.enAblePlcProg " ng-model="op.plcstate" ng-change="setPLC( op.plcstate )">
+                    <i></i> &nbsp;
+                </label>
+                <span class="text-muted " ng-show=" ! op.enAblePlcProg ">
+                                  当前网络参数设置不支持PLC编程模式
+                              </span>
+                <div class="text-info" ng-if=" op.enAblePlcProg  ">
+                    <span ng-show="op.plcstate">  当前系统处于编程模式, 您可以使用工具向PLC同步工程, 如您想恢复采集, 请关闭编程模式;  </span>
+                    <span ng-show="!op.plcstate"> 当前处于采集模式, 如您希望向PLC同步工程 , 请切换到编程模式 </span>
+                </div>
+            </div>
+
+
+
+        </form>
+    </div>
+
+
 
     <!--  DaServer -->
-    <div  ng-if="needDaServer"  class="col-md-8 col-md-offset-1  col-xs-12" ng-include="  'app/system_m/system_attr_config_network.html' "  > </div>
-
- 
-
+    <div ng-if="needDaServer" class="col-md-8 col-md-offset-1  col-xs-12" ng-include="  'app/system_m/system_attr_config_network.html' "> </div>
     <!--   托管  daserver  模式   sysmodel.mode ==1 &&  sysmodel.comm_type == 1  -->
     <!--  <ng-include ng-if=" !nT " src="  'athena/dastation/_prop_daserver_network.html'  "></ng-include> -->
-    
-
-
-
     <!--
 
           <div class="line b-b " ng-if=" sysmodel.comm_type == 1   "></div>
@@ -63,21 +64,9 @@ system = {{system }}
     <!--  <div class="panel-body table-responsive no-padder">
           托管模式: ==>  daserver 类型;
          -->
-
-         
-    <ng-include ng-if=" sysmodel.mode ==1 && sysmodel.comm_type ==2   " 
-                src=" 'athena/dastation/_prop_gateway_gateway.html'  "></ng-include>
-   
-
-    <ng-include ng-if=" sysmodel.devices.length && sysmodel.mode ==1 && sysmodel.comm_type ==2 "
-             src="  'athena/dastation/_prop_gateway_device.html'  "></ng-include>
-
+    <ng-include ng-if=" sysmodel.mode ==1 && sysmodel.comm_type ==2   " src=" 'athena/dastation/_prop_gateway_gateway.html'  "></ng-include>
+    <ng-include ng-if=" sysmodel.devices.length && sysmodel.mode ==1 && sysmodel.comm_type ==2 " src="  'athena/dastation/_prop_gateway_device.html'  "></ng-include>
     <div class="line b-b" ng-if="!nT"></div>
-    
-
-
-
-
     <div ng-if=" sysmodel.mode ==1 ">
         <div class="col-md-8 col-xs-12 text-left padder-md">
             <div class="col-md-3  col-xs-6   text-left m-t-sm m-b-sm color-4">

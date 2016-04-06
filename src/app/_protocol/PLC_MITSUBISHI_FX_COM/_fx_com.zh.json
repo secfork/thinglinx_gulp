@@ -2,12 +2,19 @@
 
     "PLC_MITSUBISHI_FX_COM": {
 
-        "type": "PLC型号",
-
+        "dev_type": "PLC型号", 
         "format": "传输控制步骤",
-
         "sum": "和校验",
+ 
 
+        // 和 点字段 对应; 
+        "area":"区域",
+        "offset":"地址偏移",
+        "type":"类型",
+        "type_ex":"扩展参数",
+        "address":"站号",
+        "access":"访问方式",
+ 
 
         "point": { 
 

@@ -39,7 +39,7 @@
         <div  ng-if="  point.params.area  >1  && point.params.type == 0    ">
               <input  name="byteoff" tl-input
                       required
-                      label="devModel.byteOffset"
+                      label="point.byteOffset"
                       type="number"
                       max="15" min="0" 
                       placeholder=" 0 - 15 "
@@ -53,7 +53,7 @@
         <div  ng-if="  point.params.area  >1 && (point.params.type == 1 || point.params.type == 2)  ">
             <select name="charoff" tl-input
                      
-                    label="devModel.charOffset" 
+                    label="point.charOffset" 
                     ng-model="point.params.type_ex"
                     ng-options=" parse(v) as k  for  (v,k) in  _config.hlbyte "
                     >
@@ -64,7 +64,7 @@
         <div  ng-if="  point.params.area  >1  &&    point.params.type >= 12  ">
             <input  name="charlang" tl-input
                     required
-                    label="devModel.charLong" 
+                    label="point.charLong" 
                     type="number"
                     max="128"
                     min="1" 
@@ -79,7 +79,7 @@
         <div  ng-if = " point.params.area >1 && point.params.type == 8  ">
               <input name="bcdlang" tl-input
                     required
-                    label="devModel.BCDlong"
+                    label="point.BCDlong"
                     type="number"
                     max="63"
                     min="1" 
@@ -108,7 +108,7 @@
 
  
   <select name="access" tl-input
-        label="devModel.access"
+        label="point.access"
          
         ng-model = "point.params.access" 
         ng-options="  parse(v) as k  for  (v,k) in  _accessType "

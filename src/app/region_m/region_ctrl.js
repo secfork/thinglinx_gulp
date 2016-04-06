@@ -23,7 +23,7 @@ export default ($scope, $sys, $source , $utils   ) => {
            // {text:"ss"} 
         ], 
         panelBotButs: [ 
-            {  text: "region.addRegion", 
+            {  text: "region.add", 
              classFor: " btn-primary",
               handler:   addProj  }
         ]
@@ -32,8 +32,8 @@ export default ($scope, $sys, $source , $utils   ) => {
     $scope.tableHeaders = [
         { text: "text.name", w: "20%"}, 
         { text: "text.createTime",  w: "20%"  }, 
-        {  text: "region.th_active",  w: "20%" }, 
-        {  text: "region.th_unactive",   w: "20%"  }, 
+        {  text: "system.activeNum",  w: "20%" }, 
+        {  text: "system.unactiveNum",   w: "20%"  }, 
         { text: "text.desc",   w: "30%"  }, 
         {  text: "text.del",  w: "15%"  }
     ]
@@ -90,7 +90,7 @@ export default ($scope, $sys, $source , $utils   ) => {
    
     function addProj() { 
         angular.open({ 
-                title:"region.addRegion",
+                title:"region.add",
                 templateUrl: "app/region_m/region.add.html" ,
             } , ( $scope )=>{
                 "ngInject"; 

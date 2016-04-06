@@ -92,7 +92,7 @@
 
         },
 
-        deviceEntigy: {
+        deviceEntity: {
             params: { // 驱动部分默认值; 
                 address: 1,
                 protocol_type: 0,

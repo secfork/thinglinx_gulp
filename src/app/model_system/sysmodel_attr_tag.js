@@ -141,7 +141,8 @@ export default ($scope , $source , $modal , $q , $utils , $sys ,$state , $timeou
     $scope.addTag = function() {
 
         if (!$scope.profiles.length) {
-            angular.alert("请先创建系统配置!");
+            // angular.alert("请先创建系统配置!");
+            angular.alert("profile.frist");
             // $state.go('app.model.sysprofile');
             return;
         }
@@ -297,7 +298,7 @@ export default ($scope , $source , $modal , $q , $utils , $sys ,$state , $timeou
         console.log("deleteTag");
         //@endif
         angular.confirm({ 
-            warn: [ 'sysModel.warnDelTag' , tag.name ] // "删除变量将会丢失此变量的全部历史数据!"
+            warn: [ 'tag.warnDelTag' , tag.name ] // "删除变量将会丢失此变量的全部历史数据!"
         }, function(next) {
             $source.$sysTag.delete({
                 system_model: sysmodel.uuid,
@@ -315,7 +316,9 @@ export default ($scope , $source , $modal , $q , $utils , $sys ,$state , $timeou
     $scope.editLogPart = function(index, tag) {
 
         if (! $scope.profiles.length ) {
-            angular.alert("请先创建 系统配置!");
+            // angular.alert(frist"请先创建 系统配置!");
+            
+            angular.alert("profile.frist");
             // $state.go('app.model.sysprofile');
             return;
         } 

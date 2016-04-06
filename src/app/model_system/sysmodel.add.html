@@ -6,7 +6,7 @@
 
         <!-- 模式 托管 非托管;  -->
         <select tl-input  name = "mode"  ng-model="sm.mode"  
-          	ng-options=" parse(v) as k  for (v,k) in  $$lang.sysModelMode " 
+          	ng-options=" parse(v) as k  for (v,k) in  $$lang.sysModel.modeType " 
           	ng-change=" sm.comm_type=sm.mode== 1?1:undefined " 
        		label="sysModel.mode " required>
         </select>

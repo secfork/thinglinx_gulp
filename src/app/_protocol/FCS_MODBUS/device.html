@@ -80,7 +80,7 @@
 
 <!-- 双精度字节排序 -->
  <select tl-input name="double_order"
-         label="sysModel.double_order"
+         label="device.double_order"
          ng-model="D.params.double_order"
          ng-options=" parse(v) as k for (v,k) in _config.order_b "
 
@@ -88,17 +88,18 @@
 
 <!-- 64位整数字节排序 -->
 <select tl-input name="int64_order"
-         label="sysModel.int64_order"
+         label="device.int64_order"
          ng-model="D.params.int64_order"
          ng-options=" parse(v) as k for (v,k) in _config.order_b "
          ></select>
 
 <!-- 校验字节排序 -->
 <select tl-input name="crc_order"
-         label="sysModel.crc_order"
+         label="device.crc_order"
          ng-model="D.params.crc_order"
          ng-options=" parse(v) as k for (v,k) in _config.order_c "
-  ></select>
+        
+        ></select>
 
 
 

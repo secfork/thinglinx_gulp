@@ -9,19 +9,21 @@
 
 
 <div  class="hide"  ng-init=" _config = extend( {} ,  $sys.PLC_MITSUBISHI_FX_COM.device ,
-                                                      $$lang.PLC_MITSUBISHI_FX_COM.device  )  "  > </div>
+                                                      $$lang.PLC_MITSUBISHI_FX_COM.device ) "  > </div>
 
 
 
-<input tl-input  name="address"  label="PLC_MITSUBISHI_FX_COM.address"  ng-model="D.params.address"
-        type="number"  max="255" min="0" 
+<input tl-input  name="address"  label="PLC_MITSUBISHI_FX_COM.address" 
+        ng-model="D.params.address"
+        type="Number"  max="255" min="0" 
+        required 
         />
 
 <select tl-input  name="type"
         label="PLC_MITSUBISHI_FX_COM.dev_type"
         ng-model="D.params.type"
 
-        ng-options = " o.v as o.k for  o in   _config.type "
+        ng-options = " parse(k) as v for  (k,v) in   _config.type "
 
         required   ></select>
 
@@ -30,7 +32,7 @@
         label="PLC_MITSUBISHI_FX_COM.format"
         ng-model="D.params.format"
 
-        ng-options = " o.v as o.k for  o in [ {k:'格式1（无CR,LF）' , v:0} , {k:'格式4（有CR,LF）' , v:1} ]"
+        ng-options = " parse(k) as v for  (k,v) in  _config.format  "
 
         required   ></select>
 
@@ -40,7 +42,7 @@
         label="PLC_MITSUBISHI_FX_COM.sum"
         ng-model="D.params.sum"
 
-        ng-options = " o.v as o.k for  o in _config.sum "
+        ng-options = " parse(k) as v for  (k,v)  in _config.sum "
 
         required   ></select>
 

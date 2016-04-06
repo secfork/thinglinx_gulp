@@ -9,8 +9,10 @@
 
  
 
+
+<!-- 数据区 -->
 <select  name="area" tl-input 
-	 label = "数据区 "
+	 label = "point.area"
 	 ng-model = "point.params.area"
 	 ng-options = " parse(v) as k  for  (v,k)  in _config.area"
 	 ng-change = " _config.areaCC( point , this  ) "
@@ -18,8 +20,9 @@
 	>
 </select>
 
+<!-- 偏移地址 -->
 <input  name="offset" tl-input   
-        label="偏移地址"
+        label="point.offset"
         required  
         type="Number" 
         max="65535"
@@ -30,8 +33,9 @@
 <div ng-if="point.params.area != 6  && point.params.area != 8 ">
 
  
+<!-- 数据类型 -->
 	<select  name="datatype" tl-input 
-		 label = "数据类型 "
+		 label = "point.type "
 		 ng-model= "point.params.type" 
 		 ng-options = " parse(v) as k  for  (v,k)  in _dataType"
 		 ng-change = "_config.typeCC( point )"
@@ -41,8 +45,10 @@
 
 
 <div ng-if = " point.params.type ==9 ">
+
+<!-- 字符串长度 -->
     <input  name="type_es" tl-input   
-        label="字符串长度"
+        label="point.strLong"
         required  
         type="Number" 
         max="127"
@@ -53,8 +59,10 @@
 
 
 <div ng-if = " point.params.type== 0 ">
+
+<!-- 位偏移 -->
 	<input  name="type_ex" tl-input   
-        label="位偏移"
+        label="point.byteOffset"
         required  
         type="Number" 
         max="65535"

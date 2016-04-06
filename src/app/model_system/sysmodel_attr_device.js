@@ -65,7 +65,7 @@ export default ($scope, $source, $utils, $modal , $sys ) => {
                         $scope.D = angular.extend({
                                 device_model:  undefined  //$scope.devModel.uuid
                             },
-                            $sys.sysModelDevice 
+                            $sys.deviceEntity 
                             // $sys[$scope.devModel.driver_id].device.entity
                         ); 
 
@@ -77,7 +77,7 @@ export default ($scope, $source, $utils, $modal , $sys ) => {
                                 
                                 angular.extend( $scope.D , 
                                     { device_model: $scope.devModel.uuid } ,
-                                    $sys[$scope.devModel.driver_id].device.entity
+                                    $sys[$scope.devModel.driver_id].deviceEntity
                                 ); 
 
                         })
@@ -89,7 +89,7 @@ export default ($scope, $source, $utils, $modal , $sys ) => {
                             };
                         }
 
-                    } else {
+                    } else { // 编辑; 
                         dev.network = angular.fromJson(dev.network || {});
                         dev.params = angular.fromJson(dev.params || {});
 

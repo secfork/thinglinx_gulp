@@ -102,8 +102,10 @@ export default ( $scope  , $sys , $modal , $source )=>{
 
         S.deleteGateway = function(T, t, data) {
             angular.confirm({
-                title: "删除串口: " + t,
-                note: "确认要删除该串口吗?"
+                // title: "删除串口: " + t,
+                // note: "确认要删除该串口吗?"
+                note:[ 'gateway.delNote' , t ]
+
             }, function(next) {
                 delete S.GateWay[T][t];
                 //S.sysmodel.gateway_default = S.GateWay ;

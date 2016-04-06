@@ -18,7 +18,9 @@
                 <td> {{$data.baud_rate}}</td>
                 <td> {{$data.data_bits}}</td>
                 <td> {{$data.stop_bits}}</td>
+                
                 <td translate > {{ 'gateway.parityType.'+ $data.parity }}</td>
+
                 <td> {{$data.delay}}</td>
                 <td>
                     <a class="text-info m-r-xs" ng-click="c_u_Gateway(  $T , $t , $data  )" 
@@ -42,7 +44,7 @@
           
             <tr>
                 <!--jjw colspan = 3-->
-                <td class="text-left  in-line" colspan="3">
+                <td class="text-left  in-line" colspan="2">
                     <!--jjw m-t-sm m-b-sm-->
                     <div class="checkbox m-l  ">
                         <label class="i-checks">
@@ -64,7 +66,7 @@
                         </select>
                     </div> 
                 </td>
-                <td   colspan=2>
+                <td   colspan=3>
                     <div ng-if="enbaleGPS "  >
                          <span translate="gateway.baudRate" > 波特率</span> 
                         <select  ng-model="GateWay.GPS.baud_rate" 
@@ -85,14 +87,18 @@
 <div  class="panel-footer b-t-none b-b b-l b-r">
     <!--jjw m-t m-b-->
     <div ng-show="needUpdate" class="m-t-sm m-b-sm">
-        <button class="btn btn-success  btn-sm  w-94 m-l  " token ng-click=" saveGateWay( ) ">
+        <button class="btn btn-success  btn-sm  w-94 m-l  " token ng-click=" saveGateWay( ) "  translate="gateway.save">
             保存网关设置
         </button>
-        <strong class="text-danger m-l"><i class="fa fa-exclamation-triangle"></i><span > 网关配置需要保存!!</span> </strong>
+        <strong class="text-danger m-l"><i class="fa fa-exclamation-triangle"></i>
+            <span  translate="gateway.needSave">  网关配置需要保存!!</span>
+        </strong>
     </div>
     <!--jjw m-b m-t-->
     <div ng-show=" haveSave  &&  !needUpdate " class="m-t-sm m-b-sm" style="height: 30px">
-        <strong class="text-info  m-lg"> <i class="fa  fa-thumbs-o-up "></i> <span>保存成功!</span>  </strong>
+        <strong class="text-info  m-lg"> <i class="fa  fa-thumbs-o-up "></i> 
+            <span translate="text.saved">保存成功!</span>  
+        </strong>
     </div>
     <!--    <ng-include  src=" 'athena/debris/_pager.html'  "></ng-include>   -->
 </div>

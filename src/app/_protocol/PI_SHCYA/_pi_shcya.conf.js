@@ -27,7 +27,7 @@
 
         },
 
-        deviceEntigy: {
+        deviceEntity: {
             params: {
                 link_address: 2
             }

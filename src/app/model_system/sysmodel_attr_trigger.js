@@ -91,8 +91,9 @@ export default ( $scope, $source, $modal, $state, $q, $sys, $utils  )=>{
 
     $scope.deleteTrigger = function( t , i ) {
         angular.confirm({
-            title: "删除触发器: " + t.name,
-            warn: "确认要删除该触发器吗?"
+           // title: "删除触发器: " + t.name,
+            //warn: "您确认要删除该触发器: %s ?"
+            warn: [ 'trigger.warnDel' , t.name ]
         }, function(n) {
             $source.$sysProfTrigger.delete({
                 profile: t.profile,
@@ -107,7 +108,9 @@ export default ( $scope, $source, $modal, $state, $q, $sys, $utils  )=>{
     // 创建 , 编辑 触发器;
     $scope.c_u_Trigger = function( trigger , index) {
         if (!$scope.profiles.length) {
-            angular.alert("请先创建 系统配置!");
+            // angular.alert("请先创建 系统配置!");
+            angular.alert( "profile.frist");
+            
             $state.go('app.model.sysprofile');
             return;
         }
@@ -125,8 +128,8 @@ export default ( $scope, $source, $modal, $state, $q, $sys, $utils  )=>{
                 if (i) { // 创建;
                     $scope.T = a =  angular.extend( 
                             { profile: S.op.profile_id } , 
-                            $sys.trigger.entity,
-                            { conditions: [ $sys.trigger.conditon_entigy ] } 
+                            $sys.triggerEntity ,
+                            { conditions: [ $sys.triggerConditonEntigy ] } 
                         )
 
  

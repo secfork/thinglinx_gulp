@@ -69,20 +69,18 @@
         "upward":"上一步",
 
         
-        "number": "数值",
+        "value": "数值",
+        "params":"参数",
 
         "confParams":"配置参数",
         "netParams": "网络参数",
+        "saved":"保存成功!",
 
         // "depict"
         "desc": "备注"
     },
 
-    // systemmodel 模式  mode ;
-    "sysModelMode": {
-        "1": "托管模式",
-        "2": "非托管模式"
-    },
+  
 
     // sysmodel  支持的 通信类型  comm_type , 和 system 的 system的 网络类型  不用翻译 ,
     //   在 thinglinx.config.js 中配置;

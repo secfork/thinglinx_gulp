@@ -26,8 +26,10 @@ export default ( $scope  ,$source  , $utils ) => {
         {  text: "sysModel.commType",  w: "20%" },
         {  text: "text.createTime",  w: "20%" },
         {  text: "text.lastUpdateTime",  w: "20%" },
-        {  text: "sysModel.devNum",  w: "20%" },
-        {  text: "sysModel.profileNum",  w: "20%" },
+
+        {  text: "device.num",  w: "20%" },
+        {  text: "profile.num",  w: "20%" },
+
         {  text: "text.desc",   w: "20%"  },
         {  text: "text.del",  w: "15%"  }
     ]

@@ -2,7 +2,7 @@
       
         
          <div class="form-group   m-l-xs m-b-none   "  >
-            <span style="margin-right: 30px" translate="profile.name"> 配置项 </span>
+            <span style="margin-right: 30px" translate="profile.profile"> 配置项 </span>
             
             <select ng-model="op.profile_id" 
                 class=" input input-sm w form-control inline" 
@@ -11,20 +11,22 @@
         </div>  
     </div>
   
+
     <div load-mask class="panel-body    table-responsive no-padder   b-b-none">
         <!--jjw j_table-->
         <table class=" table   table-hover table-striped   b-t-none">
             <thead class="flip-content">
                 <tr class="background ">
-                    <th translate="sysModel.tagName" > 变量名称 </th>
+                    <th translate="tag.name" > 变量名称 </th>
                     <th translate="nav.device" > 设备 </th>
                     <th translate="text.type" > 类型 </th>
-                    <th translate="sysModel.scale" > 缩放 </th>
+                    <th translate="tag.scale" > 缩放 </th>
                     <th translate="text.offset" > 偏差 </th>
                     <th translate="text.unit" > 单位 </th>
-                    <th translate="sysModel.save_log" > 保存日志 </th>
-                    <th translate="sysModel.logType" > 日志类型 </th>
-                    <th translate="sysModel.log_cycle"> 日志间隔(秒) </th>
+
+                    <th translate="tag.save_log" > 保存日志 </th>
+                    <th translate="tag.logType" > 日志类型 </th>
+                    <th translate="tag.log_cycle"> 日志间隔(秒) </th>
                     <th width="15%" translate="text.desc" > 备注 </th>
 
                     <th ng-if="isModelState" width="1%"  translate="text.edit" > 编辑 </th>
@@ -50,7 +52,7 @@
                     </td>
                     <td>
                         <span ng-show="tag.save_log"   > 
-                            {{   instant ( 'sysModel.log_type.' + tag.log_type  )  }} 
+                            {{   instant ( 'tagTrans.log_type.' + tag.log_type  )  }} 
                          </span>
                     </td>
                     <td>
@@ -79,7 +81,7 @@
     <div class="panel-footer   b-b b-l b-r">
          
         <button class="btn btn-primary btn-sm w-70  " ng-if="isModelState" ng-click=" addTag('add') " 
-            translate="tag.addTag">
+            translate="tag.add">
             添加变量
         </button>
     </div>

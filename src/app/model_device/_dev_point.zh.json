@@ -28,11 +28,17 @@
         "packet":"独立分包",
  
         "area":"数据区",
+        "type":"数据类型",
         "offset": "偏移地址",
         "byteOffset":"位偏移",
         "charOffset":"字节偏移",
+        "hlByte":"高低字节",
+ 
+        "select": "--请选择点--",
 
         "charLong":"字节长度",
+        "strLong":"字符串长度",
+
         "BCDlong":"BCD码长度", 
  
         "type_ex":"扩展参数",

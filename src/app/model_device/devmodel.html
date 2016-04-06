@@ -31,8 +31,8 @@
                     <thead>
                         <tr>
                             <td translate="text.name">名称</td>
-                            <td translate="devModel.poll">轮训</td>
-                            <td translate="devModel.packet"> 分包</td>
+                            <td translate="point.poll">轮训</td>
+                            <td translate="point.packet"> 分包</td>
                             
                             <td ng-repeat=" th in  _$config.pointTh "
                                 translate="{{:: dm.driver_id +'.'+ th}}"> </td>
@@ -46,13 +46,14 @@
                             <td> {{ p.name }} </td>
                             <td> {{ $sys.point.poll[ p.poll ] }}</td>
                             <td translate> {{ 'yesno.' + p.is_packet }} </td>
-                            <!-- <td  translate> {{ 'pointTrans.access.'+ pa.access }}  </td> -->
-                            <td ng-repeat=" th in  _$config.pointTh " translate>
-                                <!--   {{   dm.driver_id + "  "+  [th][pa[th]].k || pa[th]   }} -->
-                                <!--   type_ex , offset 不用翻译;    ?  之后可以在 _protocol 中 写 各个  point  table 的 html 文件;
-                                  -->
+                            
+
+                            <td ng-repeat=" th in  _$config.pointTh " translate> 
+                              
                                 {{ _$config.noTransTh[th] ? pa[th] : ( th =='access'? 'pointTrans.access.'+pa[th] : dm.driver_id + ".point." + th +"."+ pa[ th ] ) }}
                             </td>
+  
+
                             <td>
                                 <a ng-click='addOrEditPoint( this ,p , $index  ,t  )' class='text-info' translate="text.edit">编辑</a>&nbsp;
                                 <a ng-click='add_f(p)' class='text-info' ng-if="false">   克隆</a>&nbsp;

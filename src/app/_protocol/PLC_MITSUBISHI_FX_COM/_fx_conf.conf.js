@@ -84,7 +84,14 @@
                 "2": 'FX2n',
                 "3": 'FX3u'
 
+            },
+            
+            format: {
+                0:"格式1（无CR,LF）",
+                1:"格式4（有CR,LF）"  
             }
+
+
         },
 
         deviceEntity: {

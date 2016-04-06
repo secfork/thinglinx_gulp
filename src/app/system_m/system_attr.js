@@ -34,8 +34,8 @@ export default ($scope, $state, $stateParams, $source, systemResp) => {
         tabs: [
             { title: "system.online", state: "app.m_system_attr.basic", icon: " icon icon-info " },
             { title: "system.config", state: "app.m_system_attr.config", icon: " icon icon-wrench " },
-            { title: "devModel.tag", state: "app.m_system_attr.tag", icon: " icon icon-bar-chart" },
-            { title: "trigger.name", state: "app.m_system_attr.trigger", icon: " icon icon-rocket " },
+            { title: "tag.tag", state: "app.m_system_attr.tag", icon: " icon icon-bar-chart" },
+            { title: "trigger.trigger", state: "app.m_system_attr.trigger", icon: " icon icon-rocket " },
             { title: "text.map", state: "app.m_system_attr.map", icon: " icon  icon-pointer " }
 
         ]

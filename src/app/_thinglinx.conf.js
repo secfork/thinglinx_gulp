@@ -36,7 +36,12 @@
     // 新建系统时 , 托管 且 DaServer 类型的 system时 , system 的网络类型;  目前只支持 DTU; 以后加其他的;
     systemComType: {
         "DTU": "DTU"
-    },
+    }, 
+    
+
+    // 支持 plc 编程 的 DTU ;  diu 对应的 id;
+    programmableDTU:[ 'DTU_ETUNG' ],
+
 
 
     // 周期单位 ,  秒 , 分 , 时 ;
@@ -45,18 +50,7 @@
         1:"Minute",
         2:"Hour"
     } ,
-
-    // sysModel  device  默认值 ;
-
-    deviceEntity: {
-             dev_cycle: 1,
-             cycle_unit: 1,
-             slow_cycle: 1,
-             slow_cycle_unit: 2,
-             dev_timeout: 15,
-             dev_retry: 1,
-             delay: 1,
-         },
+ 
 
     
     point:{
@@ -80,11 +74,21 @@
  
     },
 
+  // sysmodel deivce   初始化  数据模型; 
+    deviceEntity: {
+        dev_cycle: 1,
+        cycle_unit: 1,
+        slow_cycle: 1,
+        slow_cycle_unit: 2,
+        dev_timeout: 15,
+        dev_retry: 1,
+        delay: 1,
+    },
 
     // 支持 的 点 类型;
     tagType: ['Analog', 'Digital'] ,
 
-    
+ 
 
     triggerEntity: {
          type:1 ,
@@ -134,8 +138,8 @@
             class_id : "1",
             severity : "0"
         },
-
-        eventParams:{
+        
+        eventParams:{  
 
         },
         TaskParams:{

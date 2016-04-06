@@ -7,24 +7,28 @@
         "info": "模型信息",
 
         "sysconf": "系统配置",
-
-
-
-
+  
         "paramsOfConf": "配置参数",
         "paramsOfNet": "网络参数",
 
         "mode": "模式",
-        "commType": "通信类型",
-        "devNum": "设备个数",
 
+        // systemmodel 模式  mode ;
+        "modeType": {
+            "1": "托管模式",
+            "2": "非托管模式"
+        },
+
+        "commType": "通信类型",
+        // sysModelComType  在 thinglinx.conf 中配置; 
+ 
+ 
 
         "devModelFirst": "请先创建设备模型",
 
         "noteDel": "确认要删除该系统模型 %s 吗",
 
-        "warnDelTag": "删除模型变量: %s ? 删除变量将会丢失此变量的全部历史数据!",
-
+      
         "create": "创建系统模型",
 
 
@@ -38,8 +42,9 @@
 
         "add": "添加设备",
         "edit": "编辑设备",
+        "num":"设备个数",
 
-        // sysmodel device 通用; 和 modbus device 通用 翻译;
+        // sysmodel device 通用; 
         "dev_name": "设备名称",
         "dev_cycle": "采样周期",
         "cycle_unit": "采样周期单位",
@@ -49,7 +54,8 @@
         "dev_retry": "连接重试次数",
         "delay": "命令延时(毫秒)",
 
-        // modbus device ;  // 也是 设备 通用翻译 ;
+
+        // modbus device 通用 翻译;  // 也是 设备 通用翻译 ;
         "address": "设备地址",
         "protocol_type": "协议类型",
         "offset_format": "偏移格式",
@@ -67,29 +73,32 @@
 
         
     },
-
-
-
+ 
 
     "tag": {
-        "name": "变量",
-        "tagName": "变量名称",
+        "tag":"变量",
+        "name": "变量名称", 
+        
         "add": "添加变量",
         "edit": "编辑变量",
-        "select": "--请选择点--",
+        "scale":"缩放",
+        "select":"请选择变量",
+
         "connect": " Connet 点",
 
         "log_cycle": "日志间隔(秒)",
         "logType": "日志类型",
-        "save_log": "保存日志",
-        "scale": "缩放",
+        "save_log": "保存日志", 
+        "no_save_log":"不保存日志",
+        
+        "warnDelTag": "删除模型变量: %s ? 删除变量将会丢失此变量的全部历史数据!",
 
 
 
         "xx": ""
     },
 
-    "trgTrans": { 
+    "tagTrans": { 
 
         "log_type": {
             //                "RAW": "保存原始记录",
@@ -111,11 +120,15 @@
 
 
     "gateway": {
+        "gateway":"网关",
 
         "addSerial": "添加串口",
         "port": "端口",
         "proto": "协议",
 
+        "save":"保存网关设置",
+        "needSave":"网关配置需要保存!",
+        
 
         "serial": "串口",
         "baudRate": "波特率",
@@ -124,6 +137,7 @@
         "parity": "校验",
         "delay": "延迟(毫秒)",
 
+        "delNote":"您确认要删除该串口: %s ?",
 
         "parityType": {
             "none": "无校验",
@@ -137,35 +151,55 @@
 
     },
 
+ 
+
+    "trigger": { 
 
 
+        "trigger":"触发器",
 
-
-    "trigger": {
-
-        "name": "触发器",
         "add": "添加触发器",
-        
+        "edit":"编辑触发器",
+
+        "name": "触发器名称",
+
+        "severity":"严重性",
+        "class":"类别",
+
+        "action":"行为",
+        "origin":"触发源",
+        "type":"触发类型",
+ 
+        "op":"运算符",
+        "verb":"条件",
+
+        "alarmDesc":"报警描述",
+
         "num": "触发器数目",
+
+        "warnDel":"您确认要删除该触发器: %s ?",
+        
         "xx": "x"
+
     },
 
     "profile": {
-        "name": "配置项",
-        "profile": "系统配置项",
+        "profile":"配置项",
+        "sysProfile":"系统配置项",
+        
+        "name": "配置项名称", 
 
         "add": "添加配置项",
         "profileName": "配置项名称",
         "num": "配置项个数",
-
-
+        
+        "frist":"请先创建 系统配置!",
 
         "xx": ""
     },
 
 
-    "triggerConf": {
-
+    "triggerTrans": {
 
         "type": {
             "0": "状态持续触发",
@@ -174,12 +208,12 @@
 
 
         "severity": {
-            "0": "不确定的", //"Indeterminate",
-            "1": "紧急的", //"Critical ",
-            "2": "重要的", //"Major ",
-            "3": "一般的", //"Minor ",
-            "4": "警告" //"Warning",
-                // , "5":"Cleared"
+            "0": "不确定的",    //"Indeterminate",
+            "1": "紧急的",     //"Critical ",
+            "2": "重要的",     //"Major ",
+            "3": "一般的",     //"Minor ",
+            "4": "警告"       //"Warning",
+            // , "5":"Cleared"
         },
 
 

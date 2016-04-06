@@ -14,6 +14,9 @@
 		"online":"状态",
         "config":"配置",
 
+        "activeNum": "已激活系统",
+        "unactiveNum": "未激活系统",
+
 
 		"sync":"同步",
 		"noteDel":		"您确认要删除系统 %s 吗?",
@@ -22,7 +25,7 @@
 		"noteUnActive": "您确认要失效系统 %s 吗?",
 
 
-		"addSystem":"添加系统",
+		"add":"添加系统",
 
 		"stateOptions":{ 
             "0": "未激活",
