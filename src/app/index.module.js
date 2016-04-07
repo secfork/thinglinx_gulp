@@ -1,3 +1,8 @@
+
+
+
+
+
 import config from './index.config';
 import routerConfig from './index.route';
 import runBlock from './index.run';
@@ -160,7 +165,7 @@ var thinglinx = angular.module('thinglinx', [
 
     // wysiwyg: ['lib/wysiwyg/bootstrap-wysiwyg.js',
     //           'lib/wysiwyg/jquery.hotkeys.js'
-    //         ]
+    //         ]  
     //         
     easyPieChart:   ['lib/flot/jquery.easy-pie-chart.js'],
 
@@ -172,10 +177,7 @@ var thinglinx = angular.module('thinglinx', [
         'lib/file/bootstrap-filestyle.min.js'
     ]
 
-})
-
-
- ;
+}) ;
 
 initServices(thinglinx);
 initDirective(thinglinx);

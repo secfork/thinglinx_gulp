@@ -1,7 +1,6 @@
-   <div class="panel-heading  bg-white-only  w-full    "   >
-      
-        
-         <div class="form-group   m-l-xs m-b-none   "  >
+   <div class="panel-heading  bg-white-only  w-full    "  ng-if="isModelState"  >
+       
+        <div class="form-group   m-l-xs m-b-none   "  >
             <span style="margin-right: 30px" translate="profile.profile"> 配置项 </span>
             
             <select ng-model="op.profile_id" 
@@ -80,8 +79,8 @@
     </div>
     <div class="panel-footer   b-b b-l b-r">
          
-        <button class="btn btn-primary btn-sm w-70  " ng-if="isModelState" ng-click=" addTag('add') " 
-            translate="tag.add">
+        <button class="btn btn-primary btn-sm w-70  " ng-if="isModelState" 
+            ng-click=" addTag('add') "  translate="tag.add" >
             添加变量
         </button>
     </div>

@@ -13,6 +13,7 @@ import  sysmodel_attr_gateway from "./sysmodel_attr_gateway";
  
 export default {
 
+
     "app.sysmodel": {
         url: "sysmodel",
         templateUrl: "app/model_system/sysmodel.html",
@@ -25,11 +26,11 @@ export default {
         resolve: {
             sysModelResp : ( $source , $stateParams )=>{
                 return  $source.$sysModel.get({pk: $stateParams.uuid}).$promise ;
-
             }
         },
     	controller: sysmodel_attr
     },
+
 
     "app.sysmodelattr.info":{
         url:"/info",
@@ -48,6 +49,10 @@ export default {
     },
     "app.sysmodelattr.tag":{
         url:"/tag",
+
+        // data:{ manage:true },
+        //isModelState : true,  //  sys systemModel 的 state ; 
+
         templateUrl:"app/model_system/sysmodel_attr_tag.html",
         controller: sysmodel_attr_tag
     },

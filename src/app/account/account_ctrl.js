@@ -1,13 +1,9 @@
+export default ($scope, $state, $source, $show, $q) => {
+    "ngInject";
 
 
 
-
-export default ( $scope, $state, $source, $show, $q  )=>{
-	"ngInject";
-
-
-
-  $scope.od = {};
+    $scope.od = {};
 
     // 账户信息;  
     $source.$user.get({
@@ -69,6 +65,17 @@ export default ( $scope, $state, $source, $show, $q  )=>{
 
 
 
-	
+
+    // 得到日 用量; 
+    // $scope.daliyStat = { daily_alarms: 0, daily_emails: 0, daily_sms: 0, daily_wechats: 0 };
+    // $source.$account.daliyStatistic(function(resp) {
+    //     var ret = resp.ret;
+    //     $scope.daliyStat = ret;
+
+
+    // });
+
+
+
 
 }

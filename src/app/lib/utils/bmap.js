@@ -53,7 +53,7 @@ export default {
 
     // // 创建地图; 
     createMap: (scope, Dom_id, h_offset) => {
-            var map = new BMap.Map(Dom_id); // 创建Map实例
+            var map = new BMap.Map(Dom_id   ); // 创建Map实例
 
 
             map.centerAndZoom(new BMap.Point(116.404, 39.915), 8);
@@ -83,6 +83,16 @@ export default {
                 BMAP_NAVIGATION_CONTROL_SMALL：仅包含平移和缩放按钮；BMAP_NAVIGATION_CONTROL_PAN:仅包含平移按钮；BMAP_NAVIGATION_CONTROL_ZOOM：仅包含缩放按钮*/
             map.addControl(top_left_control);
             map.addControl(top_left_navigation);
+
+            map.addControl(  new BMap.MapTypeControl(   
+                { 
+                    mapTypes: [ 
+                        BMAP_NORMAL_MAP 
+                        //,BMAP_PERSPECTIVE_MAP 
+                        , BMAP_HYBRID_MAP
+                    ]
+                }  
+            ));
 
             // 取消  resize 事件 ;
             scope.$on("$destroy", function() {

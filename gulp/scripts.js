@@ -15,7 +15,7 @@ function webpackWrapper(watch, test, callback) {
     watch: watch,
     module: {
       // 不检查 代码 ;
-      // preLoaders: [{ test: /\.js$/, exclude: /node_modules/, loader: 'eslint-loader'}],
+      //preLoaders: [{ test: /\.js$/, exclude: /node_modules/, loader: 'eslint-loader'}],
       loaders: [{ test: /\.js$/, exclude: /node_modules/, loaders: ['ng-annotate', 'babel-loader']}]
     },
     output: { filename: 'index.module.js' }

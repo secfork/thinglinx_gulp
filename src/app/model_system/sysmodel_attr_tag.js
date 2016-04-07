@@ -2,15 +2,16 @@
 import objUtils from "../lib/utils/objUtils";
 
 
-export default ($scope , $source , $modal , $q , $utils , $sys ,$state , $timeout ) => {
+export default ($scope , $source , $modal , $q , $utils , $sys ,$state  ) => {
     "ngInject";
 
+    // 是否为 sysModel  state ;  ( 还有可能是 system state , 不编辑tag  , 只展示 ) ;
+    $scope.isModelState =  $state.current.isModelState ;
 
-    $scope.isModelState = true ;
 
-    var sysmodel = $scope.sysModel,  
+    var sysmodel = $scope.sysModel ,
         t = $scope;
-        // 托管 ,非 托管 模式; 
+        // 托管 ,非 托管 模式;
     	t.isManageMode = sysmodel.mode == 1;
 
     // 拆分 connect 字段;
@@ -21,7 +22,7 @@ export default ($scope , $source , $modal , $q , $utils , $sys ,$state , $timeou
         tag.dev_id = cc[0],
             tag.point_id = cc[0];
     };
-  
+
     var dev_id, dev_ref;
 
     $scope.getDevName = function(tag, scope) {
@@ -32,9 +33,9 @@ export default ($scope , $source , $modal , $q , $utils , $sys ,$state , $timeou
         dev_ref = $scope.sysDevice_KV[dev_id],
 
             // 是否真的连接了设备, dev_name 来判断;
-        scope.dev_name = dev_ref && dev_ref.name; 
+        scope.dev_name = dev_ref && dev_ref.name;
 
-        return  scope.dev_name ; 
+        return  scope.dev_name ;
 
         //@if  append
         console.log(" 查找 dev name =", scope.dev_name);
@@ -42,13 +43,13 @@ export default ($scope , $source , $modal , $q , $utils , $sys ,$state , $timeou
         //@endif
 
     }
- 
+
 
     // 加载 sysDevice 组织 sysDevice 的kv 形式;
     $scope.loadSysDevice();
 
 
-    // profile ng-chage ;   tag 比较特殊 没profile 也可以创建; 
+    // profile ng-chage ;   tag 比较特殊 没profile 也可以创建;
 
     // $scope.showMask = true;
     $scope.loadSysTag = function(prof_uuid) {
@@ -135,7 +136,7 @@ export default ($scope , $source , $modal , $q , $utils , $sys ,$state , $timeou
         return promise;
     }
 
- 
+
 
     // 创建 点 , 带 log 部分;
     $scope.addTag = function() {
@@ -203,7 +204,7 @@ export default ($scope , $source , $modal , $q , $utils , $sys ,$state , $timeou
                             $scope.systags.push(d);
                             $scope.cancel();
                         }
- 
+
                         if (  $scope.profiles.length ) { // 日志参数;
                             $scope.L.id = resp.ret,
                                 $scope.L.profile = t.op.profile_id ,
@@ -239,7 +240,7 @@ export default ($scope , $source , $modal , $q , $utils , $sys ,$state , $timeou
                     // 非托管的无 connect 字段;
                     d = a.connect.split("."),
                         dd = d[0],
-                        dt = d[1]; 
+                        dt = d[1];
 
                     // ApplyDevPoint 会初始化第一个point名字;
                     ApplyDevPoint($scope).then(function() {
@@ -297,7 +298,7 @@ export default ($scope , $source , $modal , $q , $utils , $sys ,$state , $timeou
 
         console.log("deleteTag");
         //@endif
-        angular.confirm({ 
+        angular.confirm({
             warn: [ 'tag.warnDelTag' , tag.name ] // "删除变量将会丢失此变量的全部历史数据!"
         }, function(next) {
             $source.$sysTag.delete({
@@ -317,15 +318,15 @@ export default ($scope , $source , $modal , $q , $utils , $sys ,$state , $timeou
 
         if (! $scope.profiles.length ) {
             // angular.alert(frist"请先创建 系统配置!");
-            
+
             angular.alert("profile.frist");
             // $state.go('app.model.sysprofile');
             return;
-        } 
+        }
 
         $modal.open({
             templateUrl: "app/model_system/sysmodel_attr_tag_log_edit.html" ,
-             
+
             controller: function($scope, $modalInstance) {
 
                 var a, b, c, d;
@@ -339,7 +340,7 @@ export default ($scope , $source , $modal , $q , $utils , $sys ,$state , $timeou
                     $scope.L = a = angular.copy(tag),
                     $scope.T = angular.copy(tag);
 
-                // ng-init=" L.log_cycle = '300' " 
+                // ng-init=" L.log_cycle = '300' "
                 if (b) {
                     $scope.L.log_cycle = $scope.L.log_cycle  || 300;
                 } else {

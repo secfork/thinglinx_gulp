@@ -1,13 +1,7 @@
 
 
-<div class="panel-heading   w-full  "   > 
-    <div class="form-group   m-l-xs m-b-none">
-        <span style="margin-right: 30px"> 配置项 </span>
-        <select ng-model="odp.puuid" class=" input input-sm w form-control inline" ng-options="   p.uuid as p.name for p in profiles  " ng-change="loadSysTag( odp.puuid  )"></select>
-    </div>
-</div>
  
-<div load-mask class="panel-body    table-responsive   ">
+<div load-mask class="panel-body  no-padder   table-responsive   ">
     <!--jjw j_table-->
     <table class=" table   table-hover table-striped   ">
         <thead class="flip-content">

@@ -85,10 +85,11 @@ export default ($translate, $modalStack, $rootScope, $sys, $source) => {
              
         },
 
-        loasSystemPageData:function(){
+        // loasSystemPageData:function(){
             
-        } ,
+        // } ,
 
+        // 讲 trigger 的 conditions  转换成 string  , 便于 popwin 展示 ;
         triggerConditions: (c)=>{
             var conditions = angular.copy(c);
 
@@ -108,6 +109,12 @@ export default ($translate, $modalStack, $rootScope, $sys, $source) => {
                     arr.push(exp.right.args);
                 })
                 return arr.join(" ");
+        } ,
+
+        // {driverid: xx }
+        isEnablePlcProg: ( driveridObj = { driverid: undefined } )=>{
+
+            return  $sys.programmableDTU.indexOf( driveridObj.driverid) >= 0 ;
         }
 
 

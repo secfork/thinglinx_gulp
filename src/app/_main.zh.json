@@ -50,6 +50,9 @@
         "del": "删除",
         "update": "更新",
         "reset": "复位",
+        
+        "regist":"注册",
+        "unBind":"解除绑定",
 
         "alert": "提示",
         "done": "确定",

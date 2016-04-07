@@ -60,6 +60,11 @@ export default ($resource , $sys ) => {
     $source.$ticket = $createSource( "ticket/:system_id");
 
     $source.$system = $createSource("system/:pk/:options/:proj_id", {}, { 
+        
+        setPLC:{ method:"PUT" , params:{ options:"set_plc_prog"}  },
+            
+        getPLC:{ params:{ options:"get_plc_prog"} },
+
         sync: {  method: "GET", params:{ options:"sync" }  },
         stop: {  method: "GET" , params:{ cmd:"stop"}  },
         start: {  method: "GET", params:{ cmd:"start"} }, 
