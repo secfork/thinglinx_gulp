@@ -37,6 +37,8 @@ import nav from "./nav";
 import token from "./token";
 
 import popwin from "./popwin";
+ 
+
 import mark from "./mark";
 
 import privilege2text from "./privilege2text";
@@ -61,7 +63,7 @@ export default (module) => {
         .directive("loadMask", loadMask)
         .directive('tlNav', nav)
         .directive('token', token)
-        .directive('popwin', popwin)
+        .directive('popwin', popwin) 
         .directive('mark', mark)
 
         .directive("privilege2text", privilege2text)

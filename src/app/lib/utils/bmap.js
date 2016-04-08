@@ -51,9 +51,21 @@ export default {
     markerOptions  : {   offset: new BMap.Size( 0,5)     }  , 
     infoWindowOptions : { enableCloseOnClick: false  , enableMessage :false } ,
 
-    // // 创建地图; 
+    // // 创建地图;  dom_id =  string | HTMLelement ;
     createMap: (scope, Dom_id, h_offset) => {
-            var map = new BMap.Map(Dom_id   ); // 创建Map实例
+
+            h_offset = h_offset || 0 ;
+
+
+            var $mapdom =   angular.isString( Dom_id)? $("#"+ Dom_id) : $( Dom_id);
+            
+            $mapdom.css({
+                height: window.innerHeight - h_offset
+            });
+            
+
+
+            var map = new BMap.Map( Dom_id   ); // 创建Map实例
 
 
             map.centerAndZoom(new BMap.Point(116.404, 39.915), 8);
@@ -99,15 +111,15 @@ export default {
                 $(window).off("resize");
             })
 
-            var $mapdom = $("#"+Dom_id )
+
             $(window).on("resize", function() {
+                console.log("map widno resize ")
                 $mapdom.css({
                     height: window.innerHeight - h_offset
                 });
             });
-            $mapdom.css({
-                height: window.innerHeight - h_offset
-            });
+
+
 
             return map;
         }
@@ -185,17 +197,19 @@ export default {
         }
     }
 
-    // // //  获取 当前地址,    getLocation( callback(result) );
+    // // //  获取 当前地址,    getLocation(  point ,  callback(result) );
     ,
     // getLocation: ()=>{
     //     myGeo.getLocation
     //    // console.log( pointCollectionOptions );
-    // } 
-    getLocation: myGeo.getLocation
+    // }
 
+    getLocation: function( point , cb ){ 
+        myGeo.getLocation( point , cb )
+    }  ,  
 
     // // // 创建 海量点 集合;  voerlayer ;
-    ,
+  
     createPointCollection: ( systemArray ) => {
         var that = this,
             collection = new BMap.PointCollection(

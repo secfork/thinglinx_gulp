@@ -11,10 +11,7 @@ import runBlock from './index.run';
 import initServices from "./lib/service";
 import initDirective from "./lib/directive";
 
- 
-
-// 'ngTouch', 'ngSanitize', 'ngAria', 
-
+  
 
 var thinglinx = angular.module('thinglinx', [
     'ngAnimate', 'ngCookies', 'ngMessages',

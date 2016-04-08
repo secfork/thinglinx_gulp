@@ -125,14 +125,15 @@ export default ($scope, $source , $utils ) => {
 
 
     // ========================== 获得 sysmodel 配置项=================================; 
-        $scope.$parent.loadProfile = $scope.$parent.loadProfile ||  $source.$sysProfile.get({
-            system_model: $scope.system.model
-        }).$promise ;  
+       
 
+        $scope.loadProfile() 
 
-        $scope.loadProfile.then(function(resp) {
-            $scope.profiles = resp.ret ; 
+        .then(function(resp) { 
+
             var p_uuid = $scope.system.profile ;
+
+            //  显得有点烦吗 , 但是 便于 显示 profile的desc ; 
             $.each($scope.profiles, function(i, v, t) {
                 if (v.uuid == p_uuid) {
                     $scope.profile = v ;

@@ -75,16 +75,18 @@ export default ( $scope , sysModelResp , $source )=>{
 	}
 
 
- 	// 加载  sysmodel 的 profile ;
+ 	// 加载  sysmodel 的 profile ; 默认选中 第一个 ; 
  	var  holdProfile ;
  	$scope.loadProfile = ()=>{
- 		return  holdProfile = holdProfile || $source.$sysProfile.get( { system_model: $scope.sysModel.uuid } , (resp)=>{
-			$scope.profiles =  resp.ret.length ? resp.ret : undefined ;
+ 		return  holdProfile = holdProfile || 
+ 		$source.$sysProfile.get( 
+ 			{ system_model: $scope.sysModel.uuid } 
+ 			, (resp)=>{
+					$scope.profiles =  resp.ret.length ? resp.ret : undefined ;
 
-			$scope.op.profile_id = $scope.profiles[0]  && $scope.profiles[0].uuid ;
-
-
-		}).$promise ;
+					$scope.op.profile_id = $scope.profiles[0]  && $scope.profiles[0].uuid ;
+			}
+		).$promise ;
 
  	}
 

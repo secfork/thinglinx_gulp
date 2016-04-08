@@ -49,15 +49,19 @@ export default {
     },
     "app.sysmodelattr.tag":{
         url:"/tag",
-
-        // data:{ manage:true },
-        //isModelState : true,  //  sys systemModel 的 state ; 
+        
+        //  sys systemModel 的 state ; 
+        isModelState : true,  
 
         templateUrl:"app/model_system/sysmodel_attr_tag.html",
         controller: sysmodel_attr_tag
     },
     "app.sysmodelattr.trigger":{
         url:"/trigger",
+        
+        //  sys systemModel 的 state ; 
+        isModelState : true,  
+
         templateUrl:"app/model_system/sysmodel_attr_trigger.html",
         controller: sysmodel_attr_trigger
     },

@@ -1,9 +1,12 @@
-export default ($scope, $state, $stateParams, $source, systemResp) => {
+export default ($scope, $state, $stateParams, $source, systemResp , sysModelResp ) => {
     "ngInject";
+
+    $scope.op = { createMap:true }
 
 
     // 获取 system
     $scope.system = systemResp.ret;
+    $scope.sysModel = sysModelResp.ret ;
 
     // 获得 region 信息; 
 
@@ -43,8 +46,32 @@ export default ($scope, $state, $stateParams, $source, systemResp) => {
 
 
 
+    // 加载  sysmodel device ;
+    var   holdSysDevice ;
+    $scope.loadSysDevice = ()=>{
+        return holdSysDevice = holdSysDevice   || $source.$sysDevice.get({ system_model: $scope.sysModel.uuid },(resp) => {
+                $scope.sysDevices =   resp.ret || [];
+                $scope.sysDevice_KV = {};
+                $scope.sysDevices.forEach( (v)=>{
+                    $scope.sysDevice_KV[ v.id ] =  v ;
+                })
+            }).$promise;
+    }
 
+    // 加载  sysmodel 的 profile ;
+    var  holdProfile ; 
 
+    $scope.loadProfile = ()=>{
+        return  holdProfile = holdProfile ||
+         $source.$sysProfile.get( 
+            { system_model: $scope.sysModel.uuid } 
+            , (resp)=>{
+                $scope.profiles =  resp.ret.length ? resp.ret : undefined ;
+   
+            }
+        ).$promise ;
+
+    }
 
 
 

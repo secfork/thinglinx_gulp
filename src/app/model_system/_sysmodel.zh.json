@@ -163,6 +163,8 @@
 
         "name": "触发器名称",
 
+        "condtion":"触发条件",
+
         "severity":"严重性",
         "class":"类别",
 

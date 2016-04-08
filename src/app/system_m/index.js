@@ -11,7 +11,10 @@ import  system_attr_config from "./system_attr_config";
 //import  system_attr_tag from "./system_attr_tag";
 import  sysModel_tag from "../model_system/sysmodel_attr_tag";
 
-import  system_attr_trigger from "./system_attr_trigger";
+//import  system_attr_trigger from "./system_attr_trigger";
+import  sysModel_trigger  from "../model_system/sysmodel_attr_trigger";
+
+
 import  system_attr_map from "./system_attr_map";
 
 
@@ -25,25 +28,22 @@ export default {
 	} ,
 
 	"app.m_system_attr" :{
-		url:"m_system/{uuid}",
+		url:"m_system/{uuid}/{model}",   // system_id   +  sysModel_id
 		template:" <tl-subject></tl-subject><tl-tab-panel load-mask ></tl-tab-panel>",
 		resolve: {
 			// 加载 system ,
 			systemResp : ( $source , $stateParams)=>{
 				"ngInject";
-				return $source.$system.get({
-                            system_id: $stateParams.uuid
-                        }).$promise ;
+				return $source.$system.get( { system_id: $stateParams.uuid } ).$promise ;
 
 			}  
 
 			// 加载  sysModel  
-			// ,sysModelResp : ( $source , $stateParams    )=>{
-   //              // return  $source.$sysModel.get({pk: $stateParams.uuid}).$promise ;
-			// 	return $source.$system.get({
-   //                          system_id: $stateParams.uuid
-   //                      }).$promise ;
-   //          }
+			,sysModelResp : ( $source , $stateParams )=>{
+ 
+                return  $source.$sysModel.get({pk: $stateParams.model}).$promise ;
+  
+            }
 
 
 		},
@@ -71,13 +71,17 @@ export default {
 	},
 	"app.m_system_attr.trigger" : {
 		url:"/trigger",
-		templateUrl:"app/system_m/system_attr_trigger.html",
-		controller: system_attr_trigger
+		// templateUrl:"app/system_m/system_attr_trigger.html",
+		// controller: system_attr_trigger
+
+		templateUrl:"app/model_system/sysmodel_attr_trigger.html",
+		controller:sysModel_trigger
 
 	},
 	"app.m_system_attr.map" : {
 		url:"/map",
 		templateUrl:"app/system_m/system_attr_map.html",
+		// template:"<div   ng-init='initMap()' id='sysmap'   > </div>" ,
 		controller: system_attr_map
 
 	},

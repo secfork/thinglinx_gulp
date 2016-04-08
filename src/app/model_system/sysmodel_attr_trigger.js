@@ -3,7 +3,7 @@ export default ( $scope, $source, $modal, $state, $q, $sys, $utils  )=>{
 	"ngInject";
 
 
-  	var sysmodel = $scope.sysModel,
+  	var sysModel = $scope.sysModel,
         S = $scope;
     // tags_nv,
     // tags_arr;
@@ -11,19 +11,31 @@ export default ( $scope, $source, $modal, $state, $q, $sys, $utils  )=>{
     $scope.byte = 32; // 32 位 报警;
 
 
-    // 加载 Tag 数据; ;
+    $scope.isModelState  = $state.current.isModelState ;
 
+
+    // 加载 Tag 数据; 
+    // 1: 创建 sysModel trigger 使用,
+    // 2: 展示 system 的triger 时 判断 tag 是否还还在,tag 点是否有被误删掉; 
     var loadTagPromise = $source.$sysTag.get({
-        system_model: sysmodel.uuid
-    }).$promise;
+                                system_model: sysModel.uuid
+                            }, (resp) => {
+                                $scope.tags_arr = resp.ret;
+                                $scope.tags_nv = {};
+                                $scope.tags_arr.forEach(function(v, i, ar) {
+                                    $scope.tags_nv[v.name] = v;
+                                });
+                            }).$promise;
 
-    loadTagPromise.then(function(resp) {
-        $scope.tags_arr = resp.ret;
-        $scope.tags_nv = {};
-        $scope.tags_arr.forEach(function(v, i, ar) {
-            $scope.tags_nv[v.name] = v;
-        });
-    })
+
+
+    // loadTagPromise.then(function(resp) {
+    //     $scope.tags_arr = resp.ret;
+    //     $scope.tags_nv = {};
+    //     $scope.tags_arr.forEach(function(v, i, ar) {
+    //         $scope.tags_nv[v.name] = v;
+    //     });
+    // })
 
     function condition_parmas_tojson(x) {
         x.conditions = angular.fromJson(x.conditions);
@@ -35,7 +47,7 @@ export default ( $scope, $source, $modal, $state, $q, $sys, $utils  )=>{
     // 加载triger ;
     // var lose_tag = { 'background-color':'grey' };
     $scope.loadPageData = function(pageNo) {
-        var prof_id = $scope.op.profile_id ;  //odp.puuid;
+        var prof_id = $scope.system ? $scope.system.profile : $scope.op.profile_id ;  //odp.puuid;
         if (!prof_id) return;
         var d = {
             profile: prof_id
@@ -54,6 +66,7 @@ export default ( $scope, $source, $modal, $state, $q, $sys, $utils  )=>{
 
 
                 condition_parmas_tojson(t);
+
                 // 检查tag是否存在;
 
                 angular.isArray(t.conditions) && t.conditions.forEach(function(v) {
@@ -204,7 +217,7 @@ export default ( $scope, $source, $modal, $state, $q, $sys, $utils  )=>{
         })
     }
 
-    // 显示 触发器的 condition ;
+    // 显示 触发器的 , 将 trigger 的 condition 拼接成  string  ;
     $scope.conditions = $utils.triggerConditions;
 
 

@@ -8,6 +8,7 @@ coverage/
 .idea/
 .tmp/
 dist/
+
 .DS_Store
 
 

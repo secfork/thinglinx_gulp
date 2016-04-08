@@ -65,7 +65,9 @@
                     <td>{{ :: das.uuid }}</td>
                     <td ng-if="!isRegionAttr"> 
                         <a class="text-info-dk" 
-                        ng-click=" goto( _$projState ,   rg_k_v[ das.region_id] ,  rg_k_v[ das.region_id] ) " >
+                        ng-click=" goto( _$projState ,  
+                                         rg_k_v[ das.region_id] , 
+                                         rg_k_v[ das.region_id] ) " >
                                  {{ :: regionID_Self[ das.region_id].name }} </a>
                     </td>
                     <td  translate >  system.stateOptions.{{ :: das.state }}</td>

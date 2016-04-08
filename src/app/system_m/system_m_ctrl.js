@@ -17,9 +17,9 @@ export default ($scope, $sys, $source, $interpolate, $q, $compile, $translate, $
     $scope.isRegionAttr = isRegionAttr ;
 
 
-    // 点击 系统名称时 跳转 路径; 
+    // 点击 系统名称时 跳转 路径;  有可能还是 show 部分要用 该函数; 
     $scope.getNextSystemState = ( das )=>{ 
-        return   "app.m_system_attr.basic({uuid:'"+ das.uuid +"'})" ;
+        return   "app.m_system_attr.basic({uuid:'"+ das.uuid +"', model:'"+ das.model+"'  })" ;
     };
 
  

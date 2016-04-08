@@ -1,4 +1,5 @@
- <div class="panel-heading  bg-white-only "   >
+    
+    <div class="panel-heading  bg-white-only "  ng-if="isModelState" >
         <!--jjw 添加div-->
         <div class="form-group  m-b-none m-l-xs">
             <span style="margin-right: 30px" translate="profile.profile">  配置项 </span>
@@ -20,11 +21,11 @@
                     <th translate="trigger.type"> 触发类型</th>
                     <th translate="trigger.action"> 行为 </th>
                     <th translate="trigger.origin"> 触发源 </th>
-                    <th translate="trigger.op"> 条件 </th>
+                    <th translate="trigger.op"> 条件 </th> 
+                    <th width="20%"  translate="text.desc"   > 备注 </th>
 
-                    <th width="20%"  translate="text.desc"> 备注 </th>
-                    <th   width="1%" translate="text.edit" > 编辑 </th>
-                    <th   width="1%"  translate="text.del"> 删除 </th>
+                    <th   width="1%" translate="text.edit" ng-if="isModelState" > 编辑 </th>
+                    <th   width="1%"  translate="text.del" ng-if="isModelState" > 删除 </th>
 
                     <!-- ng-if="isModelState" -->
 
@@ -42,23 +43,25 @@
 
                     <td ng-style="t.lose_tag">
                         <i class="fa fa-android  text-info-dker " 
-                           popover-trigger="mouseenter"
-                           popover="{{ conditions( t.conditions ) }}" 
-                           popover-placement="top" 
+                            popover-trigger="mouseenter"
+                            popover="{{ conditions( t.conditions ) }}" 
+                            popover-placement="top" 
 
-                         popover-title="触发条件"></i>
+                            popover-title="{{ instant( 'trigger.condtion') }}"></i>
                     </td>
                     <td> {{t.desc }} </td>
 
 
                     <!-- ng-if="isModelState"
                      -->
-                    <td   >
-                        <a class="text-info m-r-xs" ng-click="c_u_Trigger( t , $index ) " translate="text.edit" >编辑</a>
+                    <td   ng-if="isModelState" >
+                        <a  class="text-info m-r-xs" ng-click="c_u_Trigger( t , $index ) " 
+                            translate="text.edit" >编辑</a>
                     </td>
 
-                    <td  >
-                        <a class="text-info m-r-xs"  ng-click="deleteTrigger(    t  ,$index  )" translate="text.del">移除</a>
+                    <td ng-if="isModelState" >
+                        <a class="text-info m-r-xs"  ng-click="deleteTrigger(    t  ,$index  )" 
+                        translate="text.del">移除</a>
                     </td>
 
 
@@ -68,7 +71,8 @@
     </div>
     <!--jjw b-b b-l b-r  ng-if="isModelState" -->
     <div class="panel-footer  text-center  ">
-        <button class="btn btn-primary btn-sm   pull-left "  ng-click=" c_u_Trigger( ) " translate="trigger.add">
+        <button class="btn btn-primary btn-sm pull-left"  ng-if="isModelState"
+            ng-click=" c_u_Trigger( ) " translate="trigger.add">
             添加触发器
         </button>
         <tl-pagger></tl-pagger>

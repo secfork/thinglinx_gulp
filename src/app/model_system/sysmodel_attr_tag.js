@@ -6,7 +6,8 @@ export default ($scope , $source , $modal , $q , $utils , $sys ,$state  ) => {
     "ngInject";
 
     // 是否为 sysModel  state ;  ( 还有可能是 system state , 不编辑tag  , 只展示 ) ;
-    $scope.isModelState =  $state.current.isModelState ;
+    var  isModelState ;
+    $scope.isModelState = isModelState =  $state.current.isModelState ;
 
 
     var sysmodel = $scope.sysModel ,
@@ -46,23 +47,23 @@ export default ($scope , $source , $modal , $q , $utils , $sys ,$state  ) => {
 
 
     // 加载 sysDevice 组织 sysDevice 的kv 形式;
-    $scope.loadSysDevice();
+    isModelState && $scope.loadSysDevice();
 
 
     // profile ng-chage ;   tag 比较特殊 没profile 也可以创建;
 
     // $scope.showMask = true;
-    $scope.loadSysTag = function(prof_uuid) {
+    function loadSysModelTag (prof_uuid) {
         // { profile_id: $scope.profile }
         if (prof_uuid) {
             // 有profile时 ; 去检索是否连接了设备;
             var promise_tag = $source.$sysLogTag.get({
                 profile: prof_uuid
             }).$promise;
-            $q.all([promise_tag, $scope.loadSysDevice()]).then(function(resp) {
-                    $scope.systags = resp[0].ret;
 
-                    $scope.showMask = false;
+            $q.all([promise_tag, $scope.loadSysDevice()]).then(function(resp) {
+                    $scope.systags = resp[0].ret ;
+                    $scope.showMask = false ;
                 }
                 //If any of the promises is resolved with a rejection,
                 // this resulting promise will be rejected with the same rejection value.
@@ -85,10 +86,20 @@ export default ($scope , $source , $modal , $q , $utils , $sys ,$state  ) => {
         }
     }
 
-    // 加载 点;
+    // sysModel 加载 点; 
     $scope.loadProfile().then(function() {
-        $scope.loadSysTag($scope.op.profile_id);
+        loadSysModelTag( 
+            $scope.system ? 
+            $scope.system.profile  //  system  的  tag ;
+            :
+            $scope.op.profile_id  //  sysModel 的 tag ;
+        );
     });
+
+    
+ 
+
+
 
     //  manage 模式时 ,  tag 的编辑, 新建; 增加 dev , devModelPoint 联动;
     function ApplyDevPoint(scope) {
