@@ -26,9 +26,9 @@
                     <popwin ng-model="sm"   prop="name" handler=" updateSysModel  " />
                 </td>
 
-                <td translate> sysModelMode.{{:: sm.mode }} </td>
+                <td translate> sysModel.modeType.{{:: sm.mode }} </td>
 
-                <td >    {{ :: $sys.sysModelComType[ sm.comm_type ]}}   </td>
+                <td  translate >  {{ :: $sys.sysModelComType[ sm.comm_type ]}}   </td>
 
                 <td> {{ :: sm.create_time | date:"yyyy-MM-dd HH:mm Z" }}</td>
 

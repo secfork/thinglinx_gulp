@@ -25,7 +25,9 @@ export default ($resource , $sys ) => {
     $source.$region = $createSource( "region/:pk/:op" );
         
         // account/admin?uuid 来判断 uuid is Exist
-    $source.$account = $createSource( "account/:pk" );
+    $source.$account = $createSource( "account/:pk"  , {} , {
+        daliyStatistic:{ params: { pk:  "daily_statistic"}   } 
+    });
 
     $source.$role = $createSource("role/:pk");
     $source.$driver = $createSource("driver/:type");

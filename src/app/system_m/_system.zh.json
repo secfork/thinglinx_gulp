@@ -4,15 +4,37 @@
 
 	"system":{
 		"sysManage":"系统管理",
-		"sysList":"系统列表",
+		"sysList":"系统列表", 
 
 		"state":"活跃状态",
 		"fail":"失效",
 		"name":"系统名称", 
+
 		"commType":"网络类型",
+
+
+		"sync":"同步",
+		"hasSync":"已同步",
+		"noSync":"未同步",
 		
+		"syncState":"配置同步状态",
+
+		"location":"定位",
+		"long":"经度",
+		"lat":"纬度",
+		"moveLocation":"移动位置",
+		"searchLocation":"搜索地理位置",
+		"delLocation":"删除位置",
+		"markLocation":"标记位置",
+		"doLocation":"确定位置",
+
+		"id":"系统ID",
+		"region":"所属区域",
+
+
 		"online":"状态",
         "config":"配置",
+        "modelUsed":"使用的模型", 
 
         "activeNum": "已激活系统",
         "unactiveNum": "未激活系统",
@@ -22,7 +44,6 @@
         "saveConf":"保存系统配置",
         "needSaveConf":"请保存系统配置",
 
-		"sync":"同步",
 
 		"noteDel":		"您确认要删除系统 %s 吗?",
 		"warnDel":		"删除系统将会丢失此系统的全部历史数据",

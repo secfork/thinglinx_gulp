@@ -1,0 +1,16 @@
+{
+
+	"box":{
+		"saveConf":"保存网络参数",
+		"boxDesc":"DSC地址和端口需要设置到指定的DTU设备中", 
+		
+		"driver": "DTU驱动",
+		"simid":"终端ID",
+		"inet_ipv4":"中心域名",
+		"inet_port":"端口"
+
+
+
+	}
+
+}

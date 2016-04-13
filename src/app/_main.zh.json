@@ -33,6 +33,7 @@
         "dateType":"数据类型",
 
         "offset":"偏差",
+
  
         "return": "返回",
 
@@ -50,13 +51,19 @@
         "del": "删除",
         "update": "更新",
         "reset": "复位",
+        "changeInfo":"更改信息",
         
         "regist":"注册",
         "unBind":"解除绑定",
 
+        "address":"地址",
         "alert": "提示",
         "done": "确定",
         "ok":"完成",
+        
+        "email":"电子邮箱",
+        "phoneNo":"手机号码",
+
 
         "cancel": "取消",
         "map": "地图",
@@ -141,6 +148,10 @@
         "SYSTEM_CONTROL": {
             "desc": "系统数据下置及召唤，系统的激活及失效，切换系统配置项，保存网络参数等",
             "text": "系统控制"
+        },
+        "PLC_PROGRAMMING":{
+            "desc":"PLC 编程",
+            "text":"PLC 编程"
         }
 
     },

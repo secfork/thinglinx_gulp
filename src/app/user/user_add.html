@@ -1,11 +1,16 @@
 <form name='form' class="form-horizontal form-validation ">
-    <input  tl-input name=" name "   label="用户名" ng-model=" user.username  " ng-model-options=" { updateOn: 'blur' } " required ng-change="ccField('username' , user.username)">
-    <input  tl-input name="nickname "  label="昵称" ng-model=" user.nickname   " ng-change="ccField('nickname' , user.nickname)">
+
+    <!-- 用户名 -->
+    <input  tl-input name=" name "   label="user.name" ng-model=" user.username  " ng-model-options=" { updateOn: 'blur' } " required ng-change="ccField('username' , user.username)">
+
+    <!-- 昵称 -->
+    <input  tl-input name="nickname "  label="user.nickName" ng-model=" user.nickname   " ng-change="ccField('nickname' , user.nickname)">
     <!-- ============================================ -->
-    <!-- 是否更改密码 -->
-    <div class="form-group " ng-if="!isAdd">
+   
+    <!-- 是否更改密码        -->
+    <div class="form-group "  ng-if="!isAdd"   >  
         <label class="col-sm-3   control-label  ">
-            <span>更改密码</span>
+            <span translate="user.chPass">更改密码</span>
         </label>
         <div class=" col-sm-9">
             <label class="i-checks m-t-xs">
@@ -15,28 +20,43 @@
         </div>
     </div>
 
-    <div ng-if="op.ccpass">
-        <input tl-input name=" newpass " label="新密码" name="password" ng-minlength="6" ng-maxlength="20" ng-change="ccField('password' , user.password)" ng-model=" user.password " required>
+    <!-- 更改密码 密码 -->
+    <div ng-if="op.ccpass" >
+        <input tl-input name=" password " label="user.newPass"  
+        ng-minlength="6" ng-maxlength="20" 
+        ng-change="ccField('password' , user.password)" ng-model=" user.password " required>
     </div>
     <!-- ============================================ -->
-    <div class="form-group" ng-if="isAdd">
-        <label class="col-sm-3  control-label text-base">
-            <mark></mark> 密码
-        </label>
-        <div class="  col-sm-8">
-            <input type="password" name="_newpass" placeholder="密码(至少六位)" name="password" ng-maxlength="20" ng-minlength="6" class="form-control " ng-model=" user.password " required>
-        </div>
+
+    <!-- 密码 -->
+    <div   ng-if="isAdd">
+
+        <!-- placeholder=" {{  ::  instant( 'inputValid.minlength' , { value: 6} )  }}  "  -->
+        <input   tl-input type="password" name="password" label = 'user.password'
+           
+            ng-maxlength="20" ng-minlength="6"  required
+            ng-model=" user.password " 
+            ></input>
+
+        <!-- 确认密码 -->
+        <input   tl-input type="password"  name="_password"  label="user.confirmPass" 
+                ng-model="op.confirm_password"  ui-validate=" '$value==user.password' "
+                ui-validate-watch=" 'user.password' "
+            ></input>
+        
     </div>
-    <div class="form-group" ng-if="isAdd">
-        <label class="col-sm-3  control-label text-base">
-            <mark></mark> 确认密码
-        </label>
-        <div class="  col-sm-8">
-            <input type="password"  name="__newpass"  class="form-control  " name="confirm_password" required ng-model="op.confirm_password" placeholder=" 确认密码 " ui-validate=" '$value==user.password' ">
-        </div>
-    </div>
-    <input tl-input name="phoneno" label="手机号码" ng-model="user.mobile_phone" ng-pattern="/^1\d{10}$/" ng-change="ccField('mobile_phone' , user.mobile_phone)">
-    <input tl-input name=" email " label="电子信箱" ng-model="user.email" type="email" ng-disabled=" user.is_super_user" ng-change="ccField('email' , user.email)">
-    <input tl-input name="address " label="地址" ng-model="user.address" ng-change="ccField('address' , user.address)">
-    <textarea tl-input name=" desc " label="备注" ng-maxlength='100' ng-model="user.desc" ng-change="ccField('desc' , user.desc)" />
+
+ 
+
+
+
+
+    <!-- 手机号码 -->
+    <input tl-input name="phoneno" label="text.phoneNo" ng-model="user.mobile_phone" ng-pattern="/^1\d{10}$/" ng-change="ccField('mobile_phone' , user.mobile_phone)">
+    <!-- 电子信箱 -->
+    <input tl-input name=" email " label="text.email" ng-model="user.email" type="email" ng-disabled=" user.is_super_user" ng-change="ccField('email' , user.email)">
+    <!-- 地址 -->
+    <input tl-input name="address " label="text.address" ng-model="user.address" ng-change="ccField('address' , user.address)">
+    <!-- 备注 -->
+    <textarea tl-input name=" desc " label="text.desc" ng-maxlength='100' ng-model="user.desc" ng-change="ccField('desc' , user.desc)" />
 </form> 

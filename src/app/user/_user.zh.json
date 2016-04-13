@@ -1,17 +1,22 @@
 {
+
+	"role":{
+		"role":"角色",
+		"add":"添加角色",
+		"name":"角色名",
+
+		"xx":":"
+	},
+
+
 	"user":{
 		
-		"name":"用户名",
-		"role":"角色",
-		"roleName":"角色名称",
+		"name":"用户名", 
+
+		"add":"添加用户", 
+
 		"author":"权限",
-
-		"phoneNo":"手机号码",
-		"email":"电子邮箱",
-		"address":"地址",
-
-		
-
+  
 		"changePass":"更改密码",
 
 		// "是否将用户 " +  username+ '加入您所管理的区域?' 
@@ -22,8 +27,12 @@
 		"allUser":"全部用户",
 		"nickName":"昵称",
 
-		"addUser":"添加用户",
-		"addRole":"添加角色",
+ 		"password":"密码",
+        "confirmPass":"确认密码",
+        "newPass":"新密码",
+        "chPass":"更改密码",
+        "passLimit":"至少六位",
+
 
 		"lastLoginTime" :"上次登录时间",
 		"lastLoginIp" :"上次登录IP" ,

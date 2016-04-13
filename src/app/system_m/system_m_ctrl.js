@@ -156,12 +156,14 @@ export default ($scope, $sys, $source, $interpolate, $q, $compile, $translate, $
         }
 
         loadSystem(pageNo).then(function() {
-            var systemUUids = Object.keys(systemUUID_Self);
 
             if ($scope.od.state == 1 || $scope.od.state == undefined) {
+                var systemUUids = Object.keys(systemUUID_Self); 
                 $utils.querySystemOnline(systemUUids, $scope.page.data);
                 //  实时 查询 在线 状态; 
-                interval_queryOnline = $interval(function() {
+                interval_queryOnline = $interval(function() { 
+                    // 期间可能删除或 添加了 system ;
+                    var systemUUids = Object.keys(systemUUID_Self); 
                     $utils.querySystemOnline(systemUUids, $scope.page.data);
                 }, $sys.state_inter_time)
             }
@@ -222,10 +224,7 @@ export default ($scope, $sys, $source, $interpolate, $q, $compile, $translate, $
                     // 加载  profile;
                     if (n.mode == 2) {
                         delete $scope.system.network;
-                    }
-
-
-
+                    } 
                     $scope.showMask = true;
                     $source.$sysProfile.get({
                         system_model: n.uuid
@@ -255,10 +254,13 @@ export default ($scope, $sys, $source, $interpolate, $q, $compile, $translate, $
                         sys.uuid = resp.ret;
                         sys.state = 0;
 
+                        // 添加数据; 
                         thatScope.page.data.unshift(sys);
+                        // 添加索引; 
+                        systemUUID_Self[ sys.uuid ] = sys ;
+
 
                         $scope.cancel();
-
                         angular.confirm({
                                 title: "配置系统",
                                 note: "创建成功,是否去配置该系统?",
@@ -269,8 +271,7 @@ export default ($scope, $sys, $source, $interpolate, $q, $compile, $translate, $
                                 $scope.goto("app.m_system_prop._config", sys, sys);
                                 next();
                             }
-                        )
-
+                        ) 
                         $scope.showMask = false;
 
                     }, function() {
@@ -335,8 +336,11 @@ export default ($scope, $sys, $source, $interpolate, $q, $compile, $translate, $
             $source.$system.delete({
                 system_id: station.uuid
             }, function(resp) {
-
+                
+                // 删除 数据; 
                 dastations.splice(index, 1);
+                // 删除 索引;
+                delete  systemUUID_Self[ station.uuid ]
 
                 next();
             }, function() {
@@ -456,7 +460,7 @@ export default ($scope, $sys, $source, $interpolate, $q, $compile, $translate, $
 
             var str = $compile($interpolate(html)(system))($scope)[0],
 
-                infoWindow = new BMap.InfoWindow(str, angular.extend( { enableAutoPan: false }, bmap.infoWindowOptions) );
+                infoWindow = new BMap.InfoWindow(str,  bmap.infoWindowOptions );
 
             point.marker.openInfoWindow(infoWindow);
         })

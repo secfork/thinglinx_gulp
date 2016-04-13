@@ -21,11 +21,10 @@ export default  ($scope  , $state  , $utils , $source )=>{
 	$scope.addRole =  function( role , index ){
 
 		angular.open( {
-				title:"xx" ,
+				title:"user.addRole" ,
 				templateUrl:"app/user/role_add.html"
 			}, ( $scope )=>{
 			  	
-
 					if( role ){
 						// 原先的  [ a , b ,c ] 转换为  { a:true, b:true, c:true }
 						var _role = angular.copy( role );

@@ -1,19 +1,26 @@
-<h4 class="">网络参数</h4>
+
+
+
+
+<h4 class="" translate="text.netParams">网络参数</h4>
 
 <!--@if append -->
+
 system.network = { daserver: { type: DTU| tcpClient | Tpserver }}
 <br/> system.gateway = {..}
 <br/> system.network.daserver = {{ daserver }}
+
 <!-- @endif-->
 
 
 
 <form name="daserverForm" class="form-horizontal form-validation ">
+
     <div ng-if=" daserver.type =='DTU' " ng-init="loadSupportDtus(); loadAssignedServer() ;">
 
 
         <!-- DTU驱动 -->
-        <select tl-input label="DTU驱动" required name="dtu" 
+        <select tl-input label="box.driver" required  name="dtu" 
             ng-disabled="  assignedServer  " 
             ng-model="daserver.params.driverid" 
             ng-change=" applyDtuData(daserver.params ) ; " 
@@ -24,13 +31,14 @@ system.network = { daserver: { type: DTU| tcpClient | Tpserver }}
         <!--     根据  dtu id 加载相应的配置界面;   -->
         <div ng-if="daserver.params.driverid" ng-include="  'app/_box/' +daserver.params.driverid + '/dtu.html' ">
         </div>
-
-        <input readonly tl-input name="inet" label="中心域名" ng-model="assignedServer.inet_ipv4">
-
-        <input readonly tl-input name="port" label="端口" ng-model="assignedServer.inet_port">
+        <!-- 中心域名 -->
+        <input readonly tl-input name="inet" label="box.inet_ipv4" ng-model="assignedServer.inet_ipv4">
+        <!-- 端口 -->
+        <input readonly tl-input name="port" label="box.inet_port" ng-model="assignedServer.inet_port" >
         
         <div class="text-muted col-md-9 col-md-offset-3 padding-0">
-            <i class="fa  fa-warning   text-warning pos-rlt"></i> DSC地址和端口需要设置到指定的DTU设备中
+            <i class="fa  fa-warning   text-warning pos-rlt"></i>  
+            <span translate="box.boxDesc">DSC地址和端口需要设置到指定的DTU设备中</span>  
         </div>
 
     </div>
@@ -38,12 +46,11 @@ system.network = { daserver: { type: DTU| tcpClient | Tpserver }}
     <!-- 手机-->
     <div ng-if="daserver.type =='TcpClient' ">
         <input tl-input  name="sim"    label="SIM卡手机" required ng-model="a" type="number">
-        <input tl-input  name="apn"   label="APN" required ng-model="a" type="number">
+        <input tl-input  name="apn"    label="APN" required ng-model="a" type="number">
         <input tl-input  name="user"   label="APN用户名" ng-model="a">
         <input tl-input  name="pass"   label="APN密码" ng-model="a">
     </div>
-
-    <!-- dtu -->
+ 
     <!--vpn-->
     <div ng-if="daserver.type =='TcpServer' ">
         <div class=" col-sm-12    m-t-xs  m-b-sm   text-left" style="padding-left: 0px">
@@ -61,7 +68,7 @@ system.network = { daserver: { type: DTU| tcpClient | Tpserver }}
     </div>
 
     <div class="col-xs-8 col-xs-offset-3">
-        <button class="btn btn-success btn-sm"> 保存网络参数 </button>
+        <button class="btn btn-success btn-sm" translate="box.saveConf"> 保存网络参数 </button>
     </div> 
 
 

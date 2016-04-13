@@ -3,7 +3,7 @@
 
     <!-- profile  ticket -->
     <div class="col-md-8 col-xs-12  col-md-offset-1     m-b-sm m-t padder-md">
-        <h4 class="" translate="text.netParams">网络参数</h4>
+        <h4 class="" translate="text.confParams">配置参数</h4>
  
 
         <form name=" profile" class="form-horizontal form-validation ">
@@ -30,10 +30,11 @@
                     <span translate="text.saved">保存成功!</span>
                 </span>
             </div>
-            <!--  profile  配置 end  -->
-            <div ng-if="needTicket" ng-include=" 'app/system_m/system_attr_config_ticket.html' " />
+            <!--  profile  配置 end    -->
 
- 
+            <!--  -->
+            <div  ng-if="needTicket"  ng-include=" 'app/system_m/system_attr_config_ticket.html' " />
+
             <!--  PLC 编程模式 -->
             <label class="col-md-3   control-label  text-right " translate="system.plcMode">PLC编程模式</label>
             <div class="col-md-8">
@@ -41,17 +42,15 @@
                     <input type="checkbox" checked="" ng-disabled=" !op.enAblePlcProg " ng-model="op.plcstate" ng-change="setPLC( op.plcstate )">
                     <i></i> &nbsp;
                 </label>
-                <span class="text-muted " ng-show=" ! op.enAblePlcProg " translate="system.noSuportPlc">
+                <span class="text-danger " ng-show=" ! op.enAblePlcProg " translate="system.noSuportPlc">
                                   当前网络参数设置不支持PLC编程模式
-                              </span>
+                </span>
                 <div class="text-info" ng-if=" op.enAblePlcProg  ">
                     <span ng-show="op.plcstate" translate="system.plcOpen">  当前系统处于编程模式, 您可以使用工具向PLC同步工程, 如您想恢复采集, 请关闭编程模式;  </span>
                     <span ng-show="!op.plcstate" translate="system.plcClose"> 当前处于采集模式, 如您希望向PLC同步工程 , 请切换到编程模式 </span>
                 </div>
             </div>
-
-
-
+ 
         </form>
     </div>
 

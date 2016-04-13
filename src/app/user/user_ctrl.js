@@ -22,7 +22,7 @@ export default ($scope, $sys, $source, $translate, $utils) => {
 
         panelBotButs: [
 
-            { text: "user.addUser", classFor: " btn-primary", handler: addUser }
+            { text: "user.add", classFor: " btn-primary", handler: addUser }
 
         ]
     };
@@ -88,12 +88,11 @@ export default ($scope, $sys, $source, $translate, $utils) => {
     $scope.updateUser = function(idObj) { 
         return $source.$user.put({}, idObj).$promise;
     }
- 
-
+  
     function addUser() {
         angular.open({
                 templateUrl: "app/user/user_add.html",
-                title: "user.addUser"
+                title: "user.add"
             },
             function($scope, $modalInstance) {
                 $scope.user = {};

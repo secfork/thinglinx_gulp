@@ -13,12 +13,13 @@ import initDirective from "./lib/directive";
 
   
 
+
 var thinglinx = angular.module('thinglinx', [
     'ngAnimate', 'ngCookies', 'ngMessages',
     'ngResource', 'ui.router', 'ui.bootstrap', 'ngStorage',
- 
-    'ui.bootstrap.datetimepicker', 
-     'pascalprecht.translate', 
+
+    'ui.bootstrap.datetimepicker',
+     'pascalprecht.translate',
 
     'ui.load',
     'ui.jq',
@@ -29,14 +30,14 @@ var thinglinx = angular.module('thinglinx', [
 .config(config)
 
 .config(routerConfig)
- 
+
 .run(runBlock)
 
 .controller('AppCtrl', function($scope, $localStorage, $window, $modal, $state,
     $timeout, $sessionStorage, $q, $animate, $cookies , $source , $translate,
     $location, $rootScope   ) {
     'ngInject';
- 
+
 
     function isSmartDevice($window) {
         // Adapted from http://www.detectmobilebrowsers.com
@@ -89,10 +90,10 @@ var thinglinx = angular.module('thinglinx', [
 
     // angular translate
     $scope.lang = { isopen: false };
-    $scope.langs = {  en: 'English',   zh: '简体中文'  }; 
+    $scope.langs = {  en: 'English',   zh: '简体中文'  };
 
    // $scope.selectLang = $scope.langs[ $translate.proposedLanguage() ] || "简体中文";
-    
+
     var langKey =   window.localStorage.NG_TRANSLATE_LANG_KEY;
     $scope.selectLang = $scope.langs[   langKey ] || "简体中文";
 
@@ -114,29 +115,29 @@ var thinglinx = angular.module('thinglinx', [
         {  title:"nav.system" , icon:"icon icon-screen-desktop"  , sref:"app.system_s"  },
         {  title:"nav.alarm" , icon:"icon icon-fire "  ,           sref:"app.alarm"  }
     ],
- 
+
 
     $scope.manageNavs = [
         {  title:"nav.region" , icon:"icon icon-grid"  ,           sref:"app.m_region"  },
         {  title:"nav.system" , icon:"icon icon-screen-desktop"  , sref:"app.m_system"  },
- 
-        {  title:"nav.model" , icon:"icon icon-puzzle"  ,      
+
+        {  title:"nav.model" , icon:"icon icon-puzzle"  ,
             children: [
                 { title:"nav.systemModel" ,   sref:"app.sysmodel"} ,
-                { title:"nav.deviceModel" ,   sref:"app.devmodel"} 
+                { title:"nav.deviceModel" ,   sref:"app.devmodel"}
             ]
-        }, 
-        {  title:"nav.user" , icon:"icon icon-user"  ,     
+        },
+        {  title:"nav.user" , icon:"icon icon-user"  ,
             children:[
                 { title:"nav.manageUser" ,   sref:"app.user" } ,
-                { title:"nav.manageRole" ,   sref:"app.role.region" } 
+                { title:"nav.manageRole" ,   sref:"app.role.region" }
             ]
 
-        }, 
-        {  title:"nav.account" , icon:"icon icon-notebook"  ,    
+        },
+        {  title:"nav.account" , icon:"icon icon-notebook"  ,
             children:[
                 { title:"nav.accountInfo" ,   sref:"app.account_info"} ,
-                { title:"nav.bindWechat" ,   sref:"app.wechat"} 
+                { title:"nav.bindWechat" ,   sref:"app.wechat"}
             ]
 
         },
@@ -145,7 +146,7 @@ var thinglinx = angular.module('thinglinx', [
     $scope.na = "app.m_region"
 
 
- 
+
     $scope.logout= function(){
         // console.log( 'cccccccccccc' ,$cookies.get("dd"))
 
@@ -156,14 +157,14 @@ var thinglinx = angular.module('thinglinx', [
         $window.location.href = "#/access/login"
 
     }
-  
+
 })
 .constant('JQ_CONFIG', {
 
     // wysiwyg: ['lib/wysiwyg/bootstrap-wysiwyg.js',
     //           'lib/wysiwyg/jquery.hotkeys.js'
-    //         ]  
-    //         
+    //         ]
+    //
     easyPieChart:   ['lib/flot/jquery.easy-pie-chart.js'],
 
     chosen: [

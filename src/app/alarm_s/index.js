@@ -10,7 +10,5 @@ export default  {
 		templateUrl:"app/alarm_s/alarm.html",
 		controller: alarm_ctrl  
 	}
-
-
-
+ 
 }

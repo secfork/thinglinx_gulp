@@ -49,7 +49,8 @@ export default {
     pointOptions :   { offset: new BMap.Size(0, 5)  } ,
 
     markerOptions  : {   offset: new BMap.Size( 0,5)     }  , 
-    infoWindowOptions : { enableCloseOnClick: false  , enableMessage :false } ,
+ 
+    infoWindowOptions : { enableCloseOnClick: false  , enableMessage :false , enableAutoPan:false} ,
 
     // // 创建地图;  dom_id =  string | HTMLelement ;
     createMap: (scope, Dom_id, h_offset) => {
@@ -70,10 +71,10 @@ export default {
 
             map.centerAndZoom(new BMap.Point(116.404, 39.915), 8);
 
-            local.get((result) => {
-                map.centerAndZoom(result.center, 8);
-                map.setCurrentCity(result.name);
-            })
+            // local.get((result) => {  // 回调 定center  , 代码中的center 会 移动到 回掉的center ;
+            //     map.centerAndZoom(result.center, 8);
+            //     map.setCurrentCity(result.name);
+            // })
 
             //开启鼠标滚轮缩放
             map.enableScrollWheelZoom(true);
@@ -125,8 +126,9 @@ export default {
         }
         // 创建 mark ;  x= 经度, y= 维度 ; 
         ,
-    createMarker: (x, y, text) => {
-        var mark = new BMap.Marker(new BMap.Point(y, x));
+    createMarker: ( lng, lat , text) => {
+        var mark = new BMap.Marker(new BMap.Point( lng, lat ) ) ,
+            label ;
         if (text) {
             label = new BMap.Label(text, {
                 offset: new BMap.Size(20, -10)

@@ -5,48 +5,63 @@
     <div class="col-md-6 col-xs-12  ">
         <div class="list-group   ">
             <span class="list-group-item no-border ">
-                                系统Id <span class="pull-right ">{{ :: station.uuid  }}</span>
+                <span translate="system.id"> 系统Id </span> 
+                <span class="pull-right ">{{ :: system.uuid  }}</span>
             </span>
             <span class="list-group-item no-border ">
-                所属区域
+                <span translate="system.region"> 所属区域 </span> 
+
                 <span class="pull-right">
-                    <a class="text-info"  ui-sref="app.m_region_prop.system({id: station.region_id })"  >{{ station.region_name  }}</a> 
+                    <a class="text-info"  ui-sref="app.m_region_prop.system({id: station.region_id })"  >
+                        {{ station.region_name  }}
+                    </a> 
                 </span>
             </span>
             <span class="list-group-item no-border ">
-                活跃状态  <span class="pull-right ">{{ station.state == 1 ? "激活":"未激活" }}</span>
+                 
+                <span translate="system.state">活跃状态</span>
+                <span class="pull-right ">{{  $$lang.system.stateOptions[ system.state ] }} </span>
             </span>
-            <span class="list-group-item no-border ">
- 
-                使用的模型 
+            <span class="list-group-item no-border "> 
+                <span translate="system.modelUsed">使用的模型</span>
                 <span class="pull-right "> 
                     <a  ui-sref ="app.sysmodelattr.info( sysModel )" 
                         class=" text-info-dk  "> {{ sysModel.name}}</a> 
                 </span>
             </span>
             <span class="list-group-item no-border ">
-                 通讯类型  <span class="pull-right ">{{ sysModel.comm_type == 1 ? 'DaServer':'GateWay' }}</span>
+                   
+                 <span translate="sysModel.commType">通讯类型</span>
+                <span class="pull-right ">{{ sysModel.comm_type == 1 ? 'DaServer':'GateWay' }}</span>
             </span>
             <span class="list-group-item no-border ">
-                创建时间  <span class="pull-right ">{{ system.create_time | date:"yyyy-MM-dd HH:mm Z" }}</span>
+                 
+                <span translate="text.createTime">创建时间</span>
+                <span class="pull-right ">{{ system.create_time | date:"yyyy-MM-dd HH:mm Z" }}</span>
             </span>
             <span class="list-group-item no-border ">
-                配置同步状态 
-                 <span class="pull-right fa ">
+                 
+                <span translate="system.syncState">配置同步状态</span>
+                 <span class="pull-right fa "  translate>
+                 system.{{ system.needsync ? "hasSync" : "noSync"    }}
                     {{ system.needsync ? "需要同步":"已同步" }}
                  </span>
             </span>
             <span class="list-group-item no-border ">
-                位置  <span class="pull-right ">{{ system.map_address  }}</span>
+                 
+                <span translate="system.location">位置</span>
+                <span class="pull-right ">{{ system.map_address  }}</span>
             </span>
             <span class="list-group-item no-border ">
-                备注 
+                
+                <span translate="text.desc"> 备注  </span>
                 <div class="b-a m-t-sm alert "   style="color: #a0a0a0;height:100px" >  
                     {{system.desc }}  
                 </div> 
             </span>
             <span class="list-group-item no-border ">
-                <button class="btn btn-sm btn-primary" ng-click="editStation( this, station  )">
+                <button class="btn btn-sm btn-primary" ng-click="editStation( this, station  )" 
+                    translate=" text.changeInfo " >
                     修改信息 
                 </button>  
             </span>

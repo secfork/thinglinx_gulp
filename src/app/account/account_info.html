@@ -1,75 +1,65 @@
 <div class="bg-light lter b-b wrapper-md ng-scope">
     <h2 class="m-n font-thin h4"> {{:: user.account }} </h2>
 </div>
- 
-
 <div class="row wrapper ">
     <div class="col-md-4  col-sm-12  ">
         <div class="panel panel-default">
-            <div class="panel-heading"  translate="account.info">
+            <div class="panel-heading" translate="account.info">
                 账户信息
             </div>
             <div class="list-group no-radius alt" style="color: #1f2427">
                 <span class="list-group-item">
                     <span class="pull-right " style="color: #333333">{{:: account.create_time | date:"yyyy-MM-dd HH:mm Z" }}</span>
-                    <span translate="text.createTime"> 创建时间 </span> 
+                <span translate="text.createTime"> 创建时间 </span>
                 </span>
                 <span class="list-group-item">
-                    <span class="badge bg-info"> {{:: regionNum}}</span> 
-                    <span translate="account.regionNum"> 区域数量</span>
+                    <span class="badge bg-info"> {{:: regionNum}}</span>
+                <span translate="account.regionNum"> 区域数量</span>
                 </span>
                 <span class="list-group-item">
-                    <span class="badge bg-info"> {{:: userNum }}</span> 
-                    <span translate="account.userNum"> 用户数量 </span>
-                            
+                    <span class="badge bg-info"> {{:: userNum }}</span>
+                <span translate="account.userNum"> 用户数量 </span>
                 </span>
                 <span class="list-group-item">
-                    <span class="pull-right " style="color: #333333"> {{ :: user.username}}</span> 
-                    <span translate="account.admin"> 管理员</span>
-                     
+                    <span class="pull-right " style="color: #333333"> {{ :: user.username}}</span>
+                <span translate="account.admin"> 管理员</span>
                 </span>
             </div>
         </div>
-
         <div class="panel panel-default  no-padder  col-xs-12">
             <div class="panel-heading">
                 使用限制 ( 每日 )
             </div>
             <div class="panel-body">
-                <div>触发报警 <span class="pull-right">  
-
-                    {{    daliyStat.daily_alarms  }}/{{   daliyStat.daily_alarms_limit }} 
-                </span></div>
-                <progressbar value=' daliyStat.daily_alarms  ' max='daliyStat.daily_alarms_limit' class="progress-sm m-t m-b" type="info"></progressbar>
+                <div>触发报警 <span class="pull-right">   
+                        {{    daliyStat.daily_alarms  }}/{{   daliyStat.daily_alarms_limit }} 
+                    </span></div>
+                <progressbar value=' daliyStat.daily_alarms  ' max='daliyStat.daily_alarms_limit' class="progress-sm m-t m-b" type="{{::  daliyStat.alarm_color  }}"></progressbar>
                 <div>短信通知 <span class="pull-right">
-                 {{  daliyStat.daily_sms  }}/{{ daliyStat.daily_sms_limit }} 
-                </span></div>
-                <progressbar class="progress-sm m-t m-b" value=' daliyStat.daily_sms  ' max='daliyStat.daily_sms_limit' type="info"></progressbar>
+                     {{  daliyStat.daily_sms  }}/{{ daliyStat.daily_sms_limit }} 
+                    </span></div>
+                <progressbar class="progress-sm m-t m-b" value=' daliyStat.daily_sms  ' max='daliyStat.daily_sms_limit' type="{{::  daliyStat.sms_color  }}"></progressbar>
                 <div> 邮件通知 <span class="pull-right">
-                    
-                     {{ daliyStat.daily_emails  }}/{{ daliyStat.daily_emails_limit }} 
-                </span></div>
-                <progressbar class="progress-sm m-t m-b" type="info" value='daliyStat.daily_emails' max='daliyStat.daily_emails_limit'></progressbar>
+                        
+                         {{ daliyStat.daily_emails  }}/{{ daliyStat.daily_emails_limit }} 
+                    </span></div>
+                <progressbar class="progress-sm m-t m-b" type="info" value='daliyStat.daily_emails' max='daliyStat.daily_emails_limit' type="{{::  daliyStat.emails_color  }}"></progressbar>
                 <div> 微信通知 <span class="pull-right">
-                     {{ daliyStat.daily_wechats  }}/{{ daliyStat.daily_wechats_limit }} 
-                </span></div>
-                <progressbar class="progress-sm m-t m-b" type="info" value='daliyStat.daily_wechats' max='daliyStat.daily_wechats_limit'></progressbar>
+                         {{ daliyStat.daily_wechats  }}/{{ daliyStat.daily_wechats_limit }} 
+                    </span></div>
+                <progressbar class="progress-sm m-t m-b" type="info" value='daliyStat.daily_wechats' max='daliyStat.daily_wechats_limit' type="{{::  daliyStat.wechats_color  }}"></progressbar>
             </div>
         </div>
-
-
     </div>
     <div class="col-md-4  col-sm-6  col-xs-12">
-        <div class="panel panel-default" ng-if=" initChart_sys "  >
+        <div class="panel panel-default" ng-if=" initChart_sys ">
             <div class="panel-heading" translate="account.sysNum">
                 系统数量
             </div>
-            <div class="panel-body text-center"   >
-                
+            <div class="panel-body text-center">
                 <h4 style="color: #333333">{{ :: totalSys }}</h4>
-                <small class="text-muted block"  translate="account.sysNum"> 系统数量</small>
-
-                <div class="inline"  >
+                <small class="text-muted block" translate="account.sysNum"> 系统数量</small>
+                <div class="inline">
                     <div ui-jq="easyPieChart" ui-options="{
                   percent: {{ totalSys_act*100 /  totalSys }},
                   lineWidth: 10,
@@ -80,7 +70,7 @@
                   lineCap: 'butt'
 
                 }" class="easyPieChart" style="width: 188px; height: 188px; line-height: 188px;">
-                        <div  style="color: #333333">
+                        <div style="color: #333333">
                             <span class="h2 m-l-sm step"> {{ :: totalSys_act }}  </span>个
                             <div class="text text-sm" translate="account.actived">已激活</div>
                         </div>
@@ -90,13 +80,12 @@
             </div>
         </div>
     </div>
-
-    <div class="col-md-4  col-sm-6 col-xs-12 " >
-        <div class="panel panel-default"  ng-if=" initChart_alarm " >
-            <div class="panel-heading"  translate="account.alarmNum">
+    <div class="col-md-4  col-sm-6 col-xs-12 ">
+        <div class="panel panel-default" ng-if=" initChart_alarm ">
+            <div class="panel-heading" translate="account.alarmNum">
                 报警数量
             </div>
-            <div class="panel-body text-center"   >
+            <div class="panel-body text-center">
                 <h4 style="color: #333333">  {{ :: totalAlarm }} </h4>
                 <small class="text-muted block" translate="account.alarmNumWeek"> 本周报警 </small>
                 <div class="inline">
@@ -109,7 +98,7 @@
                   size: 188,
                   lineCap: 'butt'
                 }" class="easyPieChart" style="width: 188px; height: 188px; line-height: 188px;">
-                        <div  style="color: #333333">
+                        <div style="color: #333333">
                             <span class="h2 m-l-sm step"> {{ :: totalAlarm_act  }} </span>个
                             <div class="text text-sm" translate="account.unDeal"> 未处理</div>
                         </div>
@@ -120,4 +109,3 @@
         </div>
     </div>
 </div>
-
