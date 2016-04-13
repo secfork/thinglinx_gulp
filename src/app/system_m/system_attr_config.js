@@ -40,8 +40,9 @@ export default ($scope, $source , $utils ) => {
 
     // 设置  daserver 类型  plc 的编程 状态; 
 
+        // 先假设: 只有 manage 模式才可 设置 plc编程;  
         // 得到  plc 状态;     && $scope.daserver.params.driverid 
-        if(  $utils.isEnablePlcProg(  $scope.daserver.params )  ){
+        if(  $scope.systemModel.mode ==1 &&   $utils.isEnablePlcProg(  $scope.daserver.params )  ){
 
             // 设置 plc 可编程; 
             $scope.op.enAblePlcProg = true ; 
@@ -90,9 +91,7 @@ export default ($scope, $source , $utils ) => {
 
     //  =========== 得到 systemodel  ,      判断 gateway , daserver  ======================================================
 
-        // ticket  DTU 互斥; 
-
-        $scope.loadSystemModel.then( (resp)=>{
+        // ticket  DTU 互斥;  
             var model =  $scope.systemModel  ;  
             $scope.needDaServer = model.mode == 1  && model.comm_type ==1 ;  // 托管 daserver 类型; 
             $scope.needTicket =  !$scope.needDaServer ;                      // 除了 托管 Daserver 都需要 ticket ;  
@@ -102,7 +101,7 @@ export default ($scope, $source , $utils ) => {
             // needDevice = sysmodel.devices.length && sysmodel.mode ==1 && sysmodel.comm_type ==2
             $scope.needDevice = false ; 
 
-        });
+     
 
         // 加载支持的 dtu 驱动;
         $scope.loadSupportDtus = function() {
@@ -160,13 +159,11 @@ export default ($scope, $source , $utils ) => {
         $scope.ticket = {};
 
         // 是否需要 注册 ticket ;
-        //  获取 之前声称的ticket , 即使没有 注册过 ticket ;
-        $scope.loadSystemModel.then( ()=>{
+        //  获取 之前声称的ticket , 即使没有 注册过 ticket ; 
 
             $scope.needTicket && $source.$ticket.get( { system_id:  system_uuid } , ( resp )=>{
                 $scope.ticket = resp.ret || {} ;
-            });
-        });
+            }); 
 
         $scope.operateTicket = function() {
 

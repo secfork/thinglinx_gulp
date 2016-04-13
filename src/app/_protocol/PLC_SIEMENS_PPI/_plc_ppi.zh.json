@@ -11,9 +11,7 @@
         "area":"区域",
         "offset":"地址偏移",
         "type":"类型",
-        "type_ex":"扩展参数",
-
-
+        "type_ex":"扩展参数", 
 
         "point": {
 

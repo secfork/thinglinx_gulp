@@ -19,7 +19,7 @@ export default ($interpolate) => {
 
         interpolate: function(string, interpolateParams) { 
  
-            return   $interpolate(string)(interpolateParams) + ( $locale =='en'?'_en':"" );
+            return   $interpolate(string)(interpolateParams)  + ( $locale =='en'?'_en':"" );
  
         }
     };

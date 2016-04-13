@@ -6,7 +6,7 @@ export default ($scope, $state, $stateParams, $source, systemResp , sysModelResp
 
     // 获取 system
     $scope.system = systemResp.ret;
-    $scope.sysModel = sysModelResp.ret ;
+    $scope.systemModel = sysModelResp.ret ;
 
     // 获得 region 信息; 
 
@@ -18,18 +18,9 @@ export default ($scope, $state, $stateParams, $source, systemResp , sysModelResp
             $scope.system.region_name = resp.ret.name;
         })
     }
-
-    // 获取 systemModel ; 
-    $scope.loadSystemModel = $source.$sysModel.getByPk({
-        pk: $scope.system.model
-    }, (resp) => {
-        $scope.systemModel = resp.ret;
-    }).$promise;
-
-
-    // geteway时 还要加载 device ; 以后完善!!;
-
  
+
+    // geteway时 还要加载 device ; 以后完善!!; 
 
     // tag panel 配置;  
     $scope.panel = {
@@ -64,7 +55,7 @@ export default ($scope, $state, $stateParams, $source, systemResp , sysModelResp
     $scope.loadProfile = ()=>{
         return  holdProfile = holdProfile ||
          $source.$sysProfile.get( 
-            { system_model: $scope.sysModel.uuid } 
+            { system_model: $scope.systemModel.uuid } 
             , (resp)=>{
                 $scope.profiles =  resp.ret.length ? resp.ret : undefined ;
    

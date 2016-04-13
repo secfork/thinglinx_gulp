@@ -12,27 +12,23 @@
 		"alarmNumWeek":"本周报警", 
 		"unDeal":"未处理",
 
-		"admin":"管理员",
+		"admin":"管理员", 
 
 		"limit":"使用限制(每日)",
-		"alarmLimit":"",
-		"smsLimit":"",
-		"emailLimit":"",
-		"wechatLimit":"",
-
-
-
+		"alarm":"触发报警",
+		"sms":"短信通知",
+		"email":"邮件通知",
+		"wechat":"微信通知",
 
 
 		// nav ;
 		"validWeChatNo":"验证微信号",
 		"setBasicInfo":"基本信息设置",
 
-
-
-
+ 
 		//  basic info ;
 		"bindWeChat":"微信绑定",
+		"unbindWeChat":"您确认要注销服务号吗?",
 		"weChatNo":"微信号",
 		"weChatServerUrl":"URL(服务器地址)" ,
 		"cancelServerNo":"注销服务号",
@@ -66,7 +62,31 @@
 
 		// step 2 ; 
 		
+		"weBot4a": "图片预览",
+		"weBot4": "添加图片",
+		"weBot5":"更换",
+		"weBot6":"图片尺寸",
 
+		"weBot7":"以下企业联系方式将展示于您的公众号菜单,以便用户与您联系",
+		"weBot8":"官网地址",
+		"weBot9":"如何获取?",
+		"weBot10":"(将展示在您的公共号菜单, 以便用户与您联系)", 
+		"weBot11":"微信AppId", 
+		"weBot12":"微信AppSecret", 
+		"weBot13":"消息模板ID", 
+		"weBot13a":"(系统产生的报警会按消息模板的样式通知给您)", 
+		
+		"weBot14":"您可以对现有公众号菜单进行命名", 
+		"weBot15":"区域查询： 查看区域状态以及根据区域查看系统", 
+		"weBot16":"报警查询：查看系统产生的报警", 
+		"weBot16a":"系统信息查询：扫码或根据条件搜索系统并查看状态",  
+
+
+		"weBot17":"恭喜！ 您的微信服务号设置已经完成, 蒋于xx 分钟内生效.",
+		"weBot18":"您现在可以:",
+		"weBot19":"查看您的微信服务号帐号信息",
+		"weBot20":"更改帐号信息 或 取消绑定",
+		"weBot21":"前往",
  
 		 
 

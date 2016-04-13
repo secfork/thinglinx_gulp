@@ -18,11 +18,20 @@ export default ( $scope, $sessionStorage, $source, $timeout , $localStorage )=>{
 
     // 注销 微信服务号; 
     $scope.unBindServer = function() {
-        $source.$weChat.unBindServer(function() {
-            angular.alert('注销成功!');
-            $scope.wei = {};
-            $scope.op.step = 0;
-        })
+        angular.confirm({
+            note:"account.unbindWeChat"
+        } , ( close )=>{
+            close();
+            return ;
+            $source.$weChat.unBindServer(function() {
+                angular.alert('注销成功!');
+                $scope.wei = {};
+                $scope.op.step = 0;
+                close();
+            })
+        }) ;
+ 
+       
     }
 
 
@@ -33,13 +42,15 @@ export default ( $scope, $sessionStorage, $source, $timeout , $localStorage )=>{
         $scope.showMask = false ;
 
 
-          $scope.op.step = 2 ;
-
-        return ;
+        
 
         // resp.ret =  angular.fromJson( resp.ret );
 
         $scope.wei = JSON.parse(resp.ret || '{}');
+
+        $scope.op.step = 3 ;
+
+        return ;
 
         $scope.menu = $scope.wei.menu && $scope.wei.menu.split(",") || []; 
         if (!!resp.ret && $scope.wei.status == 4) {
@@ -67,11 +78,9 @@ export default ( $scope, $sessionStorage, $source, $timeout , $localStorage )=>{
 
     // wechat logo 图片; 
     var pictureFile;
-    $scope.setFiles = function(ele) {
-
+    $scope.setFiles = function(ele) { 
         console.log("file change ", ele);
-        pictureFile = ele.files[0],
-
+        pictureFile = ele.files[0], 
             setPicture(URL.createObjectURL(pictureFile));
 
     }
