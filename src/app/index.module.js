@@ -117,32 +117,6 @@ var thinglinx = angular.module('thinglinx', [
     ],
 
 
-    $scope.manageNavs = [
-        {  title:"nav.region" , icon:"icon icon-grid"  ,           sref:"app.m_region"  },
-        {  title:"nav.system" , icon:"icon icon-screen-desktop"  , sref:"app.m_system"  },
-
-        {  title:"nav.model" , icon:"icon icon-puzzle"  ,
-            children: [
-                { title:"nav.systemModel" ,   sref:"app.sysmodel"} ,
-                { title:"nav.deviceModel" ,   sref:"app.devmodel"}
-            ]
-        },
-        {  title:"nav.user" , icon:"icon icon-user"  ,
-            children:[
-                { title:"nav.manageUser" ,   sref:"app.user" } ,
-                { title:"nav.manageRole" ,   sref:"app.role.region" }
-            ]
-
-        },
-        {  title:"nav.account" , icon:"icon icon-notebook"  ,
-            children:[
-                { title:"nav.accountInfo" ,   sref:"app.account_info"} ,
-                { title:"nav.bindWechat" ,   sref:"app.wechat"}
-            ]
-
-        },
-    ]
-
     $scope.na = "app.m_region"
 
 
@@ -159,6 +133,37 @@ var thinglinx = angular.module('thinglinx', [
     }
 
 })
+.factory( '$manageNavs' , ()=>{
+
+
+    // manageNavs 以后要 受控 ; 
+    return  [
+        {  title:"nav.region" , icon:"icon icon-grid"  ,           sref:"app.m_region"  },
+        {  title:"nav.system" , icon:"icon icon-screen-desktop"  , sref:"app.m_system"  },
+
+        {  title:"nav.model" , icon:"icon icon-puzzle"  ,
+            children: [
+                { title:"nav.systemModel" ,   sref:"app.sysmodel"} ,
+                { title:"nav.deviceModel" ,   sref:"app.devmodel"}
+            ]
+        },
+        {  title:"nav.user" , icon:"icon icon-user"  ,
+            children:[
+                { title:"nav.manageUser" ,   sref:"app.user" } ,
+                { title:"nav.manageRole" ,   sref:"app.role.region" }
+            ]
+
+        },
+        {  title:"nav.account" , icon:"icon icon-notebook"  ,  
+            children:[
+                { title:"nav.accountInfo" ,   sref:"app.account_info"} ,
+                { title:"nav.bindWechat" ,   sref:"app.wechat"}
+            ] 
+        },
+    ]
+})
+ 
+
 .constant('JQ_CONFIG', {
 
     // wysiwyg: ['lib/wysiwyg/bootstrap-wysiwyg.js',

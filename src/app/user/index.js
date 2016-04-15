@@ -1,5 +1,5 @@
 import user_ctrl from "./user_ctrl";
-import user_detail_ctrl from "./user_detail_ctrl";
+import user_detail_ctrl from "./user_detail";
   
 import role_ctrl from "./role";
 import role_reg_acc_ctrl from "./role_reg_acc_ctrl";
@@ -17,10 +17,17 @@ export default {
 
 
     "app.userdetail": {
-        url: "/userdetail/:id",
+        url: "userdetail/:id",
         templateUrl: "app/user/user_detail.html",
         controller: user_detail_ctrl
     } ,
+
+    "app.my_detail": {
+        url: "myself",
+        templateUrl: "app/user/user_detail.html",
+        controller: user_detail_ctrl
+    } ,
+
  
 
     "app.role": {

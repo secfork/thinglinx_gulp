@@ -3,7 +3,10 @@
 	"role":{
 		"role":"角色",
 		"add":"添加角色",
-		"name":"角色名",
+		"name":"角色名", 
+
+		"accAuthor":"账户权限",
+		"regiAuthor":"区域权限",
 
 		"xx":":"
 	},
@@ -14,8 +17,15 @@
 		"name":"用户名", 
 
 		"add":"添加用户", 
+		"edit":"修改用户",
 
 		"author":"权限",
+		
+		"account":"账户设置",
+		
+		"chRole":"将用户 %s 的账户角色修改为 %s ?",
+		"delRole":"删除用户 %s 的账户角色?",
+ 
   
 		"changePass":"更改密码",
 
@@ -31,7 +41,14 @@
         "confirmPass":"确认密码",
         "newPass":"新密码",
         "chPass":"更改密码",
-        "passLimit":"至少六位",
+        "valid":"已验证",
+        "unValid":"未验证",
+ 
+
+        "acceptAlarm":"接收报警",
+        "acceptSms":"接收短信报警",
+        "acceptEmail":"接收邮件报警",
+        "addRegionAuth":"添加区域权限",
 
 
 		"lastLoginTime" :"上次登录时间",

@@ -31,10 +31,13 @@ export default function routerConfig($stateProvider, $urlRouterProvider ) {
                         }).$promise
                      }
         },
-        controller: function($scope , $state, $sys, userResp ) {
+        controller: function($scope , $state, $sys,  $manageNavs , userResp ) {
                    //后台判断是否已经登录;
                     var user = userResp.ret;
-                   
+                    
+                    // 控制 manageNavs ; 
+                        // manageNavs 以后要 受控 ; 
+                    $scope.manageNavs =  $manageNavs ; 
 
                     if (user) {
                         user.sms_notice = !!user.sms_notice;

@@ -81,6 +81,7 @@ export default ($modal, $uibModal ,$rootScope , $translate ) => {
             openedWin = $modal.open({ 
                 templateUrl: 'app/lib/service/modal.html',
                 scope: modalScope,
+                size:  options.size  ,
                 resolve: options.resolve,
                 controller: controller
             });

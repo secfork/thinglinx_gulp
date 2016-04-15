@@ -1,14 +1,326 @@
 {
 
-	"sysModel":{
-		"profile":"系统配置项",
+    // sysmodel 字段翻译
+    "sysModel": {
+        "name": "系统模型名称",
+        "name": "Name",
+
+        "info": "模型信息",
+        "info": "Model infomation",
+
+        "sysconf": "系统配置",
+        "sysconf": "Profile",
+  
+        "paramsOfConf": "配置参数",
+        "paramsOfConf": "Configuration Parameters",
+        "paramsOfNet": "网络参数",
+        "paramsOfNet": "Network Parameters",
+
+        "mode": "模式",
+        "mode": "Mode",
+
+        // systemmodel 模式  mode ;
+        "modeType": {
+            "1": "托管模式",
+            "1": "Management",
+            "2": "非托管模式",
+            "2": "Unmanagement"
+        },
+
+        "commType": "通信类型",
+        "commType": "Communication Type",
+        // sysModelComType  在 thinglinx.conf 中配置; 
+ 
+ 
+
+        "devModelFirst": "请先创建设备模型",
+        "devModelFirst": "Please create device model first",
+
+        "noteDel": "确认要删除该系统模型 %s 吗",
+        "noteDel": "Are you sure you want to remove the system model %s",
+
+      
+        "create": "创建系统模型",
+        "create": "Create system model",
 
 
 
-		"desc":"xx"
+
+        "desc": "xx"
+
+    },
+
+    "device": {
+
+        "add": "添加设备",
+        "add": "Add device",
+        "edit": "编辑设备",
+        "edit": "Edit device",
+        "num":"设备个数",
+        "num":"Number of Device",
+
+        // sysmodel device 通用; 
+        "dev_name": "设备名称",
+        "dev_name": "Device name",
+        "dev_cycle": "采样周期",
+        "dev_cycle": "Sample cycle",
+        "dev_cycle": "C",
+        "dev_cycle": "C",
+        "cycle_unit": "采样周期单位",
+        "cycle_unit": "Sample cycle unit",
+        "slow_cycle": "慢速周期",
+        "slow_cycle": "Slow sample cycle",
+        "slow_cycle_unit": "慢速周期单位",
+        "slow_cycle_unit": "Slow sample cycle unit",
+        "dev_timeout": "连接超时时间(秒)",
+        "dev_timeout": "Connection timeout(Sec.)",
+        "dev_retry": "连接重试次数",
+        "dev_retry": "Connection retry",
+        "delay": "命令延时(毫秒)",
+        "delay": "Command delay (milisecond)",
+
+
+        // modbus device 通用 翻译;  // 也是 设备 通用翻译 ;
+        "address": "设备地址",
+        "address": "Station address",
+        "protocol_type": "协议类型",
+        "protocol_type": "Protocol type",
+        "offset_format": "偏移格式",
+        "offset_format": "Address format",
+        "max_packet_length": "最大包长度",
+        "max_packet_length": "Max packet length",
+        "packet_offset": "包偏移间隔",
+        "packet_offset": "Packet interval",
+        "int_order": "整数字节排序",
+        "int_order": "Integer byte order",
+        "float_order": "浮点数字节排序",
+        "float_order": "Float byte order",
+        "double_order": "双精度字节排序",
+        "double_order": "Double byte order",
+        "int64_order": "64位整数字节排序",
+        "int64_order": "64bit integer byte order",
+        "crc_order": "校验字节排序",
+        "crc_order": "Verifing byte order"
+
+    },
+
+    "deviceTrans":{
+
+        
+    },
+ 
+
+    "tag": {
+        "tag":"变量",
+        "tag":"Tag",
+        "name": "变量名称", 
+        "name": "Name", 
+        
+        "add": "添加变量",
+        "add": "Add tag",
+        "edit": "编辑变量",
+        "edit": "Edit tag",
+        "scale":"缩放",
+        "scale":"Scale",
+        "select":"请选择变量",
+        "select":"Select tag",
+
+        "connect": " Connet 点",
+        "connect": " Connet point",
+
+        "log_cycle": "日志间隔(秒)",
+        "log_cycle": "Log cycle(Sec.)",
+        "logType": "日志类型",
+        "logType": "Log type",
+        "save_log": "保存日志", 
+        "save_log": "Save log", 
+        "no_save_log":"Not save log",
+        
+        "warnDelTag": "删除模型变量: %s ? 删除变量将会丢失此变量的全部历史数据!",
+        "warnDelTag": "Remove tag: %s ? Remove tag will lost all historical data of the tag!",
 
 
 
-	}
+        "xx": ""
+    },
+
+    "tagTrans": { 
+
+        "log_type": {
+            //                "RAW": "保存原始记录",
+            //                "CHANGED": "只在变化时存储"
+            "RAW": "周期保存",
+            "RAW": "Cycle logging",
+            "CHANGED": "变化时保存",
+            "CHANGED": "Data changed logging"
+        },
+
+        "log_period": {
+
+            "60": "1分钟",
+            "60": "1 minute",
+            "300": "5分钟",
+            "300": "5 minutes",
+            "600": "10分钟",
+            "600": "10 minutes",
+            "900": "15分钟",
+            "900": "15 minutes",
+            "1800": "30分钟",
+            "1800": "30 minutes",
+            "3600": "60分钟",
+            "3600": "60 minutes"
+        }
+    },
+
+
+    "gateway": {
+        "gateway":"网关",
+        "gateway":"Gateway",
+
+        "addSerial": "添加串口",
+        "addSerial": "Add com",
+        "port": "端口",
+        "port": "Port",
+        "proto": "协议",
+        "proto": "Protocol",
+
+        "save":"保存网关设置",
+        "save":"Save settings of gateway",
+        "needSave":"网关配置需要保存!",
+        "needSave":"The gateway settings need to be saved!",
+        
+
+        "serial": "串口",
+        "serial": "Serial port",
+        "baudRate": "波特率",
+        "baudRate": "Baud rate",
+        "dataBits": "数据位",
+        "dataBits": "Data bits",
+        "stopBits": "停止位",
+        "stopBits": "Stop bits",
+        "parity": "校验",
+        "parity": "Parity",
+        "delay": "延迟(毫秒)",
+        "delay": "Delay(milisecond)",
+
+        "delNote":"您确认要删除该串口: %s ?",
+        "delNote":"Are you sure you want to remove the serial port %s ?",
+
+        "parityType": {
+            "none": "无校验",
+            "none": "No parity",
+            "even": "偶校验",
+            "even": "Parity check",
+            "odd": "奇校验",
+            "odd": "Odd parity check"
+        }
+
+    },
+
+    "gatewayTrans":{
+
+    },
+
+ 
+
+    "trigger": { 
+
+
+        "trigger":"触发器",
+        "trigger":"Trigger",
+
+        "add": "添加触发器",
+        "add": "Add trigger",
+        "edit":"编辑触发器",
+        "edit":"Edit trigger",
+
+        "name": "触发器名称",
+        "name": "Name",
+
+        "condtion":"触发条件",
+        "condtion":"Conditions",
+
+        "severity":"严重性",
+        "severity":"Severity",
+        "class":"类别",
+        "class":"Class",
+
+        "action":"行为",
+        "action":"Action",
+        "origin":"触发源",
+        "origin":"Trigger source",
+        "type":"触发类型",
+        "type":"Trigger type",
+ 
+        "op":"运算符",
+        "op":"Operand",
+        "verb":"条件",
+        "verb":"Operation",
+
+        "alarmDesc":"报警描述",
+        "alarmDesc":"Alarm topic",
+
+        "num": "触发器数目",
+        "num": "Number of triggers",
+
+        "warnDel":"您确认要删除该触发器: %s ?",
+        "warnDel":"Are you sure you want to remove the trigger %s ?",
+        
+        "xx": "x"
+
+    },
+
+    "profile": {
+        "profile":"配置项",
+        "profile":"Profile",
+        "sysProfile":"系统配置项",
+        "sysProfile":"Profile",
+        
+        "name": "配置项名称", 
+        "name": "Name", 
+
+        "add": "添加配置项",
+        "add": "Add profile",
+        "profileName": "配置项名称",
+        "profileName": "Name",
+        "num": "配置项个数",
+        "num": "Number of profiles",
+        
+        "frist":"请先创建 系统配置!",
+        "frist":"Please create profile first!",
+
+        "xx": ""
+    },
+
+
+    "triggerTrans": {
+
+        "type": {
+            "0": "状态持续触发",
+            "0": "Trigger while state keeping",
+            "1": "状态变化触发",
+            "1": "Trigger when state changed"
+        },
+
+
+        "severity": {
+            "0": "不确定的",    //"Indeterminate",
+            "0": "Indeterminate",    //"Indeterminate",
+            "1": "紧急的",     //"Critical ",
+            "1": "Critical",     //"Critical ",
+            "2": "重要的",     //"Major ",
+            "2": "Major",     //"Major ",
+            "3": "一般的",     //"Minor ",
+            "3": "Minor",     //"Minor ",
+            "4": "警告",      //"Warning",
+            "4": "Warning"       //"Warning",
+            // , "5":"Cleared"
+        },
+
+
+        "xx": "x"
+    }
+
+
 
 }

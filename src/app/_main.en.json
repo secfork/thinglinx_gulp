@@ -114,10 +114,10 @@
 
     // 账户权限说明; 
     "accountPermission": {
-        "REGION_MANAGE": { "desc": "区域管理", "text": "区域管理" },
-        "MODEL_MANAGE": { "desc": "模型管理", "text": "模型管理" },
-        "USER_MANAGE": { "desc": "用户管理", "text": "用户管理" },
-        "ROLE_MANAGE": { "desc": "角色管理", "text": "角色管理" }
+        "REGION_MANAGE": { "desc": "区域管理", "text": "REGION_MANAGE" },
+        "MODEL_MANAGE": { "desc": "模型管理", "text": "MODEL_MANAGE" },
+        "USER_MANAGE": { "desc": "用户管理", "text": "USER_MANAGE" },
+        "ROLE_MANAGE": { "desc": "角色管理", "text": "ROLE_MANAGE" }
 
     },
 

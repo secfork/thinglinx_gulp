@@ -1,6 +1,8 @@
 var path = require('path');
 var gulp = require('gulp');
 var conf = require('./conf');
+
+
 var merge = require('gulp-merge-json');
 var jsonMinify = require('gulp-json-minify');
 var uglify = require('gulp-uglify');
@@ -32,22 +34,7 @@ var patterns = [{
 
 
 function build() {
-    try {
-        // json 时;
-        // gulp.src('src/app/**/*.zh.json')
-        //     .pipe(stripJsonComments())
-        //     .pipe(extend('zh.js'))
-        //     .pipe(inject.wrap('window.zh=', ';'))
-        //     .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve')));
-
- 
-// js 时; 
- //         gulp.src('src/app/**/*.en.js')  
- //            .pipe( concat("en.js") )     
- //            .pipe(inject.wrap('window.en=', ';' ))       
- //            .pipe( frep( patterns)) 
- //            .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve')));
-
+    try { 
 
         gulp.src('src/app/**/*.zh.json') 
             .pipe(stripJsonComments())
@@ -71,7 +58,7 @@ function build() {
                         " angular.module('thinglinx').value( '$sys' ,", ");")
                 )
             .pipe( frep(patterns) )
-           // .pipe(uglify())
+            .pipe(uglify())
             .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve')));
 
 

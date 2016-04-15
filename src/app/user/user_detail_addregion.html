@@ -1,0 +1,25 @@
+<form name="form" class=" form-validation form-horizontal   ">
+
+	<!-- region -->
+    <select   tl-input  name="region" label="nav.region" ng-model=" od.region " class="form-control  " ui-jq="chosen" source-arr="filter_regions" k="name" v="id&name" required>
+        <option value=''>-请选择区域-</option>
+    </select>
+
+    <!-- 角色 -->
+    <select tl-input ng-model="od.role" label="role.role"  name="role" required
+    	 ng-options=" r as r.name for r in  roles| filter:{'role_category': 1 } ">
+        <option value="">-请选角色-</option>
+    </select>
+
+    <div class="form-group">
+        <div class="col-sm-3 control-label " translate="user.author">
+            权限
+        </div>
+        <div class="col-sm-8   "  style="white-space:normal;"   privilege2text='od.role.privilege' fresh >
+           <!-- 
+            <a class="badge bg-info" ng-repeat="p in  od.role.privilege " translate={{p}}>
+            </a> -->
+
+        </div>
+    </div>
+</form>

@@ -62,8 +62,8 @@
         "ok":"完成",
         
         "email":"电子邮箱",
-        "phoneNo":"手机号码",
-
+        "phoneNo":"手机号码", 
+        "phone":"电话",
 
         "cancel": "取消",
         "map": "地图",

@@ -4,73 +4,120 @@
 
     "system": {
         "sysManage": "系统管理",
+        "sysManage": "System Management",
          
         "sysList": "系统列表",
+        "sysList": "System List",
 
         "state": "活跃状态",
+        "state": "Activity",
+
         "fail": "失效",
+        "fail": "Inactive",
         "name": "系统名称",
+        "name": "System name",
 
         "commType": "网络类型",
+        "commType": "Communication Type",
 
 
         "sync": "同步",
+        "sync": "Synchronize",
         "hasSync": "已同步",
+        "hasSync": "Synchronized",
         "noSync": "未同步",
+        "noSync": "Unsynchronized",
 
         "syncState": "配置同步状态",
+        "syncState": "Synchronization",
 
-        "location": "Gfaefaef",
+        "location": "定位",
+        "location": "Location",
+
+        "long": "经度",
         "long": "Longtitude",
-        "lat": "Lafrtatawe",
+
+        "lat": "纬度",
+        "lat": "Latitude",
+
         "moveLocation": "移动位置",
+        "moveLocation": "Move",
         "searchLocation": "搜索地理位置",
+        "searchLocation": "Search",
         "delLocation": "删除位置",
+        "delLocation": "Remove",
         "markLocation": "标记位置",
+        "markLocation": "Locate",
         "doLocation": "确定位置",
+        "doLocation": "OK",
 
         "id": "系统ID",
+        "id": "System ID",
         "region": "所属区域",
+        "region": "Region",
 
 
         "online": "状态",
+        "online": "Overview",
         "config": "配置",
+        "config": "Configuration",
         "modelUsed": "使用的模型",
+        "modelUsed": "Model",
 
         "activeNum": "已激活系统",
+        "activeNum": "Activated Systems",
         "unactiveNum": "未激活系统",
+        "unactiveNum": "Unactivated Systems",
 
         "noSN": "请输入SN号",
+        "noSN": "Please input SN",
 
         "saveConf": "保存系统配置",
+        "saveConf": "Save",
         "needSaveConf": "请保存系统配置",
+        "needSaveConf": "Please save the configuration",
 
 
         "noteDel": "您确认要删除系统 %s 吗?",
+        "noteDel": "Are you sure you want to delete the system %s?",
         "warnDel": "删除系统将会丢失此系统的全部历史数据",
+        "warnDel": "Delete system will lose all the historical data of this system.",
 
         "noteActive": "您确认要激活系统 %s 吗?",
+        "noteActive": "Are you sure you want to active the system %s?",
 
         "noteUnActive": "失效将释放当前系统持有的采集资源, 如您的系统处于编程模式,将恢复到采集模式,失效后历史数据不会丢失,您确认要失效系统 %s 吗?",
+        "noteUnActive": "Inactive system will release the collection resource of current system. If your system is in a programming mode, it can be switched to collection mode. When the system inactivated, it's historical data will not be lost. Are you sure you want to inactive the system %s? ",
 
 
         "plcMode": "PLC编程模式",
+        "plcMode": "PLC programming mode",
         "plcOpen": "当前系统处于编程模式, 您可以使用工具向PLC同步工程, 如您想恢复采集, 请关闭编程模式",
+        "plcOpen": "Current system is now in a programming mode, you can use the tool to synchronize the PLC project. If you want to change to collection mode, Please turn off the mode switch.",
         "plcClose": "当前处于采集模式, 如您希望向PLC同步工程 , 请切换到编程模式",
+        "plcClose": "Current system is now in a collection mode. If you want to synchronize the PLC project, Please turn on the mode switch.",
         "noSuportPlc": "当前网络参数设置不支持PLC编程模式",
+        "noSuportPlc": "The current network parameter settings do not support the PLC programming mode",
 
         "enablePlcProg": "开启编程模式",
+        "enablePlcProg": "Open the programming mode",
         "enablePlcProgDesc": "开启编程模式当前系统将停止采集相关功能, 是否确定开启编程模式?",
+        "enablePlcProgDesc": "Open the programming mode will stop the collection related functions of current system. Are you sure you want to turn on programming mode?",
 
         "disablePlcProg": "关闭编程模式",
+        "disablePlcProg": "Shutdown programming mode",
         "disablePlcProgDesc": "关闭编程模式当前系统将不再允许通过工具同步PLC工程, 同时恢复采集相关功能, 是否确定关闭编程模式?",
+        "disablePlcProgDesc": "Shutdown programming mode current system will no longer allow the PLC project to be synchronized through the tool, but restoring collection related functions of the system, Are you sure you want to shutdown programming mode??",
 
 
         "add": "添加系统",
+        "add": "Add system",
 
         "stateOptions": {
             "0": "未激活",
-            "1": "激活" 
+            "0": "inactivated",
+            "1": "激活" ,
+            "1": "Activated" 
         }
 
     }

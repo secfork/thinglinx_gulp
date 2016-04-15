@@ -81,7 +81,7 @@ export default function config($logProvider, $stateProvider, $urlRouterProvider,
 
 
 
-    $translateProvider.useInterpolation('custom_translate');
+    // $translateProvider.useInterpolation('custom_translate');
 
     $translateProvider.preferredLanguage('zh');
     $translateProvider.useLocalStorage();

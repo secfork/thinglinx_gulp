@@ -16,6 +16,8 @@ export default ($scope, $sys, $source , $utils   ) => {
 
     $scope.panel = {
         subject: "region.subject",
+
+        
         title: "region.title",
         pagger: true,
 

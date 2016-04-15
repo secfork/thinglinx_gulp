@@ -1,1 +1,28 @@
-{} 
+{    
+
+    "region": {
+
+        "subject": "区域管理",
+        "subject": "Region management",
+
+        "title": "区域管理",
+        "title": "Region management",
+        
+        "delRegion":"删除区域",
+        "delRegion":"Delete Region",
+        "delWarn":"您确认要删除区域%s吗?",
+        "delWarn":"Are you sure you want to delete the region %s?",
+
+     
+
+        "regionName": "区域名称",
+        "regionName": "Name",
+
+        "add": "添加区域",
+        "add": "Add region",
+
+        "xx": 1
+
+    }
+
+}

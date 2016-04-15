@@ -3,10 +3,22 @@
   padding-right: 15px;
 } 
 
-/*.app-content-body > .wrapper-md {
-  padding-bottom: 0px;
+/*.p-odd-margin > p:nth-child(odd) {
+  user detail 的  电话 , 邮箱 ,地址, 卑职 
+  */
+.p-odd-margin > p:nth-child(even) {
+  margin-left: 20px;
 }
-*/
+
+/*详细权限 文字自动换行*/
+.break {
+    white-space:normal;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+ 
+ 
 
 .w-b-80{
   width: 80%;
@@ -153,7 +165,8 @@ a:focus {
   text-decoration: none;
 }
 label {
-  font-weight: normal;
+  /*font-weight: normal;*/
+  font-weight: 300;
 }
 small,
 .small {
@@ -161,7 +174,8 @@ small,
 }
 .badge,
 .label {
-  font-weight: bold;
+  /*font-weight: bold;*/
+  font-weight: 300;
   text-shadow: 0 1px 0 rgba(0,0,0,0.2);
 }
 .badge.bg-light,

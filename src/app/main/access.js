@@ -144,8 +144,7 @@ function loginCtrl(
 
         );
     };
-
-
+ 
 
 }
 
