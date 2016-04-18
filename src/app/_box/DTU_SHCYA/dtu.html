@@ -17,8 +17,6 @@
 		label="box.simid" 
 		required 
 		ng-model="daserver.params.simid"
-		ng-change=" toUpdate('daserver') "  
-		ng-maxlength=14
-		ng-minlength=14
 
+        ng-change=" needUpdate.daserver = true ; " 
 		>

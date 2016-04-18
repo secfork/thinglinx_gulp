@@ -14,7 +14,6 @@ export default ( $scope, $sessionStorage, $source, $timeout , $localStorage )=>{
     $scope.menu = [];
     $scope.data = {}; // 第二部; 
 
-    $scope.showMask = true ;
 
     // 注销 微信服务号; 
     $scope.unBindServer = function() {
@@ -29,28 +28,24 @@ export default ( $scope, $sessionStorage, $source, $timeout , $localStorage )=>{
                 $scope.op.step = 0;
                 close();
             })
-        }) ;
- 
-       
+        }) ; 
     }
 
+     $scope.op.step = 3 ; 
+        return ;
 
     // 得到  weChatServer  信息; 
 
+    $scope.showMask = true ;
     $source.$weChat.getServerInfo(function(resp) {
         console.log(resp.ret);
         $scope.showMask = false ;
-
-
-        
-
+ 
         // resp.ret =  angular.fromJson( resp.ret );
 
         $scope.wei = JSON.parse(resp.ret || '{}');
 
-        $scope.op.step = 3 ;
-
-        return ;
+       
 
         $scope.menu = $scope.wei.menu && $scope.wei.menu.split(",") || []; 
         if (!!resp.ret && $scope.wei.status == 4) {

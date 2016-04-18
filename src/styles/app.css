@@ -17,8 +17,12 @@
     word-break: break-all;
 }
 
- 
- 
+/*地图定位 上的文字颜色*/
+.col333 {
+  color: #333;
+}
+
+  
 
 .w-b-80{
   width: 80%;

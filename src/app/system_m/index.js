@@ -28,24 +28,18 @@ export default {
 	} ,
 
 	"app.m_system_attr" :{
-		url:"m_system/{uuid}/{model}",   // system_id   +  sysModel_id
+		url:"m_system/{uuid}?{model}",   // system_id   +  sysModel_id
 		template:" <tl-subject></tl-subject><tl-tab-panel load-mask ></tl-tab-panel>",
 		resolve: {
 			// 加载 system ,
 			systemResp : ( $source , $stateParams)=>{
 				"ngInject";
 				return $source.$system.get( { system_id: $stateParams.uuid } ).$promise ;
-
 			}  
-
 			// 加载  sysModel  
 			,sysModelResp : ( $source , $stateParams )=>{
- 
                 return  $source.$sysModel.get({pk: $stateParams.model}).$promise ;
-  
             }
-
-
 		},
 		controller:  system_attr
 	},

@@ -11,6 +11,9 @@ export default ( $scope, $source, $modal, $state, $q, $sys, $utils  )=>{
     $scope.byte = 32; // 32 位 报警;
 
 
+    console.log(2222222222222 , sysModel )
+
+
     $scope.isModelState  = $state.current.isModelState ;
 
 

@@ -115,6 +115,20 @@ export default ($translate, $modalStack, $rootScope, $sys, $source) => {
         isEnablePlcProg: ( driveridObj = { driverid: undefined } )=>{
 
             return  $sys.programmableDTU.indexOf( driveridObj.driverid) >= 0 ;
+        } ,
+
+        setPictureFile : ()=>{
+
+        } ,
+        //  FormData = new FormData();
+        upLoadPictureFile: (  url ,  FormData  , uploadProgress  , uploadComplete )=>{
+            var xhr = new XMLHttpRequest();
+            xhr.upload.addEventListener("progress", uploadProgress, false);
+            xhr.addEventListener("load", uploadComplete, false);
+            // xhr.open("POST", angular.rootUrl + "picture/system" ); 
+            xhr.open("POST", $sys.restNode +  url );  
+            xhr.setRequestHeader("Accept", 'application/json');
+            xhr.send( FormData );
         }
 
 

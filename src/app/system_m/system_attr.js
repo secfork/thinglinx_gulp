@@ -6,7 +6,7 @@ export default ($scope, $state, $stateParams, $source, systemResp , sysModelResp
 
     // 获取 system
     $scope.system = systemResp.ret;
-    $scope.systemModel = sysModelResp.ret ;
+    $scope.sysModel = sysModelResp.ret ;
 
     // 获得 region 信息; 
 
@@ -31,11 +31,8 @@ export default ($scope, $state, $stateParams, $source, systemResp , sysModelResp
             { title: "tag.tag", state: "app.m_system_attr.tag", icon: " icon icon-bar-chart" },
             { title: "trigger.trigger", state: "app.m_system_attr.trigger", icon: " icon icon-rocket " },
             { title: "text.map", state: "app.m_system_attr.map", icon: " icon  icon-pointer " }
-
         ]
     }
-
-
 
     // 加载  sysmodel device ;
     var   holdSysDevice ;
@@ -55,7 +52,7 @@ export default ($scope, $state, $stateParams, $source, systemResp , sysModelResp
     $scope.loadProfile = ()=>{
         return  holdProfile = holdProfile ||
          $source.$sysProfile.get( 
-            { system_model: $scope.systemModel.uuid } 
+            { system_model: $scope.sysModel.uuid } 
             , (resp)=>{
                 $scope.profiles =  resp.ret.length ? resp.ret : undefined ;
    

@@ -20,6 +20,8 @@
         "commType": "网络类型",
         "commType": "Communication Type",
 
+        "sysPicture":"系统图片",
+        "sysPicture":"System Picture",
 
         "sync": "同步",
         "sync": "Synchronize",
@@ -82,6 +84,11 @@
         "noteDel": "Are you sure you want to delete the system %s?",
         "warnDel": "删除系统将会丢失此系统的全部历史数据",
         "warnDel": "Delete system will lose all the historical data of this system.",
+
+
+        "sysNuActive":"系统未激活",
+        "sysNuActive":"System Do Not Activeed",
+
 
         "noteActive": "您确认要激活系统 %s 吗?",
         "noteActive": "Are you sure you want to active the system %s?",

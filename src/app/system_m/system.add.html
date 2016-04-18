@@ -3,6 +3,8 @@
 
 <form name="form" class="form-horizontal form-validation  ">
 
+system = {{ system }}
+
     <input name="name" tl-input label="system.name" required ng-model="system.name">
 
 <!-- 区域 -->
@@ -24,7 +26,7 @@
     <select name="profile" tl-input 
             ng-model="system.profile" 
             ng-options="  p.uuid as p.name for  p  in  profiles " 
-            label="sysModel.profile" required >
+            label="profile.profile" required >
 
 
         <!-- <option value="">--请选择配置项--</option> -->
@@ -49,3 +51,6 @@
               placeholder=" {{ :: 'inputValid.maxlength' | translate: {value:50} }}" ng-model=" system.desc ">
     </textarea>
 </form>
+
+
+

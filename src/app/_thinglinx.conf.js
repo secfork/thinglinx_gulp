@@ -11,6 +11,10 @@
     // restful
     restNode: "node/",
 
+
+    systemPictureSize : 1024*500 , //  system 图片 500K ;
+    weChatPictureSize:  1024*500 , //  wechat 图片 大小 限制 ; 
+
     // application  首页;
     rootState: "app.m_region",
 
@@ -38,8 +42,8 @@
     }, 
     
 
-    // 支持 plc 编程 的 DTU ;  diu 对应的 id;
-    programmableDTU:[ 'DTU_ETUNG' ],
+    // 支持 plc 编程 的 DTU ;  dtu 对应的 id;
+    programmableDTU:[ 'DTU_ETung_PLC' ],
 
 
 

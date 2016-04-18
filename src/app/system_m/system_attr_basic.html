@@ -12,8 +12,8 @@
                 <span translate="system.region"> 所属区域 </span> 
 
                 <span class="pull-right">
-                    <a class="text-info"  ui-sref="app.m_region_prop.system({id: station.region_id })"  >
-                        {{ station.region_name  }}
+                    <a class="text-info"  ui-sref="app.m_region_attr.sys({id: system.region_id })"  >
+                        {{ system.region_name  }}
                     </a> 
                 </span>
             </span>
@@ -70,21 +70,25 @@
     <div class="col-md-6 col-xs-12">
         <!--    width:500px; -->
         <img ng-src="{{ system.pic_url?( ossRoot + system.pic_url):'img/system_null.png'  }}" class="pag-5 m-t-lg w-full b " style="  height:400px">
-        <form class="hbox m-t">
-            <label class="col  w-xs  m-t-n  p-t-10  "> 上传系统图片 </label>
-            <!--jjw col-md-7-->
-            <div class="col">
-                <input ui-jq="filestyle" type="file" id="file_sys" ng-model-instant class="input-sm" onchange="angular.element(this).scope().setFiles(this)" />
-                <div style="height:10px;">
-                    <progressbar class="progress-xs active m-b-sm m-t-xxs" ng-show="progressVisible" value="progress" type="success"> {{progress}}%
+       
+
+        <label class=" m-t-xs " translate="system.sysPicture" > 系统图片 </label>
+ 
+
+            <input   ui-jq="filestyle" type="file" id="file_sys" ng-model-instant 
+                     onchange="angular.element(this).scope().setFiles(this)" />
+           
+            <div style="height:10px;">
+                    <progressbar class="progress-xs active m-b-sm m-t-xxs" ng-show="progressVisible" value="progress" type="success"> 
+                        {{progress}}%
                     </progressbar>
-                </div>
-                <div class="text-muted">支持不超过500K的jpeg,png,jpg格式图片!</div>
-                <div ng-show="!op.rightfile" class="text-danger "> 文件过大! </div>
             </div>
-            <div class="col w-xs">
-                <button class="btn btn-info m-l w-70 " ng-click="uploadFile()" ng-disabled=" ! op.rightfile "> 上传 </button>
-            </div>
-        </form>
+
+            <div class="text-muted">支持不超过500K的jpeg,png,jpg格式图片!</div>
+            <div ng-show="!op.rightfile" class="text-danger "> 文件过大! </div>
+       
+            <button class="btn btn-info  w-70 " ng-click="uploadFile()"
+                ng-disabled=" ! op.rightfile " translate="text.upload"> 上传 </button>
+             
     </div>
 </div>

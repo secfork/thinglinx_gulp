@@ -22,8 +22,7 @@ export default ($scope, $sys, $source, $interpolate, $q, $compile, $translate, $
         return   "app.m_system_attr.basic({uuid:'"+ das.uuid +"', model:'"+ das.model+"'  })" ;
     };
 
- 
- 
+  
 
     $scope.od = { state: undefined  , region_id : region_id  };
     $scope.op = { lm: "list" };
@@ -246,7 +245,7 @@ export default ($scope, $sys, $source, $interpolate, $q, $compile, $translate, $
                     // $scope.system.network = angular.toJson($scope.system.network);
                     var sys = angular.extend({
                         model: $scope.od.systemModel.uuid
-                    }, $scope.system);
+                    }, $scope.system );
 
 
                     $source.$system.save(sys, function(resp) {

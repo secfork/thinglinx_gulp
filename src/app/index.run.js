@@ -59,14 +59,23 @@ export default function runBlock($rootScope, $state, $stateParams, $sys, $compil
     };
      
     //@endif
- 
+    
+    $rootScope.assert = function(){
+        var bol = true ;  
+        $.each( arguments, (i,v)=>{ 
+            return  bol =  bol && v ; 
+        })  
+        if(!bol){
+            throw ( ' assert  error ' );
+        }
+    }
 
    
 
     
     // 表单验证; 
     $rootScope.validForm = function(formName, scope) { 
-        console.log(" valid Form  Scope " , this )
+        console.log(" valid Form  Scope =  " , this )
  
         formName = formName || "form";
         var that = scope || this;
@@ -90,6 +99,7 @@ export default function runBlock($rootScope, $state, $stateParams, $sys, $compil
             });  
             throw (" form invalid !!", valids.$error); 
         }
+        return true ;
     }
 
 

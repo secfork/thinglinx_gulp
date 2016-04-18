@@ -17,19 +17,19 @@ system.network = { daserver: { type: DTU| tcpClient | Tpserver }}
 <form name="daserverForm" class="form-horizontal form-validation ">
 
     <div ng-if=" daserver.type =='DTU' " ng-init="loadSupportDtus(); loadAssignedServer() ;">
-
-
-        <!-- DTU驱动 -->
+ 
+        <!-- DTU驱动    ng-change=" applyDtuData(daserver.params ) ; " -->
         <select tl-input label="box.driver" required  name="dtu" 
             ng-disabled="  assignedServer  " 
             ng-model="daserver.params.driverid" 
-            ng-change=" applyDtuData(daserver.params ) ; " 
+            ng-change=" needUpdate.daserver = true ; "
             ng-options=" o.driver_id as o.name  for o  in dtuList ">
             <option value="">--请选择DTU驱动--</option>
         </select>
 
         <!--     根据  dtu id 加载相应的配置界面;   -->
-        <div ng-if="daserver.params.driverid" ng-include="  'app/_box/' +daserver.params.driverid + '/dtu.html' ">
+        <div ng-if="daserver.params.driverid" 
+            ng-include="  'app/_box/' +daserver.params.driverid + '/dtu.html' ">
         </div>
         <!-- 中心域名 -->
         <input readonly tl-input name="inet" label="box.inet_ipv4" ng-model="assignedServer.inet_ipv4">
@@ -39,8 +39,7 @@ system.network = { daserver: { type: DTU| tcpClient | Tpserver }}
         <div class="text-muted col-md-9 col-md-offset-3 padding-0">
             <i class="fa  fa-warning   text-warning pos-rlt"></i>  
             <span translate="box.boxDesc">DSC地址和端口需要设置到指定的DTU设备中</span>  
-        </div>
-
+        </div> 
     </div>
 
     <!-- 手机-->
@@ -65,12 +64,15 @@ system.network = { daserver: { type: DTU| tcpClient | Tpserver }}
             <input tl-input  name="user" label="用户名" ng-model="a" required>
             <input tl-input  name="pass" label="密码" ng-model="a" required type="password">
         </div>
-    </div>
-
-    <div class="col-xs-8 col-xs-offset-3">
-        <button class="btn btn-success btn-sm" translate="box.saveConf"> 保存网络参数 </button>
     </div> 
-
-
 </form>
+
+<div class="col-xs-8 col-xs-offset-3"  ng-if=" needUpdate.daserver " >
+    
+    <button class="btn btn-success btn-sm" translate="box.saveConf"  
+
+        ng-click="saveDaserverConf()"> 保存网络参数 </button>
+    
+</div> 
+
 

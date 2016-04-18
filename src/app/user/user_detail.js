@@ -47,22 +47,17 @@ export default function($scope, $source, $state, $stateParams,
             $source.$user.save({
                     op: "notice"
                 }, d,
-                function() {
-
-                },
-                function() {
-                    $scope.user[type] = !$scope.user[type]
+                function() {  },
+                function( resp ) {
+                    $scope.user[type] = !$scope.user[type] ;
+                    $utils.handlerRespErr( resp )
                 }
-            )
-
+            ) 
         }
-
-
-
+ 
     // 报警区域开关; 
     // 编辑是否接收 某个 region 报警; 
-        $scope.acceptRegionAlarm = function(rr) {
-
+        $scope.acceptRegionAlarm = function(rr) { 
             var sub = {
                 filter: {
                     region_id: rr.region_id || rr.id,
@@ -79,8 +74,9 @@ export default function($scope, $source, $state, $stateParams,
                     rr.sub_id = resp.ret;
                     subScribKV[rr.id || rr.region_id] = true;
 
-                }, function() {
+                }, function(resp) {
                     rr.acceptAlarm = !rr.acceptAlarm;
+                    $utils.handlerRespErr( resp )
                 })
 
             } else {
@@ -90,9 +86,9 @@ export default function($scope, $source, $state, $stateParams,
                     pk: rr.sub_id
                 }, function() {
                     subScribKV[rr.id || rr.region_id] = false;
-                }, function() {
+                }, function( resp ) {
                     rr.acceptAlarm = !rr.acceptAlarm;
-
+                    $utils.handlerRespErr( resp )
                 }) 
             } 
         }
@@ -109,15 +105,10 @@ export default function($scope, $source, $state, $stateParams,
 
                     var  r = role_KV[ $scope.user.accountRolId ] ;
                     //privilege : ["REGION_MANAGE"]  ;
-                    $scope.op.privilege  =  r && r.privilege ;
-
-
+                    $scope.op.privilege  =  r && r.privilege ; 
                 })
             })
-    
-
- 
-
+     
     $scope.addAccountRole = function() {
 
         var n = $scope.op.accountRolId,

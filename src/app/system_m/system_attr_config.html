@@ -1,31 +1,31 @@
 <div class="   panel-body  no-padder  ">
-
-
+ 
     <!-- profile  ticket -->
     <div class="col-md-8 col-xs-12  col-md-offset-1     m-b-sm m-t padder-md">
         <h4 class="" translate="text.confParams">配置参数</h4>
- 
-
+  
         <form name=" profile" class="form-horizontal form-validation ">
             <!--  profile  配置  -->
             <select tl-input label="profile.sysProfile" name="profile" 
                 ng-model="profile" class=" form-control" 
                 ng-options="   p as p.name for p in profiles  " 
-                ng-change="toUpdate('profile')" required >
+                ng-change=" needUpdate.profile = true ; hadSave.profile=false  " required >
             </select>
             <div class="col-md-8 col-md-offset-3">
                 <i class="fa  fa-warning  text-success pos-rlt"></i> {{profile.desc}}
             </div>
             <div class="col-md-8 col-md-offset-3 m-t-xs m-b">
-                <button class=" btn btn-sm  w-94 btn-success " 
+                <button class=" btn btn-sm  w-94 btn-primary "  ng-show=" needUpdate.profile"
                     ng-click="  setProfile();  " translate="system.saveConf">
                     保存系统配置
                 </button>
-                <span class="text-danger"> 
+                
+                <span class="text-danger"   ng-show=" needUpdate.profile" > 
                     <i class="fa  fa-exclamation-triangle "  ></i>
                     <span translate="system.needSaveConf">编辑完成后请保存系统配置</span> 
                 </span>
-                <span class="text-info">
+
+                <span class="text-info"  ng-show=" hadSave.profile ">
                     <i class="fa  fa-thumbs-o-up "></i> 
                     <span translate="text.saved">保存成功!</span>
                 </span>
@@ -37,30 +37,28 @@
 
             <!--  PLC 编程模式 -->
             <label class="col-md-3   control-label  text-right " translate="system.plcMode">PLC编程模式</label>
-            <div class="col-md-8">
-                <label class="i-switch i-switch-md bg-info m-t-xs m-r">
+            <div class="col-md-8 ">
+                <label class="i-switch  col-xs-1 i-switch-md bg-info m-t-xs m-r">
                     <input type="checkbox" checked="" ng-disabled=" !op.enAblePlcProg " ng-model="op.plcstate" ng-change="setPLC( op.plcstate )">
                     <i></i> &nbsp;
                 </label>
-                <span class="text-danger " ng-show=" ! op.enAblePlcProg " translate="system.noSuportPlc">
+                <span class="text-danger col-xs-10 m-t-xs " ng-show=" ! op.enAblePlcProg " translate="system.noSuportPlc">
                                   当前网络参数设置不支持PLC编程模式
                 </span>
-                <div class="text-info" ng-if=" op.enAblePlcProg  ">
+                <div class="text-info col-xs-10 m-t-xs" ng-if=" op.enAblePlcProg  ">
                     <span ng-show="op.plcstate" translate="system.plcOpen">  当前系统处于编程模式, 您可以使用工具向PLC同步工程, 如您想恢复采集, 请关闭编程模式;  </span>
                     <span ng-show="!op.plcstate" translate="system.plcClose"> 当前处于采集模式, 如您希望向PLC同步工程 , 请切换到编程模式 </span>
                 </div>
-            </div>
- 
+            </div> 
         </form>
+
     </div>
+ 
 
-
-
-    <!--  DaServer -->
+    <!--  DaServer --> 
     <div ng-if="needDaServer" class="col-md-8 col-md-offset-1  col-xs-12 m-b"
          ng-include="  'app/system_m/system_attr_config_daserver.html' "> </div>
-   
- 
+    
 
     <ng-include ng-if="  needGateWay  " 
         src=" 'athena/dastation/_prop_gateway_gateway.html'  "></ng-include>
@@ -93,7 +91,7 @@
                 <span class="text-info" ng-show="_show_sync_ok"> 同步成功</span>
                 <span class="text-danger" ng-show="_show_sync_error"> 同步失败</span>
                 <!--   <i class="fa fa-spin fa-spinner text-info" style="display:none"></i>
- -->
+                    -->
             </div>
             <!--jjw md-9 xs-6  启动停止功能 不需要了, 只是为了测试   -->
             <!--
