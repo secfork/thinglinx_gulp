@@ -43,8 +43,7 @@
                  
                 <span translate="system.syncState">配置同步状态</span>
                  <span class="pull-right fa "  translate>
-                 system.{{ system.needsync ? "hasSync" : "noSync"    }}
-                    {{ system.needsync ? "需要同步":"已同步" }}
+                 system.{{ system.needsync ? "hasSync" : "noSync"    }} 
                  </span>
             </span>
             <span class="list-group-item no-border ">
@@ -69,26 +68,31 @@
     </div>
     <div class="col-md-6 col-xs-12">
         <!--    width:500px; -->
-        <img ng-src="{{ system.pic_url?( ossRoot + system.pic_url):'img/system_null.png'  }}" class="pag-5 m-t-lg w-full b " style="  height:400px">
+        <img ng-src="{{ system.pic_url?( ossRoot + system.pic_url):'img/system_null.png'  }}" 
+            class="pag-5 m-t-lg w-full b " style="  height:400px">
        
 
         <label class=" m-t-xs " translate="system.sysPicture" > 系统图片 </label>
  
 
-            <input   ui-jq="filestyle" type="file" id="file_sys" ng-model-instant 
-                     onchange="angular.element(this).scope().setFiles(this)" />
-           
-            <div style="height:10px;">
-                    <progressbar class="progress-xs active m-b-sm m-t-xxs" ng-show="progressVisible" value="progress" type="success"> 
-                        {{progress}}%
-                    </progressbar>
-            </div>
-
-            <div class="text-muted">支持不超过500K的jpeg,png,jpg格式图片!</div>
-            <div ng-show="!op.rightfile" class="text-danger "> 文件过大! </div>
+        <input   ui-jq="filestyle" type="file" id="file_sys" ng-model-instant 
+                 onchange="angular.element(this).scope().setFiles(this)" />
        
-            <button class="btn btn-info  w-70 " ng-click="uploadFile()"
-                ng-disabled=" ! op.rightfile " translate="text.upload"> 上传 </button>
+        <div style="height:10px;">
+                <progressbar class="progress-xs active m-b-sm m-t-xxs" 
+                    ng-show="op.progressVisible" value="progress" type="success"> 
+                    {{progress}}%
+                </progressbar>
+        </div>
+
+        <div class="text-muted" translate="text.pictureLimit"  
+            >支持不超过500K的jpeg,png,jpg格式的图片!</div>
+        <div ng-show="op.largeSize" class="text-danger "  translate="text.lagPicture"> 文件过大! </div>
+   
+        <button class="btn btn-info  w-70 " ng-click="uploadFile()"
+
+            ng-disabled=" ! op.needUpload " 
+            translate="text.upload"> 上传 </button>
              
     </div>
 </div>

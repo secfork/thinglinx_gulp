@@ -30,8 +30,7 @@ export default {
 
     "app.m_region_attr.sys":{
     	url:"/sys",
-        data:{ manage:true  , regionAttr:true  },
-        // templateUrl: 'app/system_m/_system_table.html',
+        data:{ manage:true  , regionAttr:true  }, 
     	templateUrl: 'app/region_m/region_attr_sys.html',
     	controller: system_m_ctrl
     },

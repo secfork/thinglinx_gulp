@@ -10,11 +10,22 @@ export default ($scope, $sys, $source, $interpolate, $q, $compile, $translate, $
 
     var isManage = $state.current.data && $state.current.data.manage ,
         isRegionAttr = $state.current.data && $state.current.data.regionAttr ,
-        region_id =   $stateParams.id && parseInt(  $stateParams.id  ) ;
+
+        region_id =   $stateParams.id && parseInt(  $stateParams.id  ) ,
+        state = isManage? undefined: 1;  // 管理加载全部, 展示 只加载 激活的; 
  
  
     $scope.isManage = isManage ;
     $scope.isRegionAttr = isRegionAttr ;
+
+    $scope.od = { state: state  , region_id : region_id  };
+    $scope.op = { lm: "list" };
+    // 复位 按钮 ; 
+    $scope.reSet = function() {
+        $scope.od = { state: state  , region_id : region_id   };
+        $scope.loadPageData(1);
+    }
+
 
 
     // 点击 系统名称时 跳转 路径;  有可能还是 show 部分要用 该函数; 
@@ -24,8 +35,6 @@ export default ($scope, $sys, $source, $interpolate, $q, $compile, $translate, $
 
   
 
-    $scope.od = { state: undefined  , region_id : region_id  };
-    $scope.op = { lm: "list" };
 
     $scope.page = {};
 
@@ -174,10 +183,6 @@ export default ($scope, $sys, $source, $interpolate, $q, $compile, $translate, $
     };
 
 
-    $scope.reSet = function() {
-        $scope.od = {};
-        $scope.loadPageData(1);
-    }
 
 
     // 加载同步状态 ; 

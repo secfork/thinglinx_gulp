@@ -52,8 +52,10 @@
         "update": "更新",
         "reset": "复位",
         "changeInfo":"更改信息",
+
         "upload":"上传",
-        
+        "pictureLimit":"支持不超过500K的jpeg,png,jpg格式的图片!",
+        "lagPicture":"文件超限!",
         
         "regist":"注册",
         "unBind":"解除绑定",

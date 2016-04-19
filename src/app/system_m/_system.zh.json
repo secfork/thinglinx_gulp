@@ -6,6 +6,10 @@
         "sysManage": "系统管理",
          
         "sysList": "系统列表",
+        "info":"系统概览",
+        "current":"实时",
+        "history":"历史",
+
 
         "state": "活跃状态",
         "fail": "失效",
@@ -13,8 +17,7 @@
 
         "commType": "网络类型",
 
-        "sysPicture":"系统图片",
-
+        "sysPicture":"系统图片",  
 
         "sync": "同步",
         "hasSync": "已同步",

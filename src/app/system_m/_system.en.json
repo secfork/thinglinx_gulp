@@ -9,6 +9,13 @@
         "sysList": "系统列表",
         "sysList": "System List",
 
+        "info":"系统概览",
+        "info":"System Info",
+        "current":"实时",
+        "current":"Current",
+        "history":"History",
+
+
         "state": "活跃状态",
         "state": "Activity",
 

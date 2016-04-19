@@ -15,7 +15,7 @@ export default ($scope , $source , $sys  , $utils ) => {
     $scope.tableHeaders = [
         { text: "text.name", w: "20%" },
         { text: "text.createTime", w: "20%" },
-        { text: "region.th_active", w: "20%" },
+        { text: "system.activeNum", w: "20%" },
         { text: "text.desc", w: "30%" }
     ];
 

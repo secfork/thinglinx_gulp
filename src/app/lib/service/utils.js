@@ -77,6 +77,7 @@ export default ($translate, $modalStack, $rootScope, $sys, $source) => {
         } ,
 
         querySystemOnline:   function  ( uuids, pageData ) {
+                if( !uuids.length) return ;
                 return $source.$system.status(uuids, (resp) => {
                     angular.forEach( resp.ret  , (v, i) => {
                         pageData[i].online = !!( v && (v.daserver ? v.daserver.logon : v.online) );

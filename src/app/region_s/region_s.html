@@ -2,15 +2,18 @@
 
 <tl-subject></tl-subject>
 
+
 <tl-panel>
+
     <tl-panel-inputs>
         <input tl-panel-input ng-model="od.f_projname" search="loadPageData(1)">
     </tl-panel-inputs>
+
     <table tl-table theader="tableHeaders">
         <tbody>
             <tr ng-repeat="  proj  in page.data  " ng-init=" collectRegionId( proj , $last )">
                 <td>
-                    <a class="text-info-dk  " ng-click="  goto ( _$nextState ,  proj  , proj ); ">
+                    <a class="text-info-dk  "   ui-sref= " app.s_region_attr.sys( proj )" >
                            {{ :: proj.name }} 
                     </a>
                 </td>
